@@ -952,7 +952,7 @@ const Checkout = () => {
       <div className="min-h-screen bg-secondary/30 flex flex-col">
         <div className="bg-primary text-primary-foreground py-4">
           <div className="container flex items-center justify-center">
-            <img src={logo} alt="Logo" className="h-8 w-auto object-contain brightness-0 invert" />
+            <CheckoutLogo size="sm" />
           </div>
         </div>
 
@@ -1088,11 +1088,11 @@ const Checkout = () => {
                 onClick={handleBack}
                 className="absolute left:4 left-4 text-sm text-primary-foreground/90 flex items-center gap-1 hover:opacity-80"
               >
-                <ArrowLeft className="w-4 h-4" /> Voltar
+              <ArrowLeft className="w-4 h-4" /> Voltar
               </button>
             );
           })()}
-          <img src={logo} alt="Logo" className="h-7 w-auto object-contain brightness-0 invert" />
+          <CheckoutLogo size="sm" />
         </div>
 
         {/* Step Indicator dentro do header preto */}
