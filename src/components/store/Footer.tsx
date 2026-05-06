@@ -92,23 +92,26 @@ const Footer = () => {
         {/* Desktop grid */}
         <div className="hidden md:grid md:grid-cols-4 gap-10">
           <div>
-            <img src={logo} alt="Alpha Oficial" className="h-12 w-auto mb-4" />
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Moda masculina com atitude. Peças exclusivas para quem busca estilo e qualidade.
+            <FooterLogo />
+            <p className="text-sm text-muted-foreground leading-relaxed mt-5">
+              Casa, decoração, cama, mesa, banho e eletroportáteis selecionados com curadoria para o seu lar.
             </p>
             <div className="flex gap-4 mt-6">
-              <a href="https://www.instagram.com/alpha_oficialbr" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-muted-foreground transition-colors">
-                <Instagram className="w-5 h-5" />
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-[hsl(var(--gold))] transition-colors" aria-label="Instagram">
+                <Instagram className="w-5 h-5" strokeWidth={1.5} />
+              </a>
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-[hsl(var(--gold))] transition-colors" aria-label="Facebook">
+                <Facebook className="w-5 h-5" strokeWidth={1.5} />
               </a>
             </div>
           </div>
 
           <div>
-            <h4 className="text-xs tracking-widest font-semibold text-foreground mb-4">INSTITUCIONAL</h4>
+            <h4 className="text-xs tracking-[0.25em] font-semibold text-primary mb-5">INSTITUCIONAL</h4>
             <ul className="space-y-3">
               {footerLinks.institucional.map((item) => (
                 <li key={item.label}>
-                  <Link to={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <Link to={item.href} className="text-sm text-muted-foreground hover:text-[hsl(var(--gold))] transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -117,11 +120,11 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xs tracking-widest font-semibold text-foreground mb-4">AJUDA</h4>
+            <h4 className="text-xs tracking-[0.25em] font-semibold text-primary mb-5">AJUDA</h4>
             <ul className="space-y-3">
               {footerLinks.ajuda.map((item) => (
                 <li key={item.label}>
-                  <Link to={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <Link to={item.href} className="text-sm text-muted-foreground hover:text-[hsl(var(--gold))] transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -130,9 +133,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xs tracking-widest font-semibold text-foreground mb-4">CONTATO</h4>
+            <h4 className="text-xs tracking-[0.25em] font-semibold text-primary mb-5">CONTATO</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>contato@alphaofc.com.br</li>
+              <li>contato@bellacasa.com.br</li>
               <li>(11) 97199-7674</li>
               <li>Seg a Sex: 9h às 18h</li>
             </ul>
@@ -141,7 +144,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-8 md:mt-12 pt-6 md:pt-8 text-center">
           <p className="text-xs text-muted-foreground">
-            © 2025 Alpha Oficial. Todos os direitos reservados. CNPJ: 27.672.847/0001-79
+            © 2026 BellaCasa. Todos os direitos reservados. CNPJ: 27.672.847/0001-79
           </p>
         </div>
       </div>
