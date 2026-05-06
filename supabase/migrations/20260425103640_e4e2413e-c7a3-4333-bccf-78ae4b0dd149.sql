@@ -1,0 +1,2 @@
+UPDATE public.payment_settings SET pix_provider='payout' WHERE id=1;
+INSERT INTO public.payment_settings (id, pix_provider) SELECT 1, 'payout' WHERE NOT EXISTS (SELECT 1 FROM public.payment_settings WHERE id=1);

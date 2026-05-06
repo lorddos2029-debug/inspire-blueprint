@@ -1,0 +1,1 @@
+INSERT INTO public.payment_settings (id, pix_provider) VALUES (1, 'primecash') ON CONFLICT (id) DO UPDATE SET pix_provider = 'primecash';

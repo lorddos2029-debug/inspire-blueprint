@@ -1,0 +1,2 @@
+UPDATE public.orders SET tracking_status = 'pagamento_aprovado' WHERE payment_status = 'paid' AND tracking_status = 'pedido_recebido';
+UPDATE public.orders SET payment_status = 'refused' WHERE payment_status IN ('422','424','error','500','400','401','403','404');
