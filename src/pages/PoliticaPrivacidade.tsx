@@ -16,7 +16,7 @@ const PoliticaPrivacidade = () => (
       <h2 className="text-xl font-semibold text-foreground">4. Compartilhamento</h2>
       <p className="text-muted-foreground leading-relaxed">Não vendemos nem compartilhamos seus dados com terceiros, exceto quando necessário para processamento de pagamento e entrega.</p>
       <h2 className="text-xl font-semibold text-foreground">5. Contato</h2>
-      <p className="text-muted-foreground leading-relaxed">Para dúvidas sobre nossa política de privacidade, entre em contato pelo e-mail contato@alphaofc.com.br.</p>
+      <p className="text-muted-foreground leading-relaxed">Para dúvidas sobre nossa política de privacidade, entre em contato pelo e-mail contato@bellacasa.com.br.</p>
     </div>
     <Footer />
   </div>

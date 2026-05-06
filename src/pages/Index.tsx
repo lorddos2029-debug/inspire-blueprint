@@ -4,7 +4,7 @@ import TrustMarquee from "@/components/store/TrustMarquee";
 import ProductGrid from "@/components/store/ProductGrid";
 import GuaranteeBanners from "@/components/store/GuaranteeBanners";
 import CategorySections from "@/components/store/CategorySections";
-import StandaloneProducts from "@/components/store/StandaloneProducts";
+
 import AboutUs from "@/components/store/AboutUs";
 import HomeFAQ from "@/components/store/HomeFAQ";
 import Newsletter from "@/components/store/Newsletter";
@@ -20,7 +20,7 @@ const Index = () => {
       <ProductGrid />
       <GuaranteeBanners />
       <CategorySections />
-      <StandaloneProducts />
+      
       <AboutUs />
       <HomeFAQ />
       <Newsletter />
