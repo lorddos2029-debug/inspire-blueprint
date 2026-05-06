@@ -8,10 +8,13 @@ const StandaloneProducts = () => {
   return (
     <section className="py-10 md:py-16 bg-background">
       <div className="container">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
-            Acessórios & Complementos
-          </h2>
+        <div className="flex items-end justify-between mb-6">
+          <div>
+            <span className="text-xs tracking-[0.4em] font-semibold text-[hsl(var(--gold))]">COMPLEMENTOS</span>
+            <h2 className="font-display text-3xl md:text-4xl font-medium text-primary mt-2">
+              Detalhes que fazem a diferença
+            </h2>
+          </div>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-6">
           {standaloneProducts.map((product) => {
