@@ -1893,7 +1893,7 @@ const ProductDescription = ({ productId }: ProductDescriptionProps) => {
           <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
             Costuras duplas reforçadas, ribana antitorção na gola, cordão ajustável no short e tecidos que{" "}
             <strong className="text-foreground">não encolhem nem desbotam</strong> mesmo após várias lavagens. Cada peça é
-            inspecionada antes do envio para garantir o padrão Alpha.
+            inspecionada antes do envio para garantir o padrão BellaCasa.
           </p>
         </div>
 

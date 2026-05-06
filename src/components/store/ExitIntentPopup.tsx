@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sparkles, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
-import logo from "@/assets/exit-logo.png";
+
 
 const STORAGE_KEY = "exit_intent_shown_v1";
 
@@ -135,7 +135,7 @@ const ExitIntentPopup = ({ enabled = true }: Props) => {
           </button>
 
           <div className="flex justify-center mb-4">
-            <img src={logo} alt="Alpha Oficial" className="h-12 w-auto object-contain" />
+            <span className="font-display text-3xl font-semibold tracking-tight text-primary">Bella<span className="italic text-[hsl(var(--gold))]">Casa</span></span>
           </div>
 
           <h3 className="text-2xl font-bold leading-tight">

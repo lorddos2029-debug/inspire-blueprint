@@ -18,10 +18,13 @@ const ProductGrid = () => {
   return (
     <section className="py-12 md:py-20 bg-background">
       <div className="container">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
-            Mais Vendidos
-          </h2>
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <span className="text-xs tracking-[0.4em] font-semibold text-[hsl(var(--gold))]">SELEÇÃO BELLACASA</span>
+            <h2 className="font-display text-3xl md:text-4xl font-medium text-primary mt-2">
+              Mais Vendidos da Casa
+            </h2>
+          </div>
           {hasMore && !expanded && (
             <button
               onClick={() => setExpanded(true)}

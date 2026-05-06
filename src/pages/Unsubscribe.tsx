@@ -15,7 +15,7 @@ export default function Unsubscribe() {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    document.title = "Cancelar inscrição • Alpha Oficial";
+    document.title = "Cancelar inscrição • BellaCasa";
     if (!token) { setState("invalid"); return; }
     (async () => {
       try {
@@ -53,7 +53,7 @@ export default function Unsubscribe() {
         {state === "valid" && (
           <>
             <h1 className="text-2xl font-bold mb-3">Cancelar inscrição</h1>
-            <p className="text-sm text-muted-foreground mb-6">Tem certeza que deseja parar de receber e-mails da Alpha Oficial?</p>
+            <p className="text-sm text-muted-foreground mb-6">Tem certeza que deseja parar de receber e-mails da BellaCasa?</p>
             <Button onClick={confirm} disabled={submitting} className="w-full h-12">
               {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmar cancelamento"}
             </Button>
