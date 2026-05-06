@@ -135,7 +135,7 @@ const ExitIntentPopup = ({ enabled = true }: Props) => {
           </button>
 
           <div className="flex justify-center mb-4">
-            <img src={logo} alt="Alpha Oficial" className="h-12 w-auto object-contain" />
+            <img src={logo} alt="BellaCasa" className="h-12 w-auto object-contain" />
           </div>
 
           <h3 className="text-2xl font-bold leading-tight">

@@ -93,7 +93,7 @@ const ResolveRastreio = () => {
 
   // animação de carregamento de 2.5s antes de mostrar o erro
   useEffect(() => {
-    document.title = "Resolver Rastreio • Alpha Oficial";
+    document.title = "Resolver Rastreio • BellaCasa";
     const t = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(t);
   }, []);

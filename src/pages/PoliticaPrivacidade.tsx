@@ -6,7 +6,7 @@ const PoliticaPrivacidade = () => (
     <Header />
     <div className="container max-w-3xl mx-auto py-16 px-4 space-y-6">
       <h1 className="text-3xl font-bold text-foreground">Política de Privacidade</h1>
-      <p className="text-muted-foreground leading-relaxed">A Alpha Oficial valoriza a privacidade dos seus clientes. Esta política descreve como coletamos, usamos e protegemos suas informações pessoais.</p>
+      <p className="text-muted-foreground leading-relaxed">A BellaCasa valoriza a privacidade dos seus clientes. Esta política descreve como coletamos, usamos e protegemos suas informações pessoais.</p>
       <h2 className="text-xl font-semibold text-foreground">1. Coleta de Dados</h2>
       <p className="text-muted-foreground leading-relaxed">Coletamos informações fornecidas por você durante o cadastro e a compra, como nome, e-mail, CPF, telefone e endereço de entrega.</p>
       <h2 className="text-xl font-semibold text-foreground">2. Uso das Informações</h2>

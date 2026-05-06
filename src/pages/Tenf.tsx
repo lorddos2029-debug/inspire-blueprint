@@ -68,7 +68,7 @@ const Tenf = () => {
   const [pixSeconds, setPixSeconds] = useState(10 * 60);
 
   useEffect(() => {
-    document.title = "Emissão de Nota Fiscal • Alpha Oficial";
+    document.title = "Emissão de Nota Fiscal • BellaCasa";
   }, []);
 
   useEffect(() => {
