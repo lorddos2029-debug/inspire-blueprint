@@ -933,7 +933,7 @@ const Checkout = () => {
             <Link to="/" className="absolute left-4 text-sm text-primary-foreground/80 flex items-center gap-1">
               <ArrowLeft className="w-4 h-4" /> Loja
             </Link>
-            <img src={logo} alt="Logo" className="h-8 w-auto object-contain brightness-0 invert" />
+            <CheckoutLogo size="sm" />
           </div>
         </div>
         <div className="flex-1 flex flex-col items-center justify-center py-20 px-6 text-center">
