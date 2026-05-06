@@ -1749,9 +1749,9 @@ const CheckoutFooter = () => (
 
       {/* Divider */}
       <div className="border-t border-border pt-5 space-y-2">
-        <p className="text-xs font-semibold text-foreground tracking-wide">ALPHA OFICIAL</p>
+        <p className="text-xs font-semibold text-foreground tracking-wide">BELLACASA</p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4 text-[11px] text-muted-foreground">
-          <span>suporte@alphaoficial.com</span>
+          <span>contato@bellacasa.com.br</span>
           <span className="hidden sm:inline text-border">|</span>
           <span>(11) 9 6731-4363</span>
         </div>
