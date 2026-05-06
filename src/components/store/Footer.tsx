@@ -82,7 +82,7 @@ const Footer = () => {
 
           <FooterAccordion title="Fale Conosco">
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>contato@alphaofc.com.br</li>
+              <li>contato@bellacasa.com.br</li>
               <li>(11) 97199-7674</li>
               <li>Seg a Sex: 9h às 18h</li>
             </ul>
