@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
 import { QRCodeSVG } from "qrcode.react";
-import logo from "@/assets/logo-new.png";
 import kitMeiasSoquete from "@/assets/kit-12-meias-soquete.png";
 import bodySplashBarboursTrio from "@/assets/products/body-splash-barbours-trio.png";
 import security100 from "@/assets/security-100.svg";
@@ -12,6 +11,20 @@ import { useCart } from "@/contexts/CartContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
+const CheckoutLogo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
+  const titleSize = size === "lg" ? "text-3xl md:text-4xl" : size === "sm" ? "text-xl md:text-2xl" : "text-2xl md:text-3xl";
+  return (
+    <div className="flex flex-col items-center leading-none select-none">
+      <span className={`font-display ${titleSize} font-semibold tracking-tight text-white`}>
+        Bella<span className="italic text-[hsl(var(--gold))]">Casa</span>
+      </span>
+      <span className="mt-0.5 text-[9px] md:text-[10px] tracking-[0.4em] font-medium text-white/70 uppercase">
+        Casa &amp; Conforto
+      </span>
+    </div>
+  );
+};
 import {
   AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription,
   AlertDialogFooter, AlertDialogHeader, AlertDialogTitle
@@ -920,7 +933,7 @@ const Checkout = () => {
             <Link to="/" className="absolute left-4 text-sm text-primary-foreground/80 flex items-center gap-1">
               <ArrowLeft className="w-4 h-4" /> Loja
             </Link>
-            <img src={logo} alt="Logo" className="h-8 w-auto object-contain brightness-0 invert" />
+            <CheckoutLogo size="sm" />
           </div>
         </div>
         <div className="flex-1 flex flex-col items-center justify-center py-20 px-6 text-center">
@@ -939,7 +952,7 @@ const Checkout = () => {
       <div className="min-h-screen bg-secondary/30 flex flex-col">
         <div className="bg-primary text-primary-foreground py-4">
           <div className="container flex items-center justify-center">
-            <img src={logo} alt="Logo" className="h-8 w-auto object-contain brightness-0 invert" />
+            <CheckoutLogo size="sm" />
           </div>
         </div>
 
@@ -1075,11 +1088,11 @@ const Checkout = () => {
                 onClick={handleBack}
                 className="absolute left:4 left-4 text-sm text-primary-foreground/90 flex items-center gap-1 hover:opacity-80"
               >
-                <ArrowLeft className="w-4 h-4" /> Voltar
+              <ArrowLeft className="w-4 h-4" /> Voltar
               </button>
             );
           })()}
-          <img src={logo} alt="Logo" className="h-7 w-auto object-contain brightness-0 invert" />
+          <CheckoutLogo size="sm" />
         </div>
 
         {/* Step Indicator dentro do header preto */}
