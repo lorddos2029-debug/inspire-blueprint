@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sparkles, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
-import logo from "@/assets/exit-logo.png";
+
 
 const STORAGE_KEY = "exit_intent_shown_v1";
 
