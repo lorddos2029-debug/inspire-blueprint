@@ -1,14 +1,15 @@
-import camisaPoloClockImg from "@/assets/products/camisa-polo-clock.jpg";
-import camisaPoloCourtImg from "@/assets/products/camisa-polo-court.jpg";
-import relogioPaganiImg from "@/assets/products/relogio-pagani.jpg";
-import relogioChronosImg from "@/assets/products/relogio-chronos.jpg";
-import shortLinhoImg from "@/assets/products/short-linho-kit.jpg";
-import camisaLinhoImg from "@/assets/products/camisa-linho-rout.jpg";
-import sapatoOxfordImg from "@/assets/products/sapato-oxford.jpg";
-import portaCartaoImg from "@/assets/products/porta-cartao.jpg";
-import perfumeKitImg from "@/assets/perfume-kit-trio.png";
-import perfumeKitDuoImg from "@/assets/perfume-kit-duo.png";
-import perfumeEnigmaImg from "@/assets/perfume-enigma.png";
+import cobertor from "@/assets/products-bc/cobertor.jpg";
+import travesseiro from "@/assets/products-bc/travesseiro.jpg";
+import toalha from "@/assets/products-bc/toalha.jpg";
+import airfryer from "@/assets/products-bc/airfryer.jpg";
+import liquidificador from "@/assets/products-bc/liquidificador.jpg";
+import cafeteira from "@/assets/products-bc/cafeteira.jpg";
+import organizador from "@/assets/products-bc/organizador.jpg";
+import jogoJantar from "@/assets/products-bc/jogo-jantar.jpg";
+import lencol from "@/assets/products-bc/lencol.jpg";
+import edredom from "@/assets/products-bc/edredom.jpg";
+import chaleira from "@/assets/products-bc/chaleira.jpg";
+import batedeira from "@/assets/products-bc/batedeira.jpg";
 
 export interface CategoryProduct {
   id: string;
@@ -27,112 +28,38 @@ export interface ProductCategory {
 
 export const productCategories: ProductCategory[] = [
   {
-    title: "Camisa Polo",
+    title: "Cama & Banho",
     products: [
-      {
-        id: "cat-polo-1",
-        name: "Camisa Polo Clock",
-        price: 209.00,
-        image: camisaPoloClockImg,
-        slug: "camisa-polo-ventura-masculina",
-      },
-      {
-        id: "cat-polo-2",
-        name: "Camisa Polo Court",
-        price: 219.00,
-        image: camisaPoloCourtImg,
-        slug: "camisa-polo-court",
-      },
+      { id: "cb-1", name: "Cobertor Plush King Toque de Nuvem", price: 189.9, originalPrice: 349.9, image: cobertor, tag: "46% OFF", slug: "cobertor-plush-king-toque-de-nuvem" },
+      { id: "cb-2", name: "Jogo 5 Toalhas Linha Egípcia 500g/m²", price: 169.9, originalPrice: 329.9, image: toalha, tag: "48% OFF", slug: "jogo-5-toalhas-banho-egiptia-fio-penteado" },
     ],
   },
   {
-    title: "Relógios",
+    title: "Eletroportáteis",
     products: [
-      {
-        id: "cat-rel-1",
-        name: "Relógio Automático Pagani Luxury",
-        price: 949.00,
-        originalPrice: 1080.00,
-        image: relogioPaganiImg,
-        tag: "5% OFF",
-        slug: "relogio-automatico-pagani-luxury",
-      },
-      {
-        id: "cat-rel-2",
-        name: "Relógio Chronos Poedagar",
-        price: 189.00,
-        image: relogioChronosImg,
-        slug: "relogio-chronos-poedagar",
-      },
+      { id: "ep-1", name: "Air Fryer Digital 5L com 8 Funções", price: 449.9, originalPrice: 799.9, image: airfryer, tag: "44% OFF", slug: "air-fryer-fritadeira-eletrica-5l-digital" },
+      { id: "ep-2", name: "Cafeteira Elétrica Premium 15 Xícaras", price: 269.9, originalPrice: 489.9, image: cafeteira, tag: "45% OFF", slug: "cafeteira-eletrica-premium-15-xicaras" },
     ],
   },
   {
-    title: "Shorts & Camisas",
+    title: "Mesa Posta",
     products: [
-      {
-        id: "cat-short-1",
-        name: "Kit 4 Short Masculino Linho Bermuda",
-        price: 69.90,
-        originalPrice: 159.90,
-        image: shortLinhoImg,
-        tag: "56% OFF",
-        slug: "kit-4-short-masculino-linho-bermuda-confortavel-verao-praia-festa",
-      },
-      {
-        id: "cat-short-2",
-        name: "Camisa Linho Rout Manga Curta",
-        price: 189.00,
-        originalPrice: 249.00,
-        image: camisaLinhoImg,
-        tag: "24% OFF",
-        slug: "camisa-linho-rout-manga-curta",
-      },
+      { id: "mp-1", name: "Aparelho de Jantar Porcelana Fio Dourado 30 Peças", price: 599.9, originalPrice: 1099.9, image: jogoJantar, tag: "45% OFF", slug: "aparelho-jantar-porcelana-fio-dourado-30-pecas" },
+      { id: "mp-2", name: "Chaleira Elétrica Inox 1,7L Temperatura Variável", price: 219.9, originalPrice: 399.9, image: chaleira, tag: "45% OFF", slug: "chaleira-eletrica-inox-17l-temperatura-variavel" },
     ],
   },
   {
-    title: "Calçados & Acessórios",
+    title: "Organização",
     products: [
-      {
-        id: "cat-calc-1",
-        name: "Sapato Oxford Couro Legítimo",
-        price: 289.90,
-        originalPrice: 459.90,
-        image: sapatoOxfordImg,
-        tag: "37% OFF",
-        slug: "sapato-oxford-couro-legitimo",
-      },
-      {
-        id: "cat-calc-2",
-        name: "Porta-Cartão Slim Couro Premium",
-        price: 59.90,
-        originalPrice: 99.90,
-        image: portaCartaoImg,
-        tag: "40% OFF",
-        slug: "porta-cartao-slim-couro-premium",
-      },
+      { id: "og-1", name: "Kit Organizadores Cozinha Bambu - 6 Peças", price: 159.9, originalPrice: 289.9, image: organizador, tag: "45% OFF", slug: "kit-organizadores-cozinha-bambu-modular" },
+      { id: "og-2", name: "Liquidificador Power 1200W Jarra de Vidro 2L", price: 299.9, originalPrice: 539.9, image: liquidificador, tag: "44% OFF", slug: "liquidificador-power-1200w-jarra-vidro" },
     ],
   },
   {
-    title: "Perfumes",
+    title: "Conforto & Sono",
     products: [
-      {
-        id: "cat-perf-1",
-        name: "Kit Body Splash Masculino Barbarius + Enigma + Midtown 200ml",
-        price: 89.90,
-        originalPrice: 249.90,
-        image: perfumeKitImg,
-        tag: "64% OFF",
-        slug: "kit-body-splash-masculino-barbarius-enigma-midtown-200ml",
-      },
-      {
-        id: "cat-perf-2",
-        name: "Kit Body Splash Masculino Barbarius e Midtown 200ml by Primacial",
-        price: 69.90,
-        originalPrice: 179.90,
-        image: perfumeKitDuoImg,
-        tag: "61% OFF",
-        slug: "kit-body-splash-masculino-barbarius-midtown-200ml-primacial",
-      },
+      { id: "cs-1", name: "Edredom King Pluma de Ganso Naturale 600g/m²", price: 459.9, originalPrice: 849.9, image: edredom, tag: "46% OFF", slug: "edredom-king-pluma-ganso-naturale" },
+      { id: "cs-2", name: "Jogo de Lençol King Percal 400 Fios", price: 349.9, originalPrice: 649.9, image: lencol, tag: "46% OFF", slug: "jogo-lencol-king-percal-400-fios-egipcio" },
     ],
   },
 ];
