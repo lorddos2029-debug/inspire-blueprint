@@ -33,6 +33,12 @@ import biancoPanelas3 from "@/assets/products-bc/bianco-panelas-3.jpg";
 import biancoPanelas4 from "@/assets/products-bc/bianco-panelas-4.jpg";
 import biancoPanelas5 from "@/assets/products-bc/bianco-panelas-5.jpg";
 import biancoPanelas6 from "@/assets/products-bc/bianco-panelas-6.jpg";
+import gaabor1 from "@/assets/products-bc/gaabor-1.jpg";
+import gaabor2 from "@/assets/products-bc/gaabor-2.jpg";
+import gaabor3 from "@/assets/products-bc/gaabor-3.jpg";
+import gaabor4 from "@/assets/products-bc/gaabor-4.jpg";
+import gaabor5 from "@/assets/products-bc/gaabor-5.jpg";
+import gaabor6 from "@/assets/products-bc/gaabor-6.jpg";
 
 export interface Product {
   id: number;
@@ -323,5 +329,21 @@ export const products: Product[] = [
     description:
       "Jogo de Panelas Bianco Vanilla com 10 peças completas para equipar toda a sua cozinha: 1 caçarola grande, 1 caçarola média, 1 panela funda, 1 frigideira grande, 1 frigideira média, 1 leiteira, 1 escumadeira, 1 espátula e 1 concha em nylon resistente, além das tampas de vidro temperado com respiro. Revestimento interno antiaderente de alta performance com partículas minerais, livre de PFOA, que dispensa óleo no preparo e facilita a limpeza. Corpo em alumínio reforçado com pintura externa texturizada vanilla efeito pedra, distribuição uniforme de calor e economia de gás. Cabos e alças em baquelite ergonômico que permanecem frios durante o uso. Tampas de vidro temperado com aro de inox para acompanhar o cozimento sem perder calor. Compatível com fogões a gás, elétrico e vitrocerâmico. Acabamento sofisticado que combina com qualquer decoração de cozinha moderna.",
     sizes: [],
+  },
+  {
+    id: 18,
+    slug: "fritadeira-air-fryer-gaabor-duo-digital-touch-4-2l",
+    name: "Fritadeira Elétrica Air Fryer Gaabor Duo Digital Touch sem Óleo 4.2L 127V 220V Preto",
+    price: 97.9,
+    originalPrice: 379.9,
+    image: gaabor1,
+    images: [gaabor1, gaabor2, gaabor3, gaabor4, gaabor5, gaabor6],
+    tag: "74% OFF",
+    description:
+      "Fritadeira Elétrica Air Fryer Gaabor Duo com tecnologia de circulação de ar quente 360° que frita, assa, gratina e aquece os alimentos com 0% de óleo, reduzindo até 90% da gordura das suas refeições. Capacidade generosa de 4,2 litros, ideal para famílias de até 5 pessoas, com cesto antiaderente removível livre de PFOA, mais saudável e fácil de limpar. Painel digital touch screen com 8 programas pré-definidos (batata frita, frango, peixe, carne, legumes, camarão, bolo e cupcake), além de ajuste manual de temperatura de 80°C a 200°C e timer programável de até 60 minutos. Visor frontal em vidro temperado para acompanhar o preparo sem abrir o cesto e perder calor. Sistema de desligamento automático ao remover o cesto, proteção contra superaquecimento e pés antiderrapantes. Bivolt automático (127V/220V), motor potente de 1500W que esquenta em segundos e cozinha de forma uniforme. Design moderno em preto fosco premium, compacto e fácil de guardar. Acompanha receituário digital e manual em português.",
+    sizes: ["127V", "220V"],
+    colorVariants: [
+      { label: "Preto", colors: ["#1a1a1a"] },
+    ],
   },
 ];

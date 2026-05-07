@@ -260,7 +260,7 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Alessandra Maia", date: "Fev 2026", rating: 5, text: "Levo sopa quente, congelo carne moída, guardo grãos, faço de tudo. Tamanho 640ml é versátil. Já indiquei pra todas as amigas do grupo de fitness." },
     ],
   },
-  // 17 — Jogo de Panelas Bianco Vanilla
+  // 18 — Air Fryer Gaabor Duo (definida abaixo)
   17: {
     total: 847,
     avg: 4.9,
