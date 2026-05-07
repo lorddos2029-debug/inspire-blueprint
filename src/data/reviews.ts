@@ -277,6 +277,23 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Paulo Vasconcellos", date: "Fev 2026", rating: 5, text: "Excelente custo benefício. Jogo completo, bonito, funcional e durável. Chegou em 5 dias úteis. Já é minha terceira compra na BelaCasa, sempre acerto." },
     ],
   },
+  // 18 — Fritadeira Air Fryer Gaabor Duo
+  18: {
+    total: 2341,
+    avg: 4.9,
+    reviews: [
+      { name: "Carolina Nunes", date: "Mai 2026", rating: 5, text: "Air fryer maravilhosa! Faço batata frita sequinha sem uma gota de óleo, fica igualzinha à de lanchonete. O painel touch é super intuitivo e os 8 programas facilitam demais o dia a dia." },
+      { name: "Ricardo Almendra", date: "Mai 2026", rating: 5, text: "Comprei meio desconfiado pelo preço, mas a Gaabor surpreendeu. Esquenta rápido, cozinha por igual e o visor de vidro ajuda muito a acompanhar sem abrir. Vale cada centavo." },
+      { name: "Mariana Tavares", date: "Mai 2026", rating: 5, text: "4,2 litros é o tamanho perfeito pra família de 4. Faço frango inteiro, peixe, legumes assados, até bolo. Minha geladeira de gordura zerou, comida muito mais saudável." },
+      { name: "Felipe Brandão", date: "Abr 2026", rating: 5, text: "Por R$97,90 você não acha em lugar nenhum. Vi a mesma na loja física por R$399. Bivolt automático foi um diferencial enorme, mudei de casa e levei sem problema." },
+      { name: "Patrícia Galvão", date: "Abr 2026", rating: 5, text: "Faço pastel, coxinha congelada, nuggets, batata, tudo fica crocante por fora e macio por dentro. O cesto antiaderente lava super fácil, nada gruda. Recomendadíssima!" },
+      { name: "Anderson Coutinho", date: "Abr 2026", rating: 5, text: "Painel digital touch funciona perfeito, sensível ao toque mas sem disparar sozinho. Os programas pré-definidos acertam o tempo e temperatura. Praticamente impossível errar." },
+      { name: "Larissa Pimentel", date: "Abr 2026", rating: 5, text: "Design lindo, preto fosco premium combina com qualquer cozinha. Compacta, não ocupa muito espaço na bancada. Mais silenciosa do que eu esperava, mal escuto funcionando." },
+      { name: "Bruno Vasconcellos", date: "Mar 2026", rating: 5, text: "Substituiu minha fritadeira convencional, meu forno elétrico e meu microondas pra muita coisa. Economia de gás e energia gigante. Em 2 meses já se pagou." },
+      { name: "Vanessa Ribeiro", date: "Mar 2026", rating: 5, text: "Visor de vidro é genial, dá pra ver a comida dourando sem abrir. O desligamento automático ao remover o cesto traz muita segurança, principalmente com criança em casa." },
+      { name: "Gustavo Henrique", date: "Mar 2026", rating: 5, text: "Chegou em 4 dias, super bem embalada, sem nenhum amassado. Acompanhou manual em português e algumas receitas. A Gaabor entregou um produto premium por preço justo." },
+    ],
+  },
 };
 
 const defaultReviews: Review[] = [
