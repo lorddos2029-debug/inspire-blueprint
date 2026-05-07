@@ -1,7 +1,7 @@
 import { Truck, ShieldCheck, RefreshCw, Lock, CreditCard, Headphones } from "lucide-react";
 
 const items = [
-  { icon: Truck, label: "FRETE GRÁTIS ACIMA DE R$ 199" },
+  { icon: Truck, label: "FRETE GRÁTIS ACIMA DE R$ 59" },
   { icon: CreditCard, label: "ATÉ 12X SEM JUROS" },
   { icon: ShieldCheck, label: "COMPRA 100% SEGURA" },
   { icon: RefreshCw, label: "TROCA EM 7 DIAS" },
