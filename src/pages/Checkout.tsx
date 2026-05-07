@@ -333,11 +333,11 @@ const Checkout = () => {
       setCouponDiscount(discount);
       setCouponApplied(true);
       toast.success("Cupom ALPHA aplicado! 10% de desconto.");
-    } else if (code === "ALPHA5%") {
+    } else if (code === "ALPHA5%" || code === "BELLACASA") {
       const discount = totalPrice * 0.05;
       setCouponDiscount(discount);
       setCouponApplied(true);
-      toast.success("Cupom ALPHA5% aplicado! 5% de desconto.");
+      toast.success(`Cupom ${code} aplicado! 5% de desconto.`);
     } else {
       toast.error("Cupom inválido");
     }
@@ -1240,7 +1240,7 @@ const Checkout = () => {
                 </div>
                 {couponDiscount > 0 && (
                   <div className="flex justify-between items-center bg-emerald-50 rounded-lg px-3 py-2">
-                    <span className="text-sm text-emerald-700 font-medium">Cupom {(coupon || "ALPHA").toUpperCase()} ({(coupon || "ALPHA").toUpperCase() === "ALPHA5%" ? "5%" : "10%"})</span>
+                    <span className="text-sm text-emerald-700 font-medium">Cupom {(coupon || "ALPHA").toUpperCase()} ({(coupon || "ALPHA").toUpperCase() === "ALPHA" ? "10%" : "5%"})</span>
                     <span className="text-sm text-emerald-700 font-semibold">-{formatPrice(couponDiscount)}</span>
                   </div>
                 )}
