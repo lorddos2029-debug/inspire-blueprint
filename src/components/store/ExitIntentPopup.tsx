@@ -107,10 +107,10 @@ const ExitIntentPopup = ({ enabled = true }: Props) => {
   }, [enabled, couponApplied]);
 
   const handleApply = () => {
-    const ok = applyCoupon("ALPHA5%");
+    const ok = applyCoupon("BELLACASA");
     if (ok) {
       setApplied(true);
-      toast.success("Cupom ALPHA5% aplicado! 5% de desconto extra.");
+      toast.success("Cupom BELLACASA aplicado! 5% de desconto extra.");
       setTimeout(() => setOpen(false), 1200);
     } else {
       toast.info("Você já tem um cupom aplicado.");
@@ -149,7 +149,7 @@ const ExitIntentPopup = ({ enabled = true }: Props) => {
         <div className="p-6 space-y-4 bg-background">
           <div className="bg-secondary/50 rounded-xl p-4 text-center">
             <p className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Seu cupom</p>
-            <p className="text-2xl font-bold text-foreground tracking-[0.2em] mt-1">ALPHA5%</p>
+            <p className="text-2xl font-bold text-foreground tracking-[0.2em] mt-1">BELLACASA</p>
             <p className="text-[11px] text-muted-foreground mt-1">5% OFF em todo o carrinho</p>
           </div>
 
