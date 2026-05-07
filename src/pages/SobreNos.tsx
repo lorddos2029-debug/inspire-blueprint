@@ -7,7 +7,7 @@ const SobreNos = () => (
     <div className="container max-w-3xl mx-auto py-16 px-4 space-y-6">
       <h1 className="text-3xl font-bold text-foreground">Sobre Nós</h1>
       <p className="text-muted-foreground leading-relaxed">
-        Na <strong>BellaCasa</strong>, acreditamos que estilo vai além da roupa: é presença, postura e personalidade.
+        Na <strong>BelaCasa</strong>, acreditamos que estilo vai além da roupa: é presença, postura e personalidade.
       </p>
       <p className="text-muted-foreground leading-relaxed">
         Nossa missão é entregar ao homem contemporâneo peças que combinam sofisticação, conforto e autoridade, elevando sua imagem em qualquer ambiente. Cada detalhe é desenvolvido para quem busca mais do que vestir-se bem — busca respeito, exclusividade e impacto.

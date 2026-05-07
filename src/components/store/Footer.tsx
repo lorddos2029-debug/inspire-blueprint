@@ -82,7 +82,7 @@ const Footer = () => {
 
           <FooterAccordion title="Fale Conosco">
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>contato@bellacasa.com.br</li>
+              <li>contato@belacasa.com.br</li>
               <li>(11) 97199-7674</li>
               <li>Seg a Sex: 9h às 18h</li>
             </ul>
@@ -135,7 +135,7 @@ const Footer = () => {
           <div>
             <h4 className="text-xs tracking-[0.25em] font-semibold text-primary mb-5">CONTATO</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>contato@bellacasa.com.br</li>
+              <li>contato@belacasa.com.br</li>
               <li>(11) 97199-7674</li>
               <li>Seg a Sex: 9h às 18h</li>
             </ul>
@@ -144,7 +144,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-8 md:mt-12 pt-6 md:pt-8 text-center">
           <p className="text-xs text-muted-foreground">
-            © 2026 BellaCasa. Todos os direitos reservados. CNPJ: 27.672.847/0001-79
+            © 2026 BelaCasa. Todos os direitos reservados. CNPJ: 27.672.847/0001-79
           </p>
         </div>
       </div>

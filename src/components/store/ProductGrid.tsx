@@ -20,7 +20,7 @@ const ProductGrid = () => {
       <div className="container">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <span className="text-xs tracking-[0.4em] font-semibold text-[hsl(var(--gold))]">SELEÇÃO BELLACASA</span>
+            <span className="text-xs tracking-[0.4em] font-semibold text-[hsl(var(--gold))]">SELEÇÃO BELACASA</span>
             <h2 className="font-display text-3xl md:text-4xl font-medium text-primary mt-2">
               Mais Vendidos da Casa
             </h2>

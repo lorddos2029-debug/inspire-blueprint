@@ -1,4 +1,4 @@
-import heroImage from "@/assets/hero-bellacasa.jpg";
+import heroImage from "@/assets/hero-belacasa.jpg";
 import { Link } from "react-router-dom";
 
 const HeroBanner = () => {
@@ -7,7 +7,7 @@ const HeroBanner = () => {
       <div className="relative">
         <img
           src={heroImage}
-          alt="BellaCasa - Casa, Conforto e Sofisticação"
+          alt="BelaCasa - Casa, Conforto e Sofisticação"
           className="w-full h-[60vh] md:h-[78vh] object-cover"
           fetchPriority="high"
           decoding="async"

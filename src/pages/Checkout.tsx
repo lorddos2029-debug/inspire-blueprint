@@ -333,7 +333,7 @@ const Checkout = () => {
       setCouponDiscount(discount);
       setCouponApplied(true);
       toast.success("Cupom ALPHA aplicado! 10% de desconto.");
-    } else if (code === "ALPHA5%" || code === "BELLACASA") {
+    } else if (code === "ALPHA5%" || code === "BELACASA") {
       const discount = totalPrice * 0.05;
       setCouponDiscount(discount);
       setCouponApplied(true);
@@ -1762,9 +1762,9 @@ const CheckoutFooter = () => (
 
       {/* Divider */}
       <div className="border-t border-border pt-5 space-y-2">
-        <p className="text-xs font-semibold text-foreground tracking-wide">BELLACASA</p>
+        <p className="text-xs font-semibold text-foreground tracking-wide">BELACASA</p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4 text-[11px] text-muted-foreground">
-          <span>contato@bellacasa.com.br</span>
+          <span>contato@belacasa.com.br</span>
           <span className="hidden sm:inline text-border">|</span>
           <span>(11) 9 6731-4363</span>
         </div>

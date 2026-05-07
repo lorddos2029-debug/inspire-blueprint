@@ -19,7 +19,7 @@ const SocialProofCarousel = () => {
   return (
     <div className="mt-10 mb-6 space-y-5">
       <p className="text-center text-base text-foreground">
-        Mais de <strong>50.000 clientes</strong> já compraram na BellaCasa
+        Mais de <strong>50.000 clientes</strong> já compraram na BelaCasa
       </p>
 
       <div className="overflow-hidden">

@@ -76,7 +76,7 @@ export default function Rastreio() {
   const [now, setNow] = useState(Date.now());
 
   useEffect(() => {
-    document.title = "Rastrear Pedido • BellaCasa";
+    document.title = "Rastrear Pedido • BelaCasa";
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", "Acompanhe seu pedido em tempo real. Rastreamento profissional com mapa interativo e atualizações automáticas.");
   }, []);
@@ -216,7 +216,7 @@ export default function Rastreio() {
                   <span className="text-muted-foreground">em tempo real</span>
                 </h1>
                 <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
-                  Sistema oficial de rastreamento BellaCasa. Veja exatamente onde está sua encomenda no mapa.
+                  Sistema oficial de rastreamento BelaCasa. Veja exatamente onde está sua encomenda no mapa.
                 </p>
               </div>
 
