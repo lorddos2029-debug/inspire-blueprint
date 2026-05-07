@@ -5,7 +5,7 @@ import { useState } from "react";
 const FooterLogo = () => (
   <div className="flex flex-col leading-none">
     <span className="font-display text-3xl font-semibold tracking-tight text-primary">
-      Bella<span className="italic text-[hsl(var(--gold))]">Casa</span>
+      Bela<span className="italic text-[hsl(var(--gold))]">Casa</span>
     </span>
     <span className="mt-1 text-[10px] tracking-[0.4em] font-medium text-muted-foreground uppercase">
       Casa &amp; Conforto

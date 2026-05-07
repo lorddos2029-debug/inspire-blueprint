@@ -135,7 +135,7 @@ const ExitIntentPopup = ({ enabled = true }: Props) => {
           </button>
 
           <div className="flex justify-center mb-4">
-            <span className="font-display text-3xl font-semibold tracking-tight text-primary">Bella<span className="italic text-[hsl(var(--gold))]">Casa</span></span>
+            <span className="font-display text-3xl font-semibold tracking-tight text-primary">Bela<span className="italic text-[hsl(var(--gold))]">Casa</span></span>
           </div>
 
           <h3 className="text-2xl font-bold leading-tight">

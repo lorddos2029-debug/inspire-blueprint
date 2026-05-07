@@ -17,7 +17,7 @@ const CheckoutLogo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
   return (
     <div className="flex flex-col items-center leading-none select-none">
       <span className={`font-display ${titleSize} font-semibold tracking-tight text-white`}>
-        Bella<span className="italic text-[hsl(var(--gold))]">Casa</span>
+        Bela<span className="italic text-[hsl(var(--gold))]">Casa</span>
       </span>
       <span className="mt-0.5 text-[9px] md:text-[10px] tracking-[0.4em] font-medium text-white/70 uppercase">
         Casa &amp; Conforto

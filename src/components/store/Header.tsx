@@ -9,7 +9,7 @@ const Logo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
   return (
     <div className="flex flex-col items-center leading-none select-none">
       <span className={`font-display ${titleSize} font-semibold tracking-tight text-primary`}>
-        Bella<span className="italic text-[hsl(var(--gold))]">Casa</span>
+        Bela<span className="italic text-[hsl(var(--gold))]">Casa</span>
       </span>
       <span className="mt-0.5 text-[9px] md:text-[10px] tracking-[0.4em] font-medium text-muted-foreground uppercase">
         Casa &amp; Conforto
