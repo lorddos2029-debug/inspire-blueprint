@@ -51,6 +51,7 @@ export interface Product {
   tag?: string;
   description?: string;
   sizes?: string[];
+  sizeLabel?: string;
   colorVariants?: { label: string; colors: string[]; image?: string }[];
 }
 
@@ -342,6 +343,7 @@ export const products: Product[] = [
     description:
       "Fritadeira Elétrica Air Fryer Gaabor Duo com tecnologia de circulação de ar quente 360° que frita, assa, gratina e aquece os alimentos com 0% de óleo, reduzindo até 90% da gordura das suas refeições. Capacidade generosa de 4,2 litros, ideal para famílias de até 5 pessoas, com cesto antiaderente removível livre de PFOA, mais saudável e fácil de limpar. Painel digital touch screen com 8 programas pré-definidos (batata frita, frango, peixe, carne, legumes, camarão, bolo e cupcake), além de ajuste manual de temperatura de 80°C a 200°C e timer programável de até 60 minutos. Visor frontal em vidro temperado para acompanhar o preparo sem abrir o cesto e perder calor. Sistema de desligamento automático ao remover o cesto, proteção contra superaquecimento e pés antiderrapantes. Bivolt automático (127V/220V), motor potente de 1500W que esquenta em segundos e cozinha de forma uniforme. Design moderno em preto fosco premium, compacto e fácil de guardar. Acompanha receituário digital e manual em português.",
     sizes: ["127V", "220V"],
+    sizeLabel: "Voltagem",
     colorVariants: [
       { label: "Preto", colors: ["#1a1a1a"] },
     ],
