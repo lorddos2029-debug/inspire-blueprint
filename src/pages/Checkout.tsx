@@ -333,11 +333,11 @@ const Checkout = () => {
       setCouponDiscount(discount);
       setCouponApplied(true);
       toast.success("Cupom ALPHA aplicado! 10% de desconto.");
-    } else if (code === "ALPHA5%") {
+    } else if (code === "ALPHA5%" || code === "BELLACASA") {
       const discount = totalPrice * 0.05;
       setCouponDiscount(discount);
       setCouponApplied(true);
-      toast.success("Cupom ALPHA5% aplicado! 5% de desconto.");
+      toast.success(`Cupom ${code} aplicado! 5% de desconto.`);
     } else {
       toast.error("Cupom inválido");
     }
