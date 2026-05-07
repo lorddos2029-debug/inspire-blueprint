@@ -290,8 +290,5 @@ export const products: Product[] = [
     description:
       "Travesseiro Cervical Tomimi com espuma viscoelástica de memória de alta densidade e design biônico em forma de borboleta. Suporte ergonômico para a coluna cervical, alivia dores no pescoço e ombros, livre de formaldeído e sem odor. Ideal para dormir de lado, de costas ou de bruços.",
     sizes: ["Único 50x30x10cm"],
-    colorVariants: [
-      { label: "Azul Médico", colors: ["#9bb8d6"] },
-    ],
   },
 ];
