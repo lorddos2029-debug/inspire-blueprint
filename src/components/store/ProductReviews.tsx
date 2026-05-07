@@ -211,6 +211,16 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">{review.text}</p>
+            {review.image && (
+              <a href={review.image} target="_blank" rel="noopener noreferrer" className="block">
+                <img
+                  src={review.image}
+                  alt={`Foto enviada por ${review.name}`}
+                  loading="lazy"
+                  className="mt-2 w-32 h-32 rounded-lg object-cover border border-border hover:opacity-90 transition-opacity"
+                />
+              </a>
+            )}
           </div>
         ))}
       </div>
