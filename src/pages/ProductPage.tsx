@@ -373,10 +373,10 @@ const ProductPage = () => {
                 {product.sizes && product.sizes.length > 0 && (
                   <div>
                     {showSizeError && !selectedSize && (
-                      <p className="text-xs font-semibold text-red-500 mb-2">⚠ Selecione um tamanho</p>
+                      <p className="text-xs font-semibold text-red-500 mb-2">⚠ Selecione {(product.sizeLabel || "um tamanho").toLowerCase() === "voltagem" ? "uma voltagem" : "um tamanho"}</p>
                     )}
                     <p className="text-xs font-semibold text-muted-foreground mb-3 uppercase tracking-widest">
-                      Tamanho{selectedSize && <span className="text-foreground">: {selectedSize}</span>}
+                      {product.sizeLabel || "Tamanho"}{selectedSize && <span className="text-foreground">: {selectedSize}</span>}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {product.sizes.map((size) => (
