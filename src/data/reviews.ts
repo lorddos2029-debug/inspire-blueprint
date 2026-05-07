@@ -248,6 +248,23 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Alessandra Maia", date: "Fev 2026", rating: 5, text: "Levo sopa quente, congelo carne moída, guardo grãos, faço de tudo. Tamanho 640ml é versátil. Já indiquei pra todas as amigas do grupo de fitness." },
     ],
   },
+  // 17 — Jogo de Panelas Bianco Vanilla
+  17: {
+    total: 847,
+    avg: 4.9,
+    reviews: [
+      { name: "Cristina Bevilacqua", date: "Mai 2026", rating: 5, text: "Jogo de panelas perfeito! As 10 peças vieram completíssimas, embalagem impecável. O antiaderente é de verdade, faço ovo sem óleo nenhum e sai inteiro. Cor vanilla linda demais na cozinha." },
+      { name: "Rogério Mendonça", date: "Mai 2026", rating: 5, text: "Comprei pra minha esposa de aniversário e ela amou. Distribui o calor por igual, cozinha mais rápido e economiza gás. Os cabos não esquentam mesmo com a chama alta. Vale muito o preço." },
+      { name: "Tatiana Brandão", date: "Abr 2026", rating: 5, text: "Por R$97,90 não achei jogo melhor em lugar nenhum. As tampas de vidro temperado são grossas, dá pra ver o cozimento sem abrir. Lavou na máquina sem perder o antiaderente." },
+      { name: "Eduardo Sampaio", date: "Abr 2026", rating: 5, text: "Substituí todas as panelas velhas de casa por esse jogo. Qualidade absurda pelo valor, parece dessas marcas caras de loja física. Antiaderente funciona de verdade até pra panqueca." },
+      { name: "Larissa Fontoura", date: "Abr 2026", rating: 5, text: "Estou apaixonada! O acabamento texturizado efeito pedra é maravilhoso, deixa a cozinha com cara nova. Frigideira grande tem tamanho ótimo pra refeição da família toda." },
+      { name: "Marcio Aragão", date: "Mar 2026", rating: 5, text: "Veio tudo bem embalado, cada peça em plástico bolha individual. Uso há 2 meses todos os dias e continua como nova. As 3 utensílios em nylon são bônus excelente." },
+      { name: "Vanessa Cordeiro", date: "Mar 2026", rating: 5, text: "Cabos ergonômicos confortáveis na mão e não soltam mesmo após muitas lavagens. Faço arroz, feijão, carne, tudo nelas. A leiteira é perfeita pro café da manhã." },
+      { name: "Gustavo Penha", date: "Mar 2026", rating: 5, text: "Comprei pro meu apartamento novo e equipou a cozinha inteira de uma vez. Sem PFOA, antiaderente seguro, esquenta rápido e uniforme. Atendimento BelaCasa nota 10." },
+      { name: "Helena Machado", date: "Fev 2026", rating: 5, text: "Tampa de vidro com respiro ajuda muito a não derramar. Caçarola grande cabe macarrão pra 8 pessoas sem problema. Estou recomendando pra todas as amigas." },
+      { name: "Paulo Vasconcellos", date: "Fev 2026", rating: 5, text: "Excelente custo benefício. Jogo completo, bonito, funcional e durável. Chegou em 5 dias úteis. Já é minha terceira compra na BelaCasa, sempre acerto." },
+    ],
+  },
 };
 
 const defaultReviews: Review[] = [
