@@ -26,6 +26,7 @@ import tomimi4 from "@/assets/products-bc/tomimi-4.jpg";
 import tomimi5 from "@/assets/products-bc/tomimi-5.jpg";
 import tomimi6 from "@/assets/products-bc/tomimi-6.jpg";
 import tomimi7 from "@/assets/products-bc/tomimi-7.jpg";
+import oliverPotes1 from "@/assets/products-bc/oliver-potes-1.jpg";
 
 export interface Product {
   id: number;
@@ -289,6 +290,19 @@ export const products: Product[] = [
     tag: "70% OFF",
     description:
       "Travesseiro Cervical Tomimi com espuma viscoelástica de memória de alta densidade e design biônico em forma de borboleta. Suporte ergonômico para a coluna cervical, alivia dores no pescoço e ombros, livre de formaldeído e sem odor. Ideal para dormir de lado, de costas ou de bruços.",
+    sizes: [],
+  },
+  {
+    id: 16,
+    slug: "kit-10-potes-vidro-640ml-hermetico-marmita-fit-oliver-home",
+    name: "Kit 10 Potes de Vidro 640ml Hermético Marmita Fit com Tampa 4 Travas Oliver Home",
+    price: 89.9,
+    originalPrice: 249.9,
+    image: oliverPotes1,
+    images: [oliverPotes1],
+    tag: "64% OFF",
+    description:
+      "Kit com 10 potes de vidro borossilicato resistente de 640ml, ideais para marmita fit, meal prep e organização da despensa. Tampa hermética com 4 travas de segurança e vedação em silicone atóxico que mantém os alimentos frescos por muito mais tempo, sem vazamentos. Vidro temperado livre de BPA, pode ir ao freezer, microondas, forno convencional e lava-louças. Empilháveis, transparentes e com tamanho perfeito para uma refeição completa.",
     sizes: [],
   },
 ];
