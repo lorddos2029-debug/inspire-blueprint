@@ -10,6 +10,12 @@ import biancoReview3 from "@/assets/products-bc/bianco-review-3.jpg";
 import biancoReview4 from "@/assets/products-bc/bianco-review-4.jpg";
 import biancoReview5 from "@/assets/products-bc/bianco-review-5.jpg";
 import biancoReview6 from "@/assets/products-bc/bianco-review-6.jpg";
+import sherpaReview1 from "@/assets/products-bc/sherpa-review-1.jpg";
+import sherpaReview2 from "@/assets/products-bc/sherpa-review-2.jpg";
+import sherpaReview3 from "@/assets/products-bc/sherpa-review-3.jpg";
+import sherpaReview4 from "@/assets/products-bc/sherpa-review-4.jpg";
+import sherpaReview5 from "@/assets/products-bc/sherpa-review-5.jpg";
+import sherpaReview6 from "@/assets/products-bc/sherpa-review-6.jpg";
 
 export interface Review {
   name: string;
@@ -206,12 +212,12 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
     total: 1583,
     avg: 4.9,
     reviews: [
-      { name: "Tatiane Rodrigues", date: "Mai 2026", rating: 5, text: "Edredom maravilhoso! O lado de sherpa parece pele de carneiro mesmo, super fofinho. Quentíssimo, dormi sem precisar de manta extra. Na cor marrom ficou um luxo no quarto." },
-      { name: "Camila Bezerra", date: "Mai 2026", rating: 5, text: "Comprei o cinza pérola e amei! Cobre minha cama queen com sobra, é grosso e pesadinho na medida certa. A microfibra do outro lado também é macia. Vale demais o preço!" },
-      { name: "Janaína Pires", date: "Abr 2026", rating: 5, text: "Esquenta MUITO. Moro no sul e foi a melhor compra do inverno. O sherpa branco continua impecável depois da primeira lavada, não soltou pelo." },
-      { name: "Lúcia Fernandes", date: "Abr 2026", rating: 5, text: "Chegou em 5 dias, embalagem caprichada. Comprei o vermelho e a cor é exatamente como na foto, vibrante e linda. Costura matelassê reforçada, parece de loja cara." },
-      { name: "Renata Souto", date: "Abr 2026", rating: 5, text: "Por R$69,90 é o melhor custo-benefício do mercado! Outras lojas vendem por mais de R$200. A qualidade é a mesma, recomendo de olhos fechados." },
-      { name: "Patrícia Alencar", date: "Mar 2026", rating: 5, text: "Comprei o rosé pra minha filha e ela amou. O tom é delicado, ficou um charme no quarto dela. Aquece muito mesmo, ela não usa mais cobertor." },
+      { name: "Tatiane Rodrigues", date: "Mai 2026", rating: 5, text: "Edredom maravilhoso! O lado de sherpa parece pele de carneiro mesmo, super fofinho. Quentíssimo, dormi sem precisar de manta extra. Na cor cinza ficou um luxo no quarto.", image: sherpaReview1 },
+      { name: "Camila Bezerra", date: "Mai 2026", rating: 5, text: "Comprei o cinza pérola e amei! Cobre minha cama queen com sobra, é grosso e pesadinho na medida certa. A microfibra do outro lado também é macia. Vale demais o preço!", image: sherpaReview2 },
+      { name: "Janaína Pires", date: "Abr 2026", rating: 5, text: "Esquenta MUITO. Moro no sul e foi a melhor compra do inverno. O sherpa branco continua impecável depois da primeira lavada, não soltou pelo.", image: sherpaReview3 },
+      { name: "Lúcia Fernandes", date: "Abr 2026", rating: 5, text: "Chegou em 5 dias, embalagem caprichada. O bege é exatamente como na foto, super delicado. Costura matelassê reforçada, parece de loja cara.", image: sherpaReview4 },
+      { name: "Renata Souto", date: "Abr 2026", rating: 5, text: "Por R$69,90 é o melhor custo-benefício do mercado! Outras lojas vendem por mais de R$200. A qualidade é a mesma, recomendo de olhos fechados.", image: sherpaReview5 },
+      { name: "Patrícia Alencar", date: "Mar 2026", rating: 5, text: "Comprei o cinza pra usar no fim de semana de campo e foi perfeito. Aquece muito mesmo, dobra fácil pra levar. Lindíssimo!", image: sherpaReview6 },
       { name: "Solange Vieira", date: "Mar 2026", rating: 5, text: "Antialérgico de verdade, sou rinítica e não tive nenhuma reação. O sherpa não solta fiapos no nariz como outros que já comprei." },
       { name: "Aline Cardoso", date: "Mar 2026", rating: 5, text: "Lavei na máquina em ciclo delicado e voltou perfeito, sem perder a maciez. O lado preto continua escuro, não desbotou. Excelente produto." },
       { name: "Marcia Tavares", date: "Fev 2026", rating: 5, text: "Comprei dois, um marrom e um azul marinho, pra trocar conforme a estação. Os dois são lindos e quentíssimos. Atendimento da BelaCasa nota 10." },
