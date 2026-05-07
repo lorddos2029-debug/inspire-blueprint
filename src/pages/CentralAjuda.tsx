@@ -12,7 +12,7 @@ const CentralAjuda = () => (
       <h2 className="text-xl font-semibold text-foreground">Como rastreio meu pedido?</h2>
       <p className="text-muted-foreground leading-relaxed">Após o envio, você receberá o código de rastreio por e-mail. Utilize-o no site dos Correios ou transportadora.</p>
       <h2 className="text-xl font-semibold text-foreground">Preciso de mais ajuda</h2>
-      <p className="text-muted-foreground leading-relaxed">Entre em contato pelo e-mail contato@bellacasa.com.br ou pelo telefone (11) 97199-7674, de segunda a sexta, das 9h às 18h. Nossa equipe BellaCasa está pronta para ajudar você a deixar seu lar ainda mais aconchegante.</p>
+      <p className="text-muted-foreground leading-relaxed">Entre em contato pelo e-mail contato@belacasa.com.br ou pelo telefone (11) 97199-7674, de segunda a sexta, das 9h às 18h. Nossa equipe BelaCasa está pronta para ajudar você a deixar seu lar ainda mais aconchegante.</p>
     </div>
     <Footer />
   </div>

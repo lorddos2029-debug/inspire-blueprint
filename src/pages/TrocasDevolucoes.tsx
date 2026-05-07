@@ -12,7 +12,7 @@ const TrocasDevolucoes = () => (
       <h2 className="text-xl font-semibold text-foreground">Condições</h2>
       <p className="text-muted-foreground leading-relaxed">O produto deve estar sem uso, com etiquetas e na embalagem original. Produtos danificados pelo cliente não são elegíveis para troca.</p>
       <h2 className="text-xl font-semibold text-foreground">Como solicitar</h2>
-      <p className="text-muted-foreground leading-relaxed">Envie um e-mail para contato@bellacasa.com.br com o número do pedido e o motivo da troca/devolução. Nossa equipe BellaCasa responderá em até 48 horas.</p>
+      <p className="text-muted-foreground leading-relaxed">Envie um e-mail para contato@belacasa.com.br com o número do pedido e o motivo da troca/devolução. Nossa equipe BelaCasa responderá em até 48 horas.</p>
     </div>
     <Footer />
   </div>

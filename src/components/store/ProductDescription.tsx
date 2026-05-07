@@ -15,7 +15,7 @@ const productHighlights: Record<number, { headline: string; intro: string; detai
       { title: "Costura reforçada", desc: "Acabamento premium duradouro" },
       { title: "Tamanho generoso", desc: "King size 2,40m x 2,60m cobre com folga" },
     ],
-    closing: "Eleve o conforto do seu quarto com a maciez que só um cobertor BellaCasa pode oferecer.",
+    closing: "Eleve o conforto do seu quarto com a maciez que só um cobertor BelaCasa pode oferecer.",
   },
   2: {
     headline: "DURMA COMO EM UM HOTEL CINCO ESTRELAS",
@@ -172,7 +172,7 @@ const productHighlights: Record<number, { headline: string; intro: string; detai
       { title: "Antialérgico", desc: "Fibras hipoalergênicas seguras para toda família" },
       { title: "7 cores disponíveis", desc: "Marrom, cinza, preto, vermelho, rosé, bege e azul marinho" },
     ],
-    closing: "O calor de um abraço de pele de carneiro nas noites mais frias do ano — agora com a qualidade BellaCasa.",
+    closing: "O calor de um abraço de pele de carneiro nas noites mais frias do ano — agora com a qualidade BelaCasa.",
   },
   15: {
     headline: "CONFORTO CERVICAL AVANÇADO PARA UM SONO PROFUNDO",
@@ -207,7 +207,7 @@ const ProductDescription = ({ productId }: ProductDescriptionProps) => {
         </div>
         <div className="text-center max-w-3xl mx-auto space-y-6 bg-secondary/30 border border-border rounded-xl p-8">
           <h2 className="text-xl md:text-2xl font-bold text-foreground">
-            Garantia BellaCasa de 30 dias
+            Garantia BelaCasa de 30 dias
           </h2>
           <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
             Se o produto não corresponder ao esperado, você tem até <strong className="text-foreground">30 dias para trocar ou devolver sem burocracia</strong>. Confiamos na qualidade do que entregamos.
@@ -246,7 +246,7 @@ const ProductDescription = ({ productId }: ProductDescriptionProps) => {
 
       <div className="text-center max-w-3xl mx-auto space-y-6 bg-secondary/30 border border-border rounded-xl p-8">
         <h2 className="text-xl md:text-2xl font-bold text-foreground">
-          Garantia BellaCasa de 30 dias
+          Garantia BelaCasa de 30 dias
         </h2>
         <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
           Se o produto não corresponder ao esperado, você tem até <strong className="text-foreground">30 dias para trocar ou devolver sem burocracia</strong>. Confiamos na qualidade do que entregamos.

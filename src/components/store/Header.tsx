@@ -50,7 +50,7 @@ const Header = () => {
           </div>
 
           <div className="flex-1 flex justify-center">
-            <Link to="/" aria-label="BellaCasa - Início">
+            <Link to="/" aria-label="BelaCasa - Início">
               <Logo size={isProductPage ? "md" : "md"} />
             </Link>
           </div>

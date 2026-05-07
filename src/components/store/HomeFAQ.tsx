@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: "Os produtos têm garantia?",
-    a: "Sim, todos os eletroportáteis e itens BellaCasa possuem garantia contra defeitos de fabricação. Cobertores, toalhas e utensílios contam com garantia de qualidade BellaCasa.",
+    a: "Sim, todos os eletroportáteis e itens BelaCasa possuem garantia contra defeitos de fabricação. Cobertores, toalhas e utensílios contam com garantia de qualidade BelaCasa.",
   },
   {
     q: "Como posso rastrear meu pedido?",

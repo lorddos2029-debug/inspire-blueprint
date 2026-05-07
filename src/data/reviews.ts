@@ -201,7 +201,7 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Patrícia Alencar", date: "Mar 2026", rating: 5, text: "Comprei o rosé pra minha filha e ela amou. O tom é delicado, ficou um charme no quarto dela. Aquece muito mesmo, ela não usa mais cobertor." },
       { name: "Solange Vieira", date: "Mar 2026", rating: 5, text: "Antialérgico de verdade, sou rinítica e não tive nenhuma reação. O sherpa não solta fiapos no nariz como outros que já comprei." },
       { name: "Aline Cardoso", date: "Mar 2026", rating: 5, text: "Lavei na máquina em ciclo delicado e voltou perfeito, sem perder a maciez. O lado preto continua escuro, não desbotou. Excelente produto." },
-      { name: "Marcia Tavares", date: "Fev 2026", rating: 5, text: "Comprei dois, um marrom e um azul marinho, pra trocar conforme a estação. Os dois são lindos e quentíssimos. Atendimento da BellaCasa nota 10." },
+      { name: "Marcia Tavares", date: "Fev 2026", rating: 5, text: "Comprei dois, um marrom e um azul marinho, pra trocar conforme a estação. Os dois são lindos e quentíssimos. Atendimento da BelaCasa nota 10." },
       { name: "Vanessa Lopes", date: "Fev 2026", rating: 5, text: "Caimento perfeito na cama queen, as bordas chegam quase no chão. O peso é gostoso, dá aquela sensação de abraço. Dormi como um bebê." },
     ],
   },
@@ -217,7 +217,7 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Cristiane Lopes", date: "Abr 2026", rating: 5, text: "Ergonômico de verdade. Tenho hérnia cervical e foi o único que aliviou a dor sem precisar de remédio. A capa é macia e respirável, não esquenta a cabeça." },
       { name: "Bruno Fernandes", date: "Mar 2026", rating: 5, text: "Design biônico funciona! As 'asas' levantadas dos lados sustentam o pescoço quando viro durante o sono. Acordei descansado, sem aquela sensação de torcicolo." },
       { name: "Marina Castro", date: "Mar 2026", rating: 5, text: "Sem odor mesmo, abri e usei na hora. Outras espumas vinham com aquele cheiro químico forte. Esse não, super higiênico. Aprovadíssimo!" },
-      { name: "Felipe Cardoso", date: "Mar 2026", rating: 5, text: "Comprei pra minha mãe que tem 70 anos e dor crônica no pescoço. Ela me ligou chorando de alegria depois de 1 semana. Voltou a dormir bem. Obrigado BellaCasa!" },
+      { name: "Felipe Cardoso", date: "Mar 2026", rating: 5, text: "Comprei pra minha mãe que tem 70 anos e dor crônica no pescoço. Ela me ligou chorando de alegria depois de 1 semana. Voltou a dormir bem. Obrigado BelaCasa!" },
       { name: "Tatiane Oliveira", date: "Fev 2026", rating: 5, text: "Altura perfeita pra quem dorme de lado. A micro depressão central segura a cabeça no lugar. Capa removível pra lavar é uma mão na roda." },
       { name: "Anderson Pires", date: "Fev 2026", rating: 5, text: "Trabalho no computador 10h por dia e tinha dor cervical constante. Em 20 dias usando o Tomimi, dor sumiu. Investimento que vale ouro pra saúde." },
       { name: "Camila Ribeiro", date: "Fev 2026", rating: 5, text: "Por R$69,90 é um roubo, vi o mesmo em outras lojas por mais de R$300. Chegou rápido, bem embalado e funciona como prometido. Já comprei outro pro meu marido." },
@@ -227,11 +227,11 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
 };
 
 const defaultReviews: Review[] = [
-  { name: "Cliente BellaCasa", date: "Mar 2026", rating: 5, text: "Produto de excelente qualidade, exatamente como descrito no site. Acabamento premium e entrega rápida. Recomendo!" },
-  { name: "Cliente BellaCasa", date: "Fev 2026", rating: 5, text: "Comprei e amei. Veio bem embalado, sem nenhum defeito. Atendimento da loja foi atencioso, super recomendo." },
-  { name: "Cliente BellaCasa", date: "Fev 2026", rating: 5, text: "Qualidade muito acima do que esperava pelo preço. Já é a segunda compra na BellaCasa e continuo satisfeito." },
-  { name: "Cliente BellaCasa", date: "Jan 2026", rating: 5, text: "Produto lindo, deixou minha casa com cara de revista de decoração. Vale cada centavo." },
-  { name: "Cliente BellaCasa", date: "Jan 2026", rating: 5, text: "Entrega super rápida e produto impecável. Já indiquei a loja para várias amigas." },
+  { name: "Cliente BelaCasa", date: "Mar 2026", rating: 5, text: "Produto de excelente qualidade, exatamente como descrito no site. Acabamento premium e entrega rápida. Recomendo!" },
+  { name: "Cliente BelaCasa", date: "Fev 2026", rating: 5, text: "Comprei e amei. Veio bem embalado, sem nenhum defeito. Atendimento da loja foi atencioso, super recomendo." },
+  { name: "Cliente BelaCasa", date: "Fev 2026", rating: 5, text: "Qualidade muito acima do que esperava pelo preço. Já é a segunda compra na BelaCasa e continuo satisfeito." },
+  { name: "Cliente BelaCasa", date: "Jan 2026", rating: 5, text: "Produto lindo, deixou minha casa com cara de revista de decoração. Vale cada centavo." },
+  { name: "Cliente BelaCasa", date: "Jan 2026", rating: 5, text: "Entrega super rápida e produto impecável. Já indiquei a loja para várias amigas." },
 ];
 
 export const getReviewsForProduct = (productId: number): ProductReviewSet => {

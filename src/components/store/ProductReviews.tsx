@@ -27,7 +27,7 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
           Confiança em cada detalhe do seu lar
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          A BellaCasa é uma marca brasileira com atendimento real, envio nacional com rastreio e compra 100% protegida. Você acompanha cada etapa do pedido com segurança.
+          A BelaCasa é uma marca brasileira com atendimento real, envio nacional com rastreio e compra 100% protegida. Você acompanha cada etapa do pedido com segurança.
         </p>
       </div>
 

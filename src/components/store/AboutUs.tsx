@@ -6,11 +6,11 @@ const AboutUs = () => {
           NOSSA HISTÓRIA
         </h2>
         <p className="font-display text-4xl md:text-5xl font-medium text-primary mb-8">
-          Sobre a BellaCasa
+          Sobre a BelaCasa
         </p>
         <div className="space-y-6">
           <p className="text-lg md:text-xl text-foreground leading-relaxed">
-            Na <strong className="font-semibold text-primary">BellaCasa</strong>, acreditamos que cada lar merece momentos de conforto, beleza e funcionalidade.
+            Na <strong className="font-semibold text-primary">BelaCasa</strong>, acreditamos que cada lar merece momentos de conforto, beleza e funcionalidade.
           </p>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             Selecionamos cuidadosamente cobertores, toalhas, utensílios de mesa, organizadores e eletroportáteis das melhores marcas para transformar a sua casa em um refúgio sofisticado. Qualidade premium, design atemporal e a confiança de quem já é referência no universo de utilidades para o lar.

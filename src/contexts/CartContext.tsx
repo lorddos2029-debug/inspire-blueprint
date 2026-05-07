@@ -99,7 +99,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const applyCoupon = (code: string): boolean => {
     if (couponApplied) return false;
     const normalized = code.trim().toUpperCase();
-    if (normalized === "ALPHA" || normalized === "ALPHA5%" || normalized === "BELLACASA") {
+    if (normalized === "ALPHA" || normalized === "ALPHA5%" || normalized === "BELACASA") {
       setCouponApplied(true);
       setCouponCode(normalized);
       return true;

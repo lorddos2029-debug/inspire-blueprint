@@ -6,7 +6,7 @@ const Newsletter = () => {
     <section className="py-16 md:py-24 bg-primary text-primary-foreground">
       <div className="container max-w-xl text-center">
         <span className="text-xs tracking-[0.4em] font-semibold text-[hsl(var(--gold))]">
-          NEWSLETTER BELLACASA
+          NEWSLETTER BELACASA
         </span>
         <h2 className="font-display text-4xl md:text-5xl font-medium mt-3 mb-4">
           Inspirações para o seu lar
