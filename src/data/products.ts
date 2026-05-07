@@ -19,6 +19,13 @@ import sherpaVermelho from "@/assets/products-bc/sherpa-vermelho.jpg";
 import sherpaAzul from "@/assets/products-bc/sherpa-azul.jpg";
 import sherpaBege from "@/assets/products-bc/sherpa-bege.jpg";
 import sherpaPreto from "@/assets/products-bc/sherpa-preto.jpg";
+import tomimi1 from "@/assets/products-bc/tomimi-1.jpg";
+import tomimi2 from "@/assets/products-bc/tomimi-2.jpg";
+import tomimi3 from "@/assets/products-bc/tomimi-3.jpg";
+import tomimi4 from "@/assets/products-bc/tomimi-4.jpg";
+import tomimi5 from "@/assets/products-bc/tomimi-5.jpg";
+import tomimi6 from "@/assets/products-bc/tomimi-6.jpg";
+import tomimi7 from "@/assets/products-bc/tomimi-7.jpg";
 
 export interface Product {
   id: number;
@@ -269,6 +276,22 @@ export const products: Product[] = [
       { label: "Rosé", colors: ["#c69a96"], image: sherpaRose },
       { label: "Bege", colors: ["#b89b78"], image: sherpaBege },
       { label: "Azul Marinho", colors: ["#1e2f55"], image: sherpaAzul },
+    ],
+  },
+  {
+    id: 15,
+    slug: "travesseiro-cervical-tomimi-espuma-memoria-ergonomico",
+    name: "Travesseiro Cervical Tomimi, sono confortável, espuma de memória ergonômica sem odor",
+    price: 69.9,
+    originalPrice: 229.9,
+    image: tomimi1,
+    images: [tomimi1, tomimi2, tomimi3, tomimi4, tomimi5, tomimi6, tomimi7],
+    tag: "70% OFF",
+    description:
+      "Travesseiro Cervical Tomimi com espuma viscoelástica de memória de alta densidade e design biônico em forma de borboleta. Suporte ergonômico para a coluna cervical, alivia dores no pescoço e ombros, livre de formaldeído e sem odor. Ideal para dormir de lado, de costas ou de bruços.",
+    sizes: ["Único 50x30x10cm"],
+    colorVariants: [
+      { label: "Azul Médico", colors: ["#9bb8d6"] },
     ],
   },
 ];
