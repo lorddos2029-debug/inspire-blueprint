@@ -27,6 +27,12 @@ import tomimi5 from "@/assets/products-bc/tomimi-5.jpg";
 import tomimi6 from "@/assets/products-bc/tomimi-6.jpg";
 import tomimi7 from "@/assets/products-bc/tomimi-7.jpg";
 import oliverPotes1 from "@/assets/products-bc/oliver-potes-1.jpg";
+import biancoPanelas1 from "@/assets/products-bc/bianco-panelas-1.jpg";
+import biancoPanelas2 from "@/assets/products-bc/bianco-panelas-2.jpg";
+import biancoPanelas3 from "@/assets/products-bc/bianco-panelas-3.jpg";
+import biancoPanelas4 from "@/assets/products-bc/bianco-panelas-4.jpg";
+import biancoPanelas5 from "@/assets/products-bc/bianco-panelas-5.jpg";
+import biancoPanelas6 from "@/assets/products-bc/bianco-panelas-6.jpg";
 
 export interface Product {
   id: number;
@@ -303,6 +309,19 @@ export const products: Product[] = [
     tag: "64% OFF",
     description:
       "Kit com 10 potes de vidro borossilicato resistente de 640ml, ideais para marmita fit, meal prep e organização da despensa. Tampa hermética com 4 travas de segurança e vedação em silicone atóxico que mantém os alimentos frescos por muito mais tempo, sem vazamentos. Vidro temperado livre de BPA, pode ir ao freezer, microondas, forno convencional e lava-louças. Empilháveis, transparentes e com tamanho perfeito para uma refeição completa.",
+    sizes: [],
+  },
+  {
+    id: 17,
+    slug: "jogo-panelas-10-pecas-antiaderente-bianco-vanilla",
+    name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla",
+    price: 97.9,
+    originalPrice: 299.9,
+    image: biancoPanelas1,
+    images: [biancoPanelas1, biancoPanelas2, biancoPanelas3, biancoPanelas4, biancoPanelas5, biancoPanelas6],
+    tag: "67% OFF",
+    description:
+      "Jogo de Panelas Bianco Vanilla com 10 peças completas para equipar toda a sua cozinha: 1 caçarola grande, 1 caçarola média, 1 panela funda, 1 frigideira grande, 1 frigideira média, 1 leiteira, 1 escumadeira, 1 espátula e 1 concha em nylon resistente, além das tampas de vidro temperado com respiro. Revestimento interno antiaderente de alta performance com partículas minerais, livre de PFOA, que dispensa óleo no preparo e facilita a limpeza. Corpo em alumínio reforçado com pintura externa texturizada vanilla efeito pedra, distribuição uniforme de calor e economia de gás. Cabos e alças em baquelite ergonômico que permanecem frios durante o uso. Tampas de vidro temperado com aro de inox para acompanhar o cozimento sem perder calor. Compatível com fogões a gás, elétrico e vitrocerâmico. Acabamento sofisticado que combina com qualquer decoração de cozinha moderna.",
     sizes: [],
   },
 ];
