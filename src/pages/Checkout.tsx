@@ -1240,7 +1240,7 @@ const Checkout = () => {
                 </div>
                 {couponDiscount > 0 && (
                   <div className="flex justify-between items-center bg-emerald-50 rounded-lg px-3 py-2">
-                    <span className="text-sm text-emerald-700 font-medium">Cupom {(coupon || "ALPHA").toUpperCase()} ({(coupon || "ALPHA").toUpperCase() === "ALPHA5%" ? "5%" : "10%"})</span>
+                    <span className="text-sm text-emerald-700 font-medium">Cupom {(coupon || "ALPHA").toUpperCase()} ({(coupon || "ALPHA").toUpperCase() === "ALPHA" ? "10%" : "5%"})</span>
                     <span className="text-sm text-emerald-700 font-semibold">-{formatPrice(couponDiscount)}</span>
                   </div>
                 )}
