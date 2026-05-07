@@ -11,6 +11,14 @@ import batedeira from "@/assets/products-bc/batedeira.jpg";
 import difusor from "@/assets/products-bc/difusor.jpg";
 import edredom from "@/assets/products-bc/edredom.jpg";
 import chaleira from "@/assets/products-bc/chaleira.jpg";
+import sherpaMain from "@/assets/products-bc/sherpa-main.jpg";
+import sherpaCinza from "@/assets/products-bc/sherpa-cinza.jpg";
+import sherpaMarrom from "@/assets/products-bc/sherpa-marrom.jpg";
+import sherpaRose from "@/assets/products-bc/sherpa-rose.jpg";
+import sherpaVermelho from "@/assets/products-bc/sherpa-vermelho.jpg";
+import sherpaAzul from "@/assets/products-bc/sherpa-azul.jpg";
+import sherpaBege from "@/assets/products-bc/sherpa-bege.jpg";
+import sherpaPreto from "@/assets/products-bc/sherpa-preto.jpg";
 
 export interface Product {
   id: number;
@@ -239,6 +247,28 @@ export const products: Product[] = [
     sizes: ["300ml"],
     colorVariants: [
       { label: "Branco com Madeira", colors: ["#ffffff", "#d2b48c"] },
+    ],
+  },
+  {
+    id: 14,
+    slug: "edredom-sherpa-coberdrom-casal-queen-dupla-face-pele-de-carneiro",
+    name: "Edredom Sherpa Cobertor Manta Coberdrom Casal Queen Dupla Face Pele de Carneiro Grosso",
+    price: 69.9,
+    originalPrice: 199.9,
+    image: sherpaMarrom,
+    images: [sherpaMarrom, sherpaMain, sherpaCinza, sherpaPreto, sherpaVermelho, sherpaRose, sherpaBege, sherpaAzul],
+    tag: "65% OFF",
+    description:
+      "Edredom Coberdrom Sherpa dupla face Queen Size, com um lado em pele de carneiro (sherpa) ultramacia e o outro em microfibra premium aveludada. Quentíssimo, encorpado e perfeito para os dias mais frios. Antialérgico e com costura matelassê reforçada.",
+    sizes: ["Casal/Queen"],
+    colorVariants: [
+      { label: "Marrom Chocolate", colors: ["#5b3a29"], image: sherpaMarrom },
+      { label: "Cinza Pérola", colors: ["#bdbdbd"], image: sherpaCinza },
+      { label: "Preto", colors: ["#1a1a1a"], image: sherpaPreto },
+      { label: "Vermelho", colors: ["#a81b1b"], image: sherpaVermelho },
+      { label: "Rosé", colors: ["#c69a96"], image: sherpaRose },
+      { label: "Bege", colors: ["#b89b78"], image: sherpaBege },
+      { label: "Azul Marinho", colors: ["#1e2f55"], image: sherpaAzul },
     ],
   },
 ];

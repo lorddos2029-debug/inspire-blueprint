@@ -161,6 +161,19 @@ const productHighlights: Record<number, { headline: string; intro: string; detai
     ],
     closing: "Combine bem-estar e decoração em um único acessório indispensável.",
   },
+  14: {
+    headline: "DUPLA FACE SHERPA: PELE DE CARNEIRO QUE ABRAÇA",
+    intro: "Edredom Coberdrom Queen Size com um lado em sherpa (pele de carneiro sintética) ultramacia e o outro em microfibra premium aveludada. Quentíssimo, encorpado e perfeito para os dias mais frios — disponível em 7 cores elegantes.",
+    details: [
+      { title: "Sherpa pele de carneiro", desc: "Toque idêntico à lã natural, super fofinho" },
+      { title: "Dupla face", desc: "Microfibra aveludada do outro lado para variar o uso" },
+      { title: "Tamanho Casal/Queen", desc: "2,20m x 2,40m, cobre cama queen com sobra" },
+      { title: "Costura matelassê reforçada", desc: "Enchimento uniforme que não junta no canto" },
+      { title: "Antialérgico", desc: "Fibras hipoalergênicas seguras para toda família" },
+      { title: "7 cores disponíveis", desc: "Marrom, cinza, preto, vermelho, rosé, bege e azul marinho" },
+    ],
+    closing: "O calor de um abraço de pele de carneiro nas noites mais frias do ano — agora com a qualidade BellaCasa.",
+  },
 };
 
 const ProductDescription = ({ productId }: ProductDescriptionProps) => {
