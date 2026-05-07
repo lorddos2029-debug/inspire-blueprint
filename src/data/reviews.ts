@@ -231,6 +231,23 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Roberto Mendes", date: "Jan 2026", rating: 5, text: "Núcleo médico do sono, como dizem mesmo. Acordo com energia, sem aquela moleza. Postura melhorou e dor de cabeça matinal acabou. Recomendo a todos." },
     ],
   },
+  // 16 — Kit 10 Potes de Vidro Oliver Home
+  16: {
+    total: 1876,
+    avg: 4.9,
+    reviews: [
+      { name: "Renata Caldas", date: "Mai 2026", rating: 5, text: "Kit espetacular! Os 10 potes vieram perfeitos, sem nenhum arranhão. As 4 travas vedam super bem, levo sopa na bolsa sem medo de vazar. Vidro grosso e resistente." },
+      { name: "Marcelo Tavares", date: "Mai 2026", rating: 5, text: "Comprei pra fazer meal prep da semana e mudou minha rotina. 640ml é a medida exata pra uma refeição fit. Vai do freezer pro microondas sem rachar." },
+      { name: "Juliana Peixoto", date: "Abr 2026", rating: 5, text: "Por R$89,90 são 10 potes de altíssima qualidade. Em outras lojas vi por mais de R$200. Empilháveis, organizou minha geladeira e despensa completamente." },
+      { name: "Fernanda Ribeiro", date: "Abr 2026", rating: 5, text: "Tampa com 4 travas e silicone faz toda a diferença, nada vaza. Levo salada com molho separado e chega no trabalho intacta. Recomendo demais!" },
+      { name: "Luís Henrique", date: "Abr 2026", rating: 5, text: "Vidro borossilicato de verdade, aguenta variação de temperatura sem trincar. Tirei do freezer direto pro microondas e funcionou perfeito. Aprovadíssimo." },
+      { name: "Camila Pacheco", date: "Mar 2026", rating: 5, text: "Visual lindo na geladeira, transparentes dá pra ver tudo. Não pegam cheiro nem mancham, mesmo guardando molho de tomate. Lavou na máquina sem problema." },
+      { name: "Patrícia Nogueira", date: "Mar 2026", rating: 5, text: "Comprei 2 kits, um pra mim e um pra minha mãe. Os dois chegaram bem embalados, sem nenhum quebrado. Atendimento da BelaCasa nota 10." },
+      { name: "Bruno Albuquerque", date: "Mar 2026", rating: 5, text: "Marmiteiro de carteirinha aqui. Já testei várias marcas e esses Oliver Home são os melhores. Vedação perfeita, vidro espesso e tampa não estraga com o tempo." },
+      { name: "Sandra Vidal", date: "Fev 2026", rating: 5, text: "Substitui todos os meus potes plásticos por esses. Mais saudável, sem BPA, e os alimentos duram muito mais. Investimento que vale cada centavo." },
+      { name: "Alessandra Maia", date: "Fev 2026", rating: 5, text: "Levo sopa quente, congelo carne moída, guardo grãos, faço de tudo. Tamanho 640ml é versátil. Já indiquei pra todas as amigas do grupo de fitness." },
+    ],
+  },
 };
 
 const defaultReviews: Review[] = [
