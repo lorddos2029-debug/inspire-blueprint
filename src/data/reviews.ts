@@ -205,6 +205,25 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Vanessa Lopes", date: "Fev 2026", rating: 5, text: "Caimento perfeito na cama queen, as bordas chegam quase no chão. O peso é gostoso, dá aquela sensação de abraço. Dormi como um bebê." },
     ],
   },
+  // 15 — Travesseiro Cervical Tomimi
+  15: {
+    total: 2147,
+    avg: 4.9,
+    reviews: [
+      { name: "Patrícia Marques", date: "Mai 2026", rating: 5, text: "Travesseiro milagroso! Sofria com dor cervical há anos e em uma semana já senti diferença. O design em borboleta encaixa perfeito no pescoço, durmo a noite toda sem acordar." },
+      { name: "Ricardo Almeida", date: "Mai 2026", rating: 5, text: "Espuma de memória de verdade, abraça a cabeça e volta ao formato. Não tem cheiro nenhum, livre de formaldeído como prometido. Acordei sem dor pela primeira vez em meses." },
+      { name: "Joana Beltrão", date: "Abr 2026", rating: 5, text: "Comprei por indicação da minha fisioterapeuta. Em 15 dias minha postura melhorou muito. Durmo de lado e o suporte do ombro é incrível, não 'enforca' o braço." },
+      { name: "Eduardo Santos", date: "Abr 2026", rating: 5, text: "Vale cada centavo. Já gastei muito em travesseiros caros e nenhum se compara. A espuma é firme mas confortável, não afunda demais. Recomendo demais!" },
+      { name: "Cristiane Lopes", date: "Abr 2026", rating: 5, text: "Ergonômico de verdade. Tenho hérnia cervical e foi o único que aliviou a dor sem precisar de remédio. A capa é macia e respirável, não esquenta a cabeça." },
+      { name: "Bruno Fernandes", date: "Mar 2026", rating: 5, text: "Design biônico funciona! As 'asas' levantadas dos lados sustentam o pescoço quando viro durante o sono. Acordei descansado, sem aquela sensação de torcicolo." },
+      { name: "Marina Castro", date: "Mar 2026", rating: 5, text: "Sem odor mesmo, abri e usei na hora. Outras espumas vinham com aquele cheiro químico forte. Esse não, super higiênico. Aprovadíssimo!" },
+      { name: "Felipe Cardoso", date: "Mar 2026", rating: 5, text: "Comprei pra minha mãe que tem 70 anos e dor crônica no pescoço. Ela me ligou chorando de alegria depois de 1 semana. Voltou a dormir bem. Obrigado BellaCasa!" },
+      { name: "Tatiane Oliveira", date: "Fev 2026", rating: 5, text: "Altura perfeita pra quem dorme de lado. A micro depressão central segura a cabeça no lugar. Capa removível pra lavar é uma mão na roda." },
+      { name: "Anderson Pires", date: "Fev 2026", rating: 5, text: "Trabalho no computador 10h por dia e tinha dor cervical constante. Em 20 dias usando o Tomimi, dor sumiu. Investimento que vale ouro pra saúde." },
+      { name: "Camila Ribeiro", date: "Fev 2026", rating: 5, text: "Por R$69,90 é um roubo, vi o mesmo em outras lojas por mais de R$300. Chegou rápido, bem embalado e funciona como prometido. Já comprei outro pro meu marido." },
+      { name: "Roberto Mendes", date: "Jan 2026", rating: 5, text: "Núcleo médico do sono, como dizem mesmo. Acordo com energia, sem aquela moleza. Postura melhorou e dor de cabeça matinal acabou. Recomendo a todos." },
+    ],
+  },
 };
 
 const defaultReviews: Review[] = [

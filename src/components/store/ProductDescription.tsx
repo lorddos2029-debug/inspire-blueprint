@@ -174,6 +174,19 @@ const productHighlights: Record<number, { headline: string; intro: string; detai
     ],
     closing: "O calor de um abraço de pele de carneiro nas noites mais frias do ano — agora com a qualidade BellaCasa.",
   },
+  15: {
+    headline: "CONFORTO CERVICAL AVANÇADO PARA UM SONO PROFUNDO",
+    intro: "Travesseiro Cervical Tomimi com espuma viscoelástica de memória de alta densidade e design biônico em forma de borboleta. Suporte ergonômico que alinha a coluna cervical, alivia dores no pescoço e ombros, totalmente livre de formaldeído e sem odor.",
+    details: [
+      { title: "Espuma de memória premium", desc: "Alta densidade que abraça a cabeça e volta ao formato" },
+      { title: "Design biônico borboleta", desc: "Asas levantadas que sustentam o pescoço em qualquer posição" },
+      { title: "Micro depressão central", desc: "Encaixe perfeito da cabeça, evita rolar durante o sono" },
+      { title: "Sem formaldeído, sem odor", desc: "Pronto pra usar ao tirar da embalagem, 100% seguro" },
+      { title: "Suporte cervical ergonômico", desc: "Alinha a coluna e reduz dores em até 15 dias de uso" },
+      { title: "Capa respirável removível", desc: "Tecido fresquinho que pode ser lavado separadamente" },
+    ],
+    closing: "Um terço da sua vida você passa no travesseiro — invista no descanso que sua coluna merece.",
+  },
 };
 
 const ProductDescription = ({ productId }: ProductDescriptionProps) => {
