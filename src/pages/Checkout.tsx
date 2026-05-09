@@ -8,6 +8,7 @@ import paymentMethods from "@/assets/payment-methods.png";
 import pixIcon from "@/assets/pix-icon.png";
 import securityGoogle from "@/assets/security-google.svg";
 import { useCart } from "@/contexts/CartContext";
+import { products as allProducts } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
