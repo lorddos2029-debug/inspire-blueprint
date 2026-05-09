@@ -178,7 +178,8 @@ const Checkout = () => {
     if (stepName && !trackedSteps.current.has(stepName)) {
       trackedSteps.current.add(stepName);
       const firstItem: any = items[0];
-      const productId = firstItem ? String(firstItem.slug || firstItem.id || "") : null;
+      const matched = firstItem ? allProducts.find((p) => p.id === firstItem.id) : null;
+      const productId = firstItem ? String(matched?.slug || firstItem.slug || firstItem.id || "") : null;
       trackCheckoutStep(stepName, productId);
     }
   }, [currentStep, items]);
