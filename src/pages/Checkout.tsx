@@ -8,6 +8,7 @@ import paymentMethods from "@/assets/payment-methods.png";
 import pixIcon from "@/assets/pix-icon.png";
 import securityGoogle from "@/assets/security-google.svg";
 import { useCart } from "@/contexts/CartContext";
+import { products as allProducts } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -177,7 +178,8 @@ const Checkout = () => {
     if (stepName && !trackedSteps.current.has(stepName)) {
       trackedSteps.current.add(stepName);
       const firstItem: any = items[0];
-      const productId = firstItem ? String(firstItem.slug || firstItem.id || "") : null;
+      const matched = firstItem ? allProducts.find((p) => p.id === firstItem.id) : null;
+      const productId = firstItem ? String(matched?.slug || firstItem.slug || firstItem.id || "") : null;
       trackCheckoutStep(stepName, productId);
     }
   }, [currentStep, items]);
