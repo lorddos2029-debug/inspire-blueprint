@@ -322,11 +322,11 @@ export const products: Product[] = [
     id: 17,
     slug: "jogo-panelas-10-pecas-antiaderente-bianco-vanilla",
     name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla",
-    price: 89.9,
+    price: 79.9,
     originalPrice: 299.9,
     image: biancoPanelas1,
     images: [biancoPanelas1, biancoPanelas2, biancoPanelas3, biancoPanelas4, biancoPanelas5, biancoPanelas6],
-    tag: "70% OFF",
+    tag: "73% OFF",
     description:
       "Jogo de Panelas Bianco Vanilla com 10 peças completas para equipar toda a sua cozinha: 1 caçarola grande, 1 caçarola média, 1 panela funda, 1 frigideira grande, 1 frigideira média, 1 leiteira, 1 escumadeira, 1 espátula e 1 concha em nylon resistente, além das tampas de vidro temperado com respiro. Revestimento interno antiaderente de alta performance com partículas minerais, livre de PFOA, que dispensa óleo no preparo e facilita a limpeza. Corpo em alumínio reforçado com pintura externa texturizada vanilla efeito pedra, distribuição uniforme de calor e economia de gás. Cabos e alças em baquelite ergonômico que permanecem frios durante o uso. Tampas de vidro temperado com aro de inox para acompanhar o cozimento sem perder calor. Compatível com fogões a gás, elétrico e vitrocerâmico. Acabamento sofisticado que combina com qualquer decoração de cozinha moderna.",
     sizes: [],
