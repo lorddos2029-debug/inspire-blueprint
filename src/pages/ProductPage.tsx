@@ -65,7 +65,9 @@ const ProductPage = () => {
   const product: Product | undefined = mainProduct || fallbackProducts.find((p) => p.slug === slug);
   const { addItem } = useCart();
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [selectedSize, setSelectedSize] = useState<string | null>(
+    product?.sizes && product.sizes.length === 1 ? product.sizes[0] : null
+  );
   const [selectedColor, setSelectedColor] = useState<number>(0);
   const [showSizeError, setShowSizeError] = useState(false);
   const [kitSizes, setKitSizes] = useState<Record<number, string>>({});
