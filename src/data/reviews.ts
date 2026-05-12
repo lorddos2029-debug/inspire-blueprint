@@ -16,6 +16,12 @@ import sherpaReview3 from "@/assets/products-bc/sherpa-review-3.jpg";
 import sherpaReview4 from "@/assets/products-bc/sherpa-review-4.jpg";
 import sherpaReview5 from "@/assets/products-bc/sherpa-review-5.jpg";
 import sherpaReview6 from "@/assets/products-bc/sherpa-review-6.jpg";
+import kit6Review1 from "@/assets/products-bc/kit6-review-1.jpg";
+import kit6Review2 from "@/assets/products-bc/kit6-review-2.jpg";
+import kit6Review3 from "@/assets/products-bc/kit6-review-3.jpg";
+import kit6Review4 from "@/assets/products-bc/kit6-review-4.jpg";
+import kit6Review5 from "@/assets/products-bc/kit6-review-5.jpg";
+import kit6Review6 from "@/assets/products-bc/kit6-review-6.jpg";
 
 export interface Review {
   name: string;
