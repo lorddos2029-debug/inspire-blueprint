@@ -39,6 +39,16 @@ import gaabor3 from "@/assets/products-bc/gaabor-3.jpg";
 import gaabor4 from "@/assets/products-bc/gaabor-4.jpg";
 import gaabor5 from "@/assets/products-bc/gaabor-5.jpg";
 import gaabor6 from "@/assets/products-bc/gaabor-6.jpg";
+import kit6Main from "@/assets/products-bc/kit6-coberdrom-main.jpg";
+import kit6Cinza from "@/assets/products-bc/kit6-coberdrom-cinza.jpg";
+import kit6Preto from "@/assets/products-bc/kit6-coberdrom-preto.jpg";
+import kit6Vermelho from "@/assets/products-bc/kit6-coberdrom-vermelho.jpg";
+import kit6Bege from "@/assets/products-bc/kit6-coberdrom-bege.jpg";
+import kit6Azul from "@/assets/products-bc/kit6-coberdrom-azul.jpg";
+import kit6Marrom from "@/assets/products-bc/kit6-coberdrom-marrom.jpg";
+import kit6Life1 from "@/assets/products-bc/kit6-coberdrom-lifestyle1.jpg";
+import kit6Life2 from "@/assets/products-bc/kit6-coberdrom-lifestyle2.jpg";
+import kit6Life3 from "@/assets/products-bc/kit6-coberdrom-lifestyle3.jpg";
 
 export interface Product {
   id: number;
