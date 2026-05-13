@@ -39,7 +39,7 @@ import gaabor3 from "@/assets/products-bc/gaabor-3.jpg";
 import gaabor4 from "@/assets/products-bc/gaabor-4.jpg";
 import gaabor5 from "@/assets/products-bc/gaabor-5.jpg";
 import gaabor6 from "@/assets/products-bc/gaabor-6.jpg";
-import kit6Main from "@/assets/products-bc/kit6-coberdrom-main.jpg";
+import kit6Main from "@/assets/products-bc/kit6-coberdrom-main.png";
 import kit6Cinza from "@/assets/products-bc/kit6-coberdrom-cinza.jpg";
 import kit6Preto from "@/assets/products-bc/kit6-coberdrom-preto.jpg";
 import kit6Vermelho from "@/assets/products-bc/kit6-coberdrom-vermelho.jpg";
