@@ -301,21 +301,21 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
     ],
   },
 
-  // 19 — Kit 6 Coberdrom Casal Queen Pague 2 Leve 6
+  // 19 — Coberdrom Casal Queen Dupla Face Sherpa
   19: {
     total: 1873,
     avg: 4.9,
     reviews: [
-      { name: "Sandra Macedo", date: "Mai 2026", rating: 5, text: "Não acreditei quando recebi os 6 coberdrons por R$89,90! Vieram 6 cores diferentes, cada um lindo demais. Cobri todas as camas da casa e ainda sobrou para presente. Qualidade ótima, super macio.", image: kit6Review1 },
-      { name: "Roberto Linhares", date: "Mai 2026", rating: 5, text: "Pague 2 leve 6 é REAL! Chegaram os 6 coberdrons como prometido, embalados individualmente. O sherpa é fofinho de verdade, o outro lado aveludado é gostoso. Casal/Queen cobre a cama com sobra.", image: kit6Review2 },
-      { name: "Fernanda Quintela", date: "Mai 2026", rating: 5, text: "Comprei pra revender e tive lucro absurdo. R$89,90 por 6 peças premium é praticamente de graça. Já fiz 3 pedidos e todos chegaram corretinhos. Recomendo demais!", image: kit6Review3 },
-      { name: "Luciana Peixoto", date: "Mai 2026", rating: 5, text: "Estava precisando trocar todos os edredons da família. Por esse preço foi a melhor decisão! As cores são exatamente como na foto, o tecido é grosso e quentinho. Inverno garantido.", image: kit6Review4 },
-      { name: "Marcelo Bastos", date: "Abr 2026", rating: 5, text: "6 coberdrons por menos de R$ 90 é coisa de outro mundo. Pensei que fosse pegadinha, mas chegou tudo certinho em 5 dias. Antialérgico mesmo, minha esposa tem rinite e não teve problema.", image: kit6Review5 },
-      { name: "Tatiane Cordeiro", date: "Abr 2026", rating: 5, text: "Comprei o kit das 6 cores sortidas: cinza, preto, vermelho, bege, azul marinho e marrom. Todos lindos! Dei de presente pra minha mãe, sogra, irmã e ainda fiquei com 3 pra mim.", image: kit6Review6 },
-      { name: "Eduardo Vilaça", date: "Abr 2026", rating: 5, text: "Promoção sensacional. R$ 14,98 cada coberdrom Casal/Queen com sherpa de pele de carneiro. Lavei na máquina e ficou perfeito, não desfiou nem perdeu o caimento. Recomendo de olhos fechados." },
-      { name: "Renata Salles", date: "Abr 2026", rating: 5, text: "O sherpa é fofinho como na foto, lado aveludado quentíssimo. Tamanho Casal/Queen é generoso, cobre minha cama de casal com sobra dos dois lados. Pelo preço de 6 peças, IMPERDÍVEL." },
-      { name: "André Quesada", date: "Mar 2026", rating: 5, text: "Comprei achando que viria 1 só pelo preço, mas vieram os 6 mesmo! Embalagem caprichada, cores vivas, costura reforçada. A BelaCasa surpreendeu, virou minha loja preferida." },
-      { name: "Beatriz Monteiro", date: "Mar 2026", rating: 5, text: "Equipei o quarto do casal, dos 2 filhos e ainda cobri o sofá da sala com os 6 coberdrons. Um luxo por menos de R$ 90 reais. Aquece muito, perfeito pro frio do sul." },
+      { name: "Sandra Macedo", date: "Mai 2026", rating: 5, text: "Coberdrom maravilhoso! Comprei na cor cinza e é lindo demais. Cobre toda a cama queen com sobra, o sherpa é super macio e quentinho. Qualidade impressionante pelo preço, parece de loja física cara.", image: kit6Review1 },
+      { name: "Roberto Linhares", date: "Mai 2026", rating: 5, text: "O sherpa é fofinho de verdade, igual na foto! O outro lado aveludado é gostoso e quente. Tamanho Casal/Queen cobre a cama com folga, é bem generoso. Entrega rápida e embalagem caprichada.", image: kit6Review2 },
+      { name: "Fernanda Quintela", date: "Mai 2026", rating: 5, text: "Comprei o bege para o quarto do casal e fiquei encantada. O tecido é grosso, bem acolchoado e o acabamento é impecável. Pelo preço, é o melhor custo-benefício que já encontrei. Já quero outro na cor azul!", image: kit6Review3 },
+      { name: "Luciana Peixoto", date: "Mai 2026", rating: 5, text: "Estava precisando trocar o edredom antigo e esse superou todas as expectativas. A cor vermelha é exatamente como na foto, o tecido é grosso e quentinho. Perfeito para o inverno.", image: kit6Review4 },
+      { name: "Marcelo Bastos", date: "Abr 2026", rating: 5, text: "Por menos de R$ 90 é coisa de outro mundo. Qualidade premium, chegou tudo certinho em 5 dias. Antialérgico mesmo, minha esposa tem rinite e não teve nenhum problema. Recomendo demais!", image: kit6Review5 },
+      { name: "Tatiane Cordeiro", date: "Abr 2026", rating: 5, text: "Comprei o marrom chocolate e é simplesmente lindo! O tom é elegante e combina com qualquer decoração. O sherpa não solta pelo e a costura matelassê é muito bem feita. Excelente compra.", image: kit6Review6 },
+      { name: "Eduardo Vilaça", date: "Abr 2026", rating: 5, text: "Coberdrom Casal/Queen com sherpa de pele de carneiro por esse preço é incrível. Lavei na máquina e ficou perfeito, não desfiou nem perdeu o caimento. Recomendo de olhos fechados." },
+      { name: "Renata Salles", date: "Abr 2026", rating: 5, text: "O sherpa é fofinho como na foto, lado aveludado quentíssimo. Tamanho Casal/Queen é generoso, cobre minha cama de casal com sobra dos dois lados. Pelo preço, é simplesmente imperdível." },
+      { name: "André Quesada", date: "Mar 2026", rating: 5, text: "Pensei que fosse mais fino pelo preço, mas é bem grosso e quentinho. Embalagem caprichada, cor viva, costura reforçada. A BelaCasa surpreendeu mais uma vez, virou minha loja preferida." },
+      { name: "Beatriz Monteiro", date: "Mar 2026", rating: 5, text: "Usei no sofá da sala durante o frio e foi perfeito, agora voltei pro quarto. Um luxo por menos de R$ 90 reais. Aquece muito, ideal pro frio do sul. Vou comprar outro na cor preta." },
     ],
   },
 };
