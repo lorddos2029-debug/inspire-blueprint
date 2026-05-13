@@ -360,15 +360,15 @@ export const products: Product[] = [
   },
   {
     id: 19,
-    slug: "kit-6-coberdrom-casal-queen-dupla-face-sherpa-pague-2-leve-6",
-    name: "Kit 6 Coberdrom Casal Queen Dupla Face Sherpa Extra Macio e Aconchegante Pague 2 Leve 6",
-    price: 109.9,
+    slug: "coberdrom-casal-queen-dupla-face-sherpa-extra-macio",
+    name: "Coberdrom Casal Queen Dupla Face Sherpa Extra Macio e Aconchegante",
+    price: 89.9,
     originalPrice: 599.4,
     image: kit6Main,
-    images: [kit6Main, kit6Life2, kit6Life3, kit6Life1, kit6Cinza, kit6Preto, kit6Vermelho, kit6Bege, kit6Azul, kit6Marrom],
-    tag: "82% OFF",
+    images: [kit6Main, kit6Cinza, kit6Preto, kit6Vermelho, kit6Bege, kit6Azul, kit6Marrom],
+    tag: "85% OFF",
     description:
-      "PROMOÇÃO EXCLUSIVA PAGUE 2 LEVE 6! Você leva 6 Coberdrons Casal/Queen Dupla Face Sherpa por apenas R$ 89,90 — sai menos de R$ 15,00 cada peça. Oferta imperdível para renovar todos os quartos da casa, presentear a família ou estocar para o inverno inteiro. Cada coberdrom é confeccionado em dupla face premium: um lado em sherpa pele de carneiro ultramacia e fofinha, e o outro em microfibra aveludada de altíssima gramatura, garantindo aquecimento térmico superior nas noites mais frias sem pesar no corpo. Tamanho Casal/Queen 2,20m x 2,40m, perfeito para cobrir a cama com sobra. Tecido antialérgico, antiácaro e hipoalergênico — seguro para crianças, idosos e pessoas com pele sensível. Costura matelassê reforçada que mantém o enchimento bem distribuído após muitas lavagens. Você escolhe entre 6 cores disponíveis (Cinza, Preto, Vermelho, Bege, Azul Marinho e Marrom Chocolate) e nós enviamos o kit sortido com 6 peças, ou entre em contato para personalizar suas cores preferidas. Acabamento sofisticado, perfeito para qualquer estilo de decoração. Estoque limitadíssimo!",
+      "Coberdrom Casal/Queen Dupla Face Sherpa de altíssima qualidade, confeccionado com dupla face premium: um lado em sherpa pele de carneiro ultramacia e fofinha, e o outro em microfibra aveludada de altíssima gramatura, garantindo aquecimento térmico superior nas noites mais frias sem pesar no corpo. Tamanho Casal/Queen 2,20m x 2,40m, perfeito para cobrir a cama com sobra. Tecido antialérgico, antiácaro e hipoalergênico — seguro para crianças, idosos e pessoas com pele sensível. Costura matelassê reforçada que mantém o enchimento bem distribuído após muitas lavagens. Disponível em 6 cores elegantes (Cinza, Preto, Vermelho, Bege, Azul Marinho e Marrom Chocolate) para combinar com qualquer estilo de decoração. Acabamento sofisticado que eleva o visual do seu quarto. Estoque limitadíssimo!",
     sizes: ["Casal/Queen"],
   },
 ];
