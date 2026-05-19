@@ -11,7 +11,7 @@ import {
   Html,
   Preview,
   Text,
-} 
+} from 'npm:@react-email/components@0.0.22'
 
 interface RecoveryEmailProps {
   siteName: string
