@@ -3,17 +3,12 @@ import { renderAsync } from 'npm:@react-email/components@0.0.22'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 import { TEMPLATES } from '../_shared/transactional-email-templates/registry.ts'
 
-// Configuration baked in at scaffold time — do NOT change these manually.
-// To update, re-run the email domain setup flow.
-const SITE_NAME = "alphaoficialoja"
-// SENDER_DOMAIN is the verified sender subdomain FQDN (e.g., "notify.example.com").
-// It MUST match the subdomain delegated to Lovable's nameservers — never the root domain.
-// The email API looks up this exact domain; a mismatch causes "No email domain record found".
-const SENDER_DOMAIN = "notify.alphaoficial.online"
-// FROM_DOMAIN is the domain shown in the From: header (e.g., "example.com").
-// When display_from_root is enabled, this can be the root domain for cleaner branding,
-// even though actual sending uses the subdomain above.
-const FROM_DOMAIN = "alphaoficial.online"
+// Resend configuration. The "from" domain must be verified at
+// https://resend.com/domains before sending will succeed.
+const SITE_NAME = "BelaCasa"
+const FROM_DOMAIN = "belacasaoficial.online"
+const FROM_ADDRESS = `${SITE_NAME} <noreply@${FROM_DOMAIN}>`
+const SITE_URL = "https://belacasaoficial.online"
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -297,10 +292,17 @@ Deno.serve(async (req) => {
       ? template.subject(templateData)
       : template.subject
 
-  // 5. Enqueue the pre-rendered email for async processing by the dispatcher.
-  // The dispatcher (process-email-queue) handles sending, retries, and rate-limit backoff.
+  // 5. Send directly via Resend API (no queue, no Lovable Email).
+  const resendApiKey = Deno.env.get('RESEND_API_KEY')
+  if (!resendApiKey) {
+    console.error('RESEND_API_KEY is not configured')
+    return new Response(JSON.stringify({ error: 'RESEND_API_KEY not configured' }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+  }
 
-  // Log pending BEFORE enqueue so we have a record even if enqueue crashes
+  // Log pending BEFORE send so we have a record even if the API call crashes
   await supabase.from('email_send_log').insert({
     message_id: messageId,
     template_name: templateName,
@@ -308,52 +310,74 @@ Deno.serve(async (req) => {
     status: 'pending',
   })
 
-  const { error: enqueueError } = await supabase.rpc('enqueue_email', {
-    queue_name: 'transactional_emails',
-    payload: {
-      message_id: messageId,
-      to: effectiveRecipient,
-      from: `${SITE_NAME} <noreply@${FROM_DOMAIN}>`,
-      sender_domain: SENDER_DOMAIN,
-      subject: resolvedSubject,
-      html,
-      text: plainText,
-      purpose: 'transactional',
-      label: templateName,
-      idempotency_key: idempotencyKey,
-      unsubscribe_token: unsubscribeToken,
-      queued_at: new Date().toISOString(),
-    },
-  })
+  const unsubscribeUrl = `${SITE_URL}/unsubscribe?token=${unsubscribeToken}`
 
-  if (enqueueError) {
-    console.error('Failed to enqueue email', {
-      error: enqueueError,
-      templateName,
-      effectiveRecipient,
+  try {
+    const resendRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+        'Idempotency-Key': idempotencyKey,
+      },
+      body: JSON.stringify({
+        from: FROM_ADDRESS,
+        to: [effectiveRecipient],
+        subject: resolvedSubject,
+        html,
+        text: plainText,
+        headers: {
+          'List-Unsubscribe': `<${unsubscribeUrl}>`,
+          'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+        },
+        tags: [{ name: 'template', value: templateName.replace(/[^a-zA-Z0-9_-]/g, '_') }],
+      }),
     })
+
+    const resendData = await resendRes.json().catch(() => ({}))
+
+    if (!resendRes.ok) {
+      console.error('Resend send failed', { status: resendRes.status, data: resendData })
+      await supabase.from('email_send_log').insert({
+        message_id: messageId,
+        template_name: templateName,
+        recipient_email: effectiveRecipient,
+        status: 'failed',
+        error_message: `Resend ${resendRes.status}: ${JSON.stringify(resendData).slice(0, 500)}`,
+      })
+      return new Response(JSON.stringify({ error: 'Failed to send email', details: resendData }), {
+        status: 502,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
 
     await supabase.from('email_send_log').insert({
       message_id: messageId,
       template_name: templateName,
       recipient_email: effectiveRecipient,
-      status: 'failed',
-      error_message: 'Failed to enqueue email',
+      status: 'sent',
+      metadata: resendData?.id ? { provider: 'resend', resend_id: resendData.id } : { provider: 'resend' },
     })
 
-    return new Response(JSON.stringify({ error: 'Failed to enqueue email' }), {
+    console.log('Transactional email sent via Resend', { templateName, effectiveRecipient, id: resendData?.id })
+
+    return new Response(
+      JSON.stringify({ success: true, id: resendData?.id }),
+      { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+    )
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error('Resend request error', { error: msg })
+    await supabase.from('email_send_log').insert({
+      message_id: messageId,
+      template_name: templateName,
+      recipient_email: effectiveRecipient,
+      status: 'failed',
+      error_message: `Resend exception: ${msg}`.slice(0, 500),
+    })
+    return new Response(JSON.stringify({ error: 'Failed to send email' }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
-
-  console.log('Transactional email enqueued', { templateName, effectiveRecipient })
-
-  return new Response(
-    JSON.stringify({ success: true, queued: true }),
-    {
-      status: 200,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    }
-  )
 })
