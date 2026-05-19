@@ -5,14 +5,14 @@ import * as React from 'npm:react@18.3.1'
 import {
   Body,
   Button,
-  Container,
+  Container, Img, Section,
   Head,
   Heading,
   Html,
   Link,
   Preview,
   Text,
-} from 'npm:@react-email/components@0.0.22'
+} 
 
 interface SignupEmailProps {
   siteName: string
@@ -32,6 +32,7 @@ export const SignupEmail = ({
     <Preview>Confirme seu e-mail para {siteName}</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
         <Heading style={h1}>Bem-vindo à BelaCasa</Heading>
         <Text style={text}>
           Obrigado por se cadastrar na{' '}

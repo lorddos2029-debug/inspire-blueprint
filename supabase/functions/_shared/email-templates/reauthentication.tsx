@@ -4,13 +4,13 @@ import * as React from 'npm:react@18.3.1'
 
 import {
   Body,
-  Container,
+  Container, Img, Section,
   Head,
   Heading,
   Html,
   Preview,
   Text,
-} from 'npm:@react-email/components@0.0.22'
+} 
 
 interface ReauthenticationEmailProps {
   token: string
@@ -22,6 +22,7 @@ export const ReauthenticationEmail = ({ token }: ReauthenticationEmailProps) => 
     <Preview>Seu código de verificação</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
         <Heading style={h1}>Verificação de identidade</Heading>
         <Text style={text}>
           Use o código abaixo para confirmar sua identidade:
