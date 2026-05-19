@@ -1,12 +1,12 @@
 // @ts-nocheck
 import * as React from 'npm:react@18.3.1'
 import {
-  Body, Button, Container, Head, Heading, Html, Preview, Section, Text, Hr,
+  Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text, Hr,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
-const SITE_NAME = 'Alpha Oficial'
-const SITE_URL = 'https://alphaoficial.online'
+const SITE_NAME = 'BelaCasa'
+const SITE_URL = 'https://belacasaoficial.online'
 
 interface Props {
   customerName?: string
@@ -18,9 +18,10 @@ interface Props {
 const OrderCreatedEmail = ({ customerName, orderNumber, productSummary, total }: Props) => (
   <Html lang="pt-BR" dir="ltr">
     <Head />
-    <Preview>Recebemos seu pedido {orderNumber ? `#${orderNumber}` : ''} na Alpha Oficial</Preview>
+    <Preview>Recebemos seu pedido {orderNumber ? `#${orderNumber}` : ''} na BelaCasa</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
         <Heading style={h1}>Pedido recebido com sucesso!</Heading>
         <Text style={text}>
           {customerName ? `Olá ${customerName},` : 'Olá,'} obrigado pela sua compra na {SITE_NAME}.
@@ -44,7 +45,7 @@ const OrderCreatedEmail = ({ customerName, orderNumber, productSummary, total }:
 
 export const template = {
   component: OrderCreatedEmail,
-  subject: (d: Record<string, any>) => `Pedido recebido${d?.orderNumber ? ` #${d.orderNumber}` : ''} • Alpha Oficial`,
+  subject: (d: Record<string, any>) => `Pedido recebido${d?.orderNumber ? ` #${d.orderNumber}` : ''} • BelaCasa`,
   displayName: 'Pedido criado',
   previewData: { customerName: 'João Silva', orderNumber: 'AO12345678', productSummary: '1x Camiseta Premium', total: 'R$ 149,90' },
 } satisfies TemplateEntry

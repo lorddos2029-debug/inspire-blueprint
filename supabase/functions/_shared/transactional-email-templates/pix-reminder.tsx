@@ -5,7 +5,7 @@ import {
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
-const SITE_NAME = 'Alpha Oficial'
+const SITE_NAME = 'BelaCasa'
 
 interface Props {
   customerName?: string
@@ -22,6 +22,7 @@ const PixReminderEmail = ({ customerName, orderNumber, total, productSummary, pr
     <Preview>{`Você esqueceu seu pedido ${orderNumber || ''} na ${SITE_NAME}`.trim()}</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
         <Heading style={h1}>Olá{customerName ? `, ${customerName}` : ''} 👋</Heading>
         <Text style={text}>
           Notamos que você iniciou um pedido na <strong>{SITE_NAME}</strong> hoje, mas ainda não finalizou o pagamento.
@@ -78,8 +79,8 @@ export const template = {
     orderNumber: 'AO12345678',
     total: 'R$ 149,90',
     productSummary: '1x Tênis Masculino',
-    productImage: 'https://alphaoficial.online/placeholder.svg',
-    checkoutUrl: 'https://alphaoficial.online/checkout?restore=abc-123',
+    productImage: 'https://belacasaoficial.online/placeholder.svg',
+    checkoutUrl: 'https://belacasaoficial.online/checkout?restore=abc-123',
   },
 } satisfies TemplateEntry
 

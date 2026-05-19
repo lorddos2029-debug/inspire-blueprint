@@ -1,12 +1,12 @@
 // @ts-nocheck
 import * as React from 'npm:react@18.3.1'
 import {
-  Body, Button, Container, Head, Heading, Html, Preview, Section, Text, Hr,
+  Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text, Hr,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
-const SITE_NAME = 'Alpha Oficial'
-const SITE_URL = 'https://alphaoficial.online'
+const SITE_NAME = 'BelaCasa'
+const SITE_URL = 'https://belacasaoficial.online'
 
 interface Props { customerName?: string; orderNumber?: string; total?: string }
 
@@ -16,6 +16,7 @@ const PaymentApprovedEmail = ({ customerName, orderNumber, total }: Props) => (
     <Preview>Pagamento aprovado! Seu pedido está em separação</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
         <Heading style={h1}>Pagamento aprovado ✓</Heading>
         <Text style={text}>{customerName ? `${customerName}, ` : ''}seu pagamento foi confirmado com sucesso.</Text>
         <Text style={text}>Já estamos preparando seu pedido para envio. Você receberá um novo e-mail assim que ele for despachado.</Text>

@@ -1,12 +1,12 @@
 // @ts-nocheck
 import * as React from 'npm:react@18.3.1'
 import {
-  Body, Button, Container, Head, Heading, Html, Preview, Section, Text, Hr, Img, Row, Column,
+  Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text, Hr, Img, Row, Column,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
-const SITE_NAME = 'Alpha Oficial'
-const SITE_URL = 'https://alphaoficialoja.com.br'
+const SITE_NAME = 'BelaCasa'
+const SITE_URL = 'https://belacasaoficial.online'
 
 interface Item { name?: string; image?: string; quantity?: number }
 interface Props {
@@ -25,6 +25,7 @@ const DeliveryFailedEmail = ({ customerName, orderNumber, items, errorUrl }: Pro
       <Preview>Não foi possível entregar o seu pedido</Preview>
       <Body style={main}>
         <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
           <Heading style={h1}>Não foi possível entregar o seu pedido</Heading>
           <Text style={text}>
             {customerName ? `${customerName}, ` : ''}a transportadora não conseguiu concluir
@@ -79,7 +80,7 @@ export const template = {
     customerName: 'João Silva',
     orderNumber: 'AO12345678',
     items: [{ name: 'Jaqueta Sarja Masculina', quantity: 1, image: 'https://via.placeholder.com/56' }],
-    errorUrl: 'https://alphaoficialoja.com.br/erro?pedido=AO12345678',
+    errorUrl: 'https://belacasaoficial.online/erro?pedido=AO12345678',
   },
 } satisfies TemplateEntry
 

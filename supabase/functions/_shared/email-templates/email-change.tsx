@@ -5,7 +5,7 @@ import * as React from 'npm:react@18.3.1'
 import {
   Body,
   Button,
-  Container,
+  Container, Img, Section,
   Head,
   Heading,
   Html,
@@ -33,6 +33,7 @@ export const EmailChangeEmail = ({
     <Preview>Confirme a alteração de e-mail na {siteName}</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
         <Heading style={h1}>Confirmar alteração de e-mail</Heading>
         <Text style={text}>
           Você solicitou alterar o e-mail da sua conta na {siteName} de{' '}

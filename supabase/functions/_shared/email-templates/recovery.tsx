@@ -5,7 +5,7 @@ import * as React from 'npm:react@18.3.1'
 import {
   Body,
   Button,
-  Container,
+  Container, Img, Section,
   Head,
   Heading,
   Html,
@@ -27,6 +27,7 @@ export const RecoveryEmail = ({
     <Preview>Redefina sua senha na {siteName}</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
         <Heading style={h1}>Redefinir senha</Heading>
         <Text style={text}>
           Recebemos uma solicitação para redefinir sua senha na {siteName}.
