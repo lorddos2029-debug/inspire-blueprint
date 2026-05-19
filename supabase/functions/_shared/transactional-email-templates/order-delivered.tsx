@@ -1,7 +1,7 @@
 // @ts-nocheck
 import * as React from 'npm:react@18.3.1'
 import {
-  Body, Button, Container, Head, Heading, Html, Preview, Section, Text, Hr,
+  Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text, Hr,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
@@ -16,6 +16,7 @@ const OrderDeliveredEmail = ({ customerName, orderNumber }: Props) => (
     <Preview>Seu pedido foi entregue! Esperamos que ame ✨</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
         <Heading style={h1}>Pedido entregue! ✨</Heading>
         <Text style={text}>{customerName ? `${customerName}, ` : ''}seu pedido foi entregue com sucesso.</Text>
         <Text style={text}>Esperamos que você ame seus produtos. Obrigado por escolher a {SITE_NAME}!</Text>

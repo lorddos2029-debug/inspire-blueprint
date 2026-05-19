@@ -23,6 +23,7 @@ const PixGeneratedEmail = ({ customerName, orderNumber, total, pixCode, productS
     <Preview>Seu PIX foi gerado — finalize o pagamento</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
         <Heading style={h1}>Aguardando pagamento via PIX</Heading>
         <Text style={text}>
           {customerName ? `Olá ${customerName},` : 'Olá,'} seu pedido foi registrado e o PIX foi gerado.

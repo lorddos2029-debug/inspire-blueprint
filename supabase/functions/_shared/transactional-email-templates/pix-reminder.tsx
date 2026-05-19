@@ -22,6 +22,7 @@ const PixReminderEmail = ({ customerName, orderNumber, total, productSummary, pr
     <Preview>{`Você esqueceu seu pedido ${orderNumber || ''} na ${SITE_NAME}`.trim()}</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
         <Heading style={h1}>Olá{customerName ? `, ${customerName}` : ''} 👋</Heading>
         <Text style={text}>
           Notamos que você iniciou um pedido na <strong>{SITE_NAME}</strong> hoje, mas ainda não finalizou o pagamento.

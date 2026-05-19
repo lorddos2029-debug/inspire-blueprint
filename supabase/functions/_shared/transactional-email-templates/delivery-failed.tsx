@@ -1,7 +1,7 @@
 // @ts-nocheck
 import * as React from 'npm:react@18.3.1'
 import {
-  Body, Button, Container, Head, Heading, Html, Preview, Section, Text, Hr, Img, Row, Column,
+  Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text, Hr, Img, Row, Column,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
@@ -25,6 +25,7 @@ const DeliveryFailedEmail = ({ customerName, orderNumber, items, errorUrl }: Pro
       <Preview>Não foi possível entregar o seu pedido</Preview>
       <Body style={main}>
         <Container style={container}>
+        <Section style={{textAlign:'center',padding:'8px 0 24px'}}><Img src='https://norpnhvszwfbwqmvwmlf.supabase.co/storage/v1/object/public/email-assets/belacasa-logo.png' alt='BelaCasa' width='200' style={{margin:'0 auto',display:'block'}}/></Section>
           <Heading style={h1}>Não foi possível entregar o seu pedido</Heading>
           <Text style={text}>
             {customerName ? `${customerName}, ` : ''}a transportadora não conseguiu concluir
