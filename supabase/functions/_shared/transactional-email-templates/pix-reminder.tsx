@@ -5,7 +5,7 @@ import {
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
-const SITE_NAME = 'Alpha Oficial'
+const SITE_NAME = 'BelaCasa'
 
 interface Props {
   customerName?: string
@@ -78,8 +78,8 @@ export const template = {
     orderNumber: 'AO12345678',
     total: 'R$ 149,90',
     productSummary: '1x Tênis Masculino',
-    productImage: 'https://alphaoficial.online/placeholder.svg',
-    checkoutUrl: 'https://alphaoficial.online/checkout?restore=abc-123',
+    productImage: 'https://belacasaoficial.online/placeholder.svg',
+    checkoutUrl: 'https://belacasaoficial.online/checkout?restore=abc-123',
   },
 } satisfies TemplateEntry
 

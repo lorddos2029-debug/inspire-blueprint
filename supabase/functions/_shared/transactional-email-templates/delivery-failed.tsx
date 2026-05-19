@@ -5,8 +5,8 @@ import {
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
-const SITE_NAME = 'Alpha Oficial'
-const SITE_URL = 'https://alphaoficialoja.com.br'
+const SITE_NAME = 'BelaCasa'
+const SITE_URL = 'https://belacasaoficial.online'
 
 interface Item { name?: string; image?: string; quantity?: number }
 interface Props {
@@ -79,7 +79,7 @@ export const template = {
     customerName: 'João Silva',
     orderNumber: 'AO12345678',
     items: [{ name: 'Jaqueta Sarja Masculina', quantity: 1, image: 'https://via.placeholder.com/56' }],
-    errorUrl: 'https://alphaoficialoja.com.br/erro?pedido=AO12345678',
+    errorUrl: 'https://belacasaoficial.online/erro?pedido=AO12345678',
   },
 } satisfies TemplateEntry
 

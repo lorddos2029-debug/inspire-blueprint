@@ -5,8 +5,8 @@ import {
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
-const SITE_NAME = 'Alpha Oficial'
-const SITE_URL = 'https://alphaoficial.online'
+const SITE_NAME = 'BelaCasa'
+const SITE_URL = 'https://belacasaoficial.online'
 
 interface Props { customerName?: string; orderNumber?: string }
 
