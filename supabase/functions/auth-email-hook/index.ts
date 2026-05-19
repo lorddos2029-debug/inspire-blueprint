@@ -36,7 +36,7 @@ const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
 }
 
 // Configuration
-const SITE_NAME = "inspire-blueprint"
+const SITE_NAME = "BelaCasa"
 const SENDER_DOMAIN = "notify.belacasaoficial.online"
 const ROOT_DOMAIN = "belacasaoficial.online"
 const FROM_DOMAIN = "belacasaoficial.online" // Domain shown in From address (may be root or sender subdomain)
