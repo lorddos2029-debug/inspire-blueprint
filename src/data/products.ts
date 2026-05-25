@@ -49,6 +49,16 @@ import kit6Marrom from "@/assets/products-bc/kit6-coberdrom-marrom.jpg";
 import kit6Life1 from "@/assets/products-bc/kit6-coberdrom-lifestyle1.jpg";
 import kit6Life2 from "@/assets/products-bc/kit6-coberdrom-lifestyle2.jpg";
 import kit6Life3 from "@/assets/products-bc/kit6-coberdrom-lifestyle3.jpg";
+import mondialPreto from "@/assets/products-bc/mondial-l99-preto.png";
+import mondialVermelho from "@/assets/products-bc/mondial-l99-vermelho.png";
+import mondialLife from "@/assets/products-bc/mondial-l99-lifestyle.png";
+import mondialPotencia from "@/assets/products-bc/mondial-l99-potencia.png";
+import mondialJarra from "@/assets/products-bc/mondial-l99-jarra.png";
+import mondialFiltro from "@/assets/products-bc/mondial-l99-filtro.png";
+import mondialTapa from "@/assets/products-bc/mondial-l99-tapa.png";
+import mondialLaminas from "@/assets/products-bc/mondial-l99-laminas.png";
+import mondialPies from "@/assets/products-bc/mondial-l99-pies.png";
+import mondialDimensoes from "@/assets/products-bc/mondial-l99-dimensoes.png";
 
 export interface Product {
   id: number;
