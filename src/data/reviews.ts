@@ -22,6 +22,11 @@ import kit6Review3 from "@/assets/products-bc/kit6-review-3.jpg";
 import kit6Review4 from "@/assets/products-bc/kit6-review-4.jpg";
 import kit6Review5 from "@/assets/products-bc/kit6-review-5.jpg";
 import kit6Review6 from "@/assets/products-bc/kit6-review-6.jpg";
+import mondialL99Review1 from "@/assets/products-bc/mondial-l99-review-1.jpg";
+import mondialL99Review2 from "@/assets/products-bc/mondial-l99-review-2.jpg";
+import mondialL99Review3 from "@/assets/products-bc/mondial-l99-review-3.jpg";
+import mondialL99Review4 from "@/assets/products-bc/mondial-l99-review-4.jpg";
+import mondialL99Review5 from "@/assets/products-bc/mondial-l99-review-5.jpg";
 
 export interface Review {
   name: string;
@@ -324,13 +329,13 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
     total: 3127,
     avg: 4.9,
     reviews: [
-      { name: "Adriana Marques", date: "Mai 2026", rating: 5, text: "Liquidificador maravilhoso! Por R$ 69,90 você não encontra em lugar nenhum, na loja física estava R$ 249. Potência de 550W é ótima, tritura gelo, faz vitamina sem grumos e suco bem lisinho. A jarra de San Cristal é linda e parece bem resistente." },
+      { name: "Adriana Marques", date: "Mai 2026", rating: 5, text: "Liquidificador maravilhoso! Por R$ 69,90 você não encontra em lugar nenhum, na loja física estava R$ 249. Potência de 550W é ótima, tritura gelo, faz vitamina sem grumos e suco bem lisinho. A jarra de San Cristal é linda e parece bem resistente.", image: mondialL99Review1 },
       { name: "Carlos Henrique", date: "Mai 2026", rating: 5, text: "Comprei o vermelho e ficou um charme na minha cozinha. As 3 velocidades + pulsar dão controle total, e a função autolimpeza é simplesmente genial — coloco água com detergente, aciono e fica novinho em segundos." },
-      { name: "Patrícia Andrade", date: "Mai 2026", rating: 5, text: "Mondial nunca decepciona! Já é meu terceiro liquidificador da marca e esse L-99 superou os anteriores. As lâminas de inox 4 pontas trituram tudo, até cenoura crua pra suco detox. Vale demais o preço." },
-      { name: "Fernando Lima", date: "Mai 2026", rating: 5, text: "Chegou em 3 dias, super bem embalado. Veio o aparelho na cor preta + o filtro pra suco. O filtro é ótimo, separa toda a polpa e o suco fica igual o de loja. Recomendo demais!" },
+      { name: "Patrícia Andrade", date: "Mai 2026", rating: 5, text: "Mondial nunca decepciona! Já é meu terceiro liquidificador da marca e esse L-99 superou os anteriores. As lâminas de inox 4 pontas trituram tudo, até cenoura crua pra suco detox. Vale demais o preço.", image: mondialL99Review2 },
+      { name: "Fernando Lima", date: "Mai 2026", rating: 5, text: "Chegou em 3 dias, super bem embalado. Veio o aparelho na cor preta + o filtro pra suco. O filtro é ótimo, separa toda a polpa e o suco fica igual o de loja. Recomendo demais!", image: mondialL99Review4 },
       { name: "Juliana Pacheco", date: "Abr 2026", rating: 5, text: "2,2 litros é muita coisa! Faço vitamina pra família toda de uma vez só. A tampa com vaso medidor ajuda muito a colocar ingredientes sem desligar. Mudou minha rotina da manhã." },
-      { name: "Roberto Silva", date: "Abr 2026", rating: 5, text: "Comprei o preto pra minha mãe e ela amou. Os pés antiderrapantes seguram firme na bancada, não anda nem na velocidade máxima. O compartimento pro fio na base é ótimo pra organizar." },
-      { name: "Camila Vasconcellos", date: "Abr 2026", rating: 5, text: "Função Turbo é potente de verdade! Quebra gelo em segundos sem travar. A jarra de San Cristal é grossa, resistente, dá uma sensação de produto premium. Livre de BPA me deixou tranquila." },
+      { name: "Roberto Silva", date: "Abr 2026", rating: 5, text: "Comprei o preto pra minha mãe e ela amou. Os pés antiderrapantes seguram firme na bancada, não anda nem na velocidade máxima. O compartimento pro fio na base é ótimo pra organizar.", image: mondialL99Review3 },
+      { name: "Camila Vasconcellos", date: "Abr 2026", rating: 5, text: "Função Turbo é potente de verdade! Quebra gelo em segundos sem travar. A jarra de San Cristal é grossa, resistente, dá uma sensação de produto premium. Livre de BPA me deixou tranquila.", image: mondialL99Review5 },
       { name: "Marcelo Tavares", date: "Abr 2026", rating: 5, text: "Custo benefício imbatível. Comparei com outros liquidificadores de 800W e esse aqui de 550W bate tão bem quanto. Mondial é tradição, sabe fazer eletrodoméstico que dura." },
       { name: "Beatriz Cordeiro", date: "Mar 2026", rating: 5, text: "Compacto, leve (1,3kg), encaixa em qualquer canto da bancada. Comprei o vermelho e ele virou objeto de decoração de tão bonito. Faço sopa quente, vitamina, suco, papinha do bebê. Versátil!" },
       { name: "Rafael Quintela", date: "Mar 2026", rating: 5, text: "Entrega rápida da BelaCasa, embalagem caprichada, produto original Mondial com nota fiscal. Funcionando perfeitamente há 2 meses, sem reclamação. Já indiquei pra família toda." },
