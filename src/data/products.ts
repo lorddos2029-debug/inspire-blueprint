@@ -49,6 +49,16 @@ import kit6Marrom from "@/assets/products-bc/kit6-coberdrom-marrom.jpg";
 import kit6Life1 from "@/assets/products-bc/kit6-coberdrom-lifestyle1.jpg";
 import kit6Life2 from "@/assets/products-bc/kit6-coberdrom-lifestyle2.jpg";
 import kit6Life3 from "@/assets/products-bc/kit6-coberdrom-lifestyle3.jpg";
+import mondialPreto from "@/assets/products-bc/mondial-l99-preto.png";
+import mondialVermelho from "@/assets/products-bc/mondial-l99-vermelho.png";
+import mondialLife from "@/assets/products-bc/mondial-l99-lifestyle.png";
+import mondialPotencia from "@/assets/products-bc/mondial-l99-potencia.png";
+import mondialJarra from "@/assets/products-bc/mondial-l99-jarra.png";
+import mondialFiltro from "@/assets/products-bc/mondial-l99-filtro.png";
+import mondialTapa from "@/assets/products-bc/mondial-l99-tapa.png";
+import mondialLaminas from "@/assets/products-bc/mondial-l99-laminas.png";
+import mondialPies from "@/assets/products-bc/mondial-l99-pies.png";
+import mondialDimensoes from "@/assets/products-bc/mondial-l99-dimensoes.png";
 
 export interface Product {
   id: number;
@@ -370,5 +380,23 @@ export const products: Product[] = [
     description:
       "Coberdrom Casal/Queen Dupla Face Sherpa de altíssima qualidade, confeccionado com dupla face premium: um lado em sherpa pele de carneiro ultramacia e fofinha, e o outro em microfibra aveludada de altíssima gramatura, garantindo aquecimento térmico superior nas noites mais frias sem pesar no corpo. Tamanho Casal/Queen 2,20m x 2,40m, perfeito para cobrir a cama com sobra. Tecido antialérgico, antiácaro e hipoalergênico — seguro para crianças, idosos e pessoas com pele sensível. Costura matelassê reforçada que mantém o enchimento bem distribuído após muitas lavagens. Disponível em 6 cores elegantes (Cinza, Preto, Vermelho, Bege, Azul Marinho e Marrom Chocolate) para combinar com qualquer estilo de decoração. Acabamento sofisticado que eleva o visual do seu quarto. Estoque limitadíssimo!",
     sizes: ["Casal/Queen"],
+  },
+  {
+    id: 20,
+    slug: "liquidificador-mondial-l-99-turbo-3-velocidades-550w",
+    name: "Liquidificador Mondial L-99 Turbo 3 Velocidades 550W",
+    price: 69.9,
+    originalPrice: 249.9,
+    image: mondialPreto,
+    images: [mondialPreto, mondialLife, mondialPotencia, mondialJarra, mondialFiltro, mondialTapa, mondialLaminas, mondialPies, mondialDimensoes],
+    tag: "72% OFF",
+    description:
+      "Liquidificador Mondial L-99 Turbo Power, o queridinho das cozinhas brasileiras agora com motor potente de 550W para triturar, bater e processar com facilidade os alimentos do dia a dia. Conta com 3 velocidades + função pulsar e função Turbo, oferecendo controle total para preparar sucos, vitaminas, sopas, molhos, papinhas e até quebrar gelo sem esforço. Jarra de San Cristal de altíssima capacidade (2,2L totais / 1,6L úteis), super resistente a quedas, livre de BPA e com marcação de volume em alto-relevo para facilitar o preparo. Lâminas de aço inoxidável de 4 pontas que trituram com mais precisão e rapidez, mantendo o fio por muito mais tempo. Função autolimpeza exclusiva que auxilia na higienização do copo e das lâminas em segundos — basta colocar água com detergente e acionar. Acompanha filtro destacável que separa polpas, sementes e bagaços, deixando os sucos lisinhos como os de loja. Tampa com vaso medidor removível para adicionar ingredientes durante o preparo sem desligar o aparelho. Base com pés antiderrapantes que garantem estabilidade total mesmo nas velocidades mais altas, além de compartimento traseiro para guardar o fio e facilitar a organização. Design compacto e elegante (21cm x 20cm x 40cm, apenas 1,3kg), encaixa em qualquer bancada. Selo Inmetro, motor com proteção contra superaquecimento e bivolt (versão 127V/220V). Disponível nas cores Preto e Vermelho para combinar com a sua cozinha.",
+    sizes: ["110V", "220V"],
+    sizeLabel: "Voltagem",
+    colorVariants: [
+      { label: "Preto", colors: ["#1a1a1a"], image: mondialPreto },
+      { label: "Vermelho", colors: ["#c4161c"], image: mondialVermelho },
+    ],
   },
 ];
