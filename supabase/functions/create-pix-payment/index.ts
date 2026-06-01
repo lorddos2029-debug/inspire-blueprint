@@ -146,8 +146,8 @@ serve(async (req) => {
     });
 
     const data = await response.json().catch(() => ({}));
-    console.log('Payout PIX status:', response.status);
-    console.log('Payout PIX response:', JSON.stringify(data));
+    console.log('PrimeCash PIX status:', response.status);
+    console.log('PrimeCash PIX response:', JSON.stringify(data));
 
     let innerMessage = typeof data?.message === 'string' ? data.message : JSON.stringify(data);
     try {
