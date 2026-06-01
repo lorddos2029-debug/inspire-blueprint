@@ -135,19 +135,19 @@ serve(async (req) => {
     const amountInCents = toCents(amount);
     const payload = buildBasePayload({ amountInCents, customer, shipping, items, externalRef, trackingParameters, clientIp, webhookUrl });
 
-    const key = Deno.env.get('PAYOUT_SECRET_KEY')?.trim();
-    if (!key) throw new Error('PAYOUT_SECRET_KEY is not configured');
+    const key = Deno.env.get('PRIMECASH_SECRET_KEY')?.trim();
+    if (!key) throw new Error('PRIMECASH_SECRET_KEY is not configured');
     const authToken = btoa(`${key}:x`);
-    console.log('Sending PIX to Payout:', JSON.stringify(payload));
-    const response = await fetch('https://api.payoutbr.com.br/v1/transactions', {
+    console.log('Sending PIX to PrimeCash:', JSON.stringify(payload));
+    const response = await fetch('https://api.primecashbrasil.com/v1/transactions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'accept': 'application/json', 'authorization': `Basic ${authToken}` },
       body: JSON.stringify(payload),
     });
 
     const data = await response.json().catch(() => ({}));
-    console.log('Payout PIX status:', response.status);
-    console.log('Payout PIX response:', JSON.stringify(data));
+    console.log('PrimeCash PIX status:', response.status);
+    console.log('PrimeCash PIX response:', JSON.stringify(data));
 
     let innerMessage = typeof data?.message === 'string' ? data.message : JSON.stringify(data);
     try {
