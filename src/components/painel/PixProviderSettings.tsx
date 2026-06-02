@@ -9,7 +9,7 @@ const PixProviderSettings = () => {
     (async () => {
       await supabase
         .from("payment_settings")
-        .update({ pix_provider: "primecash", updated_at: new Date().toISOString() })
+        .update({ pix_provider: "vumepay", updated_at: new Date().toISOString() })
         .eq("id", 1);
       setLoading(false);
     })();
@@ -36,12 +36,12 @@ const PixProviderSettings = () => {
       ) : (
         <div className="rounded-xl border-2 border-violet-500 bg-violet-500/5 p-4">
           <div className="flex items-center gap-2 flex-wrap">
-            <p className="text-sm font-bold text-foreground">PrimeCash</p>
+            <p className="text-sm font-bold text-foreground">VumePay</p>
             <span className="text-[9px] uppercase tracking-widest font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">
               Em uso
             </span>
           </div>
-          <p className="text-[11px] text-muted-foreground font-mono mt-1 break-all">api.primecashbr.com</p>
+          <p className="text-[11px] text-muted-foreground font-mono mt-1 break-all">api.vumepay.com.br</p>
         </div>
       )}
     </div>
