@@ -1,6 +1,3 @@
-import relogioImg from "@/assets/products/relogio-classic.jpg";
-import relogioChronosImg from "@/assets/products/relogio-chronos.jpg";
-import relogioPaganiImg from "@/assets/products/relogio-pagani.jpg";
 import carteiraImg from "@/assets/products/carteira-couro.jpg";
 import oculosImg from "@/assets/products/oculos-aviador.jpg";
 import cintoImg from "@/assets/products/cinto-couro.jpg";
@@ -9,6 +6,10 @@ import sueterImg from "@/assets/products/sueter-tricot.jpg";
 import camisaTricotImg from "@/assets/products/camisa-tricot-1.jpg";
 import techDailyInsiderImg from "@/assets/products/tech-daily-preto-1.png";
 import techDailyInsiderPremiumImg from "@/assets/products/tech-daily-v2-1.png";
+
+const relogioImg = "/products/relogio-classic.jpg";
+const relogioChronosImg = "/products/relogio-chronos.jpg";
+const relogioPaganiImg = "/products/relogio-pagani.jpg";
 
 export interface StandaloneProduct {
   id: string;
