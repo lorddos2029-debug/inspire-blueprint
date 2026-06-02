@@ -5,116 +5,12 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const toCents = (value: unknown) => {
-  const numeric = Number(value);
-  return Number.isFinite(numeric) ? Math.round(numeric * 100) : 0;
-};
-
-const normalizeItems = (items: any[], amountInCents: number) => {
-  const safeItems = items.map((item) => ({
-    title: String(item?.name || 'Produto').trim(),
-    quantity: Math.max(1, Number(item?.quantity || 1)),
-    originalUnitPrice: Math.max(0, toCents(item?.price)),
-  }));
-
-  const originalTotal = safeItems.reduce((sum, item) => sum + item.originalUnitPrice * item.quantity, 0);
-
-  if (originalTotal <= 0) {
-    const baseUnitPrice = Math.floor(amountInCents / safeItems.length);
-    let remainder = amountInCents - baseUnitPrice * safeItems.length;
-    return safeItems.map((item, index) => ({
-      title: item.title,
-      quantity: item.quantity,
-      tangible: true,
-      unitPrice: baseUnitPrice + (index === safeItems.length - 1 ? remainder : 0),
-    }));
-  }
-
-  let allocated = 0;
-  const normalized = safeItems.map((item, index) => {
-    const lineOriginalTotal = item.originalUnitPrice * item.quantity;
-    let lineAllocatedTotal = Math.round((lineOriginalTotal / originalTotal) * amountInCents);
-    if (index === safeItems.length - 1) lineAllocatedTotal = amountInCents - allocated;
-    allocated += lineAllocatedTotal;
-    const unitPrice = Math.floor(lineAllocatedTotal / item.quantity);
-    const remainder = lineAllocatedTotal - unitPrice * item.quantity;
-    return { title: item.title, quantity: item.quantity, tangible: true, unitPrice, lineRemainder: remainder };
-  });
-
-  return normalized.map((item, index) => ({
-    title: item.title,
-    quantity: item.quantity,
-    tangible: item.tangible,
-    unitPrice: item.unitPrice + (index === normalized.length - 1 ? item.lineRemainder : 0),
-  }));
-};
-
-const buildBasePayload = (params: {
-  amountInCents: number;
-  customer: any;
-  shipping: any;
-  items: any[];
-  externalRef: any;
-  trackingParameters: any;
-  clientIp: string;
-  webhookUrl: string;
-}) => {
-  const { amountInCents, customer, shipping, items, externalRef, trackingParameters, clientIp, webhookUrl } = params;
-  const cpfDigits = (customer?.cpf || '').replace(/\D/g, '');
-  const phoneDigits = (customer?.phone || '').replace(/\D/g, '');
-  const normalizedItems = normalizeItems(items, amountInCents);
-
-  const payload: Record<string, unknown> = {
-    paymentMethod: 'pix',
-    amount: amountInCents,
-    ip: clientIp,
-    postbackUrl: webhookUrl,
-    metadata: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : `order-${Date.now()}`,
-    customer: {
-      name: String(customer?.name || 'Cliente').trim(),
-      email: String(customer?.email || 'cliente@email.com').trim(),
-      phone: phoneDigits || '11999999999',
-      document: { type: 'cpf', number: cpfDigits || '00000000000' },
-    },
-    items: normalizedItems,
-    pix: { expiresInDays: 1 },
-  };
-
-  if (shipping) {
-    payload.shipping = {
-      name: customer?.name || 'Cliente',
-      street: shipping.street || '',
-      streetNumber: shipping.number || '',
-      complement: shipping.complement || '',
-      neighborhood: shipping.neighborhood || '',
-      city: shipping.city || '',
-      state: shipping.state || '',
-      zipcode: (shipping.cep || '').replace(/\D/g, ''),
-      country: 'BR',
-    };
-  }
-
-  const utm = trackingParameters && typeof trackingParameters === 'object' ? trackingParameters as Record<string, unknown> : {};
-  const utmFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const;
-  const utmObj: Record<string, string> = {};
-  utmFields.forEach((key) => {
-    const value = utm[key];
-    if (typeof value === 'string' && value.trim()) utmObj[key] = value.trim();
-  });
-  if (Object.keys(utmObj).length > 0) payload.utm = utmObj;
-
-  return payload;
-};
-
 serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
 
   try {
-    const SUPABASE_URL = Deno.env.get('SUPABASE_URL') || '';
-    const webhookUrl = `${SUPABASE_URL}/functions/v1/payment-webhook`;
-
     const body = await req.json();
-    const { customer, items, amount, shipping, externalRef, trackingParameters, client_ip } = body;
+    const { customer, items, amount, externalRef, trackingParameters } = body;
 
     if (!items || !Array.isArray(items) || items.length === 0) {
       return new Response(JSON.stringify({ error: 'Items are required' }), {
@@ -127,72 +23,88 @@ serve(async (req) => {
       });
     }
 
-    const forwardedIp = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
-    const clientIp =
-      (typeof client_ip === 'string' && client_ip.trim()) ? client_ip.trim() :
-      forwardedIp || req.headers.get('cf-connecting-ip') || req.headers.get('x-real-ip') || '177.32.120.10';
+    const publicKey = Deno.env.get('VUMEPAY_PUBLIC_KEY')?.trim();
+    const secretKey = Deno.env.get('VUMEPAY_SECRET_KEY')?.trim();
+    if (!publicKey || !secretKey) throw new Error('VUMEPAY credentials are not configured');
 
-    const amountInCents = toCents(amount);
-    const payload = buildBasePayload({ amountInCents, customer, shipping, items, externalRef, trackingParameters, clientIp, webhookUrl });
+    const cpfDigits = (customer?.cpf || '').replace(/\D/g, '');
+    const phoneDigits = (customer?.phone || '').replace(/\D/g, '');
+    const amountFloat = Math.round(Number(amount) * 100) / 100;
 
-    const key = Deno.env.get('PAYOUT_SECRET_KEY')?.trim();
-    if (!key) throw new Error('PAYOUT_SECRET_KEY is not configured');
-    const authToken = btoa(`${key}:x`);
-    console.log('Sending PIX to Payout:', JSON.stringify(payload));
-    const response = await fetch('https://api.payoutbr.com.br/v1/transactions', {
+    const description = items
+      .map((it: any) => `${it?.quantity || 1}x ${String(it?.name || 'Produto').trim()}`)
+      .join(', ')
+      .slice(0, 255) || 'Pagamento via PIX';
+
+    const payload: Record<string, unknown> = {
+      amount: amountFloat,
+      description,
+      customer: {
+        name: String(customer?.name || 'Cliente').trim(),
+        email: String(customer?.email || 'cliente@email.com').trim(),
+        phone: phoneDigits || undefined,
+        document: cpfDigits || undefined,
+      },
+    };
+
+    const utm = trackingParameters && typeof trackingParameters === 'object' ? trackingParameters as Record<string, unknown> : {};
+    const metadata: Record<string, unknown> = {};
+    if (typeof externalRef === 'string' && externalRef.trim()) metadata.externalRef = externalRef.trim();
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((k) => {
+      const v = utm[k];
+      if (typeof v === 'string' && v.trim()) metadata[k] = v.trim();
+    });
+    if (Object.keys(metadata).length > 0) payload.metadata = metadata;
+
+    console.log('Sending PIX to VumePay:', JSON.stringify(payload));
+    const response = await fetch('https://api.vumepay.com.br/api/v1/transactions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'accept': 'application/json', 'authorization': `Basic ${authToken}` },
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-Public-Key': publicKey,
+        'X-Secret-Key': secretKey,
+      },
       body: JSON.stringify(payload),
     });
 
     const data = await response.json().catch(() => ({}));
-    console.log('Payout PIX status:', response.status);
-    console.log('Payout PIX response:', JSON.stringify(data));
+    console.log('VumePay PIX status:', response.status);
+    console.log('VumePay PIX response:', JSON.stringify(data));
 
-    let innerMessage = typeof data?.message === 'string' ? data.message : JSON.stringify(data);
-    try {
-      const parsed = JSON.parse(innerMessage);
-      if (parsed && typeof parsed.message === 'string') innerMessage = parsed.message;
-    } catch {}
-
-    if (!response.ok) {
-      const isAntifraud = /SecureProxy/i.test(innerMessage || '') || response.status === 424;
-      const friendly = isAntifraud
-        ? `Não foi possível gerar o PIX no momento (antifraude). Tente novamente em instantes ou use outros dados.`
-        : `Não foi possível gerar o PIX. Tente novamente em instantes.`;
+    if (!response.ok || data?.success === false) {
+      const msg = data?.message || data?.error || 'Não foi possível gerar o PIX. Tente novamente em instantes.';
       return new Response(JSON.stringify({
         status: 'failed',
-        error: friendly,
-        attempts: [{ provider: 'payout', status: response.status, message: innerMessage }],
+        error: msg,
+        attempts: [{ provider: 'vumepay', status: response.status, message: msg }],
       }), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
 
     const tx = data?.data || data;
-    const pix = tx?.pix || tx?.paymentMethod || {};
-    const qrCodeText =
-      pix?.qrcode || pix?.code || pix?.copyPaste || pix?.copy_paste || pix?.payload || tx?.qrcode || '';
-    const qrBase64Raw =
-      pix?.qrcodeBase64 || pix?.qrCodeBase64 || pix?.base64 || pix?.image || tx?.qrCodeBase64 || '';
+    const pix = tx?.pix || {};
+    const qrCodeText = pix?.qr_code || pix?.qrCode || pix?.code || pix?.copyPaste || '';
+    const qrBase64Raw = pix?.qr_code_image || pix?.qrCodeBase64 || pix?.base64 || '';
     const qrBase64 = typeof qrBase64Raw === 'string' && qrBase64Raw.startsWith('data:')
       ? qrBase64Raw.split(',')[1] || ''
-      : qrBase64Raw;
+      : qrBase64Raw || '';
 
     if (!qrCodeText || typeof qrCodeText !== 'string' || !qrCodeText.trim()) {
       return new Response(JSON.stringify({
         status: 'failed',
         error: 'QR não retornado. Tente novamente em instantes.',
-        attempts: [{ provider: 'payout', status: response.status, message: 'QR não retornado' }],
+        attempts: [{ provider: 'vumepay', status: response.status, message: 'QR não retornado' }],
       }), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
 
     const result = {
-      provider: 'payout',
+      provider: 'vumepay',
       externalRef: typeof externalRef === 'string' ? externalRef : '',
-      transactionId: tx?.id || tx?.transactionId || tx?.identifier || '',
+      transactionId: tx?.transaction_id || tx?.id || '',
       qrCode: qrCodeText,
       qrCodeBase64: qrBase64,
       copyPaste: qrCodeText,
-      status: tx?.status || 'PENDING',
+      status: tx?.status || 'pending',
       attempts: [],
     };
 
