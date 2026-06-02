@@ -50,7 +50,7 @@ const fallbackStandaloneProducts: Product[] = standaloneProducts.map((product, i
   price: product.price,
   originalPrice: product.originalPrice,
   image: product.image,
-  images: [product.image],
+  images: product.images && product.images.length > 0 ? product.images : [product.image],
   tag: product.tag,
   description: `${product.name} com design sofisticado e excelente custo-benefício para complementar o visual.`,
   sizes: [],
