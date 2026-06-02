@@ -1,4 +1,6 @@
 import relogioImg from "@/assets/products/relogio-classic.jpg";
+import relogioChronosImg from "@/assets/products/relogio-chronos.jpg";
+import relogioPaganiImg from "@/assets/products/relogio-pagani.jpg";
 import carteiraImg from "@/assets/products/carteira-couro.jpg";
 import oculosImg from "@/assets/products/oculos-aviador.jpg";
 import cintoImg from "@/assets/products/cinto-couro.jpg";
@@ -15,6 +17,7 @@ export interface StandaloneProduct {
   price: number;
   originalPrice?: number;
   image: string;
+  images?: string[];
   tag?: string;
 }
 
@@ -23,10 +26,11 @@ export const standaloneProducts: StandaloneProduct[] = [
     id: "sp-1",
     slug: "relogio-classic-silver-masculino",
     name: "Relógio Classic Silver Masculino",
-    price: 189.90,
+    price: 97.90,
     originalPrice: 349.90,
     image: relogioImg,
-    tag: "46% OFF",
+    images: [relogioImg, relogioChronosImg, relogioPaganiImg],
+    tag: "72% OFF",
   },
   {
     id: "sp-2",
