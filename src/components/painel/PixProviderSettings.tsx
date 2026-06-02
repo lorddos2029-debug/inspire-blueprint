@@ -9,7 +9,7 @@ const PixProviderSettings = () => {
     (async () => {
       await supabase
         .from("payment_settings")
-        .update({ pix_provider: "primecash", updated_at: new Date().toISOString() })
+        .update({ pix_provider: "vumepay", updated_at: new Date().toISOString() })
         .eq("id", 1);
       setLoading(false);
     })();
