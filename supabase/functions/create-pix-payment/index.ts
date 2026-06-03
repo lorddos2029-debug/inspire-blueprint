@@ -42,9 +42,9 @@ async function getProvider(): Promise<string> {
     const key = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || Deno.env.get('SUPABASE_ANON_KEY') || '';
     const supabase = createClient(url, key);
     const { data } = await supabase.from('payment_settings').select('pix_provider').eq('id', 1).maybeSingle();
-    return (data?.pix_provider as string) || 'vumepay';
+    return (data?.pix_provider as string) || 'primecash';
   } catch {
-    return 'vumepay';
+    return 'primecash';
   }
 }
 
