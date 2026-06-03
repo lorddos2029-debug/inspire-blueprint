@@ -1,0 +1,2 @@
+ALTER TABLE public.payment_settings DROP CONSTRAINT IF EXISTS payment_settings_provider_check;
+ALTER TABLE public.payment_settings ADD CONSTRAINT payment_settings_provider_check CHECK (pix_provider IN ('payout','primecash','vumepay'));
