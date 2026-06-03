@@ -13,7 +13,7 @@ const PROVIDERS: { id: Provider; name: string; host: string; description: string
 const PixProviderSettings = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [current, setCurrent] = useState<Provider>("vumepay");
+  const [current, setCurrent] = useState<Provider>("primecash");
 
   useEffect(() => {
     (async () => {
