@@ -236,10 +236,12 @@ serve(async (req) => {
     console.log('PIX provider selected:', provider);
 
     let outcome;
-    if (provider === 'primecash' || provider === 'payout') {
-      outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl });
-    } else {
+    if (provider === 'payout') {
+      outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'payout', secretEnvKey: 'PAYOUT_SECRET_KEY' });
+    } else if (provider === 'vumepay') {
       outcome = await callVumePay({ customer, items, amount, externalRef, trackingParameters });
+    } else {
+      outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'primecash', secretEnvKey: 'PRIMECASH_SECRET_KEY' });
     }
 
     if (!outcome.ok) {
