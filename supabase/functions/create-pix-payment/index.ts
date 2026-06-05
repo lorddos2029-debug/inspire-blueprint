@@ -165,25 +165,25 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
     body: JSON.stringify(payload),
   });
   const data = await response.json().catch(() => ({}));
-  console.log('PrimeCash PIX status:', response.status, 'response:', JSON.stringify(data));
+  console.log(`${providerLabel} PIX status:`, response.status, 'response:', JSON.stringify(data));
 
   if (!response.ok) {
     let inner = typeof data?.message === 'string' ? data.message : JSON.stringify(data);
     try { const p = JSON.parse(inner); if (p?.message) inner = p.message; } catch {}
     const isAntifraud = /SecureProxy/i.test(inner || '') || response.status === 424;
     const friendly = isAntifraud ? 'Não foi possível gerar o PIX no momento (antifraude). Tente novamente em instantes.' : 'Não foi possível gerar o PIX. Tente novamente em instantes.';
-    return { ok: false, error: friendly, attempt: { provider: 'primecash', status: response.status, message: inner } };
+    return { ok: false, error: friendly, attempt: { provider: providerLabel, status: response.status, message: inner } };
   }
   const tx = data?.data || data;
   const pix = tx?.pix || tx?.paymentMethod || {};
   const qrCodeText = pix?.qrcode || pix?.code || pix?.copyPaste || pix?.copy_paste || pix?.payload || tx?.qrcode || '';
   const qrBase64Raw = pix?.qrcodeBase64 || pix?.qrCodeBase64 || pix?.base64 || pix?.image || tx?.qrCodeBase64 || '';
   const qrBase64 = typeof qrBase64Raw === 'string' && qrBase64Raw.startsWith('data:') ? qrBase64Raw.split(',')[1] || '' : qrBase64Raw;
-  if (!qrCodeText) return { ok: false, error: 'QR não retornado.', attempt: { provider: 'primecash', status: response.status, message: 'QR não retornado' } };
+  if (!qrCodeText) return { ok: false, error: 'QR não retornado.', attempt: { provider: providerLabel, status: response.status, message: 'QR não retornado' } };
   return {
     ok: true,
     result: {
-      provider: 'primecash',
+      provider: providerLabel,
       externalRef: typeof externalRef === 'string' ? externalRef : '',
       transactionId: tx?.id || tx?.transactionId || tx?.identifier || '',
       qrCode: qrCodeText,
