@@ -8,7 +8,7 @@ type Provider = "primecash" | "payout" | "vumepay";
 
 const PROVIDERS: { id: Provider; name: string; host: string; description: string }[] = [
   { id: "primecash", name: "PrimeCash", host: "api.primecashbrasil.com", description: "Adquirente principal" },
-  { id: "payout", name: "Payout", host: "api.primecashbrasil.com", description: "Adquirente alternativa (chave Payout)" },
+  { id: "payout", name: "Payout", host: "api.payoutbr.com.br", description: "Adquirente Payout" },
   { id: "vumepay", name: "VumePay", host: "api.vumepay.com.br", description: "Adquirente VumePay" },
 ];
 
