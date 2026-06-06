@@ -50,14 +50,21 @@ const PixProviderSettings = () => {
     setSaving(true);
     const { error } = await supabase
       .from("payment_settings")
-      .update({ pix_provider: provider, updated_at: new Date().toISOString() })
-      .eq("id", 1);
+      .upsert({ id: 1, pix_provider: provider, updated_at: new Date().toISOString() }, { onConflict: "id" });
     setSaving(false);
     if (error) {
-      toast.error("Erro ao salvar adquirente");
+      console.error("payment_settings upsert error:", error);
+      toast.error(`Erro ao salvar adquirente: ${error.message}`);
       return;
     }
-    setCurrent(provider);
+    // Confirma lendo do banco
+    const { data: check } = await supabase.from("payment_settings").select("pix_provider").eq("id", 1).maybeSingle();
+    const persisted = normalizeProvider(check?.pix_provider as string);
+    setCurrent(persisted);
+    if (persisted !== provider) {
+      toast.error("A alteração não foi persistida. Verifique permissões.");
+      return;
+    }
     toast.success(`Adquirente alterada: ${PROVIDERS.find(p => p.id === provider)?.name}`);
   };
 
