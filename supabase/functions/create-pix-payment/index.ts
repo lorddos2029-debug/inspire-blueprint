@@ -111,9 +111,10 @@ async function callVumePay(params: { customer: any; items: any[]; amount: number
   };
 }
 
-async function callPrimeCash(params: { customer: any; items: any[]; amount: number; shipping?: any; externalRef?: string; trackingParameters?: any; clientIp: string; webhookUrl: string; providerLabel?: string; secretEnvKey?: string }) {
+async function callPrimeCash(params: { customer: any; items: any[]; amount: number; shipping?: any; externalRef?: string; trackingParameters?: any; clientIp: string; webhookUrl: string; providerLabel?: string; secretEnvKey?: string; apiUrl?: string }) {
   const envKey = params.secretEnvKey || 'PRIMECASH_SECRET_KEY';
   const providerLabel = params.providerLabel || 'primecash';
+  const apiUrl = params.apiUrl || 'https://api.primecashbrasil.com/v1/transactions';
   const key = Deno.env.get(envKey)?.trim();
   if (!key) throw new Error(`${envKey} is not configured`);
   const { customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl } = params;
@@ -159,7 +160,7 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
   if (Object.keys(utmObj).length > 0) payload.utm = utmObj;
 
   const authToken = btoa(`${key}:x`);
-  const response = await fetch('https://api.primecashbrasil.com/v1/transactions', {
+  const response = await fetch(apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'accept': 'application/json', 'authorization': `Basic ${authToken}` },
     body: JSON.stringify(payload),
@@ -237,7 +238,7 @@ serve(async (req) => {
 
     let outcome;
     if (provider === 'payout') {
-      outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'payout', secretEnvKey: 'PAYOUT_SECRET_KEY' });
+      outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'payout', secretEnvKey: 'PAYOUT_SECRET_KEY', apiUrl: 'https://api.payoutbr.com.br/v1/transactions' });
     } else if (provider === 'vumepay') {
       outcome = await callVumePay({ customer, items, amount, externalRef, trackingParameters });
     } else {
