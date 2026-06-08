@@ -27,6 +27,14 @@ import mondialL99Review2 from "@/assets/products-bc/mondial-l99-review-2.jpg";
 import mondialL99Review3 from "@/assets/products-bc/mondial-l99-review-3.jpg";
 import mondialL99Review4 from "@/assets/products-bc/mondial-l99-review-4.jpg";
 import mondialL99Review5 from "@/assets/products-bc/mondial-l99-review-5.jpg";
+import idaliR85 from "@/assets/products-bc/idali/review-85.png";
+import idaliR86 from "@/assets/products-bc/idali/review-86.png";
+import idaliR87 from "@/assets/products-bc/idali/review-87.png";
+import idaliR88 from "@/assets/products-bc/idali/review-88.png";
+import idaliR89 from "@/assets/products-bc/idali/review-89.png";
+import idaliR90 from "@/assets/products-bc/idali/review-90.png";
+import idaliR91 from "@/assets/products-bc/idali/review-91.png";
+import idaliR92 from "@/assets/products-bc/idali/review-92.png";
 
 export interface Review {
   name: string;
