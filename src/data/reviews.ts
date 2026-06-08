@@ -341,6 +341,19 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Rafael Quintela", date: "Mar 2026", rating: 5, text: "Entrega rápida da BelaCasa, embalagem caprichada, produto original Mondial com nota fiscal. Funcionando perfeitamente há 2 meses, sem reclamação. Já indiquei pra família toda." },
     ],
   },
+  // 21 — Aspirador IDALI LIFE
+  21: {
+    total: 1247,
+    avg: 4.9,
+    reviews: [
+      { name: "Carolina Mendes", date: "Mai 2026", rating: 5, text: "Esse robô mudou minha vida! Programo ele de manhã antes de sair pro trabalho e quando chego em casa o chão tá impecável. Os sensores anti-queda funcionam perfeitamente, tenho escada e ele nunca caiu. Vale cada centavo!" },
+      { name: "Patrícia Rocha", date: "Abr 2026", rating: 5, text: "Tenho 2 gatos e um cachorro, vivia com pelo por toda a casa. Comprei o IDALI LIFE e agora passo ele 2x ao dia pelo app. Sucção forte mesmo, recolhe tudo. A função MOP é incrível, deixa o piso brilhando." },
+      { name: "Juliana Almeida", date: "Abr 2026", rating: 5, text: "Conectei na Alexa em 5 minutos seguindo o manual. Agora é só falar 'Alexa, ligue o aspirador' e ele sai limpando. Volta sozinho pra base quando a bateria acaba. Tecnologia que realmente funciona!" },
+      { name: "Fernanda Lima", date: "Mar 2026", rating: 5, text: "Por R$119 não tem como reclamar. Passa embaixo do sofá e da cama onde a vassoura não alcançava. As 2 escovas laterais pegam direitinho a poeira dos cantos e do rodapé." },
+      { name: "Mariana Costa", date: "Mar 2026", rating: 5, text: "Cuido da minha mãe idosa e esse robô virou meu braço direito. Enquanto fico com ela, o IDALI faz a faxina sozinho. Silencioso, ela nem reclama do barulho. Recomendadíssimo." },
+      { name: "Beatriz Andrade", date: "Fev 2026", rating: 5, text: "A função 3 em 1 é o diferencial. Ele varre, aspira e passa pano de uma vez só. Acoplei o reservatório de água com o pano de microfibra e ficou perfeito no porcelanato. Compra certeira!" },
+    ],
+  },
 };
 
 const defaultReviews: Review[] = [

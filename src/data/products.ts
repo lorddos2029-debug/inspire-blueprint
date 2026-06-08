@@ -59,6 +59,13 @@ import mondialTapa from "@/assets/products-bc/mondial-l99-tapa.png";
 import mondialLaminas from "@/assets/products-bc/mondial-l99-laminas.png";
 import mondialPies from "@/assets/products-bc/mondial-l99-pies.png";
 import mondialDimensoes from "@/assets/products-bc/mondial-l99-dimensoes.png";
+import idali76 from "@/assets/products-bc/idali/76.png";
+import idali77 from "@/assets/products-bc/idali/77.png";
+import idali80 from "@/assets/products-bc/idali/80.png";
+import idali81 from "@/assets/products-bc/idali/81.png";
+import idali82 from "@/assets/products-bc/idali/82.png";
+import idali83 from "@/assets/products-bc/idali/83.png";
+import idali84 from "@/assets/products-bc/idali/84.png";
 
 export interface Product {
   id: number;
@@ -406,5 +413,18 @@ export const products: Product[] = [
       { label: "Preto", colors: ["#1a1a1a"], image: mondialPreto },
       { label: "Vermelho", colors: ["#c4161c"], image: mondialVermelho },
     ],
+  },
+  {
+    id: 21,
+    slug: "aspirador-po-robo-inteligente-idali-life-sensores-anti-queda",
+    name: "Aspirador de Pó Para Casa Robô Inteligente Com Sensores Anti-queda IDALI LIFE",
+    price: 119.9,
+    originalPrice: 599.9,
+    image: idali76,
+    images: [idali76, idali83, idali81, idali82, idali84, idali77, idali80],
+    tag: "80% OFF",
+    description:
+      "Aspirador de Pó Robô Inteligente IDALI LIFE 3 em 1: varre, aspira e passa pano ao mesmo tempo, garantindo limpeza profunda em pisos, carpetes baixos e tapetes finos. Conta com sensores anti-queda de alta precisão que detectam escadas, desníveis e obstáculos, protegendo o robô e a sua casa enquanto trabalha sozinho. Função MOP integrada — basta acoplar o reservatório de água com pano de microfibra e ele passa pano enquanto aspira, eliminando manchas leves e mantendo o piso brilhando. Equipado com 2 escovas laterais giratórias que alcançam cantos, frestas, rodapés e pés de móveis, e sucção potente que retira poeira, fios de cabelo, pelos de pets e migalhas com facilidade. Conexão Wi-Fi e Bluetooth 2.4G compatível com o aplicativo Tuya/Smart Life, Amazon Alexa e Google Home — controle por voz com comandos simples como 'Alexa, ligue o aspirador'. Sistema de Recarga Automática: quando a bateria está fraca o robô retorna sozinho para a base de carregamento, sem precisar da sua ajuda. Design ultrafino e leve, passa embaixo de sofás, camas e armários sem dificuldade. Bateria de longa duração para limpar a casa inteira em uma única carga. Operação silenciosa, ideal para usar com bebês, crianças e pets em casa. Acompanha: 1 robô aspirador IDALI LIFE, 1 base de carregamento, 2 escovas laterais sobressalentes, 1 reservatório de água + pano de microfibra MOP, 1 controle remoto, 1 manual em português. Cor: Preto Premium.",
+    sizes: [],
   },
 ];
