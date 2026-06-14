@@ -1166,26 +1166,28 @@ const BulkDeliveryFailedBar = ({
   // Antes era possível selecionar status iniciais (pedido_enviado, em_transito, etc.),
   // o que disparava o e-mail para clientes cujo pedido ainda nem estava perto de chegar.
   const TRACKING_OPTIONS: { value: string; label: string }[] = [
+    { value: "pedido_recebido", label: "Pedido recebido" },
+    { value: "pix_gerado", label: "PIX gerado" },
+    { value: "pagamento_aprovado", label: "Pagamento aprovado" },
+    { value: "em_separacao", label: "Em separação" },
     { value: "pedido_enviado", label: "Pedido enviado" },
     { value: "em_transito", label: "Em trânsito" },
     { value: "saiu_para_entrega", label: "Saiu para entrega" },
+    { value: "entregue", label: "Entregue" },
   ];
-  const ALLOWED_DELIVERY_FAILED_STATUSES = ["pedido_enviado", "em_transito", "saiu_para_entrega"];
-  const [selectedStatuses, setSelectedStatuses] = useState<string[]>(["pedido_enviado", "em_transito", "saiu_para_entrega"]);
+  const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
   const toggleStatus = (v: string) => {
-    if (!ALLOWED_DELIVERY_FAILED_STATUSES.includes(v)) return;
     setSelectedStatuses((cur) => (cur.includes(v) ? cur.filter((s) => s !== v) : [...cur, v]));
   };
 
   // Só permite envio em massa quando o filtro de data está restrito (não "Todos")
   const dateRestricted = periodFilter !== "all";
-  // Apenas pedidos PAGOS (status approved/paid) e com e-mail + status próximo da entrega.
-  // Hard guard: mesmo que selectedStatuses esteja vazio, só consideramos status permitidos.
+  // Apenas pedidos PAGOS (status approved/paid) e com e-mail.
+  // Se nenhum status estiver selecionado, envia para TODOS os pedidos pagos do período.
   const targets = orders.filter(
     (o) =>
       !!o.customer_email &&
       (o.payment_status === "approved" || o.payment_status === "paid") &&
-      ALLOWED_DELIVERY_FAILED_STATUSES.includes((o as any).tracking_status) &&
       (selectedStatuses.length === 0 || selectedStatuses.includes((o as any).tracking_status))
   );
 
