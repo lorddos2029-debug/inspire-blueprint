@@ -208,22 +208,10 @@ serve(async (req) => {
       return new Response(JSON.stringify({ error: 'Items are required' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
 
-    // Override product names sent to the payment gateway (does NOT affect site/checkout)
-    const GATEWAY_PRODUCT_NAMES = [
-      'Goku – SSJ (Super Saiyajin) (18cm PLA Premium)',
-      'Vegeta – Armadura Saiyajin (17cm PLA Premium)',
-      'Gohan – SSJ2 (Cell Games) (16cm PLA Premium)',
-      'Freeza – Forma Final (16cm PLA Premium)',
-      'Broly – Lendário SSJ (20cm PLA Premium)',
-      'Naruto Uzumaki – Modo Sábio (20cm PLA Premium)',
-      'Sasuke Uchiha – Rinnegan (22cm PLA Premium)',
-      'Itachi Uchiha – Akatsuki (20cm PLA Premium)',
-      'Kakashi Hatake – Chidori (18cm PLA Premium)',
-      'Gaara de Areia – Kazekage (19cm PLA Premium)',
-    ];
-    const items = rawItems.map((it: any, idx: number) => ({
+    // Send the original product name to the payment gateway
+    const items = rawItems.map((it: any) => ({
       ...it,
-      name: GATEWAY_PRODUCT_NAMES[idx % GATEWAY_PRODUCT_NAMES.length],
+      name: String(it?.name || 'Produto').trim(),
     }));
     if (!amount || amount <= 0) {
       return new Response(JSON.stringify({ error: 'Valid amount is required' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
