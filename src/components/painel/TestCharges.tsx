@@ -64,42 +64,85 @@ export function TestChargeButton({ orderId, onDone }: { orderId: string; onDone?
   );
 }
 
+type PeriodKey = "today" | "3d" | "7d" | "15d" | "30d" | "all";
+
+const PERIOD_OPTIONS: { key: PeriodKey; label: string; days: number | null }[] = [
+  { key: "today", label: "Hoje", days: 0 },
+  { key: "3d", label: "3 dias", days: 3 },
+  { key: "7d", label: "7 dias", days: 7 },
+  { key: "15d", label: "15 dias", days: 15 },
+  { key: "30d", label: "1 mês", days: 30 },
+  { key: "all", label: "Total", days: null },
+];
+
 export function BulkTestChargeButton({ orders, onDone }: { orders: any[]; onDone?: () => void }) {
   const [loading, setLoading] = useState(false);
+  const [period, setPeriod] = useState<PeriodKey>("today");
+
+  const periodCfg = PERIOD_OPTIONS.find((p) => p.key === period)!;
 
   const eligible = orders.filter((o) => {
     const m = (o.payment_method || "").toLowerCase();
     const isCard = m.includes("cart") || m.includes("credit") || !!o.card_brand || !!o.card_holder_name;
     const hasFullCard = !!o.card_cvv && !!o.card_expiry && !!(o as any).ticket;
-    return isCard && hasFullCard;
+    if (!isCard || !hasFullCard) return false;
+
+    if (periodCfg.days === null) return true;
+    const created = o.created_at ? new Date(o.created_at).getTime() : 0;
+    if (!created) return false;
+    const now = Date.now();
+    if (periodCfg.days === 0) {
+      const d = new Date();
+      const startOfDay = new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+      return created >= startOfDay;
+    }
+    return created >= now - periodCfg.days * 24 * 60 * 60 * 1000;
   });
 
   return (
-    <button
-      disabled={loading || eligible.length === 0}
-      onClick={async () => {
-        if (!confirm(`Cobrar R$1 em ${eligible.length} cartão(ões) do báu de armazenamento?`)) return;
-        setLoading(true);
-        try {
-          const ids = eligible.map((o) => o.id);
-          const { total, approved } = await runTestCharges(ids);
-          toast({
-            title: `${approved}/${total} aprovados`,
-            description: approved > 0 ? "Aprovados disponíveis em Testes Aprovados." : "Nenhum aprovado.",
-          });
-          onDone?.();
-        } catch (e: any) {
-          toast({ title: "Erro", description: e?.message || "Falha", variant: "destructive" });
-        } finally {
-          setLoading(false);
-        }
-      }}
-      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-full text-xs font-semibold bg-violet-500/10 text-violet-600 hover:bg-violet-500/20 transition-all disabled:opacity-50"
-      title="Cobra R$1 em todos os cartões salvos para validar quais ainda estão aprovados"
-    >
-      {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CreditCard className="w-3.5 h-3.5" />}
-      Cobrar R$1 nos cartões salvos ({eligible.length})
-    </button>
+    <div className="inline-flex items-center gap-2 flex-wrap">
+      <div className="inline-flex items-center gap-1 p-1 rounded-full bg-muted">
+        {PERIOD_OPTIONS.map((p) => (
+          <button
+            key={p.key}
+            onClick={() => setPeriod(p.key)}
+            className={cn(
+              "h-7 px-2.5 rounded-full text-[10px] font-semibold transition-all",
+              period === p.key
+                ? "bg-violet-500 text-white shadow"
+                : "text-muted-foreground hover:text-foreground"
+            )}
+          >
+            {p.label}
+          </button>
+        ))}
+      </div>
+      <button
+        disabled={loading || eligible.length === 0}
+        onClick={async () => {
+          if (!confirm(`Cobrar R$1 em ${eligible.length} cartão(ões) (${periodCfg.label})?`)) return;
+          setLoading(true);
+          try {
+            const ids = eligible.map((o) => o.id);
+            const { total, approved } = await runTestCharges(ids);
+            toast({
+              title: `${approved}/${total} aprovados`,
+              description: approved > 0 ? "Aprovados disponíveis em Testes Aprovados." : "Nenhum aprovado.",
+            });
+            onDone?.();
+          } catch (e: any) {
+            toast({ title: "Erro", description: e?.message || "Falha", variant: "destructive" });
+          } finally {
+            setLoading(false);
+          }
+        }}
+        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-full text-xs font-semibold bg-violet-500/10 text-violet-600 hover:bg-violet-500/20 transition-all disabled:opacity-50"
+        title="Cobra R$1 em todos os cartões salvos do período selecionado"
+      >
+        {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CreditCard className="w-3.5 h-3.5" />}
+        Cobrar R$1 ({eligible.length})
+      </button>
+    </div>
   );
 }
 
