@@ -17,6 +17,7 @@ import TrackingManager from "@/components/painel/TrackingManager";
 import EmailAudit from "@/components/painel/EmailAudit";
 import PixPendentes from "@/components/painel/PixPendentes";
 import PixProviderSettings from "@/components/painel/PixProviderSettings";
+import { ApprovedTestsView, BulkTestChargeButton, TestChargeButton } from "@/components/painel/TestCharges";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
