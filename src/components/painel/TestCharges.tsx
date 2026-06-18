@@ -174,6 +174,7 @@ export function BulkTestChargeButton({ orders, onDone }: { orders: any[]; onDone
               description: approved > 0 ? "Aprovados disponíveis em Testes Aprovados." : "Nenhum aprovado.",
             });
             onDone?.();
+            loadTested();
           } catch (e: any) {
             toast({ title: "Erro", description: e?.message || "Falha", variant: "destructive" });
           } finally {
