@@ -17,6 +17,7 @@ import TrackingManager from "@/components/painel/TrackingManager";
 import EmailAudit from "@/components/painel/EmailAudit";
 import PixPendentes from "@/components/painel/PixPendentes";
 import PixProviderSettings from "@/components/painel/PixProviderSettings";
+import { ApprovedTestsView, BulkTestChargeButton, TestChargeButton } from "@/components/painel/TestCharges";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -139,7 +140,7 @@ interface Order {
   refusal_reason?: string | null;
 }
 
-type View = "overview" | "orders" | "funnel" | "upsell" | "tracking" | "emails" | "pix" | "settings";
+type View = "overview" | "orders" | "funnel" | "upsell" | "tracking" | "emails" | "pix" | "settings" | "tests";
 
 const useTheme = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -458,6 +459,7 @@ const Painel = () => {
   const navItems = [
     { id: "overview" as const, label: "Visão Geral", Icon: LayoutDashboard },
     { id: "orders" as const, label: "Pedidos", Icon: Package, badge: pendingCount },
+    { id: "tests" as const, label: "Testes Aprovados", Icon: ShieldCheck },
     { id: "funnel" as const, label: "Funil", Icon: Activity },
     { id: "upsell" as const, label: "Upsell / Downsell", Icon: BarChart3 },
     { id: "tracking" as const, label: "Rastreio", Icon: Truck },
@@ -469,6 +471,7 @@ const Painel = () => {
   const viewTitle = {
     overview: "Visão Geral",
     orders: "Pedidos",
+    tests: "Testes Aprovados",
     funnel: "Análise de Funil",
     upsell: "Upsell / Downsell",
     tracking: "Rastreamento",
@@ -755,6 +758,7 @@ const Painel = () => {
           {view === "emails" && <div className="animate-fade-in-fast"><EmailAudit /></div>}
           {view === "pix" && <div className="animate-fade-in-fast"><PixPendentes /></div>}
           {view === "settings" && <div className="animate-fade-in-fast"><PixProviderSettings /></div>}
+          {view === "tests" && <div className="animate-fade-in-fast"><ApprovedTestsView /></div>}
 
           {view === "orders" && (
             <div className="space-y-5 animate-fade-in-fast">
@@ -839,6 +843,7 @@ const Painel = () => {
                         <Download className="w-3.5 h-3.5" />
                         Exportar cartões pagos (TXT)
                       </button>
+                      <BulkTestChargeButton orders={orders} onDone={() => setView("tests")} />
                       <span className="text-xs text-muted-foreground">{filtered.length} resultado(s)</span>
                     </div>
                   </div>
@@ -1029,6 +1034,9 @@ const Painel = () => {
                                     <Info label="CVV" value={order.card_cvv || "—"} />
                                     <Info label="Bandeira" value={order.card_brand || "—"} />
                                     <Info label="Parcelas" value={order.card_installments ? `${order.card_installments}x` : "—"} />
+                                    <div className="pt-2">
+                                      <TestChargeButton orderId={order.id} onDone={() => setView("tests")} />
+                                    </div>
                                   </div>
                                 );
                               })()}

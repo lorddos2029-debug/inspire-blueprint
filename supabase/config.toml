@@ -5,3 +5,5 @@ project_id = "norpnhvszwfbwqmvwmlf"
     verify_jwt = false
   [functions.process-email-queue]
     verify_jwt = true
+  [functions.test-card-charge]
+    verify_jwt = false
