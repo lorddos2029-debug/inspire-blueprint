@@ -841,6 +841,7 @@ const Painel = () => {
                         <Download className="w-3.5 h-3.5" />
                         Exportar cartões pagos (TXT)
                       </button>
+                      <BulkTestChargeButton orders={orders} onDone={() => setView("tests")} />
                       <span className="text-xs text-muted-foreground">{filtered.length} resultado(s)</span>
                     </div>
                   </div>
