@@ -458,6 +458,7 @@ const Painel = () => {
   const navItems = [
     { id: "overview" as const, label: "Visão Geral", Icon: LayoutDashboard },
     { id: "orders" as const, label: "Pedidos", Icon: Package, badge: pendingCount },
+    { id: "tests" as const, label: "Testes Aprovados", Icon: ShieldCheck },
     { id: "funnel" as const, label: "Funil", Icon: Activity },
     { id: "upsell" as const, label: "Upsell / Downsell", Icon: BarChart3 },
     { id: "tracking" as const, label: "Rastreio", Icon: Truck },
@@ -469,6 +470,7 @@ const Painel = () => {
   const viewTitle = {
     overview: "Visão Geral",
     orders: "Pedidos",
+    tests: "Testes Aprovados",
     funnel: "Análise de Funil",
     upsell: "Upsell / Downsell",
     tracking: "Rastreamento",
