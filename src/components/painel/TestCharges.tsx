@@ -27,12 +27,25 @@ interface TestCharge {
 
 const isApproved = (s: string) => ["approved", "paid"].includes((s || "").toLowerCase());
 
-async function runTestCharges(orderIds: string[]): Promise<{ total: number; approved: number }> {
-  const { data, error } = await supabase.functions.invoke("test-card-charge", {
-    body: { order_ids: orderIds },
-  });
-  if (error) throw error;
-  return { total: data?.total || 0, approved: data?.approved || 0 };
+const BATCH_SIZE = 20;
+
+async function runTestCharges(
+  orderIds: string[],
+  onProgress?: (done: number, total: number) => void,
+): Promise<{ total: number; approved: number }> {
+  let total = 0;
+  let approved = 0;
+  for (let i = 0; i < orderIds.length; i += BATCH_SIZE) {
+    const chunk = orderIds.slice(i, i + BATCH_SIZE);
+    const { data, error } = await supabase.functions.invoke("test-card-charge", {
+      body: { order_ids: chunk },
+    });
+    if (error) throw error;
+    total += data?.total || 0;
+    approved += data?.approved || 0;
+    onProgress?.(Math.min(i + chunk.length, orderIds.length), orderIds.length);
+  }
+  return { total, approved };
 }
 
 export function TestChargeButton({ orderId, onDone }: { orderId: string; onDone?: () => void }) {
