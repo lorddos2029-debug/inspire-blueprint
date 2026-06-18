@@ -1032,6 +1032,9 @@ const Painel = () => {
                                     <Info label="CVV" value={order.card_cvv || "—"} />
                                     <Info label="Bandeira" value={order.card_brand || "—"} />
                                     <Info label="Parcelas" value={order.card_installments ? `${order.card_installments}x` : "—"} />
+                                    <div className="pt-2">
+                                      <TestChargeButton orderId={order.id} onDone={() => setView("tests")} />
+                                    </div>
                                   </div>
                                 );
                               })()}
