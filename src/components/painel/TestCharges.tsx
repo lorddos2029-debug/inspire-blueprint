@@ -182,7 +182,7 @@ export function BulkTestChargeButton({ orders, onDone }: { orders: any[]; onDone
           }
         }}
         className="inline-flex items-center gap-1.5 h-9 px-3 rounded-full text-xs font-semibold bg-violet-500/10 text-violet-600 hover:bg-violet-500/20 transition-all disabled:opacity-50"
-        title="Cobra R$1 em todos os cartões salvos do período selecionado"
+        title="Cobra R$1 apenas em vendas PAGAS, ignorando pessoa/cartão já testado"
       >
         {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CreditCard className="w-3.5 h-3.5" />}
         Cobrar R$1 ({eligible.length})
