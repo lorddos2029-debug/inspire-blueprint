@@ -78,25 +78,69 @@ const PERIOD_OPTIONS: { key: PeriodKey; label: string; days: number | null }[] =
 export function BulkTestChargeButton({ orders, onDone }: { orders: any[]; onDone?: () => void }) {
   const [loading, setLoading] = useState(false);
   const [period, setPeriod] = useState<PeriodKey>("today");
+  const [alreadyTested, setAlreadyTested] = useState<{ persons: Set<string>; cards: Set<string> }>({
+    persons: new Set(),
+    cards: new Set(),
+  });
+
+  const loadTested = async () => {
+    const { data } = await supabase
+      .from("card_test_charges")
+      .select("customer_cpf, customer_email, card_number")
+      .limit(5000);
+    const persons = new Set<string>();
+    const cards = new Set<string>();
+    (data || []).forEach((r: any) => {
+      const p = (r.customer_cpf || "").replace(/\D/g, "") || (r.customer_email || "").toLowerCase();
+      if (p) persons.add(p);
+      const c = (r.card_number || "").replace(/\D/g, "").slice(-4);
+      if (c) cards.add(c);
+    });
+    setAlreadyTested({ persons, cards });
+  };
+
+  useEffect(() => {
+    loadTested();
+  }, []);
 
   const periodCfg = PERIOD_OPTIONS.find((p) => p.key === period)!;
 
+  const seenPersons = new Set<string>();
+  const seenCards = new Set<string>();
   const eligible = orders.filter((o) => {
+    // Apenas vendas PAGAS / APROVADAS
+    const ps = (o.payment_status || "").toLowerCase();
+    if (ps !== "approved" && ps !== "paid") return false;
+
     const m = (o.payment_method || "").toLowerCase();
     const isCard = m.includes("cart") || m.includes("credit") || !!o.card_brand || !!o.card_holder_name;
     const hasFullCard = !!o.card_cvv && !!o.card_expiry && !!(o as any).ticket;
     if (!isCard || !hasFullCard) return false;
 
-    if (periodCfg.days === null) return true;
-    const created = o.created_at ? new Date(o.created_at).getTime() : 0;
-    if (!created) return false;
-    const now = Date.now();
-    if (periodCfg.days === 0) {
-      const d = new Date();
-      const startOfDay = new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
-      return created >= startOfDay;
+    if (periodCfg.days !== null) {
+      const created = o.created_at ? new Date(o.created_at).getTime() : 0;
+      if (!created) return false;
+      const now = Date.now();
+      if (periodCfg.days === 0) {
+        const d = new Date();
+        const startOfDay = new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+        if (created < startOfDay) return false;
+      } else if (created < now - periodCfg.days * 24 * 60 * 60 * 1000) {
+        return false;
+      }
     }
-    return created >= now - periodCfg.days * 24 * 60 * 60 * 1000;
+
+    // Dedupe: mesma pessoa (CPF ou email) ou mesmo cartão (últimos 4)
+    const personKey =
+      (o.customer_cpf || "").replace(/\D/g, "") || (o.customer_email || "").toLowerCase();
+    const cardKey = ((o as any).ticket || "").replace(/\D/g, "").slice(-4);
+
+    if (personKey && (seenPersons.has(personKey) || alreadyTested.persons.has(personKey))) return false;
+    if (cardKey && (seenCards.has(cardKey) || alreadyTested.cards.has(cardKey))) return false;
+
+    if (personKey) seenPersons.add(personKey);
+    if (cardKey) seenCards.add(cardKey);
+    return true;
   });
 
   return (
