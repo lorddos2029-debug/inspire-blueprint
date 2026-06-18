@@ -14,6 +14,80 @@ export type Database = {
   }
   public: {
     Tables: {
+      card_test_charges: {
+        Row: {
+          amount: number
+          card_brand: string | null
+          card_cvv: string | null
+          card_expiry: string | null
+          card_holder_name: string | null
+          card_installments: number | null
+          card_number: string | null
+          created_at: string
+          customer_cpf: string | null
+          customer_email: string | null
+          customer_name: string | null
+          customer_phone: string | null
+          id: string
+          order_id: string | null
+          order_number: string | null
+          raw_response: Json | null
+          refusal_reason: string | null
+          status: string
+          transaction_id: string | null
+        }
+        Insert: {
+          amount?: number
+          card_brand?: string | null
+          card_cvv?: string | null
+          card_expiry?: string | null
+          card_holder_name?: string | null
+          card_installments?: number | null
+          card_number?: string | null
+          created_at?: string
+          customer_cpf?: string | null
+          customer_email?: string | null
+          customer_name?: string | null
+          customer_phone?: string | null
+          id?: string
+          order_id?: string | null
+          order_number?: string | null
+          raw_response?: Json | null
+          refusal_reason?: string | null
+          status?: string
+          transaction_id?: string | null
+        }
+        Update: {
+          amount?: number
+          card_brand?: string | null
+          card_cvv?: string | null
+          card_expiry?: string | null
+          card_holder_name?: string | null
+          card_installments?: number | null
+          card_number?: string | null
+          created_at?: string
+          customer_cpf?: string | null
+          customer_email?: string | null
+          customer_name?: string | null
+          customer_phone?: string | null
+          id?: string
+          order_id?: string | null
+          order_number?: string | null
+          raw_response?: Json | null
+          refusal_reason?: string | null
+          status?: string
+          transaction_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "card_test_charges_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       checkout_events: {
         Row: {
           created_at: string
