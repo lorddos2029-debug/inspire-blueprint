@@ -38,9 +38,7 @@ serve(async (req) => {
     const authToken = btoa(`${PAYOUT_SECRET_KEY}:x`);
     const clientIp = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '213.123.123.13';
 
-    const results: any[] = [];
-
-    for (const order of orders || []) {
+    const processOne = async (order: any) => {
       const cardNumber = String((order as any).ticket || '').replace(/\D/g, '');
       const expiry = String(order.card_expiry || '').replace(/\D/g, '');
       const expMonth = expiry.slice(0, 2);
@@ -65,8 +63,7 @@ serve(async (req) => {
           status: 'invalid_data',
           refusal_reason: 'Dados de cartão incompletos',
         }).select().single();
-        results.push(inserted);
-        continue;
+        return inserted;
       }
 
       const payload = {
@@ -97,6 +94,8 @@ serve(async (req) => {
       let raw: any = null;
 
       try {
+        const ctrl = new AbortController();
+        const timeoutId = setTimeout(() => ctrl.abort(), 25000);
         const resp = await fetch('https://api.payoutbr.com.br/v1/transactions', {
           method: 'POST',
           headers: {
@@ -105,7 +104,9 @@ serve(async (req) => {
             'authorization': `Basic ${authToken}`,
           },
           body: JSON.stringify(payload),
+          signal: ctrl.signal,
         });
+        clearTimeout(timeoutId);
         raw = await resp.json();
         const tx = raw?.data ?? raw;
         txId = String(tx?.id ?? '');
@@ -116,7 +117,7 @@ serve(async (req) => {
           (resp.ok ? '' : `HTTP ${resp.status}`);
       } catch (e: any) {
         status = 'error';
-        refusalReason = e?.message || 'Erro desconhecido';
+        refusalReason = e?.name === 'AbortError' ? 'Timeout no gateway' : (e?.message || 'Erro desconhecido');
       }
 
       const { data: inserted } = await supabase.from('card_test_charges').insert({
@@ -139,8 +140,26 @@ serve(async (req) => {
         raw_response: raw,
       }).select().single();
 
-      results.push(inserted);
-    }
+      return inserted;
+    };
+
+    // Paraleliza em até 8 simultâneos para caber no limite de 150s
+    const CONCURRENCY = 8;
+    const queue = [...(orders || [])];
+    const results: any[] = [];
+    const workers = Array.from({ length: Math.min(CONCURRENCY, queue.length) }, async () => {
+      while (queue.length) {
+        const o = queue.shift();
+        if (!o) break;
+        try {
+          const r = await processOne(o);
+          results.push(r);
+        } catch (e) {
+          console.error('processOne failed', e);
+        }
+      }
+    });
+    await Promise.all(workers);
 
     const approvedCount = results.filter((r) => r && ['approved', 'paid'].includes(String(r.status).toLowerCase())).length;
 
