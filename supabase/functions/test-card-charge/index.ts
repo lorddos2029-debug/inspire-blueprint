@@ -22,7 +22,10 @@ serve(async (req) => {
     const SERVICE_ROLE = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
-    const { order_ids } = await req.json();
+    const body = await req.json();
+    const { order_ids, amount: amountIn, item_title: itemIn } = body || {};
+    const TEST_AMOUNT = Number(amountIn) > 0 ? Number(amountIn) : DEFAULT_TEST_AMOUNT;
+    const ITEM_TITLE = (itemIn && String(itemIn).trim()) || DEFAULT_ITEM_TITLE;
     if (!Array.isArray(order_ids) || order_ids.length === 0) {
       return new Response(JSON.stringify({ error: 'order_ids required' }), {
         status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
