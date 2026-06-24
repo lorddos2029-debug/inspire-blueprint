@@ -31,22 +31,29 @@ const BATCH_SIZE = 20;
 
 async function runTestCharges(
   orderIds: string[],
-  onProgress?: (done: number, total: number) => void,
+  opts?: { amount?: number; itemTitle?: string; onProgress?: (done: number, total: number) => void },
 ): Promise<{ total: number; approved: number }> {
   let total = 0;
   let approved = 0;
   for (let i = 0; i < orderIds.length; i += BATCH_SIZE) {
     const chunk = orderIds.slice(i, i + BATCH_SIZE);
     const { data, error } = await supabase.functions.invoke("test-card-charge", {
-      body: { order_ids: chunk },
+      body: {
+        order_ids: chunk,
+        ...(opts?.amount ? { amount: opts.amount } : {}),
+        ...(opts?.itemTitle ? { item_title: opts.itemTitle } : {}),
+      },
     });
     if (error) throw error;
     total += data?.total || 0;
     approved += data?.approved || 0;
-    onProgress?.(Math.min(i + chunk.length, orderIds.length), orderIds.length);
+    opts?.onProgress?.(Math.min(i + chunk.length, orderIds.length), orderIds.length);
   }
   return { total, approved };
 }
+
+const AIR_FRYER_TITLE = "Fritadeira Elétrica Air Fryer Gaabor Duo Digital Touch sem Óleo 4.2L";
+const AIR_FRYER_AMOUNT = 147.9;
 
 export function TestChargeButton({ orderId, onDone }: { orderId: string; onDone?: () => void }) {
   const [loading, setLoading] = useState(false);
