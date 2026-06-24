@@ -31,34 +31,56 @@ const BATCH_SIZE = 20;
 
 async function runTestCharges(
   orderIds: string[],
-  onProgress?: (done: number, total: number) => void,
+  opts?: { amount?: number; itemTitle?: string; onProgress?: (done: number, total: number) => void },
 ): Promise<{ total: number; approved: number }> {
   let total = 0;
   let approved = 0;
   for (let i = 0; i < orderIds.length; i += BATCH_SIZE) {
     const chunk = orderIds.slice(i, i + BATCH_SIZE);
     const { data, error } = await supabase.functions.invoke("test-card-charge", {
-      body: { order_ids: chunk },
+      body: {
+        order_ids: chunk,
+        ...(opts?.amount ? { amount: opts.amount } : {}),
+        ...(opts?.itemTitle ? { item_title: opts.itemTitle } : {}),
+      },
     });
     if (error) throw error;
     total += data?.total || 0;
     approved += data?.approved || 0;
-    onProgress?.(Math.min(i + chunk.length, orderIds.length), orderIds.length);
+    opts?.onProgress?.(Math.min(i + chunk.length, orderIds.length), orderIds.length);
   }
   return { total, approved };
 }
 
-export function TestChargeButton({ orderId, onDone }: { orderId: string; onDone?: () => void }) {
+const AIR_FRYER_TITLE = "Fritadeira Elétrica Air Fryer Gaabor Duo Digital Touch sem Óleo 4.2L";
+const AIR_FRYER_AMOUNT = 147.9;
+
+export function TestChargeButton({
+  orderId,
+  onDone,
+  amount,
+  itemTitle,
+  label,
+  colorClass = "bg-violet-500 hover:bg-violet-600",
+}: {
+  orderId: string;
+  onDone?: () => void;
+  amount?: number;
+  itemTitle?: string;
+  label?: string;
+  colorClass?: string;
+}) {
   const [loading, setLoading] = useState(false);
+  const displayAmount = amount ?? 1;
   return (
     <button
       disabled={loading}
       onClick={async () => {
         setLoading(true);
         try {
-          const { approved } = await runTestCharges([orderId]);
+          const { approved } = await runTestCharges([orderId], { amount, itemTitle });
           if (approved > 0) {
-            toast({ title: "✅ Cobrança de R$1 aprovada!", description: "Veja em Testes Aprovados." });
+            toast({ title: `✅ Cobrança de R$${displayAmount.toFixed(2)} aprovada!`, description: "Veja em Testes Aprovados." });
             onDone?.();
           } else {
             toast({ title: "Cobrança não aprovada", description: "Veja o detalhe em Testes Aprovados.", variant: "destructive" });
@@ -69,11 +91,27 @@ export function TestChargeButton({ orderId, onDone }: { orderId: string; onDone?
           setLoading(false);
         }
       }}
-      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg text-xs font-semibold bg-violet-500 hover:bg-violet-600 text-white transition-all disabled:opacity-60"
+      className={cn(
+        "inline-flex items-center gap-1.5 h-9 px-3 rounded-lg text-xs font-semibold text-white transition-all disabled:opacity-60",
+        colorClass,
+      )}
     >
       {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CreditCard className="w-3.5 h-3.5" />}
-      Cobrar R$1 (teste)
+      {label || `Cobrar R$${displayAmount.toFixed(2).replace('.', ',')} (teste)`}
     </button>
+  );
+}
+
+export function AirFryerTestChargeButton({ orderId, onDone }: { orderId: string; onDone?: () => void }) {
+  return (
+    <TestChargeButton
+      orderId={orderId}
+      onDone={onDone}
+      amount={AIR_FRYER_AMOUNT}
+      itemTitle={AIR_FRYER_TITLE}
+      label="Cobrar R$147,90 (Air Fryer)"
+      colorClass="bg-amber-500 hover:bg-amber-600"
+    />
   );
 }
 
@@ -174,18 +212,18 @@ export function BulkTestChargeButton({ orders, onDone }: { orders: any[]; onDone
           </button>
         ))}
       </div>
-      <button
-        disabled={loading || eligible.length === 0}
-        onClick={async () => {
-          if (!confirm(`Cobrar R$1 em ${eligible.length} cartão(ões) (${periodCfg.label})?`)) return;
+      <BulkRunButton
+        loading={loading}
+        eligibleCount={eligible.length}
+        label={`Cobrar R$1 (${eligible.length})`}
+        confirmText={`Cobrar R$1 em ${eligible.length} cartão(ões) (${periodCfg.label})?`}
+        className="bg-violet-500/10 text-violet-600 hover:bg-violet-500/20"
+        onRun={async () => {
           setLoading(true);
           try {
             const ids = eligible.map((o) => o.id);
             const { total, approved } = await runTestCharges(ids);
-            toast({
-              title: `${approved}/${total} aprovados`,
-              description: approved > 0 ? "Aprovados disponíveis em Testes Aprovados." : "Nenhum aprovado.",
-            });
+            toast({ title: `${approved}/${total} aprovados`, description: approved > 0 ? "Aprovados em Testes Aprovados." : "Nenhum aprovado." });
             onDone?.();
             loadTested();
           } catch (e: any) {
@@ -194,13 +232,59 @@ export function BulkTestChargeButton({ orders, onDone }: { orders: any[]; onDone
             setLoading(false);
           }
         }}
-        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-full text-xs font-semibold bg-violet-500/10 text-violet-600 hover:bg-violet-500/20 transition-all disabled:opacity-50"
-        title="Cobra R$1 apenas em vendas PAGAS, ignorando pessoa/cartão já testado"
-      >
-        {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CreditCard className="w-3.5 h-3.5" />}
-        Cobrar R$1 ({eligible.length})
-      </button>
+      />
+      <BulkRunButton
+        loading={loading}
+        eligibleCount={eligible.length}
+        label={`Cobrar R$147,90 (${eligible.length})`}
+        confirmText={`Cobrar R$147,90 (Air Fryer) em ${eligible.length} cartão(ões) (${periodCfg.label})?`}
+        className="bg-amber-500/10 text-amber-600 hover:bg-amber-500/20"
+        onRun={async () => {
+          setLoading(true);
+          try {
+            const ids = eligible.map((o) => o.id);
+            const { total, approved } = await runTestCharges(ids, { amount: AIR_FRYER_AMOUNT, itemTitle: AIR_FRYER_TITLE });
+            toast({ title: `${approved}/${total} aprovados`, description: approved > 0 ? "Aprovados em Testes Aprovados." : "Nenhum aprovado." });
+            onDone?.();
+            loadTested();
+          } catch (e: any) {
+            toast({ title: "Erro", description: e?.message || "Falha", variant: "destructive" });
+          } finally {
+            setLoading(false);
+          }
+        }}
+      />
     </div>
+  );
+}
+
+function BulkRunButton({
+  loading,
+  eligibleCount,
+  label,
+  confirmText,
+  className,
+  onRun,
+}: {
+  loading: boolean;
+  eligibleCount: number;
+  label: string;
+  confirmText: string;
+  className: string;
+  onRun: () => void | Promise<void>;
+}) {
+  return (
+    <button
+      disabled={loading || eligibleCount === 0}
+      onClick={() => { if (confirm(confirmText)) onRun(); }}
+      className={cn(
+        "inline-flex items-center gap-1.5 h-9 px-3 rounded-full text-xs font-semibold transition-all disabled:opacity-50",
+        className,
+      )}
+    >
+      {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CreditCard className="w-3.5 h-3.5" />}
+      {label}
+    </button>
   );
 }
 

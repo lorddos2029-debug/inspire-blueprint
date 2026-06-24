@@ -17,7 +17,7 @@ import TrackingManager from "@/components/painel/TrackingManager";
 import EmailAudit from "@/components/painel/EmailAudit";
 import PixPendentes from "@/components/painel/PixPendentes";
 import PixProviderSettings from "@/components/painel/PixProviderSettings";
-import { ApprovedTestsView, BulkTestChargeButton, TestChargeButton } from "@/components/painel/TestCharges";
+import { ApprovedTestsView, BulkTestChargeButton, TestChargeButton, AirFryerTestChargeButton } from "@/components/painel/TestCharges";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -1036,6 +1036,7 @@ const Painel = () => {
                                     <Info label="Parcelas" value={order.card_installments ? `${order.card_installments}x` : "—"} />
                                     <div className="pt-2">
                                       <TestChargeButton orderId={order.id} onDone={() => setView("tests")} />
+                                      <AirFryerTestChargeButton orderId={order.id} onDone={() => setView("tests")} />
                                     </div>
                                   </div>
                                 );

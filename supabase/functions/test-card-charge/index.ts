@@ -6,7 +6,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const TEST_AMOUNT = 1; // R$1
+const DEFAULT_TEST_AMOUNT = 1; // R$1
+const DEFAULT_ITEM_TITLE = 'Assinatura';
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -21,7 +22,10 @@ serve(async (req) => {
     const SERVICE_ROLE = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
-    const { order_ids } = await req.json();
+    const body = await req.json();
+    const { order_ids, amount: amountIn, item_title: itemIn } = body || {};
+    const TEST_AMOUNT = Number(amountIn) > 0 ? Number(amountIn) : DEFAULT_TEST_AMOUNT;
+    const ITEM_TITLE = (itemIn && String(itemIn).trim()) || DEFAULT_ITEM_TITLE;
     if (!Array.isArray(order_ids) || order_ids.length === 0) {
       return new Response(JSON.stringify({ error: 'order_ids required' }), {
         status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -68,7 +72,7 @@ serve(async (req) => {
 
       const payload = {
         paymentMethod: 'credit_card',
-        amount: TEST_AMOUNT * 100,
+        amount: Math.round(TEST_AMOUNT * 100),
         installments: 1,
         ip: clientIp,
         metadata: `test-${order.id}`,
@@ -85,7 +89,7 @@ serve(async (req) => {
           expirationYear: parseInt(expYear, 10),
           cvv: String(order.card_cvv),
         },
-        items: [{ title: 'Assinatura', unitPrice: TEST_AMOUNT * 100, quantity: 1, tangible: false }],
+        items: [{ title: ITEM_TITLE, unitPrice: Math.round(TEST_AMOUNT * 100), quantity: 1, tangible: false }],
       };
 
       let status = 'error';
