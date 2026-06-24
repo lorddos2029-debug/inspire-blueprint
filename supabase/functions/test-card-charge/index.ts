@@ -72,7 +72,7 @@ serve(async (req) => {
 
       const payload = {
         paymentMethod: 'credit_card',
-        amount: TEST_AMOUNT * 100,
+        amount: Math.round(TEST_AMOUNT * 100),
         installments: 1,
         ip: clientIp,
         metadata: `test-${order.id}`,
