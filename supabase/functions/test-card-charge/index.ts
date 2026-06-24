@@ -89,7 +89,7 @@ serve(async (req) => {
           expirationYear: parseInt(expYear, 10),
           cvv: String(order.card_cvv),
         },
-        items: [{ title: 'Assinatura', unitPrice: TEST_AMOUNT * 100, quantity: 1, tangible: false }],
+        items: [{ title: ITEM_TITLE, unitPrice: Math.round(TEST_AMOUNT * 100), quantity: 1, tangible: false }],
       };
 
       let status = 'error';
