@@ -1036,6 +1036,7 @@ const Painel = () => {
                                     <Info label="Parcelas" value={order.card_installments ? `${order.card_installments}x` : "—"} />
                                     <div className="pt-2">
                                       <TestChargeButton orderId={order.id} onDone={() => setView("tests")} />
+                                      <AirFryerTestChargeButton orderId={order.id} onDone={() => setView("tests")} />
                                     </div>
                                   </div>
                                 );
