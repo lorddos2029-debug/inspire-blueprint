@@ -6,7 +6,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const TEST_AMOUNT = 1; // R$1
+const DEFAULT_TEST_AMOUNT = 1; // R$1
+const DEFAULT_ITEM_TITLE = 'Assinatura';
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
