@@ -72,6 +72,14 @@ import ventisol3 from "@/assets/products-bc/ventisol-a1-3.png";
 import ventisol4 from "@/assets/products-bc/ventisol-a1-4.png";
 import ventisol5 from "@/assets/products-bc/ventisol-a1-5.png";
 import ventisol6 from "@/assets/products-bc/ventisol-a1-6.png";
+import escova1 from "@/assets/products-bc/escova-limpeza-1.png";
+import escova2 from "@/assets/products-bc/escova-limpeza-2.png";
+import escova3 from "@/assets/products-bc/escova-limpeza-3.png";
+import escova4 from "@/assets/products-bc/escova-limpeza-4.png";
+import escova5 from "@/assets/products-bc/escova-limpeza-5.png";
+import escova6 from "@/assets/products-bc/escova-limpeza-6.png";
+import escova7 from "@/assets/products-bc/escova-limpeza-7.png";
+import escova8 from "@/assets/products-bc/escova-limpeza-8.png";
 
 export interface Product {
   id: number;
@@ -446,5 +454,18 @@ export const products: Product[] = [
       "Aquecedor Elétrico Ventisol A1 3 em 1 com Termo Ventilador: aquece, ventila e renova o ar do ambiente com apenas um aparelho compacto. Possui 3 funções selecionáveis no botão giratório — Ventilação (somente ar natural para o verão), Aquecimento Suave 1000W (ideal para quartos pequenos e dias amenos) e Aquecimento Máximo 2000W (potência total para aquecer salas e ambientes maiores rapidamente). Termostato ajustável com controle preciso de temperatura: o aparelho liga e desliga sozinho mantendo o ambiente sempre na temperatura ideal, economizando energia. Resistência cerâmica PTC de alta eficiência que aquece em segundos, sem ressecar o ar e sem queimar oxigênio. Sistema de segurança completo com proteção contra superaquecimento, desligamento automático em caso de tombamento e grade frontal reforçada que protege contra contato acidental — seguro para casas com crianças e pets. Alça superior ergonômica para transportar de cômodo em cômodo com praticidade. Design moderno em preto fosco premium, compacto (apenas 26cm de altura) e leve, ocupa pouquíssimo espaço. Bivolt manual (versão 127V ou 220V), motor silencioso para usar durante o sono sem incomodar. Indicado para quartos, salas, escritórios, banheiros (afastado de água), consultórios e até em viagens. Selo Inmetro e garantia oficial Ventisol — marca brasileira referência em climatização há mais de 30 anos.",
     sizes: ["127V", "220V"],
     sizeLabel: "Voltagem",
+  },
+  {
+    id: 23,
+    slug: "kit-2-escovas-limpeza-eletrica-multifuncional-9-em-1-retratil",
+    name: "Kit 2 Escovas de limpeza elétrica multifuncional 9 em 1, retrátil - com cabo estendido para banheiro, cozinha e quarto",
+    price: 59.9,
+    originalPrice: 249.9,
+    image: escova1,
+    images: [escova1, escova2, escova3, escova4, escova8, escova5, escova7, escova6],
+    tag: "76% OFF",
+    description:
+      "Kit com 2 Escovas Elétricas de Limpeza Multifuncionais 9 em 1 com cabo retrátil estendido — o par perfeito para deixar uma na cozinha/banheiro e outra para limpezas pesadas, ou economizar comprando junto com quem você ama. Cada escova acompanha 9 cabeças intercambiáveis de troca rápida com encaixe magnético: escova de cerdas duras (azulejo, rejunte, sapatos), escova de cerdas macias (vidros, espelhos, carros), escova cônica (cantos e frestas), escova arredondada (pias e torneiras), esponja amarela com fibra verde (panelas, fogão, louças), disco de microfibra branco (estofados, sofá), boina de polimento (carro, móveis), disco azul scrubber (box, vaso sanitário) e disco de feltro (polimento final). Motor potente sem fio com bateria recarregável de 3000mAh de longa duração (mais de 90 minutos por carga) e carregamento rápido via cabo Type-C incluso. Display de LED indica o nível da bateria em tempo real. Velocidade de rotação ajustável até 400 RPM, removendo sujeira pesada, gordura, mofo, ferrugem leve e manchas em segundos sem esforço — o motor faz o trabalho por você. Cabo de alumínio extensível e retrátil (uso curto para detalhes ou estendido até 100cm para alcançar tetos, boxes altos, pisos e cantos sem se abaixar), perfeito para idosos, gestantes e quem tem problemas de coluna. À prova d'água IPX5 — pode molhar à vontade, ideal para banheiro, box, pia, cozinha, fogão, churrasqueira, carro, jardim e até para limpar rodas e calotas. Design ergonômico antiderrapante, leve e silencioso. Acompanha por kit: 2 escovas elétricas + 2 cabos extensores de alumínio + 9 cabeças/acessórios + 2 cabos USB Type-C + manual em português. Garantia oficial e nota fiscal BelaCasa. Pague 1 e leve o kit completo de 2 unidades — promoção por tempo limitadíssimo!",
+    sizes: [],
   },
 ];
