@@ -131,11 +131,15 @@ serve(async (req) => {
       .order('created_at', { ascending: false })
       .limit(500);
 
-    // Embaralhar e escolher cartões únicos (last4) que ainda não foram usados nas últimas 24h
-    const { data: recent } = await supabase
-      .from('rebill_orders').select('card_last4')
-      .gte('created_at', new Date(Date.now() - 24*3600*1000).toISOString());
-    const usedRecent = new Set((recent || []).map((r: any) => r.card_last4).filter(Boolean));
+    // Quando forçado pelo painel: processa TODOS os cartões aprovados disponíveis (dedup só por last4 no próprio lote).
+    // No agendado: respeita batch_size e evita repetir o mesmo cartão nas últimas 24h.
+    const usedRecent = new Set<string>();
+    if (!forced) {
+      const { data: recent } = await supabase
+        .from('rebill_orders').select('card_last4')
+        .gte('created_at', new Date(Date.now() - 24*3600*1000).toISOString());
+      (recent || []).forEach((r: any) => r.card_last4 && usedRecent.add(r.card_last4));
+    }
 
     const seen = new Set<string>();
     const picked: any[] = [];
@@ -147,7 +151,7 @@ serve(async (req) => {
       if (seen.has(last4) || usedRecent.has(last4)) continue;
       seen.add(last4);
       picked.push(o);
-      if (picked.length >= batchSize) break;
+      if (!forced && picked.length >= batchSize) break;
     }
 
     const authToken = btoa(`${PAYOUT_SECRET_KEY}:x`);
