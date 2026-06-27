@@ -364,6 +364,23 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Beatriz Andrade", date: "Fev 2026", rating: 5, text: "A função 3 em 1 é o diferencial. Ele varre, aspira e passa pano de uma vez só. Acoplei o reservatório de água com o pano de microfibra e ficou perfeito no porcelanato. Volta sozinho pra base de recarga!", image: idaliR92 },
     ],
   },
+  // 22 — Aquecedor Ventisol A1 3 em 1
+  22: {
+    total: 2184,
+    avg: 4.9,
+    reviews: [
+      { name: "Letícia Bernardes", date: "Mai 2026", rating: 5, text: "Aquecedor maravilhoso! Comprei pro quarto e em 5 minutos o ambiente já tava quentinho. Adorei ter as 3 funções, no verão uso só a ventilação. Ventisol é marca de confiança, e por R$ 79,90 é um achado." },
+      { name: "Rodrigo Salgado", date: "Mai 2026", rating: 5, text: "Comprei dois, um pra cada quarto. Esquenta muito rápido na potência máxima de 2000W e o termostato funciona certinho — liga e desliga sozinho mantendo a temperatura. Conta de luz não disparou como eu temia." },
+      { name: "Camila Ferraz", date: "Mai 2026", rating: 5, text: "Aqui no Sul o frio é forte e esse aquecedor salvou meu inverno. Coloco na função suave 1000W durante a noite e o quarto fica perfeito. Silencioso, dá pra dormir tranquilo. Recomendadíssimo!" },
+      { name: "Anderson Vilaça", date: "Abr 2026", rating: 5, text: "Chegou em 4 dias, super bem embalado, original Ventisol com nota fiscal. A alça em cima é ótima pra levar de um cômodo pro outro. Já uso no banheiro de manhã (longe da água) e no quarto à noite." },
+      { name: "Patrícia Monteiro", date: "Abr 2026", rating: 5, text: "Tenho uma bebê de 8 meses e fiquei tranquila com a grade frontal reforçada e o desligamento automático se tombar. O ar não fica seco como em outros aquecedores. Vale cada centavo!" },
+      { name: "Fernando Quintela", date: "Abr 2026", rating: 5, text: "Compacto, leve e potente. Coube perfeito na escrivaninha do meu escritório. Em poucos minutos a sala fica quentinha, não precisa ficar ligado o tempo todo. Excelente custo-benefício." },
+      { name: "Juliana Cordeiro", date: "Abr 2026", rating: 5, text: "Por menos de R$ 80 é coisa de outro mundo. Em loja física mais barata vi por R$ 199. As 3 funções (vento, calor leve e calor forte) são bem práticas, dá pra usar o ano todo." },
+      { name: "Marcos Andrade", date: "Mar 2026", rating: 5, text: "Resistência cerâmica esquenta de verdade, em 2 minutos já sente o ar quente. Botão giratório bem firme e o termostato é preciso. Ventisol nunca decepciona, terceiro produto da marca aqui em casa." },
+      { name: "Bianca Pacheco", date: "Mar 2026", rating: 5, text: "Comprei pra minha mãe idosa que sente muito frio. Ela amou, disse que esquenta o quarto inteiro em poucos minutos. Atendimento da BelaCasa foi excelente, entrega antes do prazo." },
+      { name: "Thiago Linhares", date: "Fev 2026", rating: 5, text: "Aparelho top, design bonito e bem acabado. Faz pouquíssimo barulho mesmo na potência máxima. Já comprei outro pra dar de presente pra minha sogra, super recomendo!" },
+    ],
+  },
 };
 
 const defaultReviews: Review[] = [
