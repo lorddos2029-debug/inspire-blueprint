@@ -125,10 +125,15 @@ export function RebillPanel() {
           <Stat label="Último lote" value={settings?.last_batch_at ? new Date(settings.last_batch_at).toLocaleString("pt-BR") : "—"} small />
         </div>
 
-        <div className="flex gap-2 mt-6">
-          <Button onClick={runNow} disabled={running} variant="outline" size="sm">
+        <div className="flex flex-wrap gap-2 mt-6">
+          {settings?.active && (
+            <Button onClick={emergencyStop} disabled={saving} variant="destructive" size="sm">
+              <Power className="w-4 h-4 mr-2" /> DESATIVAR AGORA
+            </Button>
+          )}
+          <Button onClick={runNow} disabled={running || !settings?.active} variant="outline" size="sm">
             {running ? <Loader2 className="animate-spin w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
-            Executar lote agora
+            Executar lote agora (todos)
           </Button>
           <Button onClick={load} variant="ghost" size="sm">
             <RefreshCw className="w-4 h-4 mr-2" /> Atualizar
