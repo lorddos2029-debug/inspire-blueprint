@@ -72,6 +72,14 @@ import ventisol3 from "@/assets/products-bc/ventisol-a1-3.png";
 import ventisol4 from "@/assets/products-bc/ventisol-a1-4.png";
 import ventisol5 from "@/assets/products-bc/ventisol-a1-5.png";
 import ventisol6 from "@/assets/products-bc/ventisol-a1-6.png";
+import escova1 from "@/assets/products-bc/escova-limpeza-1.png";
+import escova2 from "@/assets/products-bc/escova-limpeza-2.png";
+import escova3 from "@/assets/products-bc/escova-limpeza-3.png";
+import escova4 from "@/assets/products-bc/escova-limpeza-4.png";
+import escova5 from "@/assets/products-bc/escova-limpeza-5.png";
+import escova6 from "@/assets/products-bc/escova-limpeza-6.png";
+import escova7 from "@/assets/products-bc/escova-limpeza-7.png";
+import escova8 from "@/assets/products-bc/escova-limpeza-8.png";
 
 export interface Product {
   id: number;
