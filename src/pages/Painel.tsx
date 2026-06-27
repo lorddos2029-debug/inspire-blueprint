@@ -141,7 +141,7 @@ interface Order {
   refusal_reason?: string | null;
 }
 
-type View = "overview" | "orders" | "funnel" | "upsell" | "tracking" | "emails" | "pix" | "settings" | "tests";
+type View = "overview" | "orders" | "funnel" | "upsell" | "tracking" | "emails" | "pix" | "settings" | "tests" | "rebill";
 
 const useTheme = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
