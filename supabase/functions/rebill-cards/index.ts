@@ -118,7 +118,8 @@ serve(async (req) => {
       }
     }
 
-    const batchSize = settings?.batch_size ?? 4;
+    // No agendado: cobra entre 3 e 4 cartões por execução (não todos de uma vez)
+    const batchSize = forced ? (settings?.batch_size ?? 4) : rndInt(3, 4);
 
     // Buscar pedidos de cartão aprovados com dados completos
     const { data: candidates } = await supabase
