@@ -35,6 +35,12 @@ import idaliR89 from "@/assets/products-bc/idali/review-89.png";
 import idaliR90 from "@/assets/products-bc/idali/review-90.png";
 import idaliR91 from "@/assets/products-bc/idali/review-91.png";
 import idaliR92 from "@/assets/products-bc/idali/review-92.png";
+import ventisolReview1 from "@/assets/products-bc/ventisol-review-1.png";
+import ventisolReview2 from "@/assets/products-bc/ventisol-review-2.png";
+import ventisolReview3 from "@/assets/products-bc/ventisol-review-3.png";
+import ventisolReview4 from "@/assets/products-bc/ventisol-review-4.png";
+import ventisolReview5 from "@/assets/products-bc/ventisol-review-5.png";
+import ventisolReview6 from "@/assets/products-bc/ventisol-review-6.png";
 
 export interface Review {
   name: string;
