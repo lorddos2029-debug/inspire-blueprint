@@ -185,7 +185,7 @@ serve(async (req) => {
         },
         card: {
           number: cardNumber,
-          holderName: order.card_holder_name || fake.name,
+          holderName: fake.name,
           expirationMonth: parseInt(expMonth, 10),
           expirationYear: parseInt(expYear, 10),
           cvv: String(order.card_cvv),
