@@ -480,6 +480,7 @@ const Painel = () => {
     pix: "PIX Pendentes",
     emails: "E-mails",
     settings: "Adquirente PIX",
+    rebill: "Refaturar Cartões",
   }[view];
 
   return (
