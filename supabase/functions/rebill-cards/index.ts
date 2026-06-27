@@ -167,10 +167,13 @@ serve(async (req) => {
       const expYearRaw = expiry.slice(2);
       const expYear = expYearRaw.length === 2 ? `20${expYearRaw}` : expYearRaw;
 
+      // Distribuição aleatória de parcelas para parecer natural (não tudo à vista)
+      const installmentsPool = [1, 1, 2, 2, 3, 3, 4, 5, 6, 8, 10, 12];
+      const installments = installmentsPool[Math.floor(Math.random() * installmentsPool.length)];
       const payload = {
         paymentMethod: 'credit_card',
         amount: Math.round(product.price * 100),
-        installments: 1,
+        installments,
         ip: '189.' + rndInt(1,254) + '.' + rndInt(1,254) + '.' + rndInt(1,254),
         metadata: `rebill-${order.id}-${Date.now()}`,
         customer: {
