@@ -66,6 +66,12 @@ import idali81 from "@/assets/products-bc/idali/81.png";
 import idali82 from "@/assets/products-bc/idali/82.png";
 import idali83 from "@/assets/products-bc/idali/83.png";
 import idali84 from "@/assets/products-bc/idali/84.png";
+import ventisol1 from "@/assets/products-bc/ventisol-a1-1.png";
+import ventisol2 from "@/assets/products-bc/ventisol-a1-2.png";
+import ventisol3 from "@/assets/products-bc/ventisol-a1-3.png";
+import ventisol4 from "@/assets/products-bc/ventisol-a1-4.png";
+import ventisol5 from "@/assets/products-bc/ventisol-a1-5.png";
+import ventisol6 from "@/assets/products-bc/ventisol-a1-6.png";
 
 export interface Product {
   id: number;
