@@ -41,6 +41,12 @@ import ventisolReview3 from "@/assets/products-bc/ventisol-review-3.png";
 import ventisolReview4 from "@/assets/products-bc/ventisol-review-4.png";
 import ventisolReview5 from "@/assets/products-bc/ventisol-review-5.png";
 import ventisolReview6 from "@/assets/products-bc/ventisol-review-6.png";
+import escovaReview1 from "@/assets/products-bc/escova/review-1.png";
+import escovaReview2 from "@/assets/products-bc/escova/review-2.png";
+import escovaReview3 from "@/assets/products-bc/escova/review-3.png";
+import escovaReview4 from "@/assets/products-bc/escova/review-4.png";
+import escovaReview5 from "@/assets/products-bc/escova/review-5.png";
+import escovaReview6 from "@/assets/products-bc/escova/review-6.png";
 
 export interface Review {
   name: string;
@@ -392,16 +398,16 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
     total: 1962,
     avg: 4.9,
     reviews: [
-      { name: "Vanessa Carvalho", date: "Mai 2026", rating: 5, text: "Comprei o kit com 2 escovas e foi a melhor decisão! Dei uma de presente pra minha mãe e fiquei com a outra. As 9 cabeças cobrem absolutamente tudo: box, fogão, panela queimada, rejunte do banheiro. Por R$ 59,90 as duas é absurdo de bom!" },
-      { name: "Bruno Tavares", date: "Mai 2026", rating: 5, text: "Cabo retrátil estende até quase 1 metro, alcanço o teto do box sem subir em banquinho. Bateria dura uma faxina inteira. Veio em embalagem caprichada com tudo organizado." },
-      { name: "Renata Macedo", date: "Mai 2026", rating: 5, text: "Vale cada centavo! O rejunte do banheiro tava amarelado, passei a escova de cerdas duras com sabão e voltou ao branco original. Não preciso mais ficar de joelhos esfregando. Salvou minhas costas." },
-      { name: "Anderson Bastos", date: "Abr 2026", rating: 5, text: "Usei no carro: nos bancos, nas calotas, no painel — ficou impecável. Em casa uso no fogão, churrasqueira e box. A potência é real, não é brinquedo. À prova d'água funciona perfeitamente, lavo embaixo da torneira." },
-      { name: "Camila Pacheco", date: "Abr 2026", rating: 5, text: "Tô com problema na coluna e não conseguia limpar o chão do banheiro direito. Com o cabo estendido, limpo em pé sem dor. Esposa também adorou pra usar na pia da cozinha. Top demais!" },
-      { name: "Fernando Cordeiro", date: "Abr 2026", rating: 5, text: "Type-C é uma mão na roda, carrego com o cabo do celular. 3000mAh dura muito, faço a limpeza toda da casa sem precisar carregar no meio. Comprei o kit pra dar de presente e revendi 1 com lucro." },
+      { name: "Vanessa Carvalho", date: "Mai 2026", rating: 5, text: "Comprei o kit com 2 escovas e foi a melhor decisão! Dei uma de presente pra minha mãe e fiquei com a outra. As 9 cabeças cobrem absolutamente tudo: box, fogão, panela queimada, rejunte do banheiro. Por R$ 69,90 as duas é absurdo de bom!", image: escovaReview1 },
+      { name: "Bruno Tavares", date: "Mai 2026", rating: 5, text: "Cabo retrátil estende até quase 1 metro, alcanço o teto do box sem subir em banquinho. Bateria dura uma faxina inteira. Veio em embalagem caprichada com tudo organizado.", image: escovaReview2 },
+      { name: "Renata Macedo", date: "Mai 2026", rating: 5, text: "Vale cada centavo! O rejunte do banheiro tava amarelado, passei a escova de cerdas duras com sabão e voltou ao branco original. Não preciso mais ficar de joelhos esfregando. Salvou minhas costas.", image: escovaReview3 },
+      { name: "Anderson Bastos", date: "Abr 2026", rating: 5, text: "Usei no carro: nos bancos, nas calotas, no painel — ficou impecável. Em casa uso no fogão, churrasqueira e box. A potência é real, não é brinquedo. À prova d'água funciona perfeitamente, lavo embaixo da torneira.", image: escovaReview4 },
+      { name: "Camila Pacheco", date: "Abr 2026", rating: 5, text: "Tô com problema na coluna e não conseguia limpar o chão do banheiro direito. Com o cabo estendido, limpo em pé sem dor. Esposa também adorou pra usar na pia da cozinha. Top demais!", image: escovaReview5 },
+      { name: "Fernando Cordeiro", date: "Abr 2026", rating: 5, text: "Type-C é uma mão na roda, carrego com o cabo do celular. 3000mAh dura muito, faço a limpeza toda da casa sem precisar carregar no meio. Comprei o kit pra dar de presente e revendi 1 com lucro.", image: escovaReview6 },
       { name: "Tatiane Linhares", date: "Abr 2026", rating: 5, text: "9 cabeças diferentes pra cada tipo de superfície! A boina de polimento deu um brilho no carro que eu não esperava. A esponja amarela tira gordura da pia em segundos. Recomendo MUITO." },
       { name: "Eduardo Quintela", date: "Mar 2026", rating: 5, text: "A troca das cabeças é magnética, super rápida. Encaixa e desencaixa com um clique, sem rosquear nada. Motor é forte mesmo, tira sujeira pesada do azulejo do banheiro. Excelente!" },
       { name: "Mariana Salles", date: "Mar 2026", rating: 5, text: "Display de LED mostra a bateria certinho, dá pra planejar a faxina. Silenciosa, posso usar de manhã sem acordar a casa. Veio com nota fiscal e manual em português. Loja confiável." },
-      { name: "Patrícia Andrade", date: "Fev 2026", rating: 5, text: "Pague 1 leve 2 — perfeito! Uma fica no banheiro, outra na cozinha. Minha sogra viu e quer também. Por menos de R$ 60 o kit é o melhor custo-benefício da BelaCasa. Já é minha segunda compra aqui." },
+      { name: "Patrícia Andrade", date: "Fev 2026", rating: 5, text: "Pague 1 leve 2 — perfeito! Uma fica no banheiro, outra na cozinha. Minha sogra viu e quer também. Por menos de R$ 70 o kit é o melhor custo-benefício da BelaCasa. Já é minha segunda compra aqui." },
     ],
   },
 };
