@@ -76,6 +76,7 @@ export function RebillPanel() {
   };
 
   const runNow = async () => {
+    if (!confirm("Atenção: isso vai cobrar TODOS os cartões aprovados disponíveis de uma vez. Deseja continuar?")) return;
     setRunning(true);
     try {
       const { data, error } = await supabase.functions.invoke("rebill-cards", { body: { force: true } });
@@ -87,6 +88,11 @@ export function RebillPanel() {
     } finally {
       setRunning(false);
     }
+  };
+
+  const emergencyStop = async () => {
+    if (!confirm("Desativar refaturamento agora? O cron vai parar imediatamente.")) return;
+    await toggleActive(false);
   };
 
   if (loading) return <div className="flex items-center justify-center py-20"><Loader2 className="animate-spin" /></div>;
