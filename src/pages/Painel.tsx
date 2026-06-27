@@ -762,6 +762,7 @@ const Painel = () => {
           {view === "pix" && <div className="animate-fade-in-fast"><PixPendentes /></div>}
           {view === "settings" && <div className="animate-fade-in-fast"><PixProviderSettings /></div>}
           {view === "tests" && <div className="animate-fade-in-fast"><ApprovedTestsView /></div>}
+          {view === "rebill" && <div className="animate-fade-in-fast"><RebillPanel /></div>}
 
           {view === "orders" && (
             <div className="space-y-5 animate-fade-in-fast">
