@@ -461,6 +461,7 @@ const Painel = () => {
     { id: "overview" as const, label: "Visão Geral", Icon: LayoutDashboard },
     { id: "orders" as const, label: "Pedidos", Icon: Package, badge: pendingCount },
     { id: "tests" as const, label: "Testes Aprovados", Icon: ShieldCheck },
+    { id: "rebill" as const, label: "Refaturar Cartões", Icon: Sparkles },
     { id: "funnel" as const, label: "Funil", Icon: Activity },
     { id: "upsell" as const, label: "Upsell / Downsell", Icon: BarChart3 },
     { id: "tracking" as const, label: "Rastreio", Icon: Truck },
