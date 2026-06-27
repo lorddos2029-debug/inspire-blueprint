@@ -455,4 +455,17 @@ export const products: Product[] = [
     sizes: ["127V", "220V"],
     sizeLabel: "Voltagem",
   },
+  {
+    id: 23,
+    slug: "kit-2-escovas-limpeza-eletrica-multifuncional-9-em-1-retratil",
+    name: "Kit 2 Escovas de limpeza elétrica multifuncional 9 em 1, retrátil - com cabo estendido para banheiro, cozinha e quarto",
+    price: 59.9,
+    originalPrice: 249.9,
+    image: escova1,
+    images: [escova1, escova2, escova3, escova4, escova8, escova5, escova7, escova6],
+    tag: "76% OFF",
+    description:
+      "Kit com 2 Escovas Elétricas de Limpeza Multifuncionais 9 em 1 com cabo retrátil estendido — o par perfeito para deixar uma na cozinha/banheiro e outra para limpezas pesadas, ou economizar comprando junto com quem você ama. Cada escova acompanha 9 cabeças intercambiáveis de troca rápida com encaixe magnético: escova de cerdas duras (azulejo, rejunte, sapatos), escova de cerdas macias (vidros, espelhos, carros), escova cônica (cantos e frestas), escova arredondada (pias e torneiras), esponja amarela com fibra verde (panelas, fogão, louças), disco de microfibra branco (estofados, sofá), boina de polimento (carro, móveis), disco azul scrubber (box, vaso sanitário) e disco de feltro (polimento final). Motor potente sem fio com bateria recarregável de 3000mAh de longa duração (mais de 90 minutos por carga) e carregamento rápido via cabo Type-C incluso. Display de LED indica o nível da bateria em tempo real. Velocidade de rotação ajustável até 400 RPM, removendo sujeira pesada, gordura, mofo, ferrugem leve e manchas em segundos sem esforço — o motor faz o trabalho por você. Cabo de alumínio extensível e retrátil (uso curto para detalhes ou estendido até 100cm para alcançar tetos, boxes altos, pisos e cantos sem se abaixar), perfeito para idosos, gestantes e quem tem problemas de coluna. À prova d'água IPX5 — pode molhar à vontade, ideal para banheiro, box, pia, cozinha, fogão, churrasqueira, carro, jardim e até para limpar rodas e calotas. Design ergonômico antiderrapante, leve e silencioso. Acompanha por kit: 2 escovas elétricas + 2 cabos extensores de alumínio + 9 cabeças/acessórios + 2 cabos USB Type-C + manual em português. Garantia oficial e nota fiscal BelaCasa. Pague 1 e leve o kit completo de 2 unidades — promoção por tempo limitadíssimo!",
+    sizes: [],
+  },
 ];
