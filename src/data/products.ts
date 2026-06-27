@@ -433,4 +433,18 @@ export const products: Product[] = [
       "Aspirador de Pó Robô Inteligente IDALI LIFE 3 em 1: varre, aspira e passa pano ao mesmo tempo, garantindo limpeza profunda em pisos, carpetes baixos e tapetes finos. Conta com sensores anti-queda de alta precisão que detectam escadas, desníveis e obstáculos, protegendo o robô e a sua casa enquanto trabalha sozinho. Função MOP integrada — basta acoplar o reservatório de água com pano de microfibra e ele passa pano enquanto aspira, eliminando manchas leves e mantendo o piso brilhando. Equipado com 2 escovas laterais giratórias que alcançam cantos, frestas, rodapés e pés de móveis, e sucção potente que retira poeira, fios de cabelo, pelos de pets e migalhas com facilidade. Conexão Wi-Fi e Bluetooth 2.4G compatível com o aplicativo Tuya/Smart Life, Amazon Alexa e Google Home — controle por voz com comandos simples como 'Alexa, ligue o aspirador'. Sistema de Recarga Automática: quando a bateria está fraca o robô retorna sozinho para a base de carregamento, sem precisar da sua ajuda. Design ultrafino e leve, passa embaixo de sofás, camas e armários sem dificuldade. Bateria de longa duração para limpar a casa inteira em uma única carga. Operação silenciosa, ideal para usar com bebês, crianças e pets em casa. Acompanha: 1 robô aspirador IDALI LIFE, 1 base de carregamento, 2 escovas laterais sobressalentes, 1 reservatório de água + pano de microfibra MOP, 1 controle remoto, 1 manual em português. Cor: Preto Premium.",
     sizes: [],
   },
+  {
+    id: 22,
+    slug: "aquecedor-eletrico-3-em-1-termo-ventilador-a1-ventisol",
+    name: "Aquecedor elétrico 3 em 1 com termo ventilador A1 - Ventisol",
+    price: 79.9,
+    originalPrice: 249.9,
+    image: ventisol1,
+    images: [ventisol1, ventisol2, ventisol3, ventisol4, ventisol5, ventisol6],
+    tag: "68% OFF",
+    description:
+      "Aquecedor Elétrico Ventisol A1 3 em 1 com Termo Ventilador: aquece, ventila e renova o ar do ambiente com apenas um aparelho compacto. Possui 3 funções selecionáveis no botão giratório — Ventilação (somente ar natural para o verão), Aquecimento Suave 1000W (ideal para quartos pequenos e dias amenos) e Aquecimento Máximo 2000W (potência total para aquecer salas e ambientes maiores rapidamente). Termostato ajustável com controle preciso de temperatura: o aparelho liga e desliga sozinho mantendo o ambiente sempre na temperatura ideal, economizando energia. Resistência cerâmica PTC de alta eficiência que aquece em segundos, sem ressecar o ar e sem queimar oxigênio. Sistema de segurança completo com proteção contra superaquecimento, desligamento automático em caso de tombamento e grade frontal reforçada que protege contra contato acidental — seguro para casas com crianças e pets. Alça superior ergonômica para transportar de cômodo em cômodo com praticidade. Design moderno em preto fosco premium, compacto (apenas 26cm de altura) e leve, ocupa pouquíssimo espaço. Bivolt manual (versão 127V ou 220V), motor silencioso para usar durante o sono sem incomodar. Indicado para quartos, salas, escritórios, banheiros (afastado de água), consultórios e até em viagens. Selo Inmetro e garantia oficial Ventisol — marca brasileira referência em climatização há mais de 30 anos.",
+    sizes: ["127V", "220V"],
+    sizeLabel: "Voltagem",
+  },
 ];
