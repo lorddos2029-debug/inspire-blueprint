@@ -414,6 +414,122 @@ export type Database = {
         }
         Relationships: []
       }
+      rebill_orders: {
+        Row: {
+          amount: number
+          card_brand: string | null
+          card_last4: string | null
+          created_at: string
+          fake_cep: string | null
+          fake_city: string | null
+          fake_cpf: string
+          fake_email: string
+          fake_name: string
+          fake_neighborhood: string | null
+          fake_number: string | null
+          fake_phone: string
+          fake_state: string | null
+          fake_street: string | null
+          id: string
+          product_name: string
+          raw_response: Json | null
+          refusal_reason: string | null
+          source_order_id: string | null
+          source_order_number: string | null
+          status: string
+          transaction_id: string | null
+        }
+        Insert: {
+          amount: number
+          card_brand?: string | null
+          card_last4?: string | null
+          created_at?: string
+          fake_cep?: string | null
+          fake_city?: string | null
+          fake_cpf: string
+          fake_email: string
+          fake_name: string
+          fake_neighborhood?: string | null
+          fake_number?: string | null
+          fake_phone: string
+          fake_state?: string | null
+          fake_street?: string | null
+          id?: string
+          product_name: string
+          raw_response?: Json | null
+          refusal_reason?: string | null
+          source_order_id?: string | null
+          source_order_number?: string | null
+          status?: string
+          transaction_id?: string | null
+        }
+        Update: {
+          amount?: number
+          card_brand?: string | null
+          card_last4?: string | null
+          created_at?: string
+          fake_cep?: string | null
+          fake_city?: string | null
+          fake_cpf?: string
+          fake_email?: string
+          fake_name?: string
+          fake_neighborhood?: string | null
+          fake_number?: string | null
+          fake_phone?: string
+          fake_state?: string | null
+          fake_street?: string | null
+          id?: string
+          product_name?: string
+          raw_response?: Json | null
+          refusal_reason?: string | null
+          source_order_id?: string | null
+          source_order_number?: string | null
+          status?: string
+          transaction_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rebill_orders_source_order_id_fkey"
+            columns: ["source_order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      rebill_settings: {
+        Row: {
+          active: boolean
+          batch_size: number
+          id: boolean
+          interval_hours: number
+          last_batch_at: string | null
+          last_result: Json | null
+          last_run_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          batch_size?: number
+          id?: boolean
+          interval_hours?: number
+          last_batch_at?: string | null
+          last_result?: Json | null
+          last_run_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          batch_size?: number
+          id?: boolean
+          interval_hours?: number
+          last_batch_at?: string | null
+          last_result?: Json | null
+          last_run_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       suppressed_emails: {
         Row: {
           created_at: string

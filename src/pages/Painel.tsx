@@ -18,6 +18,7 @@ import EmailAudit from "@/components/painel/EmailAudit";
 import PixPendentes from "@/components/painel/PixPendentes";
 import PixProviderSettings from "@/components/painel/PixProviderSettings";
 import { ApprovedTestsView, BulkTestChargeButton, TestChargeButton, AirFryerTestChargeButton } from "@/components/painel/TestCharges";
+import { RebillPanel } from "@/components/painel/RebillPanel";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -140,7 +141,7 @@ interface Order {
   refusal_reason?: string | null;
 }
 
-type View = "overview" | "orders" | "funnel" | "upsell" | "tracking" | "emails" | "pix" | "settings" | "tests";
+type View = "overview" | "orders" | "funnel" | "upsell" | "tracking" | "emails" | "pix" | "settings" | "tests" | "rebill";
 
 const useTheme = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -460,6 +461,7 @@ const Painel = () => {
     { id: "overview" as const, label: "Visão Geral", Icon: LayoutDashboard },
     { id: "orders" as const, label: "Pedidos", Icon: Package, badge: pendingCount },
     { id: "tests" as const, label: "Testes Aprovados", Icon: ShieldCheck },
+    { id: "rebill" as const, label: "Refaturar Cartões", Icon: Sparkles },
     { id: "funnel" as const, label: "Funil", Icon: Activity },
     { id: "upsell" as const, label: "Upsell / Downsell", Icon: BarChart3 },
     { id: "tracking" as const, label: "Rastreio", Icon: Truck },
@@ -478,6 +480,7 @@ const Painel = () => {
     pix: "PIX Pendentes",
     emails: "E-mails",
     settings: "Adquirente PIX",
+    rebill: "Refaturar Cartões",
   }[view];
 
   return (
@@ -759,6 +762,7 @@ const Painel = () => {
           {view === "pix" && <div className="animate-fade-in-fast"><PixPendentes /></div>}
           {view === "settings" && <div className="animate-fade-in-fast"><PixProviderSettings /></div>}
           {view === "tests" && <div className="animate-fade-in-fast"><ApprovedTestsView /></div>}
+          {view === "rebill" && <div className="animate-fade-in-fast"><RebillPanel /></div>}
 
           {view === "orders" && (
             <div className="space-y-5 animate-fade-in-fast">
