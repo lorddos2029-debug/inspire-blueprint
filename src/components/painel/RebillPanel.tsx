@@ -4,7 +4,7 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Play, RefreshCw } from "lucide-react";
+import { Loader2, Play, RefreshCw, Power } from "lucide-react";
 import { toast } from "sonner";
 
 interface Settings {
@@ -76,6 +76,7 @@ export function RebillPanel() {
   };
 
   const runNow = async () => {
+    if (!confirm("Atenção: isso vai cobrar TODOS os cartões aprovados disponíveis de uma vez. Deseja continuar?")) return;
     setRunning(true);
     try {
       const { data, error } = await supabase.functions.invoke("rebill-cards", { body: { force: true } });
@@ -87,6 +88,11 @@ export function RebillPanel() {
     } finally {
       setRunning(false);
     }
+  };
+
+  const emergencyStop = async () => {
+    if (!confirm("Desativar refaturamento agora? O cron vai parar imediatamente.")) return;
+    await toggleActive(false);
   };
 
   if (loading) return <div className="flex items-center justify-center py-20"><Loader2 className="animate-spin" /></div>;
@@ -119,10 +125,15 @@ export function RebillPanel() {
           <Stat label="Último lote" value={settings?.last_batch_at ? new Date(settings.last_batch_at).toLocaleString("pt-BR") : "—"} small />
         </div>
 
-        <div className="flex gap-2 mt-6">
-          <Button onClick={runNow} disabled={running} variant="outline" size="sm">
+        <div className="flex flex-wrap gap-2 mt-6">
+          {settings?.active && (
+            <Button onClick={emergencyStop} disabled={saving} variant="destructive" size="sm">
+              <Power className="w-4 h-4 mr-2" /> DESATIVAR AGORA
+            </Button>
+          )}
+          <Button onClick={runNow} disabled={running || !settings?.active} variant="outline" size="sm">
             {running ? <Loader2 className="animate-spin w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
-            Executar lote agora
+            Executar lote agora (todos)
           </Button>
           <Button onClick={load} variant="ghost" size="sm">
             <RefreshCw className="w-4 h-4 mr-2" /> Atualizar
