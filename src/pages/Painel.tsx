@@ -182,6 +182,7 @@ const Painel = () => {
   const [periodFilter, setPeriodFilter] = useState<"today" | "7d" | "30d" | "all" | "custom">("all");
   const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
   const [datePickerOpen, setDatePickerOpen] = useState(false);
+  const [overviewPeriod, setOverviewPeriod] = useState<"today" | "7d" | "15d" | "all">("today");
 
   useEffect(() => {
     (async () => {
