@@ -61,7 +61,7 @@ export function TestChargeButton({
   amount,
   itemTitle,
   label,
-  colorClass = "bg-violet-500 hover:bg-violet-600",
+  colorClass = "bg-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.9)]",
 }: {
   orderId: string;
   onDone?: () => void;
@@ -204,7 +204,7 @@ export function BulkTestChargeButton({ orders, onDone }: { orders: any[]; onDone
             className={cn(
               "h-7 px-2.5 rounded-full text-[10px] font-semibold transition-all",
               period === p.key
-                ? "bg-violet-500 text-white shadow"
+                ? "bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] shadow"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
