@@ -25,7 +25,7 @@ const STATUS_OPTIONS = [
   { value: "em_separacao", label: "Em separação", color: "bg-blue-500" },
   { value: "pedido_enviado", label: "Pedido enviado", color: "bg-blue-600" },
   { value: "em_transito", label: "Em trânsito", color: "bg-indigo-500" },
-  { value: "saiu_para_entrega", label: "Saiu para entrega", color: "bg-violet-500" },
+  { value: "saiu_para_entrega", label: "Saiu para entrega", color: "bg-[hsl(var(--gold))]" },
   { value: "entregue", label: "Entregue", color: "bg-emerald-600" },
 ];
 

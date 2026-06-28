@@ -158,7 +158,7 @@ const PixProviderSettings = () => {
                 disabled={saving}
                 onClick={() => handleSelect(p.id)}
                 className={`relative text-left rounded-xl border-2 p-4 transition-all disabled:opacity-60 ${
-                  active ? "border-violet-500 bg-violet-500/5" : "border-border hover:border-foreground/30"
+                  active ? "border-[hsl(var(--primary))] bg-[hsl(var(--primary)/0.06)]" : "border-border hover:border-foreground/30"
                 }`}
               >
                 <div className="flex items-center justify-between gap-2">

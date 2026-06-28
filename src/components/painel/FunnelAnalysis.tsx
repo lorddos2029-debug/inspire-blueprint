@@ -21,7 +21,7 @@ interface FunnelCounts {
 }
 
 const STEPS = [
-  { key: "produto", label: "Visitou Produto", icon: Eye, color: "from-violet-500 to-purple-500", text: "text-violet-600", bg: "bg-violet-500/10" },
+  { key: "produto", label: "Visitou Produto", icon: Eye, color: "from-[hsl(var(--primary))] to-[hsl(var(--gold))]", text: "text-[hsl(var(--primary))]", bg: "bg-[hsl(var(--primary)/0.08)]" },
   { key: "dados", label: "Dados Pessoais", icon: FileText, color: "from-blue-500 to-cyan-500", text: "text-blue-600", bg: "bg-blue-500/10" },
   { key: "endereco", label: "Endereço", icon: MapPin, color: "from-amber-500 to-orange-500", text: "text-amber-600", bg: "bg-amber-500/10" },
   { key: "pagamento", label: "Pagamento", icon: CreditCard, color: "from-rose-500 to-pink-500", text: "text-rose-600", bg: "bg-rose-500/10" },
@@ -292,7 +292,7 @@ const FunnelAnalysis = () => {
       {/* AI Analysis */}
       <div className="rounded-xl border border-border bg-gradient-to-br from-card via-card to-accent/30 p-4 space-y-3">
         <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--gold))] flex items-center justify-center shrink-0">
             <Sparkles className="w-5 h-5 text-white" />
           </div>
           <div className="flex-1">
@@ -306,7 +306,7 @@ const FunnelAnalysis = () => {
         <Button
           onClick={runAnalysis}
           disabled={aiLoading || (counts.produto === 0 && counts.dados === 0)}
-          className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white border-0"
+          className="w-full bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--gold))] hover:from-[hsl(var(--primary)/0.9)] hover:to-[hsl(var(--gold)/0.9)] text-white border-0"
         >
           {aiLoading ? (
             <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Analisando funil...</>
@@ -333,7 +333,7 @@ const FunnelAnalysis = () => {
 };
 
 const summaryAccent: Record<string, string> = {
-  violet: "from-violet-500/20 to-violet-500/5 text-violet-600",
+  violet: "from-[hsl(var(--primary))]/20 to-[hsl(var(--primary))]/5 text-[hsl(var(--primary))]",
   emerald: "from-emerald-500/20 to-emerald-500/5 text-emerald-600",
   amber: "from-amber-500/20 to-amber-500/5 text-amber-600",
 };

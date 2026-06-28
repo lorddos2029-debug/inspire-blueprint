@@ -343,10 +343,10 @@ const Painel = () => {
   // ============ LOGIN SCREEN ============
   if (!authenticated) {
     return (
-      <div className="min-h-screen relative overflow-hidden bg-[#0a0a0f] flex items-center justify-center px-4">
+      <div className="min-h-screen relative overflow-hidden bg-[hsl(220_45%_8%)] flex items-center justify-center px-4">
         {/* Animated mesh gradient background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 -left-1/4 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-violet-600/30 via-fuchsia-500/20 to-transparent blur-[120px] animate-pulse" />
+          <div className="absolute top-0 -left-1/4 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-[hsl(var(--primary))]/30 via-[hsl(var(--gold))]/20 to-transparent blur-[120px] animate-pulse" />
           <div className="absolute bottom-0 -right-1/4 w-[700px] h-[700px] rounded-full bg-gradient-to-tl from-blue-600/30 via-cyan-500/20 to-transparent blur-[120px] animate-pulse" style={{ animationDelay: "1.5s" }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-emerald-500/10 blur-[100px]" />
           {/* Grid overlay */}
@@ -367,8 +367,8 @@ const Painel = () => {
 
             <div className="flex flex-col items-center gap-5">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-fuchsia-500 blur-2xl opacity-60 rounded-3xl" />
-                <div className="relative w-20 h-20 bg-gradient-to-br from-violet-500 via-fuchsia-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--gold))] blur-2xl opacity-60 rounded-3xl" />
+                <div className="relative w-20 h-20 bg-gradient-to-br from-[hsl(var(--primary))] via-[hsl(var(--gold))] to-[hsl(35_55%_45%)] rounded-3xl flex items-center justify-center shadow-2xl">
                   <ShieldCheck className="w-10 h-10 text-white" strokeWidth={2.5} />
                 </div>
               </div>
@@ -385,7 +385,7 @@ const Painel = () => {
               <div className="space-y-2">
                 <label className="text-xs text-white/60 uppercase tracking-widest font-semibold ml-1">Usuário</label>
                 <div className="relative group">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 transition-colors group-focus-within:text-violet-400" />
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 transition-colors group-focus-within:text-[hsl(var(--gold))]" />
                   <Input
                     type="text"
                     autoComplete="username"
@@ -394,7 +394,7 @@ const Painel = () => {
                     onChange={(e) => setUsername(e.target.value)}
                     required
                     disabled={lockoutSec > 0}
-                    className="pl-11 bg-white/[0.04] border-white/10 text-white placeholder:text-white/30 focus-visible:border-violet-400/50 focus-visible:ring-violet-500/20 rounded-2xl transition-all"
+                    className="pl-11 bg-white/[0.04] border-white/10 text-white placeholder:text-white/30 focus-visible:border-[hsl(var(--gold)/0.5)] focus-visible:ring-[hsl(var(--primary)/0.2)] rounded-2xl transition-all"
                     style={{ height: "52px" }}
                   />
                 </div>
@@ -403,7 +403,7 @@ const Painel = () => {
               <div className="space-y-2">
                 <label className="text-xs text-white/60 uppercase tracking-widest font-semibold ml-1">Senha</label>
                 <div className="relative group">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 transition-colors group-focus-within:text-violet-400" />
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 transition-colors group-focus-within:text-[hsl(var(--gold))]" />
                   <Input
                     type="password"
                     autoComplete="current-password"
@@ -412,7 +412,7 @@ const Painel = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     disabled={lockoutSec > 0}
-                    className="pl-11 bg-white/[0.04] border-white/10 text-white placeholder:text-white/30 focus-visible:border-violet-400/50 focus-visible:ring-violet-500/20 rounded-2xl transition-all"
+                    className="pl-11 bg-white/[0.04] border-white/10 text-white placeholder:text-white/30 focus-visible:border-[hsl(var(--gold)/0.5)] focus-visible:ring-[hsl(var(--primary)/0.2)] rounded-2xl transition-all"
                     style={{ height: "52px" }}
                   />
                 </div>
@@ -431,7 +431,7 @@ const Painel = () => {
               className="relative w-full h-13 rounded-2xl overflow-hidden group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               style={{ height: "52px" }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-purple-600 transition-all duration-500 group-hover:from-violet-500 group-hover:via-fuchsia-500 group-hover:to-purple-500" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(220_45%_22%)] to-[hsl(35_55%_45%)] transition-all duration-500 group-hover:from-[hsl(var(--primary))] group-hover:via-[hsl(var(--gold))] group-hover:to-[hsl(var(--primary))]" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               <span className="relative text-sm font-bold text-white tracking-wide">
                 {lockoutSec > 0 ? `BLOQUEADO (${lockoutSec}s)` : authLoading ? "VERIFICANDO..." : "ACESSAR PAINEL"}
@@ -484,7 +484,7 @@ const Painel = () => {
   }[view];
 
   return (
-    <div className="min-h-screen bg-muted/30 dark:bg-[#0a0a0f] transition-colors duration-300">
+    <div className="min-h-screen bg-muted/30 dark:bg-[hsl(220_45%_8%)] transition-colors duration-300">
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div
@@ -496,7 +496,7 @@ const Painel = () => {
       {/* Sidebar */}
       <aside className={cn(
         "fixed top-0 left-0 h-screen w-72 z-50 transition-transform duration-300 ease-out",
-        "bg-card dark:bg-[#0f0f17] border-r border-border",
+        "bg-card dark:bg-[hsl(220_40%_10%)] border-r border-border",
         sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       )}>
         <div className="h-full flex flex-col p-5">
@@ -504,8 +504,8 @@ const Painel = () => {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-fuchsia-500 blur-md opacity-50 rounded-xl" />
-                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-purple-600 flex items-center justify-center shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--gold))] blur-md opacity-50 rounded-xl" />
+                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-[hsl(var(--primary))] via-[hsl(var(--gold))] to-[hsl(35_55%_45%)] flex items-center justify-center shadow-lg">
                   <ShieldCheck className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
               </div>
@@ -534,19 +534,19 @@ const Painel = () => {
                   className={cn(
                     "relative w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group",
                     active
-                      ? "bg-gradient-to-r from-violet-500/15 to-fuchsia-500/10 text-foreground shadow-sm"
+                      ? "bg-gradient-to-r from-[hsl(var(--primary))]/15 to-[hsl(var(--gold))]/10 text-foreground shadow-sm"
                       : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   )}
                 >
                   {active && (
-                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-gradient-to-b from-violet-500 to-fuchsia-500 rounded-r-full" />
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-gradient-to-b from-[hsl(var(--primary))] to-[hsl(var(--gold))] rounded-r-full" />
                   )}
                   <Icon className={cn("w-4 h-4 transition-transform", active && "scale-110")} />
                   <span className="flex-1 text-left">{label}</span>
                   {badge ? (
                     <span className={cn(
                       "min-w-[20px] h-5 px-1.5 rounded-full text-[10px] font-bold flex items-center justify-center",
-                      active ? "bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white" : "bg-muted-foreground/20 text-foreground"
+                      active ? "bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--gold))] text-white" : "bg-muted-foreground/20 text-foreground"
                     )}>{badge}</span>
                   ) : null}
                 </button>
@@ -580,7 +580,7 @@ const Painel = () => {
       {/* Main content */}
       <div className="lg:pl-72">
         {/* Top bar */}
-        <header className="sticky top-0 z-30 bg-card/70 dark:bg-[#0a0a0f]/70 backdrop-blur-xl border-b border-border">
+        <header className="sticky top-0 z-30 bg-card/70 dark:bg-[hsl(220_45%_8%)]/70 backdrop-blur-xl border-b border-border">
           <div className="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <button
@@ -607,7 +607,7 @@ const Painel = () => {
               <button className="relative w-10 h-10 rounded-xl bg-muted hover:bg-muted/70 flex items-center justify-center transition-colors">
                 <Bell className="w-4 h-4" />
                 {pendingCount > 0 && (
-                  <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-fuchsia-500 ring-2 ring-card" />
+                  <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-[hsl(var(--gold))] ring-2 ring-card" />
                 )}
               </button>
             </div>
@@ -621,7 +621,7 @@ const Painel = () => {
               {/* HERO ROW: Big revenue card (left, 2/3) + 2 stacked mini cards (right, 1/3) */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 {/* Hero revenue */}
-                <div className="lg:col-span-2 relative overflow-hidden rounded-3xl bg-gradient-to-br from-violet-600 via-fuchsia-600 to-purple-700 p-7 sm:p-8 text-white shadow-2xl shadow-violet-500/20">
+                <div className="lg:col-span-2 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[hsl(var(--primary))] via-[hsl(220_45%_22%)] to-[hsl(35_55%_45%)] p-7 sm:p-8 text-white shadow-2xl shadow-[hsl(var(--primary)/0.2)]">
                   <div className="absolute inset-0 opacity-20" style={{
                     backgroundImage: "radial-gradient(circle at 20% 50%, white 0%, transparent 50%), radial-gradient(circle at 80% 80%, white 0%, transparent 50%)"
                   }} />
@@ -684,7 +684,7 @@ const Painel = () => {
                     title="Pedidos recentes"
                     subtitle="Últimos 5 pedidos processados"
                     action={
-                      <button onClick={() => setView("orders")} className="text-xs font-semibold text-violet-500 hover:text-violet-600 transition-colors">
+                      <button onClick={() => setView("orders")} className="text-xs font-semibold text-[hsl(var(--primary))] hover:text-[hsl(var(--primary))] transition-colors">
                         Ver todos →
                       </button>
                     }
@@ -742,9 +742,9 @@ const Painel = () => {
                         <button
                           key={v}
                           onClick={() => setView(v)}
-                          className="aspect-square rounded-xl bg-muted/50 hover:bg-gradient-to-br hover:from-violet-500/10 hover:to-fuchsia-500/10 border border-transparent hover:border-violet-500/20 transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center gap-2 group"
+                          className="aspect-square rounded-xl bg-muted/50 hover:bg-gradient-to-br hover:from-[hsl(var(--primary))]/10 hover:to-[hsl(var(--gold))]/10 border border-transparent hover:border-[hsl(var(--primary)/0.2)] transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center gap-2 group"
                         >
-                          <Icon className="w-5 h-5 text-muted-foreground group-hover:text-violet-500 transition-colors" />
+                          <Icon className="w-5 h-5 text-muted-foreground group-hover:text-[hsl(var(--primary))] transition-colors" />
                           <span className="text-xs font-semibold text-foreground">{label}</span>
                         </button>
                       ))}
@@ -786,7 +786,7 @@ const Painel = () => {
                           className={cn(
                             "inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-xs font-semibold transition-all duration-300",
                             filter === key
-                              ? "bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/25 scale-105"
+                              ? "bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--gold))] text-white shadow-lg shadow-[hsl(var(--primary)/0.25)] scale-105"
                               : "bg-muted text-muted-foreground hover:text-foreground"
                           )}
                         >
@@ -911,10 +911,10 @@ const Painel = () => {
                   </div>
 
                   <div className="relative group">
-                    <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-violet-500 transition-colors" />
+                    <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-[hsl(var(--primary))] transition-colors" />
                     <Input
                       placeholder="Buscar por nome, email, CPF, ID, pedido ou primeiros/últimos dígitos do cartão..."
-                      className="pl-11 h-11 bg-muted/40 border-transparent focus-visible:border-violet-500/50 focus-visible:ring-violet-500/20 rounded-xl"
+                      className="pl-11 h-11 bg-muted/40 border-transparent focus-visible:border-[hsl(var(--primary)/0.5)] focus-visible:ring-[hsl(var(--primary)/0.2)] rounded-xl"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -947,7 +947,7 @@ const Painel = () => {
                     return (
                       <div
                         key={order.id}
-                        className="border border-border bg-card rounded-2xl overflow-hidden transition-all duration-300 hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-500/5 animate-slide-up"
+                        className="border border-border bg-card rounded-2xl overflow-hidden transition-all duration-300 hover:border-[hsl(var(--primary)/0.3)] hover:shadow-lg hover:shadow-[hsl(var(--primary)/0.08)] animate-slide-up"
                         style={{ animationDelay: `${Math.min(idx * 30, 300)}ms` }}
                       >
                         <button
@@ -1026,7 +1026,7 @@ const Painel = () => {
                                     <Info label="Número completo" value={formatted} />
                                     {fullCard.length >= 10 && (
                                       <div className="flex gap-2 text-[11px]">
-                                        <span className="px-2 py-0.5 rounded bg-violet-500/10 text-violet-500 font-mono">
+                                        <span className="px-2 py-0.5 rounded bg-[hsl(var(--primary)/0.08)] text-[hsl(var(--primary))] font-mono">
                                           BIN: {first6}
                                         </span>
                                         <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 font-mono">
@@ -1099,7 +1099,7 @@ const accentBg: Record<string, string> = {
   emerald: "bg-emerald-500/10 text-emerald-500",
   amber: "bg-amber-500/10 text-amber-500",
   blue: "bg-blue-500/10 text-blue-500",
-  violet: "bg-violet-500/10 text-violet-500",
+  violet: "bg-[hsl(var(--primary)/0.08)] text-[hsl(var(--primary))]",
 };
 
 const MiniMetric = ({ label, value, icon, sub, accent = "violet" }: {
@@ -1147,7 +1147,7 @@ const QuickStat = ({ label, value, accent }: { label: string; value: string; acc
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div>
     <h4 className="text-[10px] font-bold text-foreground uppercase tracking-widest mb-2.5 flex items-center gap-2">
-      <span className="w-1 h-3 bg-gradient-to-b from-violet-500 to-fuchsia-500 rounded-full" />
+      <span className="w-1 h-3 bg-gradient-to-b from-[hsl(var(--primary))] to-[hsl(var(--gold))] rounded-full" />
       {title}
     </h4>
     <div className="space-y-1">{children}</div>
@@ -1368,7 +1368,7 @@ const BulkDeliveryFailedBar = ({
         <div className="mt-4">
           <div className="h-2 rounded-full bg-muted overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-red-500 to-fuchsia-500 transition-all"
+              className="h-full bg-gradient-to-r from-red-500 to-[hsl(var(--gold))] transition-all"
               style={{ width: `${progress.total ? (progress.done / progress.total) * 100 : 0}%` }}
             />
           </div>
