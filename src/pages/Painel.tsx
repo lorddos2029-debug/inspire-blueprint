@@ -643,36 +643,67 @@ const Painel = () => {
         <main className="p-4 sm:p-6 lg:p-8 space-y-6">
           {view === "overview" && (
             <div className="space-y-6 animate-fade-in-fast">
-              {/* HERO ROW: Big revenue card (left, 2/3) + 2 stacked mini cards (right, 1/3) */}
+              {/* Period filter bar */}
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">Visão geral</h2>
+                  <p className="text-xs text-muted-foreground mt-0.5">Exibindo: <span className="font-semibold text-foreground">{periodLabel}</span></p>
+                </div>
+                <div className="inline-flex items-center gap-1 p-1 rounded-2xl bg-muted/60 backdrop-blur border border-border/50 shadow-sm">
+                  {([
+                    { k: "today", l: "Hoje" },
+                    { k: "7d", l: "7 dias" },
+                    { k: "15d", l: "15 dias" },
+                    { k: "all", l: "Todos" },
+                  ] as const).map(({ k, l }) => (
+                    <button
+                      key={k}
+                      onClick={() => setOverviewPeriod(k)}
+                      className={cn(
+                        "px-3 sm:px-4 h-9 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300",
+                        overviewPeriod === k
+                          ? "bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] shadow-md shadow-[hsl(var(--primary)/0.25)]"
+                          : "text-muted-foreground hover:text-foreground hover:bg-background/60"
+                      )}
+                    >
+                      {l}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* HERO ROW */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 {/* Hero revenue */}
-                <div className="lg:col-span-2 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[hsl(var(--primary))] via-[hsl(220_45%_22%)] to-[hsl(35_55%_45%)] p-7 sm:p-8 text-white shadow-2xl shadow-[hsl(var(--primary)/0.2)]">
+                <div className="lg:col-span-2 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[hsl(var(--primary))] via-[hsl(220_45%_22%)] to-[hsl(35_55%_45%)] p-7 sm:p-9 text-white shadow-2xl shadow-[hsl(var(--primary)/0.25)]">
                   <div className="absolute inset-0 opacity-20" style={{
                     backgroundImage: "radial-gradient(circle at 20% 50%, white 0%, transparent 50%), radial-gradient(circle at 80% 80%, white 0%, transparent 50%)"
                   }} />
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/4" />
-                  <div className="relative flex flex-col h-full justify-between gap-6">
+                  <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/4" />
+                  <div className="absolute bottom-0 left-0 w-56 h-56 bg-[hsl(var(--gold))]/20 blur-3xl rounded-full translate-y-1/2 -translate-x-1/4" />
+                  <div className="relative flex flex-col h-full justify-between gap-7">
                     <div className="flex items-start justify-between">
                       <div>
-                        <p className="text-xs uppercase tracking-widest text-white/70 font-semibold mb-1">Receita de Hoje</p>
-                        <p className="text-4xl sm:text-5xl font-bold tracking-tight tabular-nums">{formatPrice(revenueToday)}</p>
+                        <p className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-white/70 font-semibold mb-2">Receita · {periodLabel}</p>
+                        <p className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight tabular-nums leading-none">{formatPrice(revenuePeriod)}</p>
+                        <p className="text-xs text-white/60 mt-2">Ticket médio <span className="font-semibold text-white/90 tabular-nums">{formatPrice(avgTicketPeriod)}</span></p>
                       </div>
-                      <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center shrink-0">
+                      <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center shrink-0 ring-1 ring-white/20">
                         <Wallet className="w-7 h-7" />
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-3">
-                      <div className="px-4 py-2 rounded-xl bg-white/10 backdrop-blur">
-                        <p className="text-[10px] uppercase tracking-wider text-white/60 font-semibold">Aprovados</p>
-                        <p className="text-lg font-bold tabular-nums">{paidToday.length}</p>
+                    <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                      <div className="px-3 sm:px-4 py-3 rounded-2xl bg-white/10 backdrop-blur border border-white/10">
+                        <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-white/60 font-semibold">Aprovados</p>
+                        <p className="text-lg sm:text-xl font-bold tabular-nums mt-1">{paidPeriod.length}</p>
                       </div>
-                      <div className="px-4 py-2 rounded-xl bg-white/10 backdrop-blur">
-                        <p className="text-[10px] uppercase tracking-wider text-white/60 font-semibold">Pedidos</p>
-                        <p className="text-lg font-bold tabular-nums">{ordersToday.length}</p>
+                      <div className="px-3 sm:px-4 py-3 rounded-2xl bg-white/10 backdrop-blur border border-white/10">
+                        <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-white/60 font-semibold">Pedidos</p>
+                        <p className="text-lg sm:text-xl font-bold tabular-nums mt-1">{ordersPeriod.length}</p>
                       </div>
-                      <div className="px-4 py-2 rounded-xl bg-white/10 backdrop-blur">
-                        <p className="text-[10px] uppercase tracking-wider text-white/60 font-semibold">Conversão</p>
-                        <p className="text-lg font-bold tabular-nums">{conversionRate.toFixed(1)}%</p>
+                      <div className="px-3 sm:px-4 py-3 rounded-2xl bg-white/10 backdrop-blur border border-white/10">
+                        <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-white/60 font-semibold">Conversão</p>
+                        <p className="text-lg sm:text-xl font-bold tabular-nums mt-1">{conversionPeriod.toFixed(1)}%</p>
                       </div>
                     </div>
                   </div>
@@ -681,10 +712,10 @@ const Painel = () => {
                 {/* Right column mini cards */}
                 <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
                   <MiniMetric
-                    label="Receita Total"
+                    label="Receita total"
                     value={formatPrice(totalRevenue)}
                     icon={<BarChart3 className="w-4 h-4" />}
-                    sub={`${orders.length} pedidos`}
+                    sub={`${orders.length} pedidos no total`}
                     accent="emerald"
                   />
                   <MiniMetric
@@ -696,6 +727,7 @@ const Painel = () => {
                   />
                 </div>
               </div>
+
 
               {/* VISITORS - full width */}
               <Panel title="Visitantes em tempo real" subtitle="Atividade ao vivo na loja">
