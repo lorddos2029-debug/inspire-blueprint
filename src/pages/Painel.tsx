@@ -341,6 +341,30 @@ const Painel = () => {
   const totalRevenue = orders.filter((o) => o.payment_status === "approved" || o.payment_status === "paid").reduce((s, o) => s + Number(o.total || 0), 0);
   const conversionRate = ordersToday.length > 0 ? (paidToday.length / ordersToday.length) * 100 : 0;
 
+  // Overview period metrics
+  const overviewStart = (() => {
+    if (overviewPeriod === "all") return null;
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    if (overviewPeriod === "today") return d;
+    if (overviewPeriod === "7d") { d.setDate(d.getDate() - 6); return d; }
+    if (overviewPeriod === "15d") { d.setDate(d.getDate() - 14); return d; }
+    return null;
+  })();
+  const ordersPeriod = overviewStart
+    ? orders.filter((o) => o.created_at && new Date(o.created_at) >= overviewStart)
+    : orders;
+  const paidPeriod = ordersPeriod.filter((o) => o.payment_status === "approved" || o.payment_status === "paid");
+  const revenuePeriod = paidPeriod.reduce((sum, o) => sum + Number(o.total || 0), 0);
+  const conversionPeriod = ordersPeriod.length > 0 ? (paidPeriod.length / ordersPeriod.length) * 100 : 0;
+  const avgTicketPeriod = paidPeriod.length > 0 ? revenuePeriod / paidPeriod.length : 0;
+  const periodLabel = {
+    today: "Hoje",
+    "7d": "Últimos 7 dias",
+    "15d": "Últimos 15 dias",
+    all: "Todo o período",
+  }[overviewPeriod];
+
   // ============ LOGIN SCREEN ============
   if (!authenticated) {
     return (
