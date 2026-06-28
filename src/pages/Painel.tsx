@@ -334,12 +334,8 @@ const Painel = () => {
 
   const todayStart = new Date();
   todayStart.setHours(0, 0, 0, 0);
-  const ordersToday = orders.filter((o) => o.created_at && new Date(o.created_at) >= todayStart);
-  const paidToday = ordersToday.filter((o) => o.payment_status === "approved" || o.payment_status === "paid");
-  const revenueToday = paidToday.reduce((sum, o) => sum + Number(o.total || 0), 0);
   const pendingCount = orders.filter((o) => o.payment_status === "pending" || o.payment_status === "waiting_payment").length;
   const totalRevenue = orders.filter((o) => o.payment_status === "approved" || o.payment_status === "paid").reduce((s, o) => s + Number(o.total || 0), 0);
-  const conversionRate = ordersToday.length > 0 ? (paidToday.length / ordersToday.length) * 100 : 0;
 
   // Overview period metrics
   const overviewStart = (() => {
