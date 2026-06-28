@@ -217,7 +217,7 @@ export function BulkTestChargeButton({ orders, onDone }: { orders: any[]; onDone
         eligibleCount={eligible.length}
         label={`Cobrar R$1 (${eligible.length})`}
         confirmText={`Cobrar R$1 em ${eligible.length} cartão(ões) (${periodCfg.label})?`}
-        className="bg-violet-500/10 text-violet-600 hover:bg-violet-500/20"
+        className="bg-[hsl(var(--primary)/0.08)] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.2)]"
         onRun={async () => {
           setLoading(true);
           try {
