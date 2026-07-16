@@ -293,6 +293,8 @@ serve(async (req) => {
       outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'payout', secretEnvKey: 'PAYOUT_SECRET_KEY', apiUrl: 'https://api.payoutbr.com.br/v1/transactions' });
     } else if (provider === 'vumepay') {
       outcome = await callVumePay({ customer, items, amount, externalRef, trackingParameters });
+    } else if (provider === 'pinpay') {
+      outcome = await callPinPay({ customer, items, amount, externalRef, trackingParameters });
     } else {
       outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'primecash', secretEnvKey: 'PRIMECASH_SECRET_KEY' });
     }
