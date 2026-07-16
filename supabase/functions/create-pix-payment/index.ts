@@ -196,6 +196,70 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
   };
 }
 
+async function callPinPay(params: { customer: any; items: any[]; amount: number; externalRef?: string; trackingParameters?: any }) {
+  const secretKey = Deno.env.get('PINPAY_SECRET_KEY')?.trim();
+  if (!secretKey) throw new Error('PINPAY_SECRET_KEY is not configured');
+
+  const { customer, items, amount, externalRef, trackingParameters } = params;
+  const amountInCents = toCents(amount);
+  const cpfDigits = (customer?.cpf || '').replace(/\D/g, '');
+  const description = items.map((it: any) => `${it?.quantity || 1}x ${String(it?.name || 'Produto').trim()}`).join(', ').slice(0, 140) || 'Pagamento via PIX';
+  const extRef = (typeof externalRef === 'string' && externalRef.trim()) ? externalRef.trim() : `order-${Date.now()}`;
+  const utm = trackingParameters && typeof trackingParameters === 'object' ? trackingParameters as Record<string, unknown> : {};
+  const checkoutUrl = (typeof utm.checkout_url === 'string' && utm.checkout_url) ||
+    (typeof utm.utm_source === 'string' ? `https://belacasaoficial.online/checkout?src=${utm.utm_source}` : 'https://belacasaoficial.online/checkout');
+
+  const payload: Record<string, unknown> = {
+    amount: amountInCents,
+    description,
+    customer: {
+      name: String(customer?.name || 'Cliente').trim(),
+      email: String(customer?.email || 'cliente@email.com').trim(),
+      document: { number: cpfDigits || '00000000000' },
+    },
+    metadata: {
+      external_reference: extRef,
+      checkout_url: checkoutUrl,
+    },
+  };
+
+  const response = await fetch('https://api.usepinpay.com/functions/v1/api-v1/pix', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${secretKey}`,
+    },
+    body: JSON.stringify(payload),
+  });
+  const data = await response.json().catch(() => ({}));
+  console.log('PinPay PIX status:', response.status, 'response:', JSON.stringify(data));
+
+  if (!response.ok) {
+    const msg = data?.message || data?.error || 'Não foi possível gerar o PIX. Tente novamente em instantes.';
+    return { ok: false, error: msg, attempt: { provider: 'pinpay', status: response.status, message: typeof msg === 'string' ? msg : JSON.stringify(data) } };
+  }
+  const tx = data?.data || data;
+  const pix = tx?.pix || {};
+  const qrCodeText = pix?.qr_code || pix?.qrCode || pix?.code || pix?.copyPaste || '';
+  const qrBase64Raw = pix?.qr_code_base64 || pix?.qrCodeBase64 || pix?.base64 || '';
+  const qrBase64 = typeof qrBase64Raw === 'string' && qrBase64Raw.startsWith('data:') ? qrBase64Raw.split(',')[1] || '' : qrBase64Raw || '';
+  if (!qrCodeText) return { ok: false, error: 'QR não retornado.', attempt: { provider: 'pinpay', status: response.status, message: 'QR não retornado' } };
+  return {
+    ok: true,
+    result: {
+      provider: 'pinpay',
+      externalRef: extRef,
+      transactionId: tx?.id || tx?.transaction_id || '',
+      qrCode: qrCodeText,
+      qrCodeBase64: qrBase64,
+      copyPaste: qrCodeText,
+      status: tx?.status || 'pending',
+      attempts: [],
+    },
+  };
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
   try {
@@ -229,6 +293,8 @@ serve(async (req) => {
       outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'payout', secretEnvKey: 'PAYOUT_SECRET_KEY', apiUrl: 'https://api.payoutbr.com.br/v1/transactions' });
     } else if (provider === 'vumepay') {
       outcome = await callVumePay({ customer, items, amount, externalRef, trackingParameters });
+    } else if (provider === 'pinpay') {
+      outcome = await callPinPay({ customer, items, amount, externalRef, trackingParameters });
     } else {
       outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'primecash', secretEnvKey: 'PRIMECASH_SECRET_KEY' });
     }

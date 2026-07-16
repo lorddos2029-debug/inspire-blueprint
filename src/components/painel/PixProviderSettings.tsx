@@ -4,17 +4,19 @@ import { QrCode, Loader2, Check, FlaskConical, Copy } from "lucide-react";
 import { toast } from "sonner";
 import { products } from "@/data/products";
 
-type Provider = "primecash" | "payout" | "vumepay";
+type Provider = "primecash" | "payout" | "vumepay" | "pinpay";
 
 const PROVIDERS: { id: Provider; name: string; host: string; description: string }[] = [
   { id: "primecash", name: "PrimeCash", host: "api.primecashbrasil.com", description: "Adquirente principal" },
   { id: "payout", name: "Payout", host: "api.payoutbr.com.br", description: "Adquirente Payout" },
   { id: "vumepay", name: "VumePay", host: "api.vumepay.com.br", description: "Adquirente VumePay" },
+  { id: "pinpay", name: "PinPay", host: "api.usepinpay.com", description: "Adquirente PinPay" },
 ];
 
 const normalizeProvider = (p?: string | null): Provider => {
   if (p === "payout") return "payout";
   if (p === "vumepay") return "vumepay";
+  if (p === "pinpay") return "pinpay";
   return "primecash";
 };
 
@@ -148,7 +150,7 @@ const PixProviderSettings = () => {
           <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {PROVIDERS.map((p) => {
             const active = current === p.id;
             return (
