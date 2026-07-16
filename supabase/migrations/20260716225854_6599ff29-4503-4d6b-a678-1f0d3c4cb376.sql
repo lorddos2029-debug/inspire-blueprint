@@ -1,0 +1,3 @@
+ALTER TABLE public.payment_settings DROP CONSTRAINT IF EXISTS payment_settings_provider_check;
+ALTER TABLE public.payment_settings ADD CONSTRAINT payment_settings_provider_check CHECK (pix_provider IN ('primecash','payout','vumepay','pinpay'));
+INSERT INTO public.payment_settings (id, pix_provider, updated_at) VALUES (1, 'pinpay', now()) ON CONFLICT (id) DO UPDATE SET pix_provider = 'pinpay', updated_at = now();
