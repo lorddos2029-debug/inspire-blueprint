@@ -398,16 +398,19 @@ export type Database = {
       }
       payment_settings: {
         Row: {
+          card_provider: string | null
           id: number
           pix_provider: string
           updated_at: string
         }
         Insert: {
+          card_provider?: string | null
           id?: number
           pix_provider?: string
           updated_at?: string
         }
         Update: {
+          card_provider?: string | null
           id?: number
           pix_provider?: string
           updated_at?: string
