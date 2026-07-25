@@ -1,15 +1,15 @@
-import cobertor from "@/assets/products-bc/cobertor.jpg";
-import travesseiro from "@/assets/products-bc/travesseiro.jpg";
-import toalha from "@/assets/products-bc/toalha.jpg";
-import airfryer from "@/assets/products-bc/airfryer.jpg";
-import liquidificador from "@/assets/products-bc/liquidificador.jpg";
-import cafeteira from "@/assets/products-bc/cafeteira.jpg";
-import organizador from "@/assets/products-bc/organizador.jpg";
-import jogoJantar from "@/assets/products-bc/jogo-jantar.jpg";
-import lencol from "@/assets/products-bc/lencol.jpg";
-import edredom from "@/assets/products-bc/edredom.jpg";
-import chaleira from "@/assets/products-bc/chaleira.jpg";
-import batedeira from "@/assets/products-bc/batedeira.jpg";
+const cobertor = "/assets/products-bc/cobertor.jpg";
+const travesseiro = "/assets/products-bc/travesseiro.jpg";
+const toalha = "/assets/products-bc/toalha.jpg";
+const airfryer = "/assets/products-bc/airfryer.jpg";
+const liquidificador = "/assets/products-bc/liquidificador.jpg";
+const cafeteira = "/assets/products-bc/cafeteira.jpg";
+const organizador = "/assets/products-bc/organizador.jpg";
+const jogoJantar = "/assets/products-bc/jogo-jantar.jpg";
+const lencol = "/assets/products-bc/lencol.jpg";
+const edredom = "/assets/products-bc/edredom.jpg";
+const chaleira = "/assets/products-bc/chaleira.jpg";
+const batedeira = "/assets/products-bc/batedeira.jpg";
 
 export interface CategoryProduct {
   id: string;
