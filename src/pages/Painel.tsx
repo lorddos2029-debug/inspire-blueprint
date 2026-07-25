@@ -815,7 +815,13 @@ const Painel = () => {
           {view === "tracking" && <div className="animate-fade-in-fast"><TrackingManager /></div>}
           {view === "emails" && <div className="animate-fade-in-fast"><EmailAudit /></div>}
           {view === "pix" && <div className="animate-fade-in-fast"><PixPendentes /></div>}
-          {view === "settings" && <div className="animate-fade-in-fast"><PixProviderSettings /></div>}
+          {view === "settings" && (
+            <div className="animate-fade-in-fast space-y-6">
+              <PixProviderSettings />
+              <CardProviderSettings />
+            </div>
+          )}
+
           {view === "tests" && <div className="animate-fade-in-fast"><ApprovedTestsView /></div>}
           {view === "rebill" && <div className="animate-fade-in-fast"><RebillPanel /></div>}
 
