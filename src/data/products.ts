@@ -1,8 +1,9 @@
-import panelaImg1 from "@/assets/products-bc/panelas/img-1.asset.json";
-import panelaImg2 from "@/assets/products-bc/panelas/img-2.asset.json";
-import panelaImg3 from "@/assets/products-bc/panelas/img-3.asset.json";
-import panelaImg4 from "@/assets/products-bc/panelas/img-4.asset.json";
-import panelaImg5 from "@/assets/products-bc/panelas/img-5.asset.json";
+import panelaSahara from "@/assets/products-bc/panelas-v2/sahara.asset.json";
+import panelaPretoTrad from "@/assets/products-bc/panelas-v2/preto-trad.asset.json";
+import panelaPrestigio from "@/assets/products-bc/panelas-v2/prestigio.asset.json";
+import panelaMenta from "@/assets/products-bc/panelas-v2/menta.asset.json";
+import panelaPretoGold from "@/assets/products-bc/panelas-v2/preto-gold.asset.json";
+
 import cobertor from "@/assets/products-bc/cobertor.jpg";
 
 import travesseiro from "@/assets/products-bc/travesseiro.jpg";
@@ -480,25 +481,25 @@ export const products: Product[] = [
     name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla Varias Cores Conjunto Kit Teflon D'italia Cozinha Completa",
     price: 89.9,
     originalPrice: 349.9,
-    image: (panelaImg4 as any).url,
+    image: (panelaSahara as any).url,
     images: [
-      (panelaImg4 as any).url,
-      (panelaImg1 as any).url,
-      (panelaImg2 as any).url,
-      (panelaImg3 as any).url,
-      (panelaImg5 as any).url,
+      (panelaSahara as any).url,
+      (panelaPretoTrad as any).url,
+      (panelaPrestigio as any).url,
+      (panelaMenta as any).url,
+      (panelaPretoGold as any).url,
     ],
     tag: "74% OFF",
     description:
       "Transforme sua cozinha com o Jogo de Panelas 10 Peças Bianco Vanilla D'italia. Desenvolvido com tecnologia antiaderente avançada (Teflon de alta resistência), este conjunto permite cozinhar com menos óleo, garantindo refeições mais saudáveis e limpeza rápida. As tampas em vidro temperado permitem visualizar o preparo sem perder calor, e o design moderno em cores variadas traz elegância para sua casa. O kit inclui panelas de diferentes tamanhos, caçarolas, frigideiras e utensílios indispensáveis.",
     colorVariants: [
-      { label: "Vanilla", colors: ["#e5dcd1"], image: (panelaImg2 as any).url },
-      { label: "Sahara", colors: ["#c5a07c"], image: (panelaImg4 as any).url },
-      { label: "Ivory", colors: ["#f5f5dc"], image: (panelaImg4 as any).url },
-      { label: "Fiori", colors: ["#d2b48c"], image: (panelaImg3 as any).url },
-      { label: "Prestigio", colors: ["#5b3a29"], image: (panelaImg5 as any).url },
-      { label: "Black/Gold", colors: ["#1a1a1a", "#d4af37"], image: (panelaImg5 as any).url },
+      { label: "Sahara", colors: ["#c5a07c"], image: (panelaSahara as any).url },
+      { label: "Preto Tradicional", colors: ["#1a1a1a"], image: (panelaPretoTrad as any).url },
+      { label: "Prestigio", colors: ["#5b3a29"], image: (panelaPrestigio as any).url },
+      { label: "Menta", colors: ["#5f9ea0"], image: (panelaMenta as any).url },
+      { label: "Black/Gold", colors: ["#1a1a1a", "#d4af37"], image: (panelaPretoGold as any).url },
     ],
   },
+
 ];
 
