@@ -410,7 +410,21 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Patrícia Andrade", date: "Fev 2026", rating: 5, text: "Pague 1 leve 2 — perfeito! Uma fica no banheiro, outra na cozinha. Minha sogra viu e quer também. Por menos de R$ 70 o kit é o melhor custo-benefício da BelaCasa. Já é minha segunda compra aqui." },
     ],
   },
+  // 24 — Jogo de Panelas 10 Peças Bianco Vanilla
+  24: {
+    total: 856,
+    avg: 4.9,
+    reviews: [
+      { name: "Mônica Silveira", date: "Jun 2026", rating: 5, text: "O jogo de panelas é simplesmente divino! A cor Vanilla é muito elegante. Não gruda nada, faço ovo frito sem uma gota de óleo. As 10 peças atendem todas as necessidades da minha cozinha." },
+      { name: "Ricardo Mendes", date: "Mai 2026", rating: 5, text: "Comprei de presente para minha esposa e ela amou. O material é resistente, as tampas de vidro temperado são ótimas e os cabos não esquentam de jeito nenhum. Ótimo custo-benefício." },
+      { name: "Patrícia Barbosa", date: "Mai 2026", rating: 5, text: "Fiquei surpresa com a qualidade pelo preço de R$ 89,90. O antiaderente é muito superior ao que eu esperava. A cozinha fica linda com esse conjunto completo." },
+      { name: "Luciana Guedes", date: "Abr 2026", rating: 5, text: "Chegou super rápido e muito bem embalado. O kit é completo mesmo, vem até utensílios. A cor Sahara que escolhi é maravilhosa e combina com tudo." },
+      { name: "Andréia Santos", date: "Abr 2026", rating: 5, text: "Excelente compra. As panelas distribuem o calor uniformemente e limpam num piscar de olhos. O Teflon D'italia é nota 10." },
+      { name: "Sônia Aparecida", date: "Mar 2026", rating: 5, text: "Recomendo a todos da BelaCasa. É o segundo kit que compro, um pra mim e um pra minha filha. Qualidade impecável e design sofisticado." },
+    ],
+  },
 };
+
 
 const defaultReviews: Review[] = [
   { name: "Cliente BelaCasa", date: "Mar 2026", rating: 5, text: "Produto de excelente qualidade, exatamente como descrito no site. Acabamento premium e entrega rápida. Recomendo!" },

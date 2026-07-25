@@ -1,4 +1,10 @@
+import panelaImg1 from "@/assets/products-bc/panelas/img-1.asset.json";
+import panelaImg2 from "@/assets/products-bc/panelas/img-2.asset.json";
+import panelaImg3 from "@/assets/products-bc/panelas/img-3.asset.json";
+import panelaImg4 from "@/assets/products-bc/panelas/img-4.asset.json";
+import panelaImg5 from "@/assets/products-bc/panelas/img-5.asset.json";
 import cobertor from "@/assets/products-bc/cobertor.jpg";
+
 import travesseiro from "@/assets/products-bc/travesseiro.jpg";
 import toalha from "@/assets/products-bc/toalha.jpg";
 import airfryer from "@/assets/products-bc/airfryer.jpg";
@@ -468,4 +474,31 @@ export const products: Product[] = [
       "Kit com 2 Escovas Elétricas de Limpeza Multifuncionais 9 em 1 com cabo retrátil estendido — o par perfeito para deixar uma na cozinha/banheiro e outra para limpezas pesadas, ou economizar comprando junto com quem você ama. Cada escova acompanha 9 cabeças intercambiáveis de troca rápida com encaixe magnético: escova de cerdas duras (azulejo, rejunte, sapatos), escova de cerdas macias (vidros, espelhos, carros), escova cônica (cantos e frestas), escova arredondada (pias e torneiras), esponja amarela com fibra verde (panelas, fogão, louças), disco de microfibra branco (estofados, sofá), boina de polimento (carro, móveis), disco azul scrubber (box, vaso sanitário) e disco de feltro (polimento final). Motor potente sem fio com bateria recarregável de 3000mAh de longa duração (mais de 90 minutos por carga) e carregamento rápido via cabo Type-C incluso. Display de LED indica o nível da bateria em tempo real. Velocidade de rotação ajustável até 400 RPM, removendo sujeira pesada, gordura, mofo, ferrugem leve e manchas em segundos sem esforço — o motor faz o trabalho por você. Cabo de alumínio extensível e retrátil (uso curto para detalhes ou estendido até 100cm para alcançar tetos, boxes altos, pisos e cantos sem se abaixar), perfeito para idosos, gestantes e quem tem problemas de coluna. À prova d'água IPX5 — pode molhar à vontade, ideal para banheiro, box, pia, cozinha, fogão, churrasqueira, carro, jardim e até para limpar rodas e calotas. Design ergonômico antiderrapante, leve e silencioso. Acompanha por kit: 2 escovas elétricas + 2 cabos extensores de alumínio + 9 cabeças/acessórios + 2 cabos USB Type-C + manual em português. Garantia oficial e nota fiscal BelaCasa. Pague 1 e leve o kit completo de 2 unidades — promoção por tempo limitadíssimo!",
     sizes: [],
   },
+  {
+    id: 24,
+    slug: "jogo-de-panelas-10-pecas-antiaderente-bianco-vanilla-teflon-ditalia",
+    name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla Varias Cores Conjunto Kit Teflon D'italia Cozinha Completa",
+    price: 89.9,
+    originalPrice: 349.9,
+    image: (panelaImg4 as any).url,
+    images: [
+      (panelaImg4 as any).url,
+      (panelaImg1 as any).url,
+      (panelaImg2 as any).url,
+      (panelaImg3 as any).url,
+      (panelaImg5 as any).url,
+    ],
+    tag: "74% OFF",
+    description:
+      "Transforme sua cozinha com o Jogo de Panelas 10 Peças Bianco Vanilla D'italia. Desenvolvido com tecnologia antiaderente avançada (Teflon de alta resistência), este conjunto permite cozinhar com menos óleo, garantindo refeições mais saudáveis e limpeza rápida. As tampas em vidro temperado permitem visualizar o preparo sem perder calor, e o design moderno em cores variadas traz elegância para sua casa. O kit inclui panelas de diferentes tamanhos, caçarolas, frigideiras e utensílios indispensáveis.",
+    colorVariants: [
+      { label: "Vanilla", colors: ["#e5dcd1"], image: (panelaImg2 as any).url },
+      { label: "Sahara", colors: ["#c5a07c"], image: (panelaImg4 as any).url },
+      { label: "Ivory", colors: ["#f5f5dc"], image: (panelaImg4 as any).url },
+      { label: "Fiori", colors: ["#d2b48c"], image: (panelaImg3 as any).url },
+      { label: "Prestigio", colors: ["#5b3a29"], image: (panelaImg5 as any).url },
+      { label: "Black/Gold", colors: ["#1a1a1a", "#d4af37"], image: (panelaImg5 as any).url },
+    ],
+  },
 ];
+
