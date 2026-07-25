@@ -1,8 +1,8 @@
-import panelaSahara from "@/assets/products-bc/panelas-v2/sahara.asset.json";
-import panelaPretoTrad from "@/assets/products-bc/panelas-v2/preto-trad.asset.json";
-import panelaPrestigio from "@/assets/products-bc/panelas-v2/prestigio.asset.json";
-import panelaMenta from "@/assets/products-bc/panelas-v2/menta.asset.json";
-import panelaPretoGold from "@/assets/products-bc/panelas-v2/preto-gold.asset.json";
+const panelaSahara = "/assets/products-bc/panelas-v2/sahara.asset.json";
+const panelaPretoTrad = "/assets/products-bc/panelas-v2/preto-trad.asset.json";
+const panelaPrestigio = "/assets/products-bc/panelas-v2/prestigio.asset.json";
+const panelaMenta = "/assets/products-bc/panelas-v2/menta.asset.json";
+const panelaPretoGold = "/assets/products-bc/panelas-v2/preto-gold.asset.json";
 
 const cobertor = "/assets/products-bc/cobertor.jpg";
 const travesseiro = "/assets/products-bc/travesseiro.jpg";
