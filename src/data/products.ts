@@ -3,6 +3,11 @@ const panelaPretoTrad = "/assets/products-bc/panelas-v2/preto-trad.jpg";
 const panelaPrestigio = "/assets/products-bc/panelas-v2/prestigio.jpg";
 const panelaMenta = "/assets/products-bc/panelas-v2/menta.jpg";
 const panelaPretoGold = "/assets/products-bc/panelas-v2/preto-gold.jpg";
+const biancoV1_1 = "/assets/products-bc/bianco-v1/img-1.png";
+const biancoV1_2 = "/assets/products-bc/bianco-v1/img-2.png";
+const biancoV1_3 = "/assets/products-bc/bianco-v1/img-3.png";
+const biancoV1_4 = "/assets/products-bc/bianco-v1/img-4.png";
+const biancoV1_5 = "/assets/products-bc/bianco-v1/img-5.png";
 
 const cobertor = "/assets/products-bc/cobertor.jpg";
 const travesseiro = "/assets/products-bc/travesseiro.jpg";
@@ -202,8 +207,8 @@ export const products: Product[] = [
     name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla",
     price: 79.9,
     originalPrice: 299.9,
-    image: biancoPanelas1,
-    images: [biancoPanelas1, biancoPanelas2, biancoPanelas3, biancoPanelas4, biancoPanelas5, biancoPanelas6],
+    image: biancoV1_1,
+    images: [biancoV1_1, biancoV1_2, biancoV1_3, biancoV1_4, biancoV1_5],
     tag: "73% OFF",
     description: "Jogo de Panelas Bianco Vanilla com 10 peças completas para equipar toda a sua cozinha.",
     sizes: [],
