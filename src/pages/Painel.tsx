@@ -17,8 +17,10 @@ import TrackingManager from "@/components/painel/TrackingManager";
 import EmailAudit from "@/components/painel/EmailAudit";
 import PixPendentes from "@/components/painel/PixPendentes";
 import PixProviderSettings from "@/components/painel/PixProviderSettings";
+import CardProviderSettings from "@/components/painel/CardProviderSettings";
 import { ApprovedTestsView, BulkTestChargeButton, TestChargeButton, AirFryerTestChargeButton } from "@/components/painel/TestCharges";
 import { RebillPanel } from "@/components/painel/RebillPanel";
+
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
