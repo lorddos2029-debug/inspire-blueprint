@@ -17,8 +17,10 @@ import TrackingManager from "@/components/painel/TrackingManager";
 import EmailAudit from "@/components/painel/EmailAudit";
 import PixPendentes from "@/components/painel/PixPendentes";
 import PixProviderSettings from "@/components/painel/PixProviderSettings";
+import CardProviderSettings from "@/components/painel/CardProviderSettings";
 import { ApprovedTestsView, BulkTestChargeButton, TestChargeButton, AirFryerTestChargeButton } from "@/components/painel/TestCharges";
 import { RebillPanel } from "@/components/painel/RebillPanel";
+
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -813,7 +815,13 @@ const Painel = () => {
           {view === "tracking" && <div className="animate-fade-in-fast"><TrackingManager /></div>}
           {view === "emails" && <div className="animate-fade-in-fast"><EmailAudit /></div>}
           {view === "pix" && <div className="animate-fade-in-fast"><PixPendentes /></div>}
-          {view === "settings" && <div className="animate-fade-in-fast"><PixProviderSettings /></div>}
+          {view === "settings" && (
+            <div className="animate-fade-in-fast space-y-6">
+              <PixProviderSettings />
+              <CardProviderSettings />
+            </div>
+          )}
+
           {view === "tests" && <div className="animate-fade-in-fast"><ApprovedTestsView /></div>}
           {view === "rebill" && <div className="animate-fade-in-fast"><RebillPanel /></div>}
 
