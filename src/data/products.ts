@@ -177,9 +177,6 @@ export const products: Product[] = [
     description: "Liquidificador Philips Walita com jarra de vidro resistente, motor potente de 1200W e 12 velocidades.",
     sizes: ["110V", "220V"],
   },
-    sizes: ["110V", "220V"],
-    colorVariants: [{ label: "Inox Premium", colors: ["#c0c0c0"] }],
-  },
   {
     id: 14,
     slug: "edredom-sherpa-coberdrom-casal-queen-dupla-face-pele-de-carneiro",
