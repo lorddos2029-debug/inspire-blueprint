@@ -3,6 +3,8 @@ const amazonProd2 = "/assets/products-amazon/prod-2.jpg";
 const amazonProd3 = "/assets/products-amazon/prod-3.jpg";
 const amazonProd4 = "/assets/products-amazon/prod-4.jpg";
 const amazonProd5 = "/assets/products-amazon/prod-5.jpg";
+const amazonProd6 = "/assets/products-amazon/prod-6.jpg";
+const amazonProd7 = "/assets/products-amazon/prod-7.jpg";
 
 const panelaSahara = "/assets/products-bc/panelas-v2/sahara.jpg";
 const panelaPretoTrad = "/assets/products-bc/panelas-v2/preto-trad.jpg";
