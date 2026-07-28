@@ -53,7 +53,7 @@ export const productCategories: ProductCategory[] = [
     title: "Mesa Posta",
     products: [
       { id: "mp-1", name: "Aparelho de Jantar Porcelana Fio Dourado 30 Peças", price: 599.9, originalPrice: 1099.9, image: jogoJantar, tag: "45% OFF", slug: "aparelho-jantar-porcelana-fio-dourado-30-pecas" },
-      { id: "mp-2", name: "Chaleira Elétrica Inox 1,7L Temperatura Variável", price: 219.9, originalPrice: 399.9, image: amazonProd6, tag: "45% OFF", slug: "chaleira-eletrica-inox-17l-temperatura-variavel" },
+      
     ],
   },
   {
