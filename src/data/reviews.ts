@@ -79,66 +79,60 @@ const makeBreakdown = (total: number): { stars: number; count: number }[] => {
 };
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
-  // 1 — Cobertor Plush King
+  // 1 — Cobertor King Microfibra
   1: {
-    total: 612,
+    total: 1245,
     avg: 4.9,
     reviews: [
-      { name: "Mariana Castro", date: "Mar 2026", rating: 5, text: "Cobertor maravilhoso! O toque é realmente macio como nuvem, esquentou as noites frias sem pesar. Lavei na máquina e continuou impecável." },
-      { name: "Patrícia Lopes", date: "Fev 2026", rating: 5, text: "Comprei o tamanho King e cobre minha cama queen com sobra. Antialérgico mesmo, meu filho não teve nenhuma reação. Recomendo demais!" },
-      { name: "Roberta Almeida", date: "Fev 2026", rating: 5, text: "Veio super bem embalado, a costura é reforçada e o caimento na cama é lindo. A cor bege areia combina com toda a decoração do quarto." },
-      { name: "Camila Ferreira", date: "Jan 2026", rating: 5, text: "Quentinho na medida certa para o inverno do sul. Não solta pelos e o tecido é grosso mesmo. Melhor cobertor que já comprei online." },
-      { name: "Juliana Barros", date: "Jan 2026", rating: 5, text: "Chegou em 4 dias, qualidade premium. Já estou pensando em comprar outro na cor off white para alternar." },
-      { name: "Fernanda Dias", date: "Dez 2025", rating: 5, text: "Vale cada centavo. O acabamento é de loja física cara. Super confortável, dorme com ele te abraçando." },
+      { name: "Mariana Castro", date: "Mar 2026", rating: 5, text: "Cobertor maravilhoso! O toque é realmente macio, esquentou as noites frias sem pesar. A cor branca é linda e o tamanho king cobre tudo." },
+      { name: "Patrícia Lopes", date: "Fev 2026", rating: 5, text: "Comprei o tamanho King e é gigante. Antialérgico mesmo, não solta fiapos. Pelo preço de R$ 89,90 é um achado!" },
+      { name: "Roberta Almeida", date: "Fev 2026", rating: 5, text: "Veio super bem embalado. A manta é fofinha e muito confortável para dormir. Recomendo demais!" },
+      { name: "Camila Ferreira", date: "Jan 2026", rating: 5, text: "Quentinho na medida certa. O acabamento é ótimo e não desbota na lavagem. Melhor compra da casa." },
+      { name: "Juliana Barros", date: "Jan 2026", rating: 5, text: "Chegou rápido e a qualidade me surpreendeu. Pensei que por ser barato seria fino, mas é bem encorpado." },
     ],
   },
-  // 2 — Travesseiros
+  // 2 — Travesseiros Toque de Pluma
   2: {
-    total: 487,
+    total: 876,
     avg: 4.9,
     reviews: [
-      { name: "Aline Souza", date: "Mar 2026", rating: 5, text: "Travesseiros perfeitos para quem dorme de lado. Suporte ótimo na cervical, acordei sem dor no pescoço pela primeira vez em anos." },
-      { name: "Daniela Ramos", date: "Fev 2026", rating: 5, text: "A capa de algodão é fresquinha e o enchimento não murcha. Lavei e voltou ao formato original. Comprei outro par para os hóspedes." },
-      { name: "Vanessa Cardoso", date: "Fev 2026", rating: 5, text: "Antiácaro funciona mesmo, sou alérgica e não tive crise alguma. Altura média perfeita, nem alto nem baixo demais." },
-      { name: "Luciana Pires", date: "Jan 2026", rating: 5, text: "Conforto de hotel cinco estrelas. O par veio bem embalado e a costura quilt é caprichada." },
-      { name: "Beatriz Santos", date: "Jan 2026", rating: 5, text: "Meu marido reclamava de qualquer travesseiro, agora dorme a noite inteira. Aprovado por toda a família." },
+      { name: "Aline Souza", date: "Mar 2026", rating: 5, text: "Travesseiros perfeitos! O toque de pluma é real, muito macios e não deformam. Por 49,90 o kit com 2 está de graça." },
+      { name: "Daniela Ramos", date: "Fev 2026", rating: 5, text: "A capa em percal 400 fios é super fresca. Dormi muito melhor, suporte excelente para o pescoço." },
+      { name: "Vanessa Cardoso", date: "Fev 2026", rating: 5, text: "Antiácaro e antialérgico, ótimo para quem tem rinite. Laváveis em máquina, o que facilita muito a vida." },
+      { name: "Luciana Pires", date: "Jan 2026", rating: 5, text: "Conforto de hotel. O enchimento é firme mas macio ao mesmo tempo. Aprovado!" },
     ],
   },
-  // 3 — Toalhas
+  // 3 — Toalhas Buddemeyer
   3: {
-    total: 542,
+    total: 932,
     avg: 4.9,
     reviews: [
-      { name: "Renata Oliveira", date: "Mar 2026", rating: 5, text: "Toalhas felpudas, absorventes e enxugam super rápido. Parecem aquelas de spa de hotel chique. Vale muito o preço!" },
-      { name: "Sandra Mendes", date: "Fev 2026", rating: 5, text: "Linhas egípcias de verdade, dá pra sentir a diferença na maciez. Já lavei várias vezes e continuam felpudas, sem soltar fiapos." },
-      { name: "Cristiane Vieira", date: "Fev 2026", rating: 5, text: "Comprei o conjunto bege e marfim, a cor é exatamente como a foto. Tamanho generoso, cobre o corpo todo." },
-      { name: "Adriana Lima", date: "Jan 2026", rating: 5, text: "500g/m² é coisa séria, são pesadas e gostosas. Presentei minha mãe e ela amou demais." },
-      { name: "Tatiane Borges", date: "Dez 2025", rating: 5, text: "Qualidade impressionante. Não desbotaram nem com o cloro do sabão em pó. Recomendo a todos." },
+      { name: "Renata Oliveira", date: "Mar 2026", rating: 5, text: "Toalhas Buddemeyer dispensam comentários. A tecnologia Intense Air realmente as deixa mais fofas. Absorção nota 10." },
+      { name: "Sandra Mendes", date: "Fev 2026", rating: 5, text: "Jogo de 5 peças por 79,90 é incrível. São toalhas grossas e que enxugam de verdade desde o primeiro uso." },
+      { name: "Cristiane Vieira", date: "Fev 2026", rating: 5, text: "Comprei o branco e é puríssimo. A textura é maravilhosa e o tamanho banhão é ótimo." },
+      { name: "Adriana Lima", date: "Jan 2026", rating: 5, text: "Qualidade premium. Não soltam fiapos e ficam cada vez mais macias conforme lava." },
     ],
   },
-  // 4 — Air Fryer
+  // 4 — Air Fryer Oster
   4: {
-    total: 1247,
+    total: 2156,
     avg: 4.9,
     reviews: [
-      { name: "Gabriela Rocha", date: "Mar 2026", rating: 5, text: "Air fryer dos sonhos! Painel touch fácil de usar, batata frita fica crocante e dourada como na lanchonete. 5L cabe muita coisa." },
-      { name: "Larissa Tavares", date: "Mar 2026", rating: 5, text: "Os 8 programas funcionam perfeitamente. Já fiz frango assado, bolo, pão de queijo, salmão, tudo no ponto. Mudou minha cozinha." },
-      { name: "Priscila Andrade", date: "Fev 2026", rating: 5, text: "Aquece super rápido, economiza energia e o cesto antiaderente é fácil de lavar. Comprei a 220V e funciona perfeito." },
-      { name: "Sabrina Costa", date: "Fev 2026", rating: 5, text: "Veio com manual em português e até receitas. O acabamento preto fosco fica lindo na bancada da cozinha." },
-      { name: "Eliane Moraes", date: "Jan 2026", rating: 5, text: "Faço refeições saudáveis sem óleo, perdi peso e ainda economizo. Vale cada centavo, super profissional." },
-      { name: "Vivian Carneiro", date: "Jan 2026", rating: 5, text: "Entrega rápida e produto exatamente como descrito. A potência é forte, frita rápido sem ressecar." },
+      { name: "Gabriela Rocha", date: "Mar 2026", rating: 5, text: "Air fryer da Oster é outro nível. O painel touch é muito moderno e o acabamento em inox é lindo. 5L é enorme!" },
+      { name: "Larissa Tavares", date: "Mar 2026", rating: 5, text: "Frita muito rápido e fica tudo crocante. O preço de R$ 129,90 está imbatível para uma Oster digital." },
+      { name: "Priscila Andrade", date: "Fev 2026", rating: 5, text: "Fácil de limpar, o cesto é bem antiaderente. Uso todo dia pra fazer frango e batata. Recomendo muito." },
+      { name: "Sabrina Costa", date: "Fev 2026", rating: 5, text: "Design sofisticado. Silenciosa e potente. Chegou antes do prazo em perfeitas condições." },
     ],
   },
-  // 5 — Liquidificador
+  // 5 — Liquidificador Philips Walita
   5: {
-    total: 478,
+    total: 765,
     avg: 4.9,
     reviews: [
-      { name: "Mônica Pereira", date: "Mar 2026", rating: 5, text: "1200W é potência de verdade! Tritura gelo, faz vitamina sem grumos, e a jarra de vidro não risca. Lindo na cozinha." },
-      { name: "Karina Gomes", date: "Fev 2026", rating: 5, text: "12 velocidades fazem diferença, dá pra controlar tudo. Já bati massa de panqueca, sopa quente, frutas congeladas. Show!" },
-      { name: "Bianca Martins", date: "Fev 2026", rating: 5, text: "As lâminas de inox 6 pontas são impressionantes. Tritura tudo em segundos. Fácil de desmontar e lavar." },
-      { name: "Simone Araújo", date: "Jan 2026", rating: 5, text: "Veio bem embalado, sem nenhum arranhão. O design inox combinou com meus outros eletro. Aprovadíssimo." },
-      { name: "Helena Castro", date: "Dez 2025", rating: 5, text: "Faz suco verde igual o de loja de produtos naturais. Vale o investimento, é super silencioso pra potência que tem." },
+      { name: "Mônica Pereira", date: "Mar 2026", rating: 5, text: "Liquidificador potente demais! 1200W tritura tudo, até gelo. A jarra de vidro é pesada e de muita qualidade." },
+      { name: "Karina Gomes", date: "Fev 2026", rating: 5, text: "Walita é tradição, nunca decepciona. As 12 velocidades dão muito controle nas receitas. Lindo no balcão." },
+      { name: "Bianca Martins", date: "Fev 2026", rating: 5, text: "As lâminas são afiadas e o encaixe da jarra é bem seguro. Pelo preço de R$ 99,90 vale muito a pena." },
+      { name: "Simone Araújo", date: "Jan 2026", rating: 5, text: "Silencioso para a potência que tem. Fácil de limpar e a jarra de vidro não pega cheiro. Excelente compra." },
     ],
   },
   // 6 — Cafeteira
