@@ -38,14 +38,12 @@ export const productCategories: ProductCategory[] = [
   {
     title: "Cama & Banho",
     products: [
-      { id: "cb-1", name: "Cobertor Plush King Toque de Nuvem", price: 189.9, originalPrice: 349.9, image: amazonProd1, tag: "46% OFF", slug: "cobertor-plush-king-toque-de-nuvem" },
-      { id: "cb-2", name: "Jogo 5 Toalhas Linha Egípcia 500g/m²", price: 169.9, originalPrice: 329.9, image: amazonProd3, tag: "48% OFF", slug: "jogo-5-toalhas-banho-egiptia-fio-penteado" },
     ],
   },
   {
     title: "Eletroportáteis",
     products: [
-      { id: "ep-1", name: "Air Fryer Digital 5L com 8 Funções", price: 449.9, originalPrice: 799.9, image: amazonProd4, tag: "44% OFF", slug: "air-fryer-fritadeira-eletrica-5l-digital" },
+      
       { id: "ep-2", name: "Cafeteira Elétrica Premium 15 Xícaras", price: 269.9, originalPrice: 489.9, image: cafeteira, tag: "45% OFF", slug: "cafeteira-eletrica-premium-15-xicaras" },
     ],
   },
@@ -60,7 +58,7 @@ export const productCategories: ProductCategory[] = [
     title: "Organização",
     products: [
       { id: "og-1", name: "Kit Organizadores Cozinha Bambu - 6 Peças", price: 159.9, originalPrice: 289.9, image: organizador, tag: "45% OFF", slug: "kit-organizadores-cozinha-bambu-modular" },
-      { id: "og-2", name: "Liquidificador Power 1200W Jarra de Vidro 2L", price: 299.9, originalPrice: 539.9, image: amazonProd5, tag: "44% OFF", slug: "liquidificador-power-1200w-jarra-vidro" },
+      
     ],
   },
   {
