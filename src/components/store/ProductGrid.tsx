@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 import ProductCard from "./ProductCard";
 import { products } from "@/data/products";
 
-const FEATURED_IDS = [24, 23, 22, 21, 20, 19, 18, 17, 4, 5, 1, 2, 3, 14];
+const FEATURED_IDS = [24, 23, 22, 21, 20, 19, 18, 17, 4, 5, 1, 2, 3];
 const INITIAL_VISIBLE = 2;
 
 const ProductGrid = () => {

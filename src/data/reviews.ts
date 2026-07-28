@@ -208,18 +208,6 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Carla Moreira", date: "Dez 2025", rating: 5, text: "Investimento que vale muito. Dou um banho de loja no quarto sem gastar uma fortuna." },
     ],
   },
-  // 12 — Chaleira Elétrica
-  12: {
-    total: 263,
-    avg: 4.9,
-    reviews: [
-      { name: "Bruna Mascarenhas", date: "Mar 2026", rating: 5, text: "Chaleira excelente! Temperatura variável é tudo pra quem ama chá especial e café coado. Desliga sozinha quando atinge o ponto." },
-      { name: "Andressa Goulart", date: "Fev 2026", rating: 5, text: "Inox premium, parece de loja gourmet. 1,7L cabe bastante água, esquenta em menos de 3 minutos." },
-      { name: "Larissa Pádua", date: "Fev 2026", rating: 5, text: "Silenciosa, segura, e o desligamento automático dá tranquilidade. Acabamento preto fosco super sofisticado." },
-      { name: "Iara Souto", date: "Jan 2026", rating: 5, text: "Comprei pra fazer café em V60 e ficou perfeito. Controlo a temperatura exata. Adorei!" },
-      { name: "Renata Galvão", date: "Dez 2025", rating: 5, text: "Substitui minha chaleira de fogão e nunca mais volto. Muito mais prático e bonito." },
-    ],
-  },
   // 13 — Difusor
   13: {
     total: 318,

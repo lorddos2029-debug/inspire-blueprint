@@ -180,18 +180,6 @@ export const products: Product[] = [
     sizes: ["110V", "220V"],
   },
   {
-    id: 14,
-    slug: "chaleira-eletrica-inox-1-7l",
-    name: "Chaleira Elétrica Inox 1.7L 127V/220V Premium",
-    price: 49.9,
-    originalPrice: 129.9,
-    image: amazonProd6,
-    images: [amazonProd6, chaleira],
-    tag: "62% OFF",
-    description: "Chaleira elétrica em inox com desligamento automático e base 360 graus.",
-    sizes: ["127V", "220V"],
-  },
-  {
     id: 17,
     slug: "jogo-panelas-10-pecas-antiaderente-bianco-vanilla",
     name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla",
