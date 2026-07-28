@@ -3,6 +3,8 @@ const amazonProd2 = "/assets/products-amazon/prod-2.jpg";
 const amazonProd3 = "/assets/products-amazon/prod-3.jpg";
 const amazonProd4 = "/assets/products-amazon/prod-4.jpg";
 const amazonProd5 = "/assets/products-amazon/prod-5.jpg";
+const amazonProd6 = "/assets/products-amazon/prod-6.jpg";
+const amazonProd7 = "/assets/products-amazon/prod-7.jpg";
 
 const panelaSahara = "/assets/products-bc/panelas-v2/sahara.jpg";
 const panelaPretoTrad = "/assets/products-bc/panelas-v2/preto-trad.jpg";
@@ -183,8 +185,8 @@ export const products: Product[] = [
     name: "Chaleira Elétrica Inox 1.7L 127V/220V Premium",
     price: 49.9,
     originalPrice: 129.9,
-    image: chaleira,
-    images: [chaleira],
+    image: amazonProd6,
+    images: [amazonProd6, chaleira],
     tag: "62% OFF",
     description: "Chaleira elétrica em inox com desligamento automático e base 360 graus.",
     sizes: ["127V", "220V"],
