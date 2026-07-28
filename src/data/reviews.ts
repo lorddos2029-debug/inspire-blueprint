@@ -79,62 +79,6 @@ const makeBreakdown = (total: number): { stars: number; count: number }[] => {
 };
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
-  // 1 — Cobertor King Microfibra
-  1: {
-    total: 1245,
-    avg: 4.9,
-    reviews: [
-      { name: "Mariana Castro", date: "Mar 2026", rating: 5, text: "Cobertor maravilhoso! O toque é realmente macio, esquentou as noites frias sem pesar. A cor branca é linda e o tamanho king cobre tudo." },
-      { name: "Patrícia Lopes", date: "Fev 2026", rating: 5, text: "Comprei o tamanho King e é gigante. Antialérgico mesmo, não solta fiapos. Pelo preço de R$ 89,90 é um achado!" },
-      { name: "Roberta Almeida", date: "Fev 2026", rating: 5, text: "Veio super bem embalado. A manta é fofinha e muito confortável para dormir. Recomendo demais!" },
-      { name: "Camila Ferreira", date: "Jan 2026", rating: 5, text: "Quentinho na medida certa. O acabamento é ótimo e não desbota na lavagem. Melhor compra da casa." },
-      { name: "Juliana Barros", date: "Jan 2026", rating: 5, text: "Chegou rápido e a qualidade me surpreendeu. Pensei que por ser barato seria fino, mas é bem encorpado." },
-    ],
-  },
-  // 2 — Travesseiros Toque de Pluma
-  2: {
-    total: 876,
-    avg: 4.9,
-    reviews: [
-      { name: "Aline Souza", date: "Mar 2026", rating: 5, text: "Travesseiros perfeitos! O toque de pluma é real, muito macios e não deformam. Por 49,90 o kit com 2 está de graça." },
-      { name: "Daniela Ramos", date: "Fev 2026", rating: 5, text: "A capa em percal 400 fios é super fresca. Dormi muito melhor, suporte excelente para o pescoço." },
-      { name: "Vanessa Cardoso", date: "Fev 2026", rating: 5, text: "Antiácaro e antialérgico, ótimo para quem tem rinite. Laváveis em máquina, o que facilita muito a vida." },
-      { name: "Luciana Pires", date: "Jan 2026", rating: 5, text: "Conforto de hotel. O enchimento é firme mas macio ao mesmo tempo. Aprovado!" },
-    ],
-  },
-  // 3 — Toalhas Buddemeyer
-  3: {
-    total: 932,
-    avg: 4.9,
-    reviews: [
-      { name: "Renata Oliveira", date: "Mar 2026", rating: 5, text: "Toalhas Buddemeyer dispensam comentários. A tecnologia Intense Air realmente as deixa mais fofas. Absorção nota 10." },
-      { name: "Sandra Mendes", date: "Fev 2026", rating: 5, text: "Jogo de 5 peças por 79,90 é incrível. São toalhas grossas e que enxugam de verdade desde o primeiro uso." },
-      { name: "Cristiane Vieira", date: "Fev 2026", rating: 5, text: "Comprei o branco e é puríssimo. A textura é maravilhosa e o tamanho banhão é ótimo." },
-      { name: "Adriana Lima", date: "Jan 2026", rating: 5, text: "Qualidade premium. Não soltam fiapos e ficam cada vez mais macias conforme lava." },
-    ],
-  },
-  // 4 — Air Fryer Oster
-  4: {
-    total: 2156,
-    avg: 4.9,
-    reviews: [
-      { name: "Gabriela Rocha", date: "Mar 2026", rating: 5, text: "Air fryer da Oster é outro nível. O painel touch é muito moderno e o acabamento em inox é lindo. 5L é enorme!" },
-      { name: "Larissa Tavares", date: "Mar 2026", rating: 5, text: "Frita muito rápido e fica tudo crocante. O preço de R$ 129,90 está imbatível para uma Oster digital." },
-      { name: "Priscila Andrade", date: "Fev 2026", rating: 5, text: "Fácil de limpar, o cesto é bem antiaderente. Uso todo dia pra fazer frango e batata. Recomendo muito." },
-      { name: "Sabrina Costa", date: "Fev 2026", rating: 5, text: "Design sofisticado. Silenciosa e potente. Chegou antes do prazo em perfeitas condições." },
-    ],
-  },
-  // 5 — Liquidificador Philips Walita
-  5: {
-    total: 765,
-    avg: 4.9,
-    reviews: [
-      { name: "Mônica Pereira", date: "Mar 2026", rating: 5, text: "Liquidificador potente demais! 1200W tritura tudo, até gelo. A jarra de vidro é pesada e de muita qualidade." },
-      { name: "Karina Gomes", date: "Fev 2026", rating: 5, text: "Walita é tradição, nunca decepciona. As 12 velocidades dão muito controle nas receitas. Lindo no balcão." },
-      { name: "Bianca Martins", date: "Fev 2026", rating: 5, text: "As lâminas são afiadas e o encaixe da jarra é bem seguro. Pelo preço de R$ 99,90 vale muito a pena." },
-      { name: "Simone Araújo", date: "Jan 2026", rating: 5, text: "Silencioso para a potência que tem. Fácil de limpar e a jarra de vidro não pega cheiro. Excelente compra." },
-    ],
-  },
   // 6 — Cafeteira
   6: {
     total: 386,
