@@ -3,6 +3,7 @@ import { Search, ShoppingBag, User, Menu, X, Heart } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import CouponBar from "./CouponBar";
+import belacasaLogo from "@/assets/belacasa-logo.png.asset.json";
 
 const Logo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
   const h = size === "lg" ? "h-16 md:h-20" : size === "sm" ? "h-10 md:h-12" : "h-14 md:h-16";
