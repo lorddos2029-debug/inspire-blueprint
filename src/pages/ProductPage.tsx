@@ -65,6 +65,7 @@ const ProductPage = () => {
   const mainProduct = [...products].reverse().find((p) => p.slug === slug);
   const product: Product | undefined = mainProduct || fallbackProducts.find((p) => p.slug === slug);
   const { addItem } = useCart();
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(
     product?.sizes && product.sizes.length === 1 ? product.sizes[0] : null
