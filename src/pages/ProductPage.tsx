@@ -478,15 +478,20 @@ const ProductPage = () => {
             )}
 
             {/* Frete grátis - selo de destaque */}
-            <div className="flex items-center gap-3 rounded-lg border-2 border-emerald-500 bg-emerald-50 px-4 py-3">
-              <div className="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
-                <Truck className="w-5 h-5 text-white" />
+            <div className="flex items-center gap-3 rounded-xl border border-topbar bg-topbar/40 px-4 py-3">
+              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center shrink-0">
+                <Truck className="w-5 h-5 text-primary-foreground" />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-bold text-emerald-700 leading-tight">FRETE GRÁTIS para todo Brasil</p>
-                <p className="text-xs text-emerald-700/80 mt-0.5">Entrega em 2 a 6 dias úteis pelo PAC</p>
+                <p className="text-sm font-bold text-foreground leading-tight">FRETE GRÁTIS para todo o Brasil</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Entrega em 2 a 6 dias úteis · não acumulável com outras promoções</p>
               </div>
             </div>
+
+            {/* Escassez */}
+            <p className="text-sm font-semibold text-primary">
+              Atenção! Só restam {stockLeft} em estoque
+            </p>
 
             {/* CTA principal: compra em 1 clique */}
             <Button
@@ -494,8 +499,9 @@ const ProductPage = () => {
               className="w-full h-14 text-base font-bold tracking-wider rounded-lg uppercase"
               onClick={() => handleAddToCart(true)}
             >
-              Comprar Agora
+              Comprar
             </Button>
+
 
             {/* CTA secundário: continuar navegando */}
             <Button
