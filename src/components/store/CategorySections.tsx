@@ -1,6 +1,14 @@
-import { ChevronRight } from "lucide-react";
 import SafeLink from "@/components/SafeLink";
 import { productCategories } from "@/data/categoryProducts";
+
+/** Gera um id de âncora estável a partir do título da categoria */
+export const categoryAnchor = (title: string): string =>
+  title
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
 const CategorySections = () => {
   const formatPrice = (value: number) =>
@@ -9,14 +17,11 @@ const CategorySections = () => {
   return (
     <div className="space-y-10 py-6 md:py-10">
       {productCategories.map((category) => (
-        <section key={category.title} className="container">
+        <section key={category.title} id={categoryAnchor(category.title)} className="container scroll-mt-32">
           <div className="flex items-end justify-between mb-6">
             <h2 className="font-display text-2xl md:text-3xl font-medium text-primary">
               {category.title}
             </h2>
-            <button className="flex items-center gap-1 text-[11px] tracking-[0.2em] font-semibold text-[hsl(var(--gold))] hover:text-primary transition-colors">
-              VER TODOS <ChevronRight className="w-4 h-4" />
-            </button>
           </div>
           <div className="grid grid-cols-2 gap-x-4 gap-y-6">
             {category.products.map((product) => {
