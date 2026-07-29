@@ -14,9 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        display: ["Cormorant Garamond", "serif"],
+        sans: ["Poppins", "sans-serif"],
+        display: ["Poppins", "sans-serif"],
       },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -53,6 +54,12 @@ export default {
         },
         gold: "hsl(var(--gold))",
         wood: "hsl(var(--wood))",
+        ink: "hsl(var(--ink))",
+        topbar: {
+          DEFAULT: "hsl(var(--topbar))",
+          foreground: "hsl(var(--topbar-foreground))",
+        },
+
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

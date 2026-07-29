@@ -1,126 +1,185 @@
 import { useState } from "react";
-import { ShoppingBag, Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { ShoppingCart, Menu, X, Search, User } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import CouponBar from "./CouponBar";
+
 const belacasaLogo = "/logo-belacasa.png";
 
-const Logo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
-  const h = size === "lg" ? "h-16 md:h-20" : size === "sm" ? "h-10 md:h-12" : "h-14 md:h-16";
-  return (
-    <img
-      src={belacasaLogo}
-      alt="BelaCasa - Para cada canto, um lar"
-      className={`${h} w-auto object-contain select-none`}
-      width={500}
-      height={500}
-      fetchPriority="high"
-      decoding="async"
-    />
-  );
-};
+const navLinks = [
+  { label: "Início", href: "/" },
+  { label: "Air Fryer Innovare", href: "/produto/airfryer-innovare" },
+  { label: "Todos os Produtos", href: "/#tudo-para-sua-casa" },
+  { label: "Como Comprar", href: "/central-de-ajuda" },
+];
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { totalItems, setIsCartOpen } = useCart();
+  const [query, setQuery] = useState("");
+  const { totalItems, totalPrice, setIsCartOpen } = useCart();
   const location = useLocation();
-  const isProductPage = location.pathname.startsWith("/produto");
+  const navigate = useNavigate();
 
-  // Cada link aponta para uma seção real da home (evita cliques que não levam a lugar nenhum)
-  const navLinks = [
-    { label: "NOVIDADES", href: "/#mais-vendidos" },
-    { label: "CAMA & BANHO", href: "/#cama-banho" },
-    { label: "ELETROPORTÁTEIS", href: "/#eletroportateis" },
-    { label: "ORGANIZAÇÃO", href: "/#organizacao" },
-    { label: "CONFORTO & SONO", href: "/#conforto-sono" },
-    { label: "OFERTAS", href: "/#mais-vendidos" },
-  ];
+  const formatPrice = (value: number) =>
+    value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
     const hash = href.split("#")[1];
-    if (!hash) return;
-    if (location.pathname === "/") {
+    if (hash && location.pathname === "/") {
       document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
+  const handleSearch = (event: React.FormEvent) => {
+    event.preventDefault();
+    const term = query.trim();
+    navigate(term ? `/?q=${encodeURIComponent(term)}#tudo-para-sua-casa` : "/#tudo-para-sua-casa");
+    setMobileMenuOpen(false);
+  };
 
   return (
-    <>
+    <header className="sticky top-0 z-50">
       <CouponBar />
 
-      <header className="sticky top-0 z-50 bg-background border-b border-border">
-        <div className="container flex items-center h-20 md:h-24">
-          <div className="flex items-center w-10 md:w-auto shrink-0">
+      <div className="bg-card">
+        <div className="container grid grid-cols-[auto_1fr_auto] md:grid-cols-3 items-center gap-3 h-20 md:h-28">
+          {/* Busca (desktop) / menu (mobile) */}
+          <div className="flex items-center">
             <button
-              className="md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-foreground"
+              onClick={() => setMobileMenuOpen((open) => !open)}
               aria-label="Abrir menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
+
+            <form onSubmit={handleSearch} className="hidden md:flex items-center w-full max-w-[320px]">
+              <div className="relative w-full">
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="O que você está buscando?"
+                  aria-label="Buscar produtos"
+                  className="w-full h-11 rounded-full bg-topbar/70 text-foreground placeholder:text-foreground/60 pl-5 pr-11 text-sm outline-none focus:ring-2 focus:ring-primary/50"
+                />
+                <button
+                  type="submit"
+                  aria-label="Buscar"
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-foreground/70 hover:text-foreground"
+                >
+                  <Search className="w-4 h-4" />
+                </button>
+              </div>
+            </form>
           </div>
 
-          <div className="flex-1 flex justify-center">
+          {/* Logo */}
+          <div className="flex justify-center">
             <Link to="/" aria-label="BelaCasa - Início">
-              <Logo size={isProductPage ? "md" : "md"} />
+              <img
+                src={belacasaLogo}
+                alt="BelaCasa"
+                className="h-14 md:h-20 w-auto object-contain select-none"
+                width={500}
+                height={500}
+                fetchPriority="high"
+                decoding="async"
+              />
             </Link>
           </div>
 
-          <div className="flex items-center gap-4 shrink-0">
-            <button
-              className="relative hover:text-[hsl(var(--gold))] transition-colors"
-              onClick={() => setIsCartOpen(true)}
-              aria-label="Sacola"
+          {/* Conta + carrinho */}
+          <div className="flex items-center justify-end gap-3 md:gap-5">
+            <Link
+              to="/central-de-ajuda"
+              className="hidden md:flex items-center gap-2 group"
+              aria-label="Central de ajuda"
             >
-              <ShoppingBag className="w-5 h-5" strokeWidth={1.5} />
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[hsl(var(--gold))] text-primary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-semibold">
-                  {totalItems}
-                </span>
-              )}
+              <span className="w-10 h-10 rounded-full bg-topbar/70 flex items-center justify-center text-foreground">
+                <User className="w-5 h-5" strokeWidth={1.6} />
+              </span>
+              <span className="text-[11px] leading-tight font-semibold text-foreground">
+                Ajuda /<br />Como comprar
+              </span>
+            </Link>
+
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="flex items-center gap-2 group"
+              aria-label="Abrir carrinho"
+            >
+              <span className="relative w-10 h-10 rounded-full bg-topbar/70 flex items-center justify-center text-foreground">
+                <ShoppingCart className="w-5 h-5" strokeWidth={1.6} />
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">
+                    {totalItems}
+                  </span>
+                )}
+              </span>
+              <span className="hidden md:block text-[11px] leading-tight font-semibold text-foreground text-left">
+                Carrinho ({totalItems})<br />
+                <span className="text-muted-foreground font-medium">{formatPrice(totalPrice)}</span>
+              </span>
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Desktop nav */}
-        {!isProductPage && (
-          <nav className="hidden md:block border-t border-border bg-background">
-            <div className="container flex items-center justify-center gap-10 h-12">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-[11px] tracking-[0.25em] font-medium text-foreground/80 hover:text-[hsl(var(--gold))] transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
-        )}
+      {/* Barra de navegação flutuante */}
+      <nav className="hidden md:block bg-transparent">
+        <div className="container px-0">
+          <div className="bg-card rounded-b-3xl shadow-[0_10px_30px_-18px_rgba(0,0,0,0.35)] flex items-center justify-center gap-10 h-14">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                to={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="text-sm font-medium text-foreground/85 hover:text-primary transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </nav>
 
-        {/* Mobile drawer */}
-        {mobileMenuOpen && (
-          <nav className="md:hidden border-t border-border bg-background">
-            <div className="container py-4 flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="text-sm tracking-widest font-medium text-foreground py-3 border-b border-border last:border-0"
-                  onClick={() => handleNavClick(link.href)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
-        )}
-      </header>
-    </>
+      {/* Menu mobile */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-card border-t border-border">
+          <div className="container py-4 flex flex-col gap-2">
+            <form onSubmit={handleSearch} className="relative mb-2">
+              <input
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="O que você está buscando?"
+                aria-label="Buscar produtos"
+                className="w-full h-11 rounded-full bg-topbar/70 text-foreground placeholder:text-foreground/60 pl-5 pr-11 text-sm outline-none"
+              />
+              <button
+                type="submit"
+                aria-label="Buscar"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/70"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+            </form>
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                to={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="text-sm font-medium text-foreground py-3 border-b border-border last:border-0"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 

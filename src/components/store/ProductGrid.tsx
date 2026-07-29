@@ -1,52 +1,41 @@
-import { useState } from "react";
-import { ChevronRight } from "lucide-react";
+import { useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import { products } from "@/data/products";
 
-const FEATURED_IDS = [24, 23, 22, 21, 20, 19, 18, 17];
-const INITIAL_VISIBLE = 2;
+/** Normaliza texto para busca (remove acentos e caixa) */
+const normalize = (value: string) =>
+  value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
 
 const ProductGrid = () => {
-  const [expanded, setExpanded] = useState(false);
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("q")?.trim() ?? "";
 
-  const featuredProducts = products.filter((p) => FEATURED_IDS.includes(p.id));
-  const visibleProducts = expanded
-    ? featuredProducts
-    : featuredProducts.slice(0, INITIAL_VISIBLE);
-  const hasMore = featuredProducts.length > INITIAL_VISIBLE;
+  const visibleProducts = useMemo(() => {
+    if (!query) return products;
+    const term = normalize(query);
+    return products.filter((product) => normalize(product.name).includes(term));
+  }, [query]);
 
   return (
-    <section id="mais-vendidos" className="py-12 md:py-20 bg-background scroll-mt-32">
+    <section id="tudo-para-sua-casa" className="py-10 md:py-16 bg-background scroll-mt-32">
       <div className="container">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <span className="text-xs tracking-[0.4em] font-semibold text-[hsl(var(--gold))]">SELEÇÃO BELACASA</span>
-            <h2 className="font-display text-3xl md:text-4xl font-medium text-primary mt-2">
-              Mais Vendidos da Casa
-            </h2>
-          </div>
-          {hasMore && !expanded && (
-            <button
-              onClick={() => setExpanded(true)}
-              className="flex items-center gap-1 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors"
-            >
-              VER MAIS <ChevronRight className="w-4 h-4" />
-            </button>
-          )}
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8">
-          {visibleProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-        </div>
-        {hasMore && (
-          <div className="flex justify-center mt-10">
-            <button
-              onClick={() => setExpanded((v) => !v)}
-              className="border border-foreground text-foreground text-xs font-semibold tracking-wider uppercase px-8 py-3 hover:bg-foreground hover:text-background transition-colors"
-            >
-              {expanded ? "Ver menos" : "Ver todos os produtos"}
-            </button>
+        <h2 className="font-display text-2xl md:text-[28px] font-bold text-foreground mb-6 md:mb-8">
+          {query ? `Resultados para "${query}"` : "Tudo para a sua Casa"}
+        </h2>
+
+        {visibleProducts.length === 0 ? (
+          <p className="text-sm text-muted-foreground">
+            Nenhum produto encontrado. Tente outra busca.
+          </p>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {visibleProducts.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
           </div>
         )}
       </div>

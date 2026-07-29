@@ -142,6 +142,10 @@ const ProductPage = () => {
   const pixDiscountLabel = product.id === 46 ? "5%" : "10%";
   const pixPrice = product.price * (1 - pixDiscountRate);
 
+  /** Estoque exibido de forma determinística por produto (escassez) */
+  const stockLeft = 8 + (product.id % 12);
+
+
   /**
    * Adiciona o produto à sacola.
    * @param goToCheckout quando true, leva direto ao checkout (compra em 1 clique)
@@ -283,15 +287,20 @@ const ProductPage = () => {
 
           {/* Product Info */}
           <div className="space-y-5">
-            {/* Rating - right aligned like reference */}
-            <div className="flex items-center gap-1.5 justify-start lg:justify-end">
-              <div className="flex">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
+            {/* Vendidos + avaliação */}
+            <div className="flex items-center justify-between gap-3 flex-wrap">
+              <span className="inline-flex items-center rounded-full bg-topbar text-topbar-foreground text-xs font-semibold px-3 py-1">
+                +80 vendidos
+              </span>
+              <div className="flex items-center gap-1.5">
+                <div className="flex">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="w-4 h-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <span className="text-sm font-semibold text-foreground">4.9</span>
+                <span className="text-sm text-muted-foreground">(847 avaliações)</span>
               </div>
-              <span className="text-sm font-semibold text-foreground">4.9</span>
-              <span className="text-sm text-muted-foreground">(847 avaliações)</span>
             </div>
 
             {/* Title */}
@@ -311,23 +320,27 @@ const ProductPage = () => {
                   {formatPrice(product.price)}
                 </span>
                 {discount > 0 && (
-                  <span className="bg-emerald-600 text-background text-xs font-bold px-2.5 py-1 rounded">
-                    -{discount}%
+                  <span className="bg-primary text-primary-foreground text-xs font-bold px-2.5 py-1 rounded">
+                    {discount}% OFF
                   </span>
                 )}
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-emerald-600">
-                  {formatPrice(pixPrice)} no PIX
+                <span className="text-sm font-semibold text-primary">
+                  {formatPrice(pixPrice)} com Pix
                 </span>
-                <span className="bg-emerald-600 text-background text-[10px] font-bold px-2 py-0.5 rounded">
+                <span className="bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded">
                   {pixDiscountLabel} OFF
                 </span>
               </div>
               <p className="text-sm text-muted-foreground">
                 ou 5x de {formatPrice(product.price / 5)} sem juros
               </p>
+              <p className="text-xs text-muted-foreground pt-1">
+                {pixDiscountLabel} de desconto pagando com Pix · não acumulável com outras promoções
+              </p>
             </div>
+
 
             {/* Kit multi-tamanho: cada cor com seu próprio seletor de tamanho */}
             {isKitMultiSize && product.colorVariants && product.sizes ? (
@@ -469,15 +482,20 @@ const ProductPage = () => {
             )}
 
             {/* Frete grátis - selo de destaque */}
-            <div className="flex items-center gap-3 rounded-lg border-2 border-emerald-500 bg-emerald-50 px-4 py-3">
-              <div className="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
-                <Truck className="w-5 h-5 text-white" />
+            <div className="flex items-center gap-3 rounded-xl border border-topbar bg-topbar/40 px-4 py-3">
+              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center shrink-0">
+                <Truck className="w-5 h-5 text-primary-foreground" />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-bold text-emerald-700 leading-tight">FRETE GRÁTIS para todo Brasil</p>
-                <p className="text-xs text-emerald-700/80 mt-0.5">Entrega em 2 a 6 dias úteis pelo PAC</p>
+                <p className="text-sm font-bold text-foreground leading-tight">FRETE GRÁTIS para todo o Brasil</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Entrega em 2 a 6 dias úteis · não acumulável com outras promoções</p>
               </div>
             </div>
+
+            {/* Escassez */}
+            <p className="text-sm font-semibold text-primary">
+              Atenção! Só restam {stockLeft} em estoque
+            </p>
 
             {/* CTA principal: compra em 1 clique */}
             <Button
@@ -485,8 +503,9 @@ const ProductPage = () => {
               className="w-full h-14 text-base font-bold tracking-wider rounded-lg uppercase"
               onClick={() => handleAddToCart(true)}
             >
-              Comprar Agora
+              Comprar
             </Button>
+
 
             {/* CTA secundário: continuar navegando */}
             <Button
@@ -546,14 +565,15 @@ const ProductPage = () => {
           <h2 className="text-xl md:text-2xl font-bold text-foreground mb-8">
             Compre Também
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {products
-              .filter((p) => (p.id <= 4 || p.id === 9 || p.id === 10) && p.id !== product.id)
+              .filter((p) => p.id !== product.id)
               .slice(0, 4)
               .map((p) => (
                 <ProductCard key={p.id} {...p} />
               ))}
           </div>
+
         </section>
       </div>
 
