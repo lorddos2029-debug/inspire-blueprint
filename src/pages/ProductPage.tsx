@@ -142,6 +142,10 @@ const ProductPage = () => {
   const pixDiscountLabel = product.id === 46 ? "5%" : "10%";
   const pixPrice = product.price * (1 - pixDiscountRate);
 
+  /** Estoque exibido de forma determinística por produto (escassez) */
+  const stockLeft = 8 + (product.id % 12);
+
+
   /**
    * Adiciona o produto à sacola.
    * @param goToCheckout quando true, leva direto ao checkout (compra em 1 clique)
