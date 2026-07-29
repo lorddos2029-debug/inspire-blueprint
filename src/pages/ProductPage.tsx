@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { products, type Product } from "@/data/products";
 import { supabase } from "@/integrations/supabase/client";
 import { productCategories } from "@/data/categoryProducts";
