@@ -7,47 +7,81 @@ interface ProductCardProps {
   price: number;
   originalPrice?: number;
   image: string;
+  hoverImage?: string;
   tag?: string;
 }
 
-const ProductCard = ({ slug, name, price, originalPrice, image }: ProductCardProps) => {
-  const formatPrice = (value: number) =>
-    value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const formatPrice = (value: number) =>
+  value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
+/** Card no padrão Casa Prestige: troca de imagem no hover, selo de frete, preço no Pix */
+const ProductCard = ({ slug, name, price, originalPrice, image, hoverImage }: ProductCardProps) => {
   const discount = originalPrice
     ? Math.round(((originalPrice - price) / originalPrice) * 100)
     : 0;
+  const pixPrice = price * 0.9;
+  const installments = price >= 100 ? (price >= 300 ? 5 : 2) : 0;
 
   return (
-    <SafeLink to={`/produto/${slug}`} className="group block">
-      <div className="relative aspect-square overflow-hidden bg-secondary mb-3 rounded-lg cursor-pointer">
+    <SafeLink
+      to={`/produto/${slug}`}
+      className="group flex h-full flex-col bg-card rounded-xl overflow-hidden border border-border/60 transition-shadow hover:shadow-[0_16px_40px_-24px_rgba(0,0,0,0.45)]"
+    >
+      <div className="relative aspect-square overflow-hidden bg-card">
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className={`absolute inset-0 w-full h-full object-contain p-3 transition-opacity duration-500 ${
+            hoverImage ? "group-hover:opacity-0" : ""
+          }`}
           loading="lazy"
           decoding="async"
           width={600}
           height={600}
         />
-        {discount > 0 && (
-          <span className="absolute top-3 left-3 bg-destructive text-destructive-foreground text-[11px] font-bold px-2.5 py-1 rounded-full">
-            {discount}% off
-          </span>
+        {hoverImage && (
+          <img
+            src={hoverImage}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-contain p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            loading="lazy"
+            decoding="async"
+          />
         )}
+        <span className="absolute top-3 left-3 bg-topbar text-topbar-foreground text-[11px] font-semibold px-2.5 py-1 rounded-full">
+          Grátis
+        </span>
       </div>
-      <h3 className="text-sm font-semibold text-foreground mb-1.5 leading-tight line-clamp-2">{name}</h3>
-      <div className="flex items-center gap-2 flex-wrap">
-        {originalPrice && (
-          <span className="text-xs text-muted-foreground line-through">
-            {formatPrice(originalPrice)}
-          </span>
+
+      <div className="flex flex-1 flex-col p-4 pt-3">
+        <h3 className="text-sm font-medium text-foreground leading-snug line-clamp-2 min-h-[2.5rem]">
+          {name}
+        </h3>
+
+        <div className="mt-2 flex items-center gap-2 flex-wrap">
+          {originalPrice && (
+            <span className="text-xs text-muted-foreground line-through">
+              {formatPrice(originalPrice)}
+            </span>
+          )}
+          {discount > 0 && (
+            <span className="text-[11px] font-bold text-primary">{discount}% OFF</span>
+          )}
+        </div>
+
+        <span className="mt-0.5 text-lg font-bold text-foreground">{formatPrice(price)}</span>
+
+        {installments > 0 && (
+          <p className="text-xs text-muted-foreground mt-0.5">
+            {installments}x de {formatPrice(price / installments)} sem juros
+          </p>
         )}
-        <span className="text-sm font-bold text-foreground">{formatPrice(price)}</span>
+
+        <p className="text-xs font-semibold text-primary mt-1">
+          {formatPrice(pixPrice)} com Pix
+        </p>
       </div>
-      <p className="text-xs text-muted-foreground mt-1">
-        ou 12x de {formatPrice(price / 12)}
-      </p>
     </SafeLink>
   );
 };

@@ -3,8 +3,6 @@ import HeroBanner from "@/components/store/HeroBanner";
 import TrustMarquee from "@/components/store/TrustMarquee";
 import ProductGrid from "@/components/store/ProductGrid";
 import GuaranteeBanners from "@/components/store/GuaranteeBanners";
-import CategorySections from "@/components/store/CategorySections";
-
 import AboutUs from "@/components/store/AboutUs";
 import HomeFAQ from "@/components/store/HomeFAQ";
 import Newsletter from "@/components/store/Newsletter";
@@ -19,8 +17,6 @@ const Index = () => {
       <TrustMarquee />
       <ProductGrid />
       <GuaranteeBanners />
-      <CategorySections />
-      
       <AboutUs />
       <HomeFAQ />
       <Newsletter />
