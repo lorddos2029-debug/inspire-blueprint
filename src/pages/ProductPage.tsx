@@ -331,7 +331,7 @@ const ProductPage = () => {
 
             {/* Kit multi-tamanho: cada cor com seu próprio seletor de tamanho */}
             {isKitMultiSize && product.colorVariants && product.sizes ? (
-              <div className="rounded-xl border border-border bg-card p-4 sm:p-5 shadow-sm space-y-4">
+              <div id="variant-selector" className="rounded-xl border border-border bg-card p-4 sm:p-5 shadow-sm space-y-4">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
                     Escolha o tamanho de cada jaqueta
