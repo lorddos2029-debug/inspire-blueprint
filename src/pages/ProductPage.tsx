@@ -391,7 +391,8 @@ const ProductPage = () => {
               <>
                 {/* Tamanho (layout padrão quando não há variantes com imagem) */}
                 {product.sizes && product.sizes.length > 0 && (
-                  <div>
+                  <div id="variant-selector">
+
                     {showSizeError && !selectedSize && (
                       <p className="text-xs font-semibold text-red-500 mb-2">⚠ Selecione {(product.sizeLabel || "um tamanho").toLowerCase() === "voltagem" ? "uma voltagem" : "um tamanho"}</p>
                     )}
