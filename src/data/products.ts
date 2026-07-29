@@ -17,7 +17,88 @@ export interface Product {
   colorVariants?: { label: string; colors: string[]; image?: string }[];
 }
 
+const BC = "/assets/products-bc/";
+
 export const products: Product[] = [
+  {
+    id: 17,
+    slug: "jogo-panelas-10-pecas-antiaderente-bianco-vanilla",
+    name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla",
+    price: 79.9,
+    originalPrice: 299.9,
+    image: `${BC}bianco-v1/img-1.png`,
+    hoverImage: `${BC}bianco-v1/img-2.png`,
+    images: [
+      `${BC}bianco-v1/img-1.png`,
+      `${BC}bianco-v1/img-2.png`,
+      `${BC}bianco-v1/img-3.png`,
+      `${BC}bianco-v1/img-4.png`,
+      `${BC}bianco-v1/img-5.png`,
+    ],
+    tag: "73% OFF",
+    description:
+      "Jogo de Panelas Bianco Vanilla com 10 peças completas para equipar toda a sua cozinha. Revestimento antiaderente de alta durabilidade, tampas de vidro temperado com visor, cabos ergonômicos que não esquentam e compatibilidade com fogão a gás, elétrico e vitrocerâmico.",
+    sizes: [],
+  },
+  {
+    id: 19,
+    slug: "coberdrom-casal-queen-dupla-face-sherpa-extra-macio",
+    name: "Coberdrom Casal Queen Dupla Face Sherpa Extra Macio e Aconchegante",
+    price: 79.9,
+    originalPrice: 599.4,
+    image: `${BC}kit6-coberdrom-main.png`,
+    hoverImage: `${BC}kit6-coberdrom-cinza.jpg`,
+    images: [
+      `${BC}kit6-coberdrom-main.png`,
+      `${BC}kit6-coberdrom-cinza.jpg`,
+      `${BC}kit6-coberdrom-preto.jpg`,
+      `${BC}kit6-coberdrom-vermelho.jpg`,
+      `${BC}kit6-coberdrom-bege.jpg`,
+      `${BC}kit6-coberdrom-azul.jpg`,
+      `${BC}kit6-coberdrom-marrom.jpg`,
+    ],
+    tag: "87% OFF",
+    description:
+      "Coberdrom Casal/Queen Dupla Face Sherpa de altíssima qualidade: um lado em microfibra aveludada e o outro em sherpa peluciado extra macio. Retém o calor nas noites frias, não solta pelos e pode ser lavado na máquina.",
+    sizes: ["Casal/Queen"],
+    colorVariants: [
+      { label: "Cinza", colors: ["#8a8a8a"], image: `${BC}kit6-coberdrom-cinza.jpg` },
+      { label: "Preto", colors: ["#1a1a1a"], image: `${BC}kit6-coberdrom-preto.jpg` },
+      { label: "Vermelho", colors: ["#c4161c"], image: `${BC}kit6-coberdrom-vermelho.jpg` },
+      { label: "Bege", colors: ["#d2b48c"], image: `${BC}kit6-coberdrom-bege.jpg` },
+      { label: "Azul Marinho", colors: ["#1e2a44"], image: `${BC}kit6-coberdrom-azul.jpg` },
+      { label: "Marrom Chocolate", colors: ["#5a3a22"], image: `${BC}kit6-coberdrom-marrom.jpg` },
+    ],
+  },
+  {
+    id: 20,
+    slug: "liquidificador-mondial-l-99-turbo-3-velocidades-550w",
+    name: "Liquidificador Mondial L-99 Turbo 3 Velocidades 550W",
+    price: 69.9,
+    originalPrice: 249.9,
+    image: `${BC}mondial-l99-preto.png`,
+    hoverImage: `${BC}mondial-l99-vermelho.png`,
+    images: [
+      `${BC}mondial-l99-preto.png`,
+      `${BC}mondial-l99-lifestyle.png`,
+      `${BC}mondial-l99-potencia.png`,
+      `${BC}mondial-l99-jarra.png`,
+      `${BC}mondial-l99-filtro.png`,
+      `${BC}mondial-l99-tapa.png`,
+      `${BC}mondial-l99-laminas.png`,
+      `${BC}mondial-l99-pies.png`,
+      `${BC}mondial-l99-dimensoes.png`,
+    ],
+    tag: "72% OFF",
+    description:
+      "Liquidificador Mondial L-99 Turbo Power com motor de 550W, 3 velocidades + função pulsar, lâminas em aço inox de 4 pontas e jarra com filtro removível. Prepara sucos, vitaminas e massas com rapidez.",
+    sizes: ["110V", "220V"],
+    sizeLabel: "Voltagem",
+    colorVariants: [
+      { label: "Preto", colors: ["#1a1a1a"], image: `${BC}mondial-l99-preto.png` },
+      { label: "Vermelho", colors: ["#c4161c"], image: `${BC}mondial-l99-vermelho.png` },
+    ],
+  },
   {
     id: 101,
     slug: "airfryer-innovare",
