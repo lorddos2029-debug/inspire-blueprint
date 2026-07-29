@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Instagram, Plus, Minus, Facebook } from "lucide-react";
 import { useState } from "react";
-import belacasaLogo from "@/assets/belacasa-logo.png.asset.json";
+const belacasaLogo = "/logo-belacasa.png";
 
 const FooterLogo = () => (
   <img
-    src={belacasaLogo.url}
+    src={belacasaLogo}
     alt="BelaCasa - Para cada canto, um lar"
     className="h-20 w-auto object-contain select-none"
     loading="lazy"

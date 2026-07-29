@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sparkles, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
-import belacasaLogo from "@/assets/belacasa-logo.png.asset.json";
+const belacasaLogo = "/logo-belacasa.png";
 
 
 const STORAGE_KEY = "exit_intent_shown_v1";
@@ -137,7 +137,7 @@ const ExitIntentPopup = ({ enabled = true }: Props) => {
 
           <div className="flex justify-center mb-4">
             <div className="bg-white rounded-xl px-3 py-1.5 inline-flex">
-              <img src={belacasaLogo.url} alt="BelaCasa" className="h-14 w-auto object-contain" decoding="async" />
+              <img src={belacasaLogo} alt="BelaCasa" className="h-14 w-auto object-contain" decoding="async" />
             </div>
           </div>
 

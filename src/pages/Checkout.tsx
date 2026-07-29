@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 import { QRCodeSVG } from "qrcode.react";
-import belacasaLogo from "@/assets/belacasa-logo.png.asset.json";
+const belacasaLogo = "/logo-belacasa.png";
 import kitMeiasSoquete from "@/assets/kit-12-meias-soquete.png";
 import bodySplashBarboursTrio from "@/assets/products/body-splash-barbours-trio.png";
 import security100 from "@/assets/security-100.svg";
@@ -19,7 +19,7 @@ const CheckoutLogo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
   return (
     <div className="bg-white rounded-xl px-3 py-1.5 inline-flex items-center">
       <img
-        src={belacasaLogo.url}
+        src={belacasaLogo}
         alt="BelaCasa"
         className={`${h} w-auto object-contain select-none`}
         decoding="async"
