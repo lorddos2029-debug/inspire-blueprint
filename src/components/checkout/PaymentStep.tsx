@@ -1,262 +1,199 @@
-import { useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Loader2, QrCode, Copy, Check, CreditCard } from "lucide-react";
-import { useCart } from "@/contexts/CartContext";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
-import { Link } from "react-router-dom";
-
-interface PixPaymentData {
-  qrCode?: string;
-  qrCodeBase64?: string;
-  copyPaste?: string;
-  transactionId?: string;
-}
-
-interface PaymentStepProps {
-  shippingCost: number;
-  onBack: () => void;
-}
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+import { CreditCard, Loader2, QrCode } from "lucide-react";
+import type { InstallmentOption } from "@/lib/installments";
 
 const formatPrice = (value: number) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
-const PaymentStep = ({ shippingCost, onBack }: PaymentStepProps) => {
-  const { items, totalPrice, clearCart } = useCart();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [pixData, setPixData] = useState<PixPaymentData | null>(null);
-  const [copied, setCopied] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState<"pix" | "card">("pix");
+export interface PaymentStepProps {
+  paymentMethod: string;
+  onSelectMethod: (method: string) => void;
+  subtotal: number;
+  shippingCost: number;
+  couponDiscount: number;
+  pixDiscount: number;
+  pixDiscountLabel: string;
+  total: number;
+  cardTotal: number;
+  installments: string;
+  onInstallmentsChange: (value: string) => void;
+  installmentOptions: InstallmentOption[];
+  cardHolderName: string;
+  cardNumber: string;
+  cardExpiry: string;
+  cardCvv: string;
+  cardBrand: string | null;
+  onCardChange: (field: "holder" | "number" | "expiry" | "cvv", value: string) => void;
+  isSubmitting: boolean;
+  onSubmit: () => void;
+  onBack: () => void;
+  children?: ReactNode;
+}
 
-  const hasOnly46 = items.length > 0 && items.every(i => i.id === 46);
-  const hasMixed46 = items.some(i => i.id === 46) && items.some(i => i.id !== 46);
-  const pixDiscountLabel = hasOnly46 ? "5%" : hasMixed46 ? "até 10%" : "10%";
+const labelClass = "text-[10px] font-semibold uppercase tracking-wide text-gray-500";
+const fieldClass =
+  "h-11 rounded-md border-gray-300 bg-white text-sm focus-visible:ring-[#be7e5b] focus-visible:border-[#be7e5b]";
 
-  const itemsSubtotal = items.reduce((sum, it) => sum + it.price * it.quantity, 0) || 1;
-  const itemsAt5 = items.filter(i => i.id === 46).reduce((sum, it) => sum + it.price * it.quantity, 0);
-  const itemsAt10 = itemsSubtotal - itemsAt5;
-  const remainder = shippingCost; // frete
-  const blendedRate = (itemsAt5 * 0.05 + itemsAt10 * 0.10 + Math.max(remainder, 0) * 0.10) / Math.max(totalPrice + shippingCost, 1);
-
-  const grandTotal = totalPrice + shippingCost;
-  const pixDiscount = Math.round(grandTotal * blendedRate * 100) / 100;
-  const pixTotal = grandTotal - pixDiscount;
-
-  const handleCopyPix = async () => {
-    const code = pixData?.copyPaste || pixData?.qrCode || "";
-    if (!code) return;
-    await navigator.clipboard.writeText(code);
-    setCopied(true);
-    toast.success("Código PIX copiado!");
-    setTimeout(() => setCopied(false), 3000);
-  };
-
-  const handlePayPix = async () => {
-    setIsSubmitting(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    try {
-      const { data, error } = await supabase.functions.invoke("create-pix-payment", {
-        body: {
-          customer: { name: "Cliente", email: "cliente@email.com", cpf: "00000000000", phone: "00000000000" },
-          items: items.map((item) => ({ name: item.name, price: item.price, quantity: item.quantity })),
-          amount: pixTotal,
-        },
-      });
-      if (error) throw error;
-      if (data?.error || !data?.transactionId) {
-        console.error("PIX provider error:", data);
-        toast.error(data?.error || "Erro ao gerar pagamento PIX. Tente novamente.");
-        return;
-      }
-
-      const pixInfo: PixPaymentData = {
-        qrCode: data?.pix?.qrCode || data?.qrCode || "",
-        qrCodeBase64: data?.pix?.qrCodeBase64 || data?.qrCodeBase64 || "",
-        copyPaste: data?.pix?.copyPaste || data?.pix?.copy_paste || data?.copyPaste || data?.pix?.qrCode || data?.qrCode || "",
-        transactionId: data?.id || data?.transactionId || "",
-      };
-      setPixData(pixInfo);
-      toast.success("PIX gerado com sucesso!");
-    } catch (err: any) {
-      console.error("Payment error:", err);
-      toast.error("Erro ao gerar pagamento PIX. Tente novamente.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  useEffect(() => {
-    if (pixData) window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [pixData]);
-
-  if (pixData) {
-    return (
-      <div className="text-center space-y-6">
-        <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto">
-          <QrCode className="w-8 h-8 text-primary" />
-        </div>
-        <h2 className="text-xl font-bold text-foreground">Pagamento PIX</h2>
-        <p className="text-muted-foreground text-sm">Escaneie o QR Code ou copie o código para pagar</p>
-
-        <div className="bg-secondary rounded-xl p-6 space-y-4">
-          <div className="space-y-1">
-            <p className="text-xs text-muted-foreground line-through">{formatPrice(grandTotal)}</p>
-            <p className="text-2xl font-bold text-green-600">{formatPrice(pixTotal)}</p>
-            <p className="text-xs font-semibold text-green-600">{pixDiscountLabel} de desconto no PIX — você economiza {formatPrice(pixDiscount)}</p>
-          </div>
-          {pixData.qrCodeBase64 ? (
-            <img src={`data:image/png;base64,${pixData.qrCodeBase64}`} alt="QR Code PIX" className="w-48 h-48 mx-auto rounded-lg" />
-          ) : (
-            <div className="w-48 h-48 mx-auto rounded-lg bg-muted flex items-center justify-center">
-              <QrCode className="w-20 h-20 text-muted-foreground/30" />
-            </div>
-          )}
-          {(pixData.copyPaste || pixData.qrCode) && (
-            <div className="space-y-3">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Código Copia e Cola</p>
-              <div className="bg-muted rounded-lg p-3 text-xs text-foreground break-all max-h-24 overflow-y-auto">
-                {pixData.copyPaste || pixData.qrCode}
-              </div>
-              <Button onClick={handleCopyPix} variant="outline" className="w-full gap-2">
-                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                {copied ? "Copiado!" : "Copiar Código PIX"}
-              </Button>
-            </div>
-          )}
-        </div>
-
-        <div className="bg-secondary rounded-xl p-5 text-left space-y-3">
-          <p className="text-sm font-semibold text-foreground">📲 Como pagar com PIX:</p>
-          <ol className="text-xs text-muted-foreground space-y-2 list-decimal list-inside">
-            <li>Abra o <strong className="text-foreground">app do seu banco</strong> ou carteira digital</li>
-            <li>Escolha a opção <strong className="text-foreground">Pagar com PIX</strong></li>
-            <li>Escaneie o <strong className="text-foreground">QR Code acima</strong> ou toque em <strong className="text-foreground">"Copiar Código PIX"</strong> e cole na opção <strong className="text-foreground">PIX Copia e Cola</strong></li>
-            <li>Confirme o valor de <strong className="text-foreground">{formatPrice(pixTotal)}</strong> e finalize</li>
-            <li>Pronto! O pagamento é <strong className="text-foreground">confirmado na hora</strong> ✅</li>
-          </ol>
-        </div>
-
-        <p className="text-xs text-muted-foreground">O pagamento será confirmado automaticamente após a transferência.</p>
-
-        <Link to="/">
-          <Button variant="ghost" className="w-full" onClick={() => { clearCart(); }}>
-            Voltar às Compras
-          </Button>
-        </Link>
-      </div>
-    );
-  }
+export const PaymentStep = ({
+  paymentMethod,
+  onSelectMethod,
+  subtotal,
+  shippingCost,
+  couponDiscount,
+  pixDiscount,
+  pixDiscountLabel,
+  total,
+  cardTotal,
+  installments,
+  onInstallmentsChange,
+  installmentOptions,
+  cardHolderName,
+  cardNumber,
+  cardExpiry,
+  cardCvv,
+  cardBrand,
+  onCardChange,
+  isSubmitting,
+  onSubmit,
+  onBack,
+  children,
+}: PaymentStepProps) => {
+  const isPix = paymentMethod === "pix";
+  const displayTotal = isPix ? total : cardTotal;
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-lg font-semibold text-foreground">Pagamento</h2>
+    <div className="space-y-5">
+      <h2 className="text-sm font-bold text-gray-900">Forma de pagamento</h2>
 
-      {/* Payment method selector */}
       <div className="grid grid-cols-2 gap-3">
-        {/* PIX option */}
         <button
           type="button"
-          onClick={() => setPaymentMethod("pix")}
-          className={`relative rounded-xl border-2 p-4 text-left transition-all ${
-            paymentMethod === "pix"
-              ? "border-green-500 bg-green-50"
-              : "border-border bg-background"
-          }`}
+          onClick={() => onSelectMethod("pix")}
+          className={cn(
+            "relative rounded-xl border p-4 text-left transition-colors",
+            isPix ? "border-[#be7e5b] bg-[#be7e5b]/5" : "border-gray-200 bg-white hover:border-gray-300",
+          )}
         >
-          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-green-500 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide whitespace-nowrap">
-            Aprovação Imediata
+          <span className="absolute -top-2 left-3 rounded-full bg-[#be7e5b] px-2 py-0.5 text-[9px] font-bold uppercase text-white">
+            Aprovação imediata
           </span>
-          <div className="flex items-center justify-between mt-1">
-            <div>
-              <p className="font-bold text-foreground text-sm">PIX</p>
-              <p className="text-xs text-green-600 font-medium">{pixDiscountLabel} de desconto</p>
-            </div>
-            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-              paymentMethod === "pix" ? "border-green-500" : "border-muted-foreground/30"
-            }`}>
-              {paymentMethod === "pix" && (
-                <Check className="w-3.5 h-3.5 text-green-500" />
-              )}
-            </div>
-          </div>
+          <QrCode className={cn("w-5 h-5 mb-2", isPix ? "text-[#be7e5b]" : "text-gray-400")} />
+          <span className="block text-xs font-bold text-gray-900">PIX</span>
+          <span className="block text-[10px] font-semibold text-green-600">{pixDiscountLabel} de desconto</span>
         </button>
 
-        {/* Card option */}
         <button
           type="button"
-          onClick={() => setPaymentMethod("card")}
-          className={`rounded-xl border-2 p-4 text-left transition-all ${
-            paymentMethod === "card"
-              ? "border-foreground bg-secondary"
-              : "border-border bg-background"
-          }`}
+          onClick={() => onSelectMethod("credit")}
+          className={cn(
+            "rounded-xl border p-4 text-left transition-colors",
+            !isPix ? "border-[#be7e5b] bg-[#be7e5b]/5" : "border-gray-200 bg-white hover:border-gray-300",
+          )}
         >
-          <div className="flex items-center justify-between mt-1">
-            <div>
-              <p className="font-bold text-foreground text-sm">Cartão</p>
-              <p className="text-xs text-muted-foreground">Cartão de crédito</p>
-            </div>
-            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-              paymentMethod === "card" ? "border-foreground" : "border-muted-foreground/30"
-            }`}>
-              {paymentMethod === "card" && (
-                <div className="w-2.5 h-2.5 rounded-full bg-foreground" />
-              )}
-            </div>
-          </div>
+          <CreditCard className={cn("w-5 h-5 mb-2", !isPix ? "text-[#be7e5b]" : "text-gray-400")} />
+          <span className="block text-xs font-bold text-gray-900">Cartão de crédito</span>
+          <span className="block text-[10px] text-gray-500">Em até 12x</span>
         </button>
       </div>
 
-      {/* Order summary */}
-      <div className="bg-secondary rounded-lg p-5 space-y-3">
-        <div className="flex justify-between text-sm">
-          <span className="text-muted-foreground">Subtotal</span>
-          <span className="text-foreground">{formatPrice(totalPrice)}</span>
+      {!isPix && (
+        <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
+          <div className="space-y-1">
+            <label className={labelClass}>Nome do titular</label>
+            <Input autoComplete="off" value={cardHolderName} onChange={(e) => onCardChange("holder", e.target.value)} className={fieldClass} />
+          </div>
+          <div className="space-y-1">
+            <label className={labelClass}>Número do cartão</label>
+            <div className="relative">
+              <Input
+                autoComplete="off"
+                inputMode="numeric"
+                placeholder="0000 0000 0000 0000"
+                value={cardNumber}
+                onChange={(e) => onCardChange("number", e.target.value)}
+                className={fieldClass}
+              />
+              {cardBrand && (
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-semibold text-[#be7e5b]">
+                  {cardBrand}
+                </span>
+              )}
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1">
+              <label className={labelClass}>Validade</label>
+              <Input autoComplete="off" inputMode="numeric" placeholder="MM/AA" value={cardExpiry} onChange={(e) => onCardChange("expiry", e.target.value)} className={fieldClass} />
+            </div>
+            <div className="space-y-1">
+              <label className={labelClass}>CVV</label>
+              <Input autoComplete="off" inputMode="numeric" placeholder="000" value={cardCvv} onChange={(e) => onCardChange("cvv", e.target.value)} className={fieldClass} />
+            </div>
+          </div>
+          <div className="space-y-1">
+            <label className={labelClass}>Parcelas</label>
+            <select
+              value={installments}
+              onChange={(e) => onInstallmentsChange(e.target.value)}
+              className="w-full h-11 rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#be7e5b]"
+            >
+              {installmentOptions.map((opt) => (
+                <option key={opt.n} value={String(opt.n)}>
+                  {opt.n}x de {formatPrice(opt.installmentValue)} {opt.hasInterest ? "" : "sem juros"}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div className="flex justify-between text-sm">
-          <span className="text-muted-foreground">Frete</span>
-          <span className={shippingCost === 0 ? "text-green-600 font-medium" : "text-foreground"}>
+      )}
+
+      {children}
+
+      <div className="rounded-xl border border-gray-200 bg-white p-4 space-y-2 text-xs">
+        <div className="flex items-center justify-between text-gray-600">
+          <span>Subtotal</span>
+          <span className="font-medium text-gray-900">{formatPrice(subtotal)}</span>
+        </div>
+        <div className="flex items-center justify-between text-gray-600">
+          <span>Frete</span>
+          <span className={cn("font-medium", shippingCost === 0 ? "text-green-600" : "text-gray-900")}>
             {shippingCost === 0 ? "Grátis" : formatPrice(shippingCost)}
           </span>
         </div>
-        {paymentMethod === "pix" && (
-          <div className="flex justify-between text-sm text-green-600 font-medium">
-            <span>Desconto PIX ({pixDiscountLabel})</span>
-            <span>- {formatPrice(pixDiscount)}</span>
+        {couponDiscount > 0 && (
+          <div className="flex items-center justify-between text-green-600">
+            <span>Cupom</span>
+            <span className="font-medium">- {formatPrice(couponDiscount)}</span>
           </div>
         )}
-        <div className="flex justify-between text-lg font-bold pt-2 border-t border-border">
-          <span className="text-foreground">Total</span>
-          <span className="text-foreground">
-            {formatPrice(paymentMethod === "pix" ? pixTotal : grandTotal)}
-          </span>
+        {isPix && pixDiscount > 0 && (
+          <div className="flex items-center justify-between text-green-600">
+            <span>Desconto PIX</span>
+            <span className="font-medium">- {formatPrice(pixDiscount)}</span>
+          </div>
+        )}
+        <div className="h-px bg-gray-200" />
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-semibold text-gray-800">Total</span>
+          <span className="text-lg font-bold text-[#be7e5b]">{formatPrice(displayTotal)}</span>
         </div>
       </div>
 
-      {/* Action buttons */}
-      <div className="flex gap-3">
-        <Button type="button" variant="outline" onClick={onBack} className="gap-2">
-          <ArrowLeft className="w-4 h-4" />
-          Voltar
-        </Button>
-        {paymentMethod === "pix" ? (
-          <Button size="lg" className="flex-1 gap-2" disabled={isSubmitting} onClick={handlePayPix}>
-            {isSubmitting ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Gerando PIX...
-              </>
-            ) : (
-              `PAGAR COM PIX — ${formatPrice(pixTotal)}`
-            )}
-          </Button>
-        ) : (
-          <Button size="lg" className="flex-1 gap-2" disabled>
-            <CreditCard className="w-4 h-4" />
-            Em breve
-          </Button>
-        )}
-      </div>
+      <Button
+        type="button"
+        onClick={onSubmit}
+        disabled={isSubmitting}
+        className="w-full bg-[#be7e5b] hover:bg-[#a66b48] text-white font-bold h-[58px] md:h-[68px] text-base md:text-lg rounded-md uppercase disabled:opacity-70"
+      >
+        {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : "Finalizar compra"}
+      </Button>
+
+      <button type="button" onClick={onBack} className="w-full text-xs text-gray-500 hover:text-[#be7e5b] transition-colors">
+        Voltar
+      </button>
     </div>
   );
 };
