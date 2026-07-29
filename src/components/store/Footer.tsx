@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import { Instagram, Plus, Minus, Facebook } from "lucide-react";
 import { useState } from "react";
+const belacasaLogo = "/logo-belacasa.png";
 
 const FooterLogo = () => (
-  <div className="flex flex-col leading-none">
-    <span className="font-display text-3xl font-semibold tracking-tight text-primary">
-      Bela<span className="italic text-[hsl(var(--gold))]">Casa</span>
-    </span>
-    <span className="mt-1 text-[10px] tracking-[0.4em] font-medium text-muted-foreground uppercase">
-      Casa &amp; Conforto
-    </span>
-  </div>
+  <img
+    src={belacasaLogo}
+    alt="BelaCasa - Para cada canto, um lar"
+    className="h-20 w-auto object-contain select-none"
+    loading="lazy"
+    decoding="async"
+  />
 );
 
 

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 import { QRCodeSVG } from "qrcode.react";
+const belacasaLogo = "/logo-belacasa.png";
 import kitMeiasSoquete from "@/assets/kit-12-meias-soquete.png";
 import bodySplashBarboursTrio from "@/assets/products/body-splash-barbours-trio.png";
 import security100 from "@/assets/security-100.svg";
@@ -14,15 +15,15 @@ import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const CheckoutLogo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
-  const titleSize = size === "lg" ? "text-3xl md:text-4xl" : size === "sm" ? "text-xl md:text-2xl" : "text-2xl md:text-3xl";
+  const h = size === "lg" ? "h-14" : size === "sm" ? "h-9" : "h-11";
   return (
-    <div className="flex flex-col items-center leading-none select-none">
-      <span className={`font-display ${titleSize} font-semibold tracking-tight text-white`}>
-        Bela<span className="italic text-[hsl(var(--gold))]">Casa</span>
-      </span>
-      <span className="mt-0.5 text-[9px] md:text-[10px] tracking-[0.4em] font-medium text-white/70 uppercase">
-        Casa &amp; Conforto
-      </span>
+    <div className="bg-white rounded-xl px-3 py-1.5 inline-flex items-center">
+      <img
+        src={belacasaLogo}
+        alt="BelaCasa"
+        className={`${h} w-auto object-contain select-none`}
+        decoding="async"
+      />
     </div>
   );
 };
