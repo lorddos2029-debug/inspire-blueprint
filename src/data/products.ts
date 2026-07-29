@@ -1,104 +1,4 @@
-const amazonProd1 = "/assets/products-amazon/prod-1.jpg";
-const amazonProd2 = "/assets/products-amazon/prod-2.jpg";
-const amazonProd3 = "/assets/products-amazon/prod-3.jpg";
-const amazonProd4 = "/assets/products-amazon/prod-4.jpg";
-const amazonProd5 = "/assets/products-amazon/prod-5.jpg";
-const amazonProd6 = "/assets/products-amazon/prod-6.jpg";
-const amazonProd7 = "/assets/products-amazon/prod-7.jpg";
-
-const panelaSahara = "/assets/products-bc/panelas-v2/sahara.jpg";
-const panelaPretoTrad = "/assets/products-bc/panelas-v2/preto-trad.jpg";
-const panelaPrestigio = "/assets/products-bc/panelas-v2/prestigio.jpg";
-const panelaMenta = "/assets/products-bc/panelas-v2/menta.jpg";
-const panelaPretoGold = "/assets/products-bc/panelas-v2/preto-gold.jpg";
-const biancoV1_1 = "/assets/products-bc/bianco-v1/img-1.png";
-const biancoV1_2 = "/assets/products-bc/bianco-v1/img-2.png";
-const biancoV1_3 = "/assets/products-bc/bianco-v1/img-3.png";
-const biancoV1_4 = "/assets/products-bc/bianco-v1/img-4.png";
-const biancoV1_5 = "/assets/products-bc/bianco-v1/img-5.png";
-
-const cobertor = "/assets/products-bc/cobertor.jpg";
-const travesseiro = "/assets/products-bc/travesseiro.jpg";
-const toalha = "/assets/products-bc/toalha.jpg";
-const airfryer = "/assets/products-bc/airfryer.jpg";
-const liquidificador = "/assets/products-bc/liquidificador.jpg";
-const cafeteira = "/assets/products-bc/cafeteira.jpg";
-const organizador = "/assets/products-bc/organizador.jpg";
-const jogoJantar = "/assets/products-bc/jogo-jantar.jpg";
-const lencol = "/assets/products-bc/lencol.jpg";
-const batedeira = "/assets/products-bc/batedeira.jpg";
-const difusor = "/assets/products-bc/difusor.jpg";
-const edredom = "/assets/products-bc/edredom.jpg";
-const chaleira = "/assets/products-bc/chaleira.jpg";
-const sherpaMain = "/assets/products-bc/sherpa-main.jpg";
-const sherpaCinza = "/assets/products-bc/sherpa-cinza.jpg";
-const sherpaMarrom = "/assets/products-bc/sherpa-marrom.jpg";
-const sherpaRose = "/assets/products-bc/sherpa-rose.jpg";
-const sherpaVermelho = "/assets/products-bc/sherpa-vermelho.jpg";
-const sherpaAzul = "/assets/products-bc/sherpa-azul.jpg";
-const sherpaBege = "/assets/products-bc/sherpa-bege.jpg";
-const sherpaPreto = "/assets/products-bc/sherpa-preto.jpg";
-const tomimi1 = "/assets/products-bc/tomimi-1.jpg";
-const tomimi2 = "/assets/products-bc/tomimi-2.jpg";
-const tomimi3 = "/assets/products-bc/tomimi-3.jpg";
-const tomimi4 = "/assets/products-bc/tomimi-4.jpg";
-const tomimi5 = "/assets/products-bc/tomimi-5.jpg";
-const tomimi6 = "/assets/products-bc/tomimi-6.jpg";
-const tomimi7 = "/assets/products-bc/tomimi-7.jpg";
-const oliverPotes1 = "/assets/products-bc/oliver-potes-1.jpg";
-const biancoPanelas1 = "/assets/products-bc/bianco-panelas-1.jpg";
-const biancoPanelas2 = "/assets/products-bc/bianco-panelas-2.jpg";
-const biancoPanelas3 = "/assets/products-bc/bianco-panelas-3.jpg";
-const biancoPanelas4 = "/assets/products-bc/bianco-panelas-4.jpg";
-const biancoPanelas5 = "/assets/products-bc/bianco-panelas-5.jpg";
-const biancoPanelas6 = "/assets/products-bc/bianco-panelas-6.jpg";
-const gaabor1 = "/assets/products-bc/gaabor-1.jpg";
-const gaabor2 = "/assets/products-bc/gaabor-2.jpg";
-const gaabor3 = "/assets/products-bc/gaabor-3.jpg";
-const gaabor4 = "/assets/products-bc/gaabor-4.jpg";
-const gaabor5 = "/assets/products-bc/gaabor-5.jpg";
-const gaabor6 = "/assets/products-bc/gaabor-6.jpg";
-const kit6Main = "/assets/products-bc/kit6-coberdrom-main.png";
-const kit6Cinza = "/assets/products-bc/kit6-coberdrom-cinza.jpg";
-const kit6Preto = "/assets/products-bc/kit6-coberdrom-preto.jpg";
-const kit6Vermelho = "/assets/products-bc/kit6-coberdrom-vermelho.jpg";
-const kit6Bege = "/assets/products-bc/kit6-coberdrom-bege.jpg";
-const kit6Azul = "/assets/products-bc/kit6-coberdrom-azul.jpg";
-const kit6Marrom = "/assets/products-bc/kit6-coberdrom-marrom.jpg";
-const kit6Life1 = "/assets/products-bc/kit6-coberdrom-lifestyle1.jpg";
-const kit6Life2 = "/assets/products-bc/kit6-coberdrom-lifestyle2.jpg";
-const kit6Life3 = "/assets/products-bc/kit6-coberdrom-lifestyle3.jpg";
-const mondialPreto = "/assets/products-bc/mondial-l99-preto.png";
-const mondialVermelho = "/assets/products-bc/mondial-l99-vermelho.png";
-const mondialLife = "/assets/products-bc/mondial-l99-lifestyle.png";
-const mondialPotencia = "/assets/products-bc/mondial-l99-potencia.png";
-const mondialJarra = "/assets/products-bc/mondial-l99-jarra.png";
-const mondialFiltro = "/assets/products-bc/mondial-l99-filtro.png";
-const mondialTapa = "/assets/products-bc/mondial-l99-tapa.png";
-const mondialLaminas = "/assets/products-bc/mondial-l99-laminas.png";
-const mondialPies = "/assets/products-bc/mondial-l99-pies.png";
-const mondialDimensoes = "/assets/products-bc/mondial-l99-dimensoes.png";
-const idali76 = "/assets/products-bc/idali/76.png";
-const idali77 = "/assets/products-bc/idali/77.png";
-const idali80 = "/assets/products-bc/idali/80.png";
-const idali81 = "/assets/products-bc/idali/81.png";
-const idali82 = "/assets/products-bc/idali/82.png";
-const idali83 = "/assets/products-bc/idali/83.png";
-const idali84 = "/assets/products-bc/idali/84.png";
-const ventisol1 = "/assets/products-bc/ventisol-a1-1.png";
-const ventisol2 = "/assets/products-bc/ventisol-a1-2.png";
-const ventisol3 = "/assets/products-bc/ventisol-a1-3.png";
-const ventisol4 = "/assets/products-bc/ventisol-a1-4.png";
-const ventisol5 = "/assets/products-bc/ventisol-a1-5.png";
-const ventisol6 = "/assets/products-bc/ventisol-a1-6.png";
-const escova1 = "/assets/products-bc/escova-limpeza-1.png";
-const escova2 = "/assets/products-bc/escova-limpeza-2.png";
-const escova3 = "/assets/products-bc/escova-limpeza-3.png";
-const escova4 = "/assets/products-bc/escova-limpeza-4.png";
-const escova5 = "/assets/products-bc/escova-limpeza-5.png";
-const escova6 = "/assets/products-bc/escova-limpeza-6.png";
-const escova7 = "/assets/products-bc/escova-limpeza-7.png";
-const escova8 = "/assets/products-bc/escova-limpeza-8.png";
+const CP = "/assets/cp/";
 
 export interface Product {
   id: number;
@@ -107,6 +7,8 @@ export interface Product {
   price: number;
   originalPrice?: number;
   image: string;
+  /** Segunda imagem exibida no hover do card (padrão Casa Prestige) */
+  hoverImage?: string;
   images?: string[];
   tag?: string;
   description?: string;
@@ -117,121 +19,202 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: 17,
-    slug: "jogo-panelas-10-pecas-antiaderente-bianco-vanilla",
-    name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla",
-    price: 79.9,
-    originalPrice: 299.9,
-    image: biancoV1_1,
-    images: [biancoV1_1, biancoV1_2, biancoV1_3, biancoV1_4, biancoV1_5],
-    tag: "73% OFF",
-    description: "Jogo de Panelas Bianco Vanilla com 10 peças completas para equipar toda a sua cozinha.",
-    sizes: [],
-  },
-  {
-    id: 18,
-    slug: "fritadeira-air-fryer-gaabor-duo-digital-touch-4-2l",
-    name: "Fritadeira Elétrica Air Fryer Gaabor Duo Digital Touch sem Óleo 4.2L 127V 220V Preto",
-    price: 89.9,
-    originalPrice: 379.9,
-    image: gaabor1,
-    images: [gaabor1, gaabor2, gaabor3, gaabor4, gaabor5, gaabor6],
-    tag: "76% OFF",
-    description: "Fritadeira Elétrica Air Fryer Gaabor Duo com tecnologia de circulação de ar quente 360°.",
-    sizes: ["127V", "220V"],
+    id: 1,
+    slug: "airfryer-innovare",
+    name: "Air Fryer de Vidro Casa Prestige Innovare Gourmet 4,5L 127V ou 220V Creme e Dourado - Controle Digital",
+    price: 650,
+    originalPrice: 820,
+    image: `${CP}airfryer-1.webp`,
+    hoverImage: `${CP}airfryer-2.webp`,
+    images: [`${CP}airfryer-1.webp`, `${CP}airfryer-2.webp`],
+    tag: "21% OFF",
+    description:
+      "A Air Fryer Innovare Digital 4,5 litros une praticidade, modernidade e eficiência. Seu cesto em vidro térmico exclusivo permite acompanhar o cozimento sem abrir a fritadeira. Painel digital, timer programável de até 60 minutos, controle de temperatura até 200°C e superfície antiaderente que facilita o preparo e a limpeza. Potência de 1200W.",
+    sizes: ["110v", "220v"],
     sizeLabel: "Voltagem",
-    colorVariants: [{ label: "Preto", colors: ["#1a1a1a"] }],
   },
   {
-    id: 19,
-    slug: "coberdrom-casal-queen-dupla-face-sherpa-extra-macio",
-    name: "Coberdrom Casal Queen Dupla Face Sherpa Extra Macio e Aconchegante",
-    price: 79.9,
-    originalPrice: 599.4,
-    image: kit6Main,
-    images: [kit6Main, kit6Cinza, kit6Preto, kit6Vermelho, kit6Bege, kit6Azul, kit6Marrom],
-    tag: "87% OFF",
-    description: "Coberdrom Casal/Queen Dupla Face Sherpa de altíssima qualidade.",
-    sizes: ["Casal/Queen"],
-    colorVariants: [
-      { label: "Cinza", colors: ["#8a8a8a"], image: kit6Cinza },
-      { label: "Preto", colors: ["#1a1a1a"], image: kit6Preto },
-      { label: "Vermelho", colors: ["#c4161c"], image: kit6Vermelho },
-      { label: "Bege", colors: ["#d2b48c"], image: kit6Bege },
-      { label: "Azul Marinho", colors: ["#1e2a44"], image: kit6Azul },
-      { label: "Marrom Chocolate", colors: ["#5a3a22"], image: kit6Marrom },
-    ],
-  },
-  {
-    id: 20,
-    slug: "liquidificador-mondial-l-99-turbo-3-velocidades-550w",
-    name: "Liquidificador Mondial L-99 Turbo 3 Velocidades 550W",
+    id: 2,
+    slug: "aparador-buffet-sala-escritorio-branco-com-prateleiras",
+    name: "Aparador Buffet Sala Escritório Branco Com Prateleiras",
     price: 69.9,
-    originalPrice: 249.9,
-    image: mondialPreto,
-    images: [mondialPreto, mondialLife, mondialPotencia, mondialJarra, mondialFiltro, mondialTapa, mondialLaminas, mondialPies, mondialDimensoes],
-    tag: "72% OFF",
-    description: "Liquidificador Mondial L-99 Turbo Power com motor potente de 550W.",
-    sizes: ["110V", "220V"],
-    sizeLabel: "Voltagem",
-    colorVariants: [
-      { label: "Preto", colors: ["#1a1a1a"], image: mondialPreto },
-      { label: "Vermelho", colors: ["#c4161c"], image: mondialVermelho },
-    ],
+    originalPrice: 99,
+    image: `${CP}aparador-1.webp`,
+    images: [`${CP}aparador-1.webp`],
+    tag: "29% OFF",
+    description:
+      "Aparador buffet em MDP branco com prateleiras amplas, ideal para sala, hall de entrada ou escritório. Estrutura resistente, acabamento fosco e montagem simples.",
   },
   {
-    id: 21,
-    slug: "aspirador-po-robo-inteligente-idali-life-sensores-anti-queda",
-    name: "Aspirador de Pó Para Casa Robô Inteligente Com Sensores Anti-queda IDALI LIFE",
-    price: 119.9,
-    originalPrice: 599.9,
-    image: idali76,
-    images: [idali76, idali83, idali81, idali82, idali84, idali77, idali80],
-    tag: "80% OFF",
-    description: "Aspirador de Pó Robô Inteligente IDALI LIFE 3 em 1: varre, aspira e passa pano.",
-    sizes: [],
+    id: 3,
+    slug: "movel-moderno-de-cozinha-suporte-duplo-de-parede-preto",
+    name: "Móvel Moderno De Cozinha Suporte Duplo De Parede Preto",
+    price: 99,
+    originalPrice: 130,
+    image: `${CP}movelcozinha-1.webp`,
+    hoverImage: `${CP}movelcozinha-2.webp`,
+    images: [`${CP}movelcozinha-1.webp`, `${CP}movelcozinha-2.webp`],
+    tag: "24% OFF",
+    description:
+      "Suporte duplo de parede para cozinha em acabamento preto fosco. Organiza micro-ondas, forno elétrico e utensílios liberando espaço na bancada.",
   },
   {
-    id: 22,
-    slug: "aquecedor-eletrico-3-em-1-termo-ventilador-a1-ventisol",
-    name: "Aquecedor elétrico 3 em 1 com termo ventilador A1 - Ventisol",
-    price: 79.9,
-    originalPrice: 249.9,
-    image: ventisol1,
-    images: [ventisol1, ventisol2, ventisol3, ventisol4, ventisol5, ventisol6],
-    tag: "68% OFF",
-    description: "Aquecedor Elétrico Ventisol A1 3 em 1 com Termo Ventilador.",
-    sizes: ["127V", "220V"],
-    sizeLabel: "Voltagem",
+    id: 4,
+    slug: "jogo-de-6-tacas-transparente-diamond-350ml",
+    name: "Jogo De 6 Taças Transparente Diamond 350ml",
+    price: 39.9,
+    originalPrice: 59,
+    image: `${CP}tacas-1.webp`,
+    hoverImage: `${CP}tacas-2.webp`,
+    images: [`${CP}tacas-1.webp`, `${CP}tacas-2.webp`],
+    tag: "32% OFF",
+    description:
+      "Jogo com 6 taças Diamond de 350ml em vidro transparente com relevo lapidado. Deixa a mesa posta sofisticada e é indicado para água, vinho e drinks.",
   },
   {
-    id: 23,
-    slug: "kit-2-escovas-limpeza-eletrica-multifuncional-9-em-1-retratil",
-    name: "Kit 2 Escovas de limpeza elétrica multifuncional 9 em 1, retrátil - com cabo estendido para banheiro, cozinha e quarto",
-    price: 69.9,
-    originalPrice: 249.9,
-    image: escova1,
-    images: [escova1, escova2, escova3, escova4, escova8, escova5, escova7, escova6],
-    tag: "72% OFF",
-    description: "Kit com 2 Escovas Elétricas de Limpeza Multifuncionais 9 em 1.",
-    sizes: [],
+    id: 5,
+    slug: "sapateira-industrial-3-planos-resistente-sapatos-organizados-cor-marrom-claro",
+    name: "Sapateira Industrial 3 Planos Resistente Sapatos Organizados Cor Marrom-claro",
+    price: 129.9,
+    originalPrice: 179,
+    image: `${CP}sapind-1.webp`,
+    hoverImage: `${CP}sapind-2.webp`,
+    images: [`${CP}sapind-1.webp`, `${CP}sapind-2.webp`],
+    tag: "27% OFF",
+    description:
+      "Sapateira estilo industrial com 3 planos, estrutura metálica reforçada e prateleiras em MDP marrom-claro. Comporta até 12 pares com organização e estilo.",
   },
   {
-    id: 24,
-    slug: "jogo-de-panelas-10-pecas-antiaderente-bianco-vanilla-teflon-ditalia",
-    name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla Varias Cores Conjunto Kit Teflon D'italia Cozinha Completa",
-    price: 89.9,
-    originalPrice: 349.9,
-    image: panelaSahara,
-    images: [panelaSahara, panelaPretoTrad, panelaPrestigio, panelaMenta, panelaPretoGold],
-    tag: "74% OFF",
-    description: "Transforme sua cozinha com o Jogo de Panelas 10 Peças Bianco Vanilla D'italia.",
-    colorVariants: [
-      { label: "Sahara", colors: ["#c5a07c"], image: panelaSahara },
-      { label: "Preto Tradicional", colors: ["#1a1a1a"], image: panelaPretoTrad },
-      { label: "Prestigio", colors: ["#5b3a29"], image: panelaPrestigio },
-      { label: "Menta", colors: ["#5f9ea0"], image: panelaMenta },
-      { label: "Black/Gold", colors: ["#1a1a1a", "#d4af37"], image: panelaPretoGold },
-    ],
+    id: 6,
+    slug: "sapateira-simples-branca-para-quarto-sala-cor-branco",
+    name: "Sapateira Simples Branca Para Quarto Sala Cor Branco",
+    price: 59.9,
+    originalPrice: 74,
+    image: `${CP}sapsimples-1.webp`,
+    hoverImage: `${CP}sapsimples-2.webp`,
+    images: [`${CP}sapsimples-1.webp`, `${CP}sapsimples-2.webp`],
+    tag: "19% OFF",
+    description:
+      "Sapateira compacta branca para quarto, sala ou hall. Design clean, ocupa pouco espaço e mantém os calçados organizados e ventilados.",
+  },
+  {
+    id: 7,
+    slug: "mesa-cabeceira-branca-mdp-nicho-prateleira-moderna-quarto-fosco-preto-ou-branco",
+    name: "Mesa Cabeceira Branca Mdp Nicho Prateleira Moderna Quarto Fosco Preto ou Branco",
+    price: 35.9,
+    originalPrice: 53,
+    image: `${CP}cabeceira-1.webp`,
+    hoverImage: `${CP}cabeceira-2.webp`,
+    images: [`${CP}cabeceira-1.webp`, `${CP}cabeceira-2.webp`],
+    tag: "32% OFF",
+    description:
+      "Mesa de cabeceira moderna em MDP fosco com nicho e prateleira. Perfeita para apoiar celular, livros e abajur ao lado da cama.",
+    sizes: ["Branco", "Preto"],
+    sizeLabel: "Cor",
+  },
+  {
+    id: 8,
+    slug: "suporte-suspenso-cozinha-preto-modular-micro-ondas-aereo",
+    name: "Suporte Suspenso Cozinha Preto Modular Micro-ondas Aereo",
+    price: 99.9,
+    originalPrice: 135,
+    image: `${CP}suspenso-1.webp`,
+    hoverImage: `${CP}suspenso-2.webp`,
+    images: [`${CP}suspenso-1.webp`, `${CP}suspenso-2.webp`],
+    tag: "26% OFF",
+    description:
+      "Suporte aéreo modular preto para micro-ondas e utensílios. Fixação na parede, alta resistência e visual moderno para a cozinha.",
+  },
+  {
+    id: 9,
+    slug: "mesa-de-centro-sala-sofa-apoio-mesinha-lateral-decoracao-cor-branco",
+    name: "Mesa De Centro Sala Sofá Apoio Mesinha Lateral Decoração Cor Branco",
+    price: 99.9,
+    originalPrice: 140,
+    image: `${CP}mesacentro-1.webp`,
+    hoverImage: `${CP}mesacentro-2.webp`,
+    images: [`${CP}mesacentro-1.webp`, `${CP}mesacentro-2.webp`],
+    tag: "29% OFF",
+    description:
+      "Mesa de centro branca com design leve e contemporâneo. Serve como apoio ao lado do sofá ou como peça central da sala.",
+  },
+  {
+    id: 10,
+    slug: "armario-suspenso-branco-com-nicho-porta-e-3-prateleiras",
+    name: "Armário Suspenso Branco Com Nicho Porta E 3 Prateleiras",
+    price: 55.9,
+    originalPrice: 80,
+    image: `${CP}armario-1.webp`,
+    hoverImage: `${CP}armario-2.webp`,
+    images: [`${CP}armario-1.webp`, `${CP}armario-2.webp`],
+    tag: "30% OFF",
+    description:
+      "Armário suspenso branco com porta, nicho e 3 prateleiras internas. Ideal para banheiro, lavanderia ou cozinha.",
+  },
+  {
+    id: 11,
+    slug: "suporte-monitor-ergonomico-preto-mel-para-setup-gamer-preto-e-mel",
+    name: "Suporte Monitor Ergonômico Preto Mel Para Setup Gamer Preto E Mel",
+    price: 59.9,
+    originalPrice: 79,
+    image: `${CP}monitor-1.webp`,
+    images: [`${CP}monitor-1.webp`],
+    tag: "24% OFF",
+    description:
+      "Suporte ergonômico para monitor em duas cores, eleva a tela à altura dos olhos e cria espaço extra na mesa para teclado e acessórios.",
+  },
+  {
+    id: 12,
+    slug: "rack-sapateira-2-prateleiras-em-mdp-preto-ou-branco",
+    name: "Rack Sapateira 2 Prateleiras em MDP - Preto ou Branco",
+    price: 59.9,
+    originalPrice: 75,
+    image: `${CP}racksap-1.webp`,
+    hoverImage: `${CP}racksap-2.webp`,
+    images: [`${CP}racksap-1.webp`, `${CP}racksap-2.webp`],
+    tag: "20% OFF",
+    description:
+      "Rack sapateira em MDP com 2 prateleiras, acabamento fosco e montagem rápida. Disponível em preto ou branco.",
+    sizes: ["Preto", "Branco"],
+    sizeLabel: "Cor",
+  },
+  {
+    id: 13,
+    slug: "mesa-de-cabeceira-com-rodinhas-safira-pequena-20x20x60cm-branco-ou-preto-quarto-sala",
+    name: "Mesa De Cabeceira com Rodinhas Safira Pequena 20x20x60cm Branco ou Preto Quarto Sala",
+    price: 49.9,
+    originalPrice: 66,
+    image: `${CP}safira-1.webp`,
+    images: [`${CP}safira-1.webp`],
+    tag: "24% OFF",
+    description:
+      "Mesa de cabeceira Safira 20x20x60cm com rodinhas, prática de mover e perfeita para espaços pequenos no quarto ou na sala.",
+    sizes: ["Branco", "Preto"],
+    sizeLabel: "Cor",
+  },
+  {
+    id: 14,
+    slug: "esfregao-mop-spray-rodo-microfibra-reservatorio-380ml",
+    name: "Esfregão Mop Spray Rodo Microfibra Reservatório 380ml",
+    price: 36.4,
+    originalPrice: 52,
+    image: `${CP}mopspray-1.webp`,
+    hoverImage: `${CP}mopspray-2.webp`,
+    images: [`${CP}mopspray-1.webp`, `${CP}mopspray-2.webp`],
+    tag: "30% OFF",
+    description:
+      "Mop spray com reservatório de 380ml e refil em microfibra. Borrifa e limpa ao mesmo tempo, sem precisar de balde.",
+  },
+  {
+    id: 15,
+    slug: "esfregao-mop-inox-balde-10-litros-e-refil-microfibra",
+    name: "Esfregão Mop Inox Balde 10,5 litros e 2 Refil Microfibra Cabo 140 cm",
+    price: 50,
+    originalPrice: 80,
+    image: `${CP}mopinox-1.webp`,
+    images: [`${CP}mopinox-1.webp`],
+    tag: "38% OFF",
+    description:
+      "Kit esfregão mop com balde de 10,5 litros, cesto centrifugador em inox, cabo de 140cm e 2 refis de microfibra.",
   },
 ];
