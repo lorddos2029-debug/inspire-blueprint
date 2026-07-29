@@ -26,14 +26,25 @@ const Header = () => {
   const location = useLocation();
   const isProductPage = location.pathname.startsWith("/produto");
 
+  // Cada link aponta para uma seção real da home (evita cliques que não levam a lugar nenhum)
   const navLinks = [
-    { label: "NOVIDADES", href: "/" },
-    { label: "CAMA & BANHO", href: "/" },
-    { label: "MESA POSTA", href: "/" },
-    { label: "ELETROPORTÁTEIS", href: "/" },
-    { label: "ORGANIZAÇÃO", href: "/" },
-    { label: "OFERTAS", href: "/" },
+    { label: "NOVIDADES", href: "/#mais-vendidos" },
+    { label: "CAMA & BANHO", href: "/#cama-banho" },
+    { label: "ELETROPORTÁTEIS", href: "/#eletroportateis" },
+    { label: "ORGANIZAÇÃO", href: "/#organizacao" },
+    { label: "CONFORTO & SONO", href: "/#conforto-sono" },
+    { label: "OFERTAS", href: "/#mais-vendidos" },
   ];
+
+  const handleNavClick = (href: string) => {
+    setMobileMenuOpen(false);
+    const hash = href.split("#")[1];
+    if (!hash) return;
+    if (location.pathname === "/") {
+      document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
 
   return (
     <>
