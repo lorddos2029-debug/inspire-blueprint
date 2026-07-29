@@ -24,7 +24,7 @@ import ShippingStep, { SHIPPING_OPTIONS } from "../ShippingStep";
 import PaymentStep from "../PaymentStep";
 
 const ACCENT = "#be7e5b";
-const pixIcon = "/pix-icon.png";
+import pixIcon from "@/assets/pix-icon.png";
 
 const formatPrice = (value: number) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
