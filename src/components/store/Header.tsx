@@ -76,12 +76,12 @@ const Header = () => {
           </div>
 
           {/* Logo */}
-          <div className="flex justify-center">
-            <Link to="/" aria-label="BelaCasa - Início">
+          <div className="flex justify-center items-center">
+            <Link to="/" aria-label="BelaCasa - Início" className="flex items-center justify-center">
               <img
                 src={belacasaLogo}
                 alt="BelaCasa"
-                className="h-14 md:h-20 w-auto object-contain select-none"
+                className="h-16 md:h-28 w-auto object-contain select-none"
                 width={500}
                 height={500}
                 fetchPriority="high"
@@ -89,6 +89,7 @@ const Header = () => {
               />
             </Link>
           </div>
+
 
           {/* Conta + carrinho */}
           <div className="flex items-center justify-end gap-3 md:gap-5">

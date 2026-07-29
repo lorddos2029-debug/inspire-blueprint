@@ -7,11 +7,12 @@ const FooterLogo = () => (
   <img
     src={belacasaLogo}
     alt="BelaCasa - Para cada canto, um lar"
-    className="h-20 w-auto object-contain select-none"
+    className="h-24 md:h-28 w-auto object-contain select-none mx-auto"
     loading="lazy"
     decoding="async"
   />
 );
+
 
 
 const footerLinks = {
