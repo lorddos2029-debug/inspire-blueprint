@@ -99,12 +99,23 @@ const trackCheckoutStep = async (step: string, productId: string | null) => {
 
 const CheckoutFooter = () => (
   <footer className="mt-10 border-t border-gray-200 bg-white">
-    <div className="container max-w-5xl mx-auto px-4 py-6 text-center space-y-1">
-      <p className="text-[10px] text-gray-500">BelaCasa · CNPJ 61.435.929/0001-05</p>
-      <p className="text-[10px] text-gray-400">© {new Date().getFullYear()} BelaCasa. Todos os direitos reservados.</p>
+    <div className="container max-w-5xl mx-auto px-4 py-6 text-center space-y-3">
+      <p className="text-xs font-semibold uppercase tracking-wide text-gray-600">Formas de pagamento</p>
+      <img
+        src={formasPagamento.url}
+        alt="Formas de pagamento aceitas: Pix, Boleto, Visa, Mastercard, Hipercard, Cielo, American Express, Diners Club, Discover e Elo"
+        className="mx-auto w-full max-w-md h-auto"
+        loading="lazy"
+        decoding="async"
+      />
+      <div className="space-y-1 pt-2">
+        <p className="text-[10px] text-gray-500">BelaCasa · CNPJ 61.435.929/0001-05</p>
+        <p className="text-[10px] text-gray-400">© {new Date().getFullYear()} BelaCasa. Todos os direitos reservados.</p>
+      </div>
     </div>
   </footer>
 );
+
 
 export const LunaCheckout = () => {
   const {
