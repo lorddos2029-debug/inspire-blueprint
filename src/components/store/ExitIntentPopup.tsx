@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sparkles, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
+import belacasaLogo from "@/assets/belacasa-logo.png.asset.json";
 
 
 const STORAGE_KEY = "exit_intent_shown_v1";
