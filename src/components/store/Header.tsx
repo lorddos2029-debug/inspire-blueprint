@@ -5,16 +5,17 @@ import { useCart } from "@/contexts/CartContext";
 import CouponBar from "./CouponBar";
 
 const Logo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
-  const titleSize = size === "lg" ? "text-3xl md:text-4xl" : size === "sm" ? "text-xl md:text-2xl" : "text-2xl md:text-3xl";
+  const h = size === "lg" ? "h-16 md:h-20" : size === "sm" ? "h-10 md:h-12" : "h-14 md:h-16";
   return (
-    <div className="flex flex-col items-center leading-none select-none">
-      <span className={`font-display ${titleSize} font-semibold tracking-tight text-primary`}>
-        Bela<span className="italic text-[hsl(var(--gold))]">Casa</span>
-      </span>
-      <span className="mt-0.5 text-[9px] md:text-[10px] tracking-[0.4em] font-medium text-muted-foreground uppercase">
-        Casa &amp; Conforto
-      </span>
-    </div>
+    <img
+      src={belacasaLogo.url}
+      alt="BelaCasa - Para cada canto, um lar"
+      className={`${h} w-auto object-contain select-none`}
+      width={500}
+      height={500}
+      fetchPriority="high"
+      decoding="async"
+    />
   );
 };
 
