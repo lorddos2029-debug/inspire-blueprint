@@ -25,6 +25,7 @@ import PaymentStep from "../PaymentStep";
 
 const ACCENT = "#be7e5b";
 import pixIcon from "@/assets/pix-icon.png";
+import formasPagamento from "@/assets/formas-pagamento.png.asset.json";
 
 const formatPrice = (value: number) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
