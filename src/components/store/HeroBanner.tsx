@@ -19,7 +19,7 @@ const HeroBanner = () => {
           src={heroImage}
           alt="Air Fryer Innovare com design premium para sua cozinha"
           className="w-full h-auto object-cover"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="async"
           width={1920}
           height={800}
