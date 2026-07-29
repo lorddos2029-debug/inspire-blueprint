@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 import { QRCodeSVG } from "qrcode.react";
+import belacasaLogo from "@/assets/belacasa-logo.png.asset.json";
 import kitMeiasSoquete from "@/assets/kit-12-meias-soquete.png";
 import bodySplashBarboursTrio from "@/assets/products/body-splash-barbours-trio.png";
 import security100 from "@/assets/security-100.svg";
