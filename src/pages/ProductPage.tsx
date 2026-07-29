@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { products, type Product } from "@/data/products";
 import { supabase } from "@/integrations/supabase/client";
 import { productCategories } from "@/data/categoryProducts";
@@ -64,6 +65,7 @@ const ProductPage = () => {
   const mainProduct = [...products].reverse().find((p) => p.slug === slug);
   const product: Product | undefined = mainProduct || fallbackProducts.find((p) => p.slug === slug);
   const { addItem } = useCart();
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(
     product?.sizes && product.sizes.length === 1 ? product.sizes[0] : null
@@ -140,22 +142,35 @@ const ProductPage = () => {
   const pixDiscountLabel = product.id === 46 ? "5%" : "10%";
   const pixPrice = product.price * (1 - pixDiscountRate);
 
-  const handleAddToCart = () => {
+  /**
+   * Adiciona o produto à sacola.
+   * @param goToCheckout quando true, leva direto ao checkout (compra em 1 clique)
+   */
+  const handleAddToCart = (goToCheckout = false) => {
     const needsSize = product.sizes && product.sizes.length > 0;
     const needsColor = product.colorVariants && product.colorVariants.length > 0;
 
+    const failValidation = (setter: (v: boolean) => void) => {
+      setter(true);
+      const label = (product.sizeLabel || "tamanho").toLowerCase() === "voltagem" ? "a voltagem" : "o tamanho";
+      toast.error(`Selecione ${label} antes de continuar`);
+      document
+        .getElementById("variant-selector")
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+
     if (isKitMultiSize && product.colorVariants && product.sizes) {
       const allSelected = product.colorVariants.every((_, idx) => kitSizes[idx]);
-      if (!allSelected) { setShowKitError(true); return; }
-    } else if (needsSize && !selectedSize) { setShowSizeError(true); return; }
+      if (!allSelected) { failValidation(setShowKitError); return; }
+    } else if (needsSize && !selectedSize) { failValidation(setShowSizeError); return; }
 
     const selectedColorLabel = needsColor
       ? product.colorVariants[selectedColor]?.label
       : undefined;
 
-    // Facebook Pixel - InitiateCheckout
+    // Facebook Pixel - AddToCart (InitiateCheckout é disparado ao entrar no /checkout)
     if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'InitiateCheckout', {
+      (window as any).fbq('track', 'AddToCart', {
         content_ids: [String(product.id)],
         content_name: product.name,
         content_type: 'product',
@@ -165,9 +180,9 @@ const ProductPage = () => {
       });
     }
 
-    // UTMIFY - InitiateCheckout
+    // UTMIFY - AddToCart
     if (typeof window !== 'undefined' && (window as any).utmify) {
-      (window as any).utmify('track', 'InitiateCheckout', {
+      (window as any).utmify('track', 'AddToCart', {
         value: product.price,
         currency: 'BRL',
       });
@@ -186,7 +201,8 @@ const ProductPage = () => {
         tag: product.tag,
         size: sizesDescription,
         color: product.colorVariants.map(v => v.label).join(" + "),
-      });
+      }, { silent: goToCheckout });
+      if (goToCheckout) navigate("/checkout");
       return;
     }
 
@@ -203,7 +219,9 @@ const ProductPage = () => {
       tag: product.tag,
       size: selectedSize || undefined,
       color: selectedColorLabel,
-    });
+    }, { silent: goToCheckout });
+
+    if (goToCheckout) navigate("/checkout");
   };
 
   const prevImage = () => setSelectedImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -313,7 +331,7 @@ const ProductPage = () => {
 
             {/* Kit multi-tamanho: cada cor com seu próprio seletor de tamanho */}
             {isKitMultiSize && product.colorVariants && product.sizes ? (
-              <div className="rounded-xl border border-border bg-card p-4 sm:p-5 shadow-sm space-y-4">
+              <div id="variant-selector" className="rounded-xl border border-border bg-card p-4 sm:p-5 shadow-sm space-y-4">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
                     Escolha o tamanho de cada jaqueta
@@ -373,7 +391,8 @@ const ProductPage = () => {
               <>
                 {/* Tamanho (layout padrão quando não há variantes com imagem) */}
                 {product.sizes && product.sizes.length > 0 && (
-                  <div>
+                  <div id="variant-selector">
+
                     {showSizeError && !selectedSize && (
                       <p className="text-xs font-semibold text-red-500 mb-2">⚠ Selecione {(product.sizeLabel || "um tamanho").toLowerCase() === "voltagem" ? "uma voltagem" : "um tamanho"}</p>
                     )}
@@ -460,13 +479,23 @@ const ProductPage = () => {
               </div>
             </div>
 
-            {/* CTA */}
+            {/* CTA principal: compra em 1 clique */}
             <Button
               size="lg"
               className="w-full h-14 text-base font-bold tracking-wider rounded-lg uppercase"
-              onClick={handleAddToCart}
+              onClick={() => handleAddToCart(true)}
             >
               Comprar Agora
+            </Button>
+
+            {/* CTA secundário: continuar navegando */}
+            <Button
+              size="lg"
+              variant="outline"
+              className="w-full h-12 text-sm font-semibold tracking-wider rounded-lg uppercase border-foreground text-foreground hover:bg-secondary"
+              onClick={() => handleAddToCart(false)}
+            >
+              Adicionar à sacola
             </Button>
 
             {/* Trust Features */}

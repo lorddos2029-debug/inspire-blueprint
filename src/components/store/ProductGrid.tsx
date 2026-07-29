@@ -16,7 +16,7 @@ const ProductGrid = () => {
   const hasMore = featuredProducts.length > INITIAL_VISIBLE;
 
   return (
-    <section className="py-12 md:py-20 bg-background">
+    <section id="mais-vendidos" className="py-12 md:py-20 bg-background scroll-mt-32">
       <div className="container">
         <div className="flex items-end justify-between mb-8">
           <div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, ShoppingBag, User, Menu, X, Heart } from "lucide-react";
+import { ShoppingBag, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import CouponBar from "./CouponBar";
@@ -26,14 +26,25 @@ const Header = () => {
   const location = useLocation();
   const isProductPage = location.pathname.startsWith("/produto");
 
+  // Cada link aponta para uma seção real da home (evita cliques que não levam a lugar nenhum)
   const navLinks = [
-    { label: "NOVIDADES", href: "/" },
-    { label: "CAMA & BANHO", href: "/" },
-    { label: "MESA POSTA", href: "/" },
-    { label: "ELETROPORTÁTEIS", href: "/" },
-    { label: "ORGANIZAÇÃO", href: "/" },
-    { label: "OFERTAS", href: "/" },
+    { label: "NOVIDADES", href: "/#mais-vendidos" },
+    { label: "CAMA & BANHO", href: "/#cama-banho" },
+    { label: "ELETROPORTÁTEIS", href: "/#eletroportateis" },
+    { label: "ORGANIZAÇÃO", href: "/#organizacao" },
+    { label: "CONFORTO & SONO", href: "/#conforto-sono" },
+    { label: "OFERTAS", href: "/#mais-vendidos" },
   ];
+
+  const handleNavClick = (href: string) => {
+    setMobileMenuOpen(false);
+    const hash = href.split("#")[1];
+    if (!hash) return;
+    if (location.pathname === "/") {
+      document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
 
   return (
     <>
@@ -58,21 +69,6 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-4 shrink-0">
-            {!isProductPage && (
-              <button className="hidden md:block hover:text-[hsl(var(--gold))] transition-colors" aria-label="Buscar">
-                <Search className="w-5 h-5" strokeWidth={1.5} />
-              </button>
-            )}
-            {!isProductPage && (
-              <button className="hidden md:block hover:text-[hsl(var(--gold))] transition-colors" aria-label="Favoritos">
-                <Heart className="w-5 h-5" strokeWidth={1.5} />
-              </button>
-            )}
-            {!isProductPage && (
-              <button className="hidden md:block hover:text-[hsl(var(--gold))] transition-colors" aria-label="Conta">
-                <User className="w-5 h-5" strokeWidth={1.5} />
-              </button>
-            )}
             <button
               className="relative hover:text-[hsl(var(--gold))] transition-colors"
               onClick={() => setIsCartOpen(true)}
@@ -96,6 +92,7 @@ const Header = () => {
                 <Link
                   key={link.label}
                   to={link.href}
+                  onClick={() => handleNavClick(link.href)}
                   className="text-[11px] tracking-[0.25em] font-medium text-foreground/80 hover:text-[hsl(var(--gold))] transition-colors"
                 >
                   {link.label}
@@ -114,7 +111,7 @@ const Header = () => {
                   key={link.label}
                   to={link.href}
                   className="text-sm tracking-widest font-medium text-foreground py-3 border-b border-border last:border-0"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => handleNavClick(link.href)}
                 >
                   {link.label}
                 </Link>
