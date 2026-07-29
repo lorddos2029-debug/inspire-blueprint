@@ -142,22 +142,35 @@ const ProductPage = () => {
   const pixDiscountLabel = product.id === 46 ? "5%" : "10%";
   const pixPrice = product.price * (1 - pixDiscountRate);
 
-  const handleAddToCart = () => {
+  /**
+   * Adiciona o produto à sacola.
+   * @param goToCheckout quando true, leva direto ao checkout (compra em 1 clique)
+   */
+  const handleAddToCart = (goToCheckout = false) => {
     const needsSize = product.sizes && product.sizes.length > 0;
     const needsColor = product.colorVariants && product.colorVariants.length > 0;
 
+    const failValidation = (setter: (v: boolean) => void) => {
+      setter(true);
+      const label = (product.sizeLabel || "tamanho").toLowerCase() === "voltagem" ? "a voltagem" : "o tamanho";
+      toast.error(`Selecione ${label} antes de continuar`);
+      document
+        .getElementById("variant-selector")
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+
     if (isKitMultiSize && product.colorVariants && product.sizes) {
       const allSelected = product.colorVariants.every((_, idx) => kitSizes[idx]);
-      if (!allSelected) { setShowKitError(true); return; }
-    } else if (needsSize && !selectedSize) { setShowSizeError(true); return; }
+      if (!allSelected) { failValidation(setShowKitError); return; }
+    } else if (needsSize && !selectedSize) { failValidation(setShowSizeError); return; }
 
     const selectedColorLabel = needsColor
       ? product.colorVariants[selectedColor]?.label
       : undefined;
 
-    // Facebook Pixel - InitiateCheckout
+    // Facebook Pixel - AddToCart (InitiateCheckout é disparado ao entrar no /checkout)
     if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'InitiateCheckout', {
+      (window as any).fbq('track', 'AddToCart', {
         content_ids: [String(product.id)],
         content_name: product.name,
         content_type: 'product',
@@ -167,9 +180,9 @@ const ProductPage = () => {
       });
     }
 
-    // UTMIFY - InitiateCheckout
+    // UTMIFY - AddToCart
     if (typeof window !== 'undefined' && (window as any).utmify) {
-      (window as any).utmify('track', 'InitiateCheckout', {
+      (window as any).utmify('track', 'AddToCart', {
         value: product.price,
         currency: 'BRL',
       });
@@ -188,7 +201,8 @@ const ProductPage = () => {
         tag: product.tag,
         size: sizesDescription,
         color: product.colorVariants.map(v => v.label).join(" + "),
-      });
+      }, { silent: goToCheckout });
+      if (goToCheckout) navigate("/checkout");
       return;
     }
 
@@ -205,7 +219,9 @@ const ProductPage = () => {
       tag: product.tag,
       size: selectedSize || undefined,
       color: selectedColorLabel,
-    });
+    }, { silent: goToCheckout });
+
+    if (goToCheckout) navigate("/checkout");
   };
 
   const prevImage = () => setSelectedImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
