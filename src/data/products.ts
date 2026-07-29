@@ -19,7 +19,7 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: 1,
+    id: 101,
     slug: "airfryer-innovare",
     name: "Air Fryer de Vidro Casa Prestige Innovare Gourmet 4,5L 127V ou 220V Creme e Dourado - Controle Digital",
     price: 650,
@@ -34,7 +34,7 @@ export const products: Product[] = [
     sizeLabel: "Voltagem",
   },
   {
-    id: 2,
+    id: 102,
     slug: "aparador-buffet-sala-escritorio-branco-com-prateleiras",
     name: "Aparador Buffet Sala Escritório Branco Com Prateleiras",
     price: 69.9,
@@ -46,7 +46,7 @@ export const products: Product[] = [
       "Aparador buffet em MDP branco com prateleiras amplas, ideal para sala, hall de entrada ou escritório. Estrutura resistente, acabamento fosco e montagem simples.",
   },
   {
-    id: 3,
+    id: 103,
     slug: "movel-moderno-de-cozinha-suporte-duplo-de-parede-preto",
     name: "Móvel Moderno De Cozinha Suporte Duplo De Parede Preto",
     price: 99,
@@ -59,7 +59,7 @@ export const products: Product[] = [
       "Suporte duplo de parede para cozinha em acabamento preto fosco. Organiza micro-ondas, forno elétrico e utensílios liberando espaço na bancada.",
   },
   {
-    id: 4,
+    id: 104,
     slug: "jogo-de-6-tacas-transparente-diamond-350ml",
     name: "Jogo De 6 Taças Transparente Diamond 350ml",
     price: 39.9,
@@ -72,7 +72,7 @@ export const products: Product[] = [
       "Jogo com 6 taças Diamond de 350ml em vidro transparente com relevo lapidado. Deixa a mesa posta sofisticada e é indicado para água, vinho e drinks.",
   },
   {
-    id: 5,
+    id: 105,
     slug: "sapateira-industrial-3-planos-resistente-sapatos-organizados-cor-marrom-claro",
     name: "Sapateira Industrial 3 Planos Resistente Sapatos Organizados Cor Marrom-claro",
     price: 129.9,
@@ -85,7 +85,7 @@ export const products: Product[] = [
       "Sapateira estilo industrial com 3 planos, estrutura metálica reforçada e prateleiras em MDP marrom-claro. Comporta até 12 pares com organização e estilo.",
   },
   {
-    id: 6,
+    id: 106,
     slug: "sapateira-simples-branca-para-quarto-sala-cor-branco",
     name: "Sapateira Simples Branca Para Quarto Sala Cor Branco",
     price: 59.9,
@@ -98,7 +98,7 @@ export const products: Product[] = [
       "Sapateira compacta branca para quarto, sala ou hall. Design clean, ocupa pouco espaço e mantém os calçados organizados e ventilados.",
   },
   {
-    id: 7,
+    id: 107,
     slug: "mesa-cabeceira-branca-mdp-nicho-prateleira-moderna-quarto-fosco-preto-ou-branco",
     name: "Mesa Cabeceira Branca Mdp Nicho Prateleira Moderna Quarto Fosco Preto ou Branco",
     price: 35.9,
@@ -113,7 +113,7 @@ export const products: Product[] = [
     sizeLabel: "Cor",
   },
   {
-    id: 8,
+    id: 108,
     slug: "suporte-suspenso-cozinha-preto-modular-micro-ondas-aereo",
     name: "Suporte Suspenso Cozinha Preto Modular Micro-ondas Aereo",
     price: 99.9,
@@ -126,7 +126,7 @@ export const products: Product[] = [
       "Suporte aéreo modular preto para micro-ondas e utensílios. Fixação na parede, alta resistência e visual moderno para a cozinha.",
   },
   {
-    id: 9,
+    id: 109,
     slug: "mesa-de-centro-sala-sofa-apoio-mesinha-lateral-decoracao-cor-branco",
     name: "Mesa De Centro Sala Sofá Apoio Mesinha Lateral Decoração Cor Branco",
     price: 99.9,
@@ -139,7 +139,7 @@ export const products: Product[] = [
       "Mesa de centro branca com design leve e contemporâneo. Serve como apoio ao lado do sofá ou como peça central da sala.",
   },
   {
-    id: 10,
+    id: 110,
     slug: "armario-suspenso-branco-com-nicho-porta-e-3-prateleiras",
     name: "Armário Suspenso Branco Com Nicho Porta E 3 Prateleiras",
     price: 55.9,
@@ -152,7 +152,7 @@ export const products: Product[] = [
       "Armário suspenso branco com porta, nicho e 3 prateleiras internas. Ideal para banheiro, lavanderia ou cozinha.",
   },
   {
-    id: 11,
+    id: 111,
     slug: "suporte-monitor-ergonomico-preto-mel-para-setup-gamer-preto-e-mel",
     name: "Suporte Monitor Ergonômico Preto Mel Para Setup Gamer Preto E Mel",
     price: 59.9,
@@ -164,7 +164,7 @@ export const products: Product[] = [
       "Suporte ergonômico para monitor em duas cores, eleva a tela à altura dos olhos e cria espaço extra na mesa para teclado e acessórios.",
   },
   {
-    id: 12,
+    id: 112,
     slug: "rack-sapateira-2-prateleiras-em-mdp-preto-ou-branco",
     name: "Rack Sapateira 2 Prateleiras em MDP - Preto ou Branco",
     price: 59.9,
@@ -179,7 +179,7 @@ export const products: Product[] = [
     sizeLabel: "Cor",
   },
   {
-    id: 13,
+    id: 113,
     slug: "mesa-de-cabeceira-com-rodinhas-safira-pequena-20x20x60cm-branco-ou-preto-quarto-sala",
     name: "Mesa De Cabeceira com Rodinhas Safira Pequena 20x20x60cm Branco ou Preto Quarto Sala",
     price: 49.9,
@@ -193,7 +193,7 @@ export const products: Product[] = [
     sizeLabel: "Cor",
   },
   {
-    id: 14,
+    id: 114,
     slug: "esfregao-mop-spray-rodo-microfibra-reservatorio-380ml",
     name: "Esfregão Mop Spray Rodo Microfibra Reservatório 380ml",
     price: 36.4,
@@ -206,7 +206,7 @@ export const products: Product[] = [
       "Mop spray com reservatório de 380ml e refil em microfibra. Borrifa e limpa ao mesmo tempo, sem precisar de balde.",
   },
   {
-    id: 15,
+    id: 115,
     slug: "esfregao-mop-inox-balde-10-litros-e-refil-microfibra",
     name: "Esfregão Mop Inox Balde 10,5 litros e 2 Refil Microfibra Cabo 140 cm",
     price: 50,
