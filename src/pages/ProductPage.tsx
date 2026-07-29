@@ -478,13 +478,23 @@ const ProductPage = () => {
               </div>
             </div>
 
-            {/* CTA */}
+            {/* CTA principal: compra em 1 clique */}
             <Button
               size="lg"
               className="w-full h-14 text-base font-bold tracking-wider rounded-lg uppercase"
-              onClick={handleAddToCart}
+              onClick={() => handleAddToCart(true)}
             >
               Comprar Agora
+            </Button>
+
+            {/* CTA secundário: continuar navegando */}
+            <Button
+              size="lg"
+              variant="outline"
+              className="w-full h-12 text-sm font-semibold tracking-wider rounded-lg uppercase border-foreground text-foreground hover:bg-secondary"
+              onClick={() => handleAddToCart(false)}
+            >
+              Adicionar à sacola
             </Button>
 
             {/* Trust Features */}
