@@ -69,21 +69,6 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-4 shrink-0">
-            {!isProductPage && (
-              <button className="hidden md:block hover:text-[hsl(var(--gold))] transition-colors" aria-label="Buscar">
-                <Search className="w-5 h-5" strokeWidth={1.5} />
-              </button>
-            )}
-            {!isProductPage && (
-              <button className="hidden md:block hover:text-[hsl(var(--gold))] transition-colors" aria-label="Favoritos">
-                <Heart className="w-5 h-5" strokeWidth={1.5} />
-              </button>
-            )}
-            {!isProductPage && (
-              <button className="hidden md:block hover:text-[hsl(var(--gold))] transition-colors" aria-label="Conta">
-                <User className="w-5 h-5" strokeWidth={1.5} />
-              </button>
-            )}
             <button
               className="relative hover:text-[hsl(var(--gold))] transition-colors"
               onClick={() => setIsCartOpen(true)}
@@ -107,6 +92,7 @@ const Header = () => {
                 <Link
                   key={link.label}
                   to={link.href}
+                  onClick={() => handleNavClick(link.href)}
                   className="text-[11px] tracking-[0.25em] font-medium text-foreground/80 hover:text-[hsl(var(--gold))] transition-colors"
                 >
                   {link.label}
@@ -125,7 +111,7 @@ const Header = () => {
                   key={link.label}
                   to={link.href}
                   className="text-sm tracking-widest font-medium text-foreground py-3 border-b border-border last:border-0"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => handleNavClick(link.href)}
                 >
                   {link.label}
                 </Link>
