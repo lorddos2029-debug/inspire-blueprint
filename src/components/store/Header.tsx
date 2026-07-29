@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, ShoppingBag, User, Menu, X, Heart } from "lucide-react";
+import { ShoppingBag, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import CouponBar from "./CouponBar";
