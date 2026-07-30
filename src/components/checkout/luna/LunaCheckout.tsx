@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { QRCodeSVG } from "qrcode.react";
 import { toast } from "sonner";
-import { Check, Copy, Loader2, Lock, ShieldCheck, ShoppingBag, Truck } from "lucide-react";
+import { Check, Copy, Loader2, Lock, ShieldCheck, ShoppingBag } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -821,7 +821,6 @@ export const LunaCheckout = () => {
           </Link>
         </div>
         <LunaTrustSection />
-        <LunaTrustSection />
       <CheckoutFooter />
       </div>
     );
@@ -897,7 +896,6 @@ export const LunaCheckout = () => {
             </div>
           </div>
         </div>
-        <LunaTrustSection />
         <LunaTrustSection />
       <CheckoutFooter />
       </div>
