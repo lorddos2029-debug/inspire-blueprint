@@ -11,8 +11,8 @@ const HeroBanner = () => {
   return (
     <section className="w-full bg-background">
       <Link
-        to="/produto/airfryer-innovare"
-        aria-label="Air Fryer Innovare - Design premium para sua cozinha"
+        to="/#tudo-para-sua-casa"
+        aria-label="Ver todos os produtos BelaCasa"
         className="block w-full"
       >
         <img

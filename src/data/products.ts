@@ -19,7 +19,33 @@ export interface Product {
 
 const BC = "/assets/products-bc/";
 
+const ESC = "/assets/products-bc/escova-ions/";
+
 export const products: Product[] = [
+  {
+    id: 26,
+    slug: "escova-modeladora-ions-negativos-38mm-9-ajustes-temperatura",
+    name: "Escova modeladora de íons negativos de 38 mm – 9 ajustes de temperatura",
+    price: 89.9,
+    originalPrice: 249.9,
+    image: `${ESC}img-134.png`,
+    hoverImage: `${ESC}img-138.png`,
+    images: [
+      `${ESC}img-134.png`,
+      `${ESC}img-135.png`,
+      `${ESC}img-136.png`,
+      `${ESC}img-137.png`,
+      `${ESC}img-138.png`,
+      `${ESC}img-139.png`,
+      `${ESC}img-140.png`,
+      `${ESC}img-141.png`,
+    ],
+    tag: "64% OFF",
+    description:
+      "Escova Modeladora de Íons Negativos com barril cerâmico de 38 mm e 9 ajustes de temperatura (130°C a 210°C) para cabelos finos, médios e grossos. O aquecimento PTC duplo deixa a escova pronta em apenas 30 segundos com calor uniforme, enquanto o controle NTC monitora a temperatura em tempo real para proteger os fios do superaquecimento. A liberação de 3 milhões de íons negativos neutraliza o frizz, fecha a cutícula e reduz pontas duplas, deixando o cabelo mais liso, alinhado e brilhante. As cerdas mistas antiembaraço deslizam sem puxar, o visor digital mostra a temperatura escolhida, o cabo giratório de 360° evita torções e o corpo leve de apenas 350 g reduz o cansaço nas mãos. Conta ainda com desligamento automático em 1 hora para sua segurança. Ideal para modelar cachos duradouros, ondas volumosas ou um liso escovado com aparência de salão em poucos minutos.",
+    sizes: ["110V", "220V"],
+    sizeLabel: "Voltagem",
+  },
   {
     id: 25,
     slug: "kit-6-toalhas-de-banho-folha-macia-felpuda-100-algodao",
@@ -120,21 +146,6 @@ export const products: Product[] = [
       { label: "Preto", colors: ["#1a1a1a"], image: `${BC}mondial-l99-preto.png` },
       { label: "Vermelho", colors: ["#c4161c"], image: `${BC}mondial-l99-vermelho.png` },
     ],
-  },
-  {
-    id: 101,
-    slug: "airfryer-innovare",
-    name: "Air Fryer de Vidro Casa Prestige Innovare Gourmet 4,5L 127V ou 220V Creme e Dourado - Controle Digital",
-    price: 650,
-    originalPrice: 820,
-    image: `${CP}airfryer-1.webp`,
-    hoverImage: `${CP}airfryer-2.webp`,
-    images: [`${CP}airfryer-1.webp`, `${CP}airfryer-2.webp`],
-    tag: "21% OFF",
-    description:
-      "A Air Fryer Innovare Digital 4,5 litros une praticidade, modernidade e eficiência. Seu cesto em vidro térmico exclusivo permite acompanhar o cozimento sem abrir a fritadeira. Painel digital, timer programável de até 60 minutos, controle de temperatura até 200°C e superfície antiaderente que facilita o preparo e a limpeza. Potência de 1200W.",
-    sizes: ["110v", "220v"],
-    sizeLabel: "Voltagem",
   },
   {
     id: 102,
