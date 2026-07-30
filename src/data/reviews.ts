@@ -349,7 +349,23 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Sônia Aparecida", date: "Mar 2026", rating: 5, text: "Recomendo a todos da BelaCasa. É o segundo kit que compro, um pra mim e um pra minha filha. Qualidade impecável e design sofisticado." },
     ],
   },
+  // 21 — Kit 6 Toalhas de Banho Folha
+  21: {
+    total: 742,
+    avg: 4.9,
+    reviews: [
+      { name: "Vanessa Coutinho", date: "Jul 2026", rating: 5, text: "Toalhas maravilhosas! São felpudas de verdade, secam o corpo todo sem ficar passando várias vezes. As cores sortidas chegaram lindas: rosa, coral, azul, marinho, cinza e lilás." },
+      { name: "Rafaela Duarte", date: "Jul 2026", rating: 5, text: "Por R$ 59,90 vir 6 toalhas de banho 100% algodão é impressionante. Lavei na máquina duas vezes e não soltou fiapo nem desbotou. O desenho de folhinhas na barra é um charme." },
+      { name: "Juliana Prado", date: "Jun 2026", rating: 5, text: "Comprei pra trocar todas as toalhas velhas de casa e resolveu. Tamanho bom, cobre bem o corpo, e o algodão é macio de verdade, não arranha a pele." },
+      { name: "Simone Barreto", date: "Jun 2026", rating: 5, text: "Alta absorção mesmo. Meu marido é grandão e reclamava das toalhas finas, agora aprovou. Secam rápido no varal e não ficam com cheiro de guardado." },
+      { name: "Camila Nogueira", date: "Mai 2026", rating: 5, text: "Chegou bem embalado e antes do prazo. As cores sortidas ficaram ótimas, cada um da família tem a sua e ninguém troca mais de toalha por engano." },
+      { name: "Denise Alcântara", date: "Mai 2026", rating: 5, text: "Já é o segundo kit que compro na BelaCasa. A barra jacquard dá um acabamento bonito e a costura é reforçada, não desfiou nada." },
+      { name: "Priscila Amorim", date: "Abr 2026", rating: 5, text: "Perfeitas pra enxoval e pra presentear. Separei duas pra dar de presente e minha irmã amou. Custo-benefício excelente." },
+      { name: "Larissa Fontes", date: "Abr 2026", rating: 5, text: "Toalha felpuda gostosa de usar depois do banho. Depois de várias lavagens continua macia e as cores firmes. Recomendo demais." },
+    ],
+  },
 };
+
 
 
 const defaultReviews: Review[] = [
