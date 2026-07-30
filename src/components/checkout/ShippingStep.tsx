@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Loader2, MapPin, Package, Zap } from "lucide-react";
+import SslNote from "./luna/SslNote";
 
 export interface ShippingAddressFields {
   cep: string;
@@ -164,6 +165,8 @@ export const ShippingStep = ({
       >
         Continuar para pagamento
       </Button>
+
+      <SslNote />
 
       <button type="button" onClick={onBack} className="w-full text-xs text-gray-500 hover:text-[#be7e5b] transition-colors">
         Voltar

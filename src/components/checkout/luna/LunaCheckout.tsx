@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { QRCodeSVG } from "qrcode.react";
 import { toast } from "sonner";
-import { Check, Copy, Loader2, Lock, ShieldCheck, ShoppingBag, Truck } from "lucide-react";
+import { Check, Copy, Loader2, Lock, ShieldCheck, ShoppingBag } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -19,6 +19,7 @@ import { computeInstallments } from "@/lib/installments";
 import LunaAdviceBar from "./LunaAdviceBar";
 import LunaHeader from "./LunaHeader";
 import LunaCartSummary from "./LunaCartSummary";
+import LunaTrustSection from "./LunaTrustSection";
 import PersonalDataStep from "../PersonalDataStep";
 import ShippingStep, { SHIPPING_OPTIONS } from "../ShippingStep";
 import PaymentStep from "../PaymentStep";
@@ -98,10 +99,17 @@ const trackCheckoutStep = async (step: string, productId: string | null) => {
   } catch (e) { console.error("Track step error:", e); }
 };
 
+const FOOTER_LINKS = [
+  { label: "Termos de Uso", to: "/termos-de-uso" },
+  { label: "Política de Privacidade", to: "/politica-de-privacidade" },
+  { label: "Trocas e Devoluções", to: "/trocas-e-devolucoes" },
+  { label: "Central de Ajuda", to: "/central-de-ajuda" },
+];
+
 const CheckoutFooter = () => (
-  <footer className="mt-10 border-t border-gray-200 bg-white">
-    <div className="container max-w-5xl mx-auto px-4 py-6 text-center space-y-3">
-      <p className="text-xs font-semibold uppercase tracking-wide text-gray-600">Formas de pagamento</p>
+  <footer className="border-t border-gray-200 bg-[#EFEDEA]">
+    <div className="container max-w-5xl mx-auto px-4 py-8 text-center space-y-4">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">Formas de pagamento</p>
       <img
         src={formasPagamento.url}
         alt="Formas de pagamento aceitas: Pix, Boleto, Visa, Mastercard, Hipercard, Cielo, American Express, Diners Club, Discover e Elo"
@@ -109,6 +117,17 @@ const CheckoutFooter = () => (
         loading="lazy"
         decoding="async"
       />
+      <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pt-2">
+        {FOOTER_LINKS.map((link) => (
+          <Link
+            key={link.to}
+            to={link.to}
+            className="text-xs text-gray-600 hover:text-[#be7e5b] transition-colors"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
       <div className="space-y-1 pt-2">
         <p className="text-[10px] text-gray-500">BelaCasa · CNPJ 61.435.929/0001-05</p>
         <p className="text-[10px] text-gray-400">© {new Date().getFullYear()} BelaCasa. Todos os direitos reservados.</p>
@@ -801,7 +820,8 @@ export const LunaCheckout = () => {
             </Button>
           </Link>
         </div>
-        <CheckoutFooter />
+        <LunaTrustSection />
+      <CheckoutFooter />
       </div>
     );
   }
@@ -876,7 +896,8 @@ export const LunaCheckout = () => {
             </div>
           </div>
         </div>
-        <CheckoutFooter />
+        <LunaTrustSection />
+      <CheckoutFooter />
       </div>
     );
   }
@@ -979,16 +1000,6 @@ export const LunaCheckout = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white p-3">
-                <Lock className="w-4 h-4 text-[#be7e5b] shrink-0" />
-                <span className="text-[11px] font-medium text-gray-700">SSL Criptografado</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white p-3">
-                <Truck className="w-4 h-4 text-[#be7e5b] shrink-0" />
-                <span className="text-[11px] font-medium text-gray-700">Entrega Garantida</span>
-              </div>
-            </div>
           </div>
 
           <div className="order-1 md:order-2">
@@ -1004,6 +1015,7 @@ export const LunaCheckout = () => {
         </div>
       </main>
 
+      <LunaTrustSection />
       <CheckoutFooter />
 
       <AlertDialog open={!!refusalReason} onOpenChange={(open) => !open && setRefusalReason(null)}>

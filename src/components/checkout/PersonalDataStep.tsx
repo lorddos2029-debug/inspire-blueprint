@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { User } from "lucide-react";
+import SslNote from "./luna/SslNote";
 
 export interface PersonalDataStepProps {
   name: string;
@@ -103,6 +104,8 @@ export const PersonalDataStep = ({
       >
         Continuar para entrega
       </Button>
+
+      <SslNote />
     </div>
   );
 };
