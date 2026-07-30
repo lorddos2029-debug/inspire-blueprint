@@ -42,7 +42,7 @@ export const products: Product[] = [
       { label: "Sortidas", colors: ["#ec4a89", "#f4735e", "#3ec8de", "#1e2a6b", "#4b4f56", "#8b6fe0"], image: `${BC}toalhas/img-1.png` },
     ],
   },
-
+  {
     id: 17,
     slug: "jogo-panelas-10-pecas-antiaderente-bianco-vanilla",
     name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla",
