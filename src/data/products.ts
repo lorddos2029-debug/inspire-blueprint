@@ -148,21 +148,6 @@ export const products: Product[] = [
     ],
   },
   {
-    id: 101,
-    slug: "airfryer-innovare",
-    name: "Air Fryer de Vidro Casa Prestige Innovare Gourmet 4,5L 127V ou 220V Creme e Dourado - Controle Digital",
-    price: 650,
-    originalPrice: 820,
-    image: `${CP}airfryer-1.webp`,
-    hoverImage: `${CP}airfryer-2.webp`,
-    images: [`${CP}airfryer-1.webp`, `${CP}airfryer-2.webp`],
-    tag: "21% OFF",
-    description:
-      "A Air Fryer Innovare Digital 4,5 litros une praticidade, modernidade e eficiência. Seu cesto em vidro térmico exclusivo permite acompanhar o cozimento sem abrir a fritadeira. Painel digital, timer programável de até 60 minutos, controle de temperatura até 200°C e superfície antiaderente que facilita o preparo e a limpeza. Potência de 1200W.",
-    sizes: ["110v", "220v"],
-    sizeLabel: "Voltagem",
-  },
-  {
     id: 102,
     slug: "aparador-buffet-sala-escritorio-branco-com-prateleiras",
     name: "Aparador Buffet Sala Escritório Branco Com Prateleiras",
