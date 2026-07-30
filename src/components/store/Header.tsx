@@ -8,7 +8,7 @@ const belacasaLogo = "/logo-belacasa.png";
 
 const navLinks = [
   { label: "Início", href: "/" },
-  { label: "Air Fryer Innovare", href: "/produto/airfryer-innovare" },
+  { label: "Escova Modeladora", href: "/produto/escova-modeladora-ions-negativos-38mm-9-ajustes-temperatura" },
   { label: "Todos os Produtos", href: "/#tudo-para-sua-casa" },
   { label: "Como Comprar", href: "/central-de-ajuda" },
 ];
