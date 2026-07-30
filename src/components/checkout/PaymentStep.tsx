@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { CreditCard, Loader2, QrCode } from "lucide-react";
 import type { InstallmentOption } from "@/lib/installments";
+import SslNote from "./luna/SslNote";
 
 const formatPrice = (value: number) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -190,6 +191,9 @@ export const PaymentStep = ({
       >
         {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : "Finalizar compra"}
       </Button>
+
+      <SslNote />
+
 
       <button type="button" onClick={onBack} className="w-full text-xs text-gray-500 hover:text-[#be7e5b] transition-colors">
         Voltar
