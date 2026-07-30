@@ -14,7 +14,7 @@ interface ProductCardProps {
 const formatPrice = (value: number) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
-/** Card no padrão Casa Prestige: troca de imagem no hover, selo de frete, preço no Pix */
+/** Card no padrão Casa Prestige: troca de imagem no hover, preço no Pix */
 const ProductCard = ({ slug, name, price, originalPrice, image, hoverImage }: ProductCardProps) => {
   const discount = originalPrice
     ? Math.round(((originalPrice - price) / originalPrice) * 100)
@@ -49,28 +49,7 @@ const ProductCard = ({ slug, name, price, originalPrice, image, hoverImage }: Pr
             decoding="async"
           />
         )}
-        <div className="relative aspect-square overflow-hidden bg-card">
-          <img
-            src={image}
-            alt={name}
-            className={`absolute inset-0 w-full h-full object-contain p-3 transition-opacity duration-500 ${
-              hoverImage ? "group-hover:opacity-0" : ""
-            }`}
-            loading="lazy"
-            decoding="async"
-            width={600}
-            height={600}
-          />
-          {hoverImage && (
-            <img
-              src={hoverImage}
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 w-full h-full object-contain p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              loading="lazy"
-              decoding="async"
-            />
-          )}
+      </div>
 
       <div className="flex flex-1 flex-col p-4 pt-3">
         <h3 className="text-sm font-medium text-foreground leading-snug line-clamp-2 min-h-[2.5rem]">
