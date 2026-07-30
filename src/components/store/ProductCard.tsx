@@ -49,10 +49,28 @@ const ProductCard = ({ slug, name, price, originalPrice, image, hoverImage }: Pr
             decoding="async"
           />
         )}
-        <span className="absolute top-3 left-3 bg-topbar text-topbar-foreground text-[11px] font-semibold px-2.5 py-1 rounded-full">
-          Grátis
-        </span>
-      </div>
+        <div className="relative aspect-square overflow-hidden bg-card">
+          <img
+            src={image}
+            alt={name}
+            className={`absolute inset-0 w-full h-full object-contain p-3 transition-opacity duration-500 ${
+              hoverImage ? "group-hover:opacity-0" : ""
+            }`}
+            loading="lazy"
+            decoding="async"
+            width={600}
+            height={600}
+          />
+          {hoverImage && (
+            <img
+              src={hoverImage}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-contain p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
 
       <div className="flex flex-1 flex-col p-4 pt-3">
         <h3 className="text-sm font-medium text-foreground leading-snug line-clamp-2 min-h-[2.5rem]">
