@@ -187,6 +187,21 @@ const productHighlights: Record<number, { headline: string; intro: string; detai
     ],
     closing: "Um terço da sua vida você passa no travesseiro — invista no descanso que sua coluna merece.",
   },
+  26: {
+    headline: "ESCOVA MODELADORA DE ÍONS NEGATIVOS 38 MM",
+    intro:
+      "Modele, alise e dê volume aos fios em uma única passada. Barril de 38 mm com aquecimento PTC duplo (pronto em 30 segundos), controle NTC de temperatura em tempo real e 3 milhões de íons negativos que selam a cutícula, reduzem o frizz e deixam o cabelo visivelmente mais liso e brilhante.",
+    details: [
+      { title: "Aquecimento PTC duplo", desc: "Pronta para uso em apenas 30 segundos, com calor uniforme" },
+      { title: "Controle NTC inteligente", desc: "Monitora a temperatura em tempo real e evita superaquecimento" },
+      { title: "9 níveis de temperatura", desc: "De 130°C a 210°C: cabelos finos, médios e grossos" },
+      { title: "3 milhões de íons negativos", desc: "Fecha a cutícula, reduz frizz e pontas duplas" },
+      { title: "Cerdas que não embaraçam", desc: "Barril cerâmico de 38 mm com cerdas mistas antiembaraço" },
+      { title: "Corpo leve de 350 g", desc: "Cabo giratório 360° e visor digital claro, sem cansar o braço" },
+      { title: "Desligamento automático 1h", desc: "Segurança total caso você esqueça a escova ligada" },
+    ],
+    closing: "Cachos duradouros pela manhã, ondas volumosas à noite — salão em casa todos os dias.",
+  },
 };
 
 const ProductDescription = ({ productId }: ProductDescriptionProps) => {
