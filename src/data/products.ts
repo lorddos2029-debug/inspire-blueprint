@@ -21,7 +21,7 @@ const BC = "/assets/products-bc/";
 
 export const products: Product[] = [
   {
-    id: 21,
+    id: 25,
     slug: "kit-6-toalhas-de-banho-folha-macia-felpuda-100-algodao",
     name: "Kit 6 Toalhas de Banho Folha Macia Felpuda 100% Algodão",
     price: 59.9,

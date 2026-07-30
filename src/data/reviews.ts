@@ -349,8 +349,8 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Sônia Aparecida", date: "Mar 2026", rating: 5, text: "Recomendo a todos da BelaCasa. É o segundo kit que compro, um pra mim e um pra minha filha. Qualidade impecável e design sofisticado." },
     ],
   },
-  // 21 — Kit 6 Toalhas de Banho Folha
-  21: {
+  // 25 — Kit 6 Toalhas de Banho Folha
+  25: {
     total: 742,
     avg: 4.9,
     reviews: [
