@@ -47,6 +47,11 @@ const escovaReview3 = "/assets/products-bc/escova/review-3.png";
 const escovaReview4 = "/assets/products-bc/escova/review-4.png";
 const escovaReview5 = "/assets/products-bc/escova/review-5.png";
 const escovaReview6 = "/assets/products-bc/escova/review-6.png";
+const escovaIonsReview1 = "/assets/products-bc/escova-ions/review-1.png";
+const escovaIonsReview2 = "/assets/products-bc/escova-ions/review-2.png";
+const escovaIonsReview3 = "/assets/products-bc/escova-ions/review-3.png";
+const escovaIonsReview4 = "/assets/products-bc/escova-ions/review-4.png";
+const escovaIonsReview5 = "/assets/products-bc/escova-ions/review-5.png";
 
 export interface Review {
   name: string;
