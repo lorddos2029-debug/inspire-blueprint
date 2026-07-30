@@ -98,10 +98,17 @@ const trackCheckoutStep = async (step: string, productId: string | null) => {
   } catch (e) { console.error("Track step error:", e); }
 };
 
+const FOOTER_LINKS = [
+  { label: "Termos de Uso", to: "/termos-de-uso" },
+  { label: "Política de Privacidade", to: "/politica-de-privacidade" },
+  { label: "Trocas e Devoluções", to: "/trocas-e-devolucoes" },
+  { label: "Central de Ajuda", to: "/central-de-ajuda" },
+];
+
 const CheckoutFooter = () => (
-  <footer className="mt-10 border-t border-gray-200 bg-white">
-    <div className="container max-w-5xl mx-auto px-4 py-6 text-center space-y-3">
-      <p className="text-xs font-semibold uppercase tracking-wide text-gray-600">Formas de pagamento</p>
+  <footer className="border-t border-gray-200 bg-[#EFEDEA]">
+    <div className="container max-w-5xl mx-auto px-4 py-8 text-center space-y-4">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">Formas de pagamento</p>
       <img
         src={formasPagamento.url}
         alt="Formas de pagamento aceitas: Pix, Boleto, Visa, Mastercard, Hipercard, Cielo, American Express, Diners Club, Discover e Elo"
@@ -109,6 +116,17 @@ const CheckoutFooter = () => (
         loading="lazy"
         decoding="async"
       />
+      <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pt-2">
+        {FOOTER_LINKS.map((link) => (
+          <Link
+            key={link.to}
+            to={link.to}
+            className="text-xs text-gray-600 hover:text-[#be7e5b] transition-colors"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
       <div className="space-y-1 pt-2">
         <p className="text-[10px] text-gray-500">BelaCasa · CNPJ 61.435.929/0001-05</p>
         <p className="text-[10px] text-gray-400">© {new Date().getFullYear()} BelaCasa. Todos os direitos reservados.</p>
