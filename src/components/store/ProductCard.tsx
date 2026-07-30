@@ -14,7 +14,7 @@ interface ProductCardProps {
 const formatPrice = (value: number) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
-/** Card no padrão Casa Prestige: troca de imagem no hover, selo de frete, preço no Pix */
+/** Card no padrão Casa Prestige: troca de imagem no hover, preço no Pix */
 const ProductCard = ({ slug, name, price, originalPrice, image, hoverImage }: ProductCardProps) => {
   const discount = originalPrice
     ? Math.round(((originalPrice - price) / originalPrice) * 100)
@@ -49,9 +49,6 @@ const ProductCard = ({ slug, name, price, originalPrice, image, hoverImage }: Pr
             decoding="async"
           />
         )}
-        <span className="absolute top-3 left-3 bg-topbar text-topbar-foreground text-[11px] font-semibold px-2.5 py-1 rounded-full">
-          Grátis
-        </span>
       </div>
 
       <div className="flex flex-1 flex-col p-4 pt-3">
