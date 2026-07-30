@@ -21,6 +21,28 @@ const BC = "/assets/products-bc/";
 
 export const products: Product[] = [
   {
+    id: 25,
+    slug: "kit-6-toalhas-de-banho-folha-macia-felpuda-100-algodao",
+    name: "Kit 6 Toalhas de Banho Folha Macia Felpuda 100% Algodão",
+    price: 59.9,
+    originalPrice: 149.9,
+    image: `${BC}toalhas/img-1.png`,
+    hoverImage: `${BC}toalhas/img-2.png`,
+    images: [
+      `${BC}toalhas/img-1.png`,
+      `${BC}toalhas/img-2.png`,
+      `${BC}toalhas/img-3.png`,
+    ],
+    tag: "60% OFF",
+    description:
+      "Kit com 6 Toalhas de Banho Folha em 100% algodão felpudo, com desenho jacquard de folhas na barra. Fio penteado de alta absorção que seca o corpo rapidamente, toque macio e aveludado que não agride a pele e alta durabilidade mesmo após várias lavagens. Medidas aproximadas de 70x140 cm, gramatura reforçada, barra com acabamento em ponto duplo que evita desfiar, cores firmes que não desbotam e secagem rápida no varal. Pode ser lavada na máquina. As cores são enviadas sortidas conforme disponibilidade de estoque, garantindo um jogo variado e alegre para o seu banheiro.",
+    sizes: ["70x140 cm"],
+    sizeLabel: "Tamanho",
+    colorVariants: [
+      { label: "Sortidas", colors: ["#ec4a89", "#f4735e", "#3ec8de", "#1e2a6b", "#4b4f56", "#8b6fe0"], image: `${BC}toalhas/img-1.png` },
+    ],
+  },
+  {
     id: 17,
     slug: "jogo-panelas-10-pecas-antiaderente-bianco-vanilla",
     name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla",
