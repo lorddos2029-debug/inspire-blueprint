@@ -997,16 +997,6 @@ export const LunaCheckout = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white p-3">
-                <Lock className="w-4 h-4 text-[#be7e5b] shrink-0" />
-                <span className="text-[11px] font-medium text-gray-700">SSL Criptografado</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white p-3">
-                <Truck className="w-4 h-4 text-[#be7e5b] shrink-0" />
-                <span className="text-[11px] font-medium text-gray-700">Entrega Garantida</span>
-              </div>
-            </div>
           </div>
 
           <div className="order-1 md:order-2">
