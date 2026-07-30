@@ -165,6 +165,8 @@ export const ShippingStep = ({
         Continuar para pagamento
       </Button>
 
+      <SslNote />
+
       <button type="button" onClick={onBack} className="w-full text-xs text-gray-500 hover:text-[#be7e5b] transition-colors">
         Voltar
       </button>
