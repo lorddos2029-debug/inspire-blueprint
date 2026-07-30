@@ -19,6 +19,7 @@ import { computeInstallments } from "@/lib/installments";
 import LunaAdviceBar from "./LunaAdviceBar";
 import LunaHeader from "./LunaHeader";
 import LunaCartSummary from "./LunaCartSummary";
+import LunaTrustSection from "./LunaTrustSection";
 import PersonalDataStep from "../PersonalDataStep";
 import ShippingStep, { SHIPPING_OPTIONS } from "../ShippingStep";
 import PaymentStep from "../PaymentStep";
@@ -819,7 +820,9 @@ export const LunaCheckout = () => {
             </Button>
           </Link>
         </div>
-        <CheckoutFooter />
+        <LunaTrustSection />
+        <LunaTrustSection />
+      <CheckoutFooter />
       </div>
     );
   }
@@ -894,7 +897,9 @@ export const LunaCheckout = () => {
             </div>
           </div>
         </div>
-        <CheckoutFooter />
+        <LunaTrustSection />
+        <LunaTrustSection />
+      <CheckoutFooter />
       </div>
     );
   }
@@ -1012,6 +1017,7 @@ export const LunaCheckout = () => {
         </div>
       </main>
 
+      <LunaTrustSection />
       <CheckoutFooter />
 
       <AlertDialog open={!!refusalReason} onOpenChange={(open) => !open && setRefusalReason(null)}>
