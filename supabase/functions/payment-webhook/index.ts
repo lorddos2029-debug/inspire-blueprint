@@ -34,8 +34,12 @@ serve(async (req) => {
     const externalReference = String(
       data?.externalRef || data?.externalReference || body?.externalReference || body?.externalRef || ""
     ).trim();
+    // metadata pode vir como string (Payout) ou objeto (PinPay)
+    const rawMetadata = data?.metadata ?? body?.metadata ?? "";
     const orderIdMetadata = String(
-      data?.metadata || body?.metadata || ""
+      typeof rawMetadata === "object" && rawMetadata !== null
+        ? (rawMetadata.order_id || rawMetadata.orderId || rawMetadata.external_reference || rawMetadata.externalReference || "")
+        : rawMetadata
     ).trim();
     const status = String(data?.status || body?.status || "").toLowerCase();
     const eventName = String(body?.event || body?.type || "").toLowerCase();

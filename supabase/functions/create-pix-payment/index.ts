@@ -196,30 +196,55 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
   };
 }
 
-async function callPinPay(params: { customer: any; items: any[]; amount: number; externalRef?: string; trackingParameters?: any }) {
+async function callPinPay(params: { customer: any; items: any[]; amount: number; externalRef?: string; trackingParameters?: any; webhookUrl?: string }) {
   const secretKey = Deno.env.get('PINPAY_SECRET_KEY')?.trim();
   if (!secretKey) throw new Error('PINPAY_SECRET_KEY is not configured');
 
-  const { customer, items, amount, externalRef, trackingParameters } = params;
+  const { customer, items, amount, externalRef, trackingParameters, webhookUrl } = params;
   const amountInCents = toCents(amount);
   const cpfDigits = (customer?.cpf || '').replace(/\D/g, '');
   const description = items.map((it: any) => `${it?.quantity || 1}x ${String(it?.name || 'Produto').trim()}`).join(', ').slice(0, 140) || 'Pagamento via PIX';
   const extRef = (typeof externalRef === 'string' && externalRef.trim()) ? externalRef.trim() : `order-${Date.now()}`;
   const utm = trackingParameters && typeof trackingParameters === 'object' ? trackingParameters as Record<string, unknown> : {};
-  const checkoutUrl = (typeof utm.checkout_url === 'string' && utm.checkout_url) ||
-    (typeof utm.utm_source === 'string' ? `https://belacasaoficial.online/checkout?src=${utm.utm_source}` : 'https://belacasaoficial.online/checkout');
+  const str = (k: string) => (typeof utm[k] === 'string' && utm[k] ? String(utm[k]) : null);
+  const utmFields = {
+    utm_source: str('utm_source'),
+    utm_campaign: str('utm_campaign'),
+    utm_medium: str('utm_medium'),
+    utm_content: str('utm_content'),
+    utm_term: str('utm_term'),
+    src: str('src'),
+    sck: str('sck'),
+  };
+  // Repassa as UTMs na URL de checkout também: integrações nativas do gateway
+  // (ex.: UTMify pelo PinPay) leem a query string para atribuir a origem.
+  const utmQuery = Object.entries(utmFields)
+    .filter(([, v]) => !!v)
+    .map(([k, v]) => `${k}=${encodeURIComponent(String(v))}`)
+    .join('&');
+  const checkoutUrl = (typeof utm.checkout_url === 'string' && utm.checkout_url)
+    || `https://belacasaoficial.online/checkout${utmQuery ? `?${utmQuery}` : ''}`;
 
   const payload: Record<string, unknown> = {
     amount: amountInCents,
     description,
+    external_reference: extRef,
+    externalRef: extRef,
+    // Garante que o PinPay notifique nosso webhook (marca o pedido como pago e
+    // envia o evento "paid" para a UTMify já com os parâmetros de campanha).
+    ...(webhookUrl ? { postback_url: webhookUrl, postbackUrl: webhookUrl, webhook_url: webhookUrl, callback_url: webhookUrl } : {}),
     customer: {
       name: String(customer?.name || 'Cliente').trim(),
       email: String(customer?.email || 'cliente@email.com').trim(),
       document: { number: cpfDigits || '00000000000' },
     },
+    utm: utmFields,
+    tracking_parameters: utmFields,
     metadata: {
       external_reference: extRef,
+      order_id: extRef,
       checkout_url: checkoutUrl,
+      ...utmFields,
     },
   };
 
@@ -294,7 +319,7 @@ serve(async (req) => {
     } else if (provider === 'vumepay') {
       outcome = await callVumePay({ customer, items, amount, externalRef, trackingParameters });
     } else if (provider === 'pinpay') {
-      outcome = await callPinPay({ customer, items, amount, externalRef, trackingParameters });
+      outcome = await callPinPay({ customer, items, amount, externalRef, trackingParameters, webhookUrl });
     } else {
       outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'primecash', secretEnvKey: 'PRIMECASH_SECRET_KEY' });
     }
