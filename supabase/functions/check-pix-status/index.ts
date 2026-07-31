@@ -29,31 +29,30 @@ Deno.serve(async (req) => {
     const secretKey = Deno.env.get("PINPAY_SECRET_KEY")?.trim();
     if (!secretKey) return json({ error: "PINPAY_SECRET_KEY not configured" }, 500);
 
+    // A API do PinPay não expõe GET /transactions/{id}; a consulta é feita
+    // listando as transações recentes e localizando pelo id ou external_reference.
     const base = "https://api.usepinpay.com/functions/v1/api-v1";
-    const endpoints = [
-      `${base}/transactions/${transactionId}`,
-      `${base}/pix/${transactionId}`,
-    ];
-
     let status = "";
     let lastError = "";
-    for (const url of endpoints) {
-      try {
-        const res = await fetch(url, {
-          headers: { Accept: "application/json", Authorization: `Bearer ${secretKey}` },
-        });
-        const payload = await res.json().catch(() => ({}));
-        if (!res.ok) {
-          lastError = `${res.status} ${JSON.stringify(payload).slice(0, 200)}`;
-          continue;
-        }
-        const tx = payload?.data || payload;
+    try {
+      const res = await fetch(`${base}/transactions?limit=100`, {
+        headers: { Accept: "application/json", Authorization: `Bearer ${secretKey}` },
+      });
+      const payload = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        lastError = `${res.status} ${JSON.stringify(payload).slice(0, 200)}`;
+      } else {
+        const list: any[] = Array.isArray(payload?.data) ? payload.data : [];
+        const tx = list.find(
+          (t) => String(t?.id || "") === transactionId
+            || (orderId && String(t?.external_reference || "") === orderId),
+        );
         status = String(tx?.status || "").toLowerCase();
-        if (status) break;
-      } catch (err) {
-        lastError = (err as Error).message;
       }
+    } catch (err) {
+      lastError = (err as Error).message;
     }
+
 
     if (!status) return json({ status: "unknown", error: lastError || null });
 
