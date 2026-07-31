@@ -373,6 +373,14 @@ export const LunaCheckout = () => {
     if (!pixData?.transactionId || pixConfirmed) return;
     const interval = setInterval(async () => {
       try {
+        // Rede de segurança: confirma direto no gateway caso o postback falhe,
+        // preservando a atribuição de campanha na UTMify.
+        try {
+          await supabase.functions.invoke("check-pix-status", {
+            body: { transactionId: pixData.transactionId, orderId: pixData.orderId },
+          });
+        } catch (statusErr) { console.warn("check-pix-status failed:", statusErr); }
+
         const { data: order } = await supabase
           .from("orders")
           .select("payment_status, order_number, tracking_code, customer_name, customer_email, total")
