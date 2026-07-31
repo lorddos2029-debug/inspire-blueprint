@@ -319,7 +319,7 @@ serve(async (req) => {
     } else if (provider === 'vumepay') {
       outcome = await callVumePay({ customer, items, amount, externalRef, trackingParameters });
     } else if (provider === 'pinpay') {
-      outcome = await callPinPay({ customer, items, amount, externalRef, trackingParameters });
+      outcome = await callPinPay({ customer, items, amount, externalRef, trackingParameters, webhookUrl });
     } else {
       outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'primecash', secretEnvKey: 'PRIMECASH_SECRET_KEY' });
     }
