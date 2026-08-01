@@ -27,7 +27,10 @@ import {
   Star,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  Check,
 } from "lucide-react";
+
 
 const fallbackCategoryProducts: Product[] = productCategories.flatMap((category, categoryIndex) =>
   category.products.map((product, productIndex) => ({
@@ -78,9 +81,11 @@ const ProductPage = () => {
   /** Kit com N peças: cada peça tem cor (por imagem) + tamanho */
   const picksCount = product?.kitPicks ?? 0;
   const [picks, setPicks] = useState<{ color: number | null; size: string | null }[]>(
-    () => Array.from({ length: Math.max(picksCount, 0) }, () => ({ color: null, size: null })),
+    () => Array.from({ length: Math.max(picksCount, 0) }, () => ({ color: 0, size: null })),
   );
   const [showPicksError, setShowPicksError] = useState(false);
+  const [openColorSlot, setOpenColorSlot] = useState<number | null>(null);
+
 
   const updatePick = (idx: number, patch: Partial<{ color: number | null; size: string | null }>) => {
     setPicks((prev) => prev.map((p, i) => (i === idx ? { ...p, ...patch } : p)));
@@ -389,73 +394,120 @@ const ProductPage = () => {
             </div>
 
 
-            {/* Kit multi-tamanho: cada cor com seu próprio seletor de tamanho */}
+            {/* Kit: personalize cada peça (cor recolhível + tamanho) */}
             {picksCount > 0 && product.colorVariants && product.sizes ? (
-              <div id="variant-selector" className="space-y-4">
+              <div id="variant-selector" className="rounded-2xl border border-border bg-card p-4 sm:p-5 space-y-4">
+                <div className="flex items-center justify-between">
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
+                    Personalize seu kit
+                  </p>
+                  <span className="text-[10px] font-bold uppercase bg-foreground text-background px-2.5 py-1 rounded">
+                    {picksCount} peças
+                  </span>
+                </div>
+
                 {showPicksError && (
                   <p className="text-xs font-semibold text-destructive">
                     ⚠ Escolha a estampa e o tamanho das {picksCount} peças
                   </p>
                 )}
+
                 {picks.map((pick, slot) => {
                   const unlocked = slot === 0 || (picks[slot - 1].color !== null && !!picks[slot - 1].size);
                   if (!unlocked) return null;
+                  const current = pick.color !== null ? product.colorVariants![pick.color] : null;
+                  const isOpen = openColorSlot === slot;
                   return (
-                    <div key={slot} className="rounded-xl border border-border bg-card p-4 space-y-4">
-                      <div className="flex items-center justify-between">
-                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
-                          {slot + 1}ª peça
+                    <div key={slot} className="rounded-xl border border-border p-3 sm:p-4 space-y-3">
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <p className="text-sm font-bold text-foreground">
+                          PEÇA {slot + 1}
+                          {current && (
+                            <span className="font-normal text-muted-foreground"> — {current.label}</span>
+                          )}
                         </p>
-                        {pick.color !== null && pick.size && (
-                          <span className="text-[10px] font-bold uppercase bg-primary text-primary-foreground px-2 py-1 rounded">
-                            Selecionada
+                        {!pick.size && (
+                          <span className="text-[10px] font-semibold text-destructive bg-destructive/10 px-2 py-1 rounded">
+                            Selecione o tamanho
                           </span>
                         )}
                       </div>
 
-                      <div>
-                        <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-widest">
-                          Estampa
-                          {pick.color !== null && (
-                            <span className="text-foreground normal-case tracking-normal">
-                              {": "}{product.colorVariants![pick.color].label}
-                            </span>
-                          )}
-                        </p>
-                        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-                          {product.colorVariants!.map((variant, idx) => (
-                            <button
-                              key={idx}
-                              onClick={() => {
-                                updatePick(slot, { color: idx });
-                                const imgIdx = images.findIndex((img) => img === variant.image);
-                                if (imgIdx >= 0) setSelectedImage(imgIdx);
-                              }}
-                              className={`rounded-lg overflow-hidden border-2 text-left transition-all ${
-                                pick.color === idx ? "border-foreground" : "border-border hover:border-muted-foreground/60"
-                              }`}
-                              title={variant.label}
-                            >
-                              <img src={variant.image} alt={variant.label} className="w-full aspect-square object-cover" />
-                              <span className="block px-1.5 py-1 text-[10px] font-semibold leading-tight text-foreground">
-                                {variant.label}
-                              </span>
-                            </button>
-                          ))}
+                      {/* Cor: linha recolhida clicável */}
+                      <button
+                        onClick={() => setOpenColorSlot(isOpen ? null : slot)}
+                        className={`w-full flex items-center gap-3 rounded-lg border-2 p-2 text-left transition-all ${
+                          isOpen ? "border-foreground" : "border-border hover:border-muted-foreground/60"
+                        }`}
+                      >
+                        {current && (
+                          <img
+                            src={current.image}
+                            alt={current.label}
+                            className="w-11 h-11 rounded object-cover flex-shrink-0"
+                          />
+                        )}
+                        <span className="flex-1 min-w-0">
+                          <span className="block text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                            Cor
+                          </span>
+                          <span className="block text-sm font-semibold text-foreground truncate">
+                            {current ? current.label : "Selecione"}
+                          </span>
+                        </span>
+                        <span
+                          className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-transform ${
+                            isOpen ? "rotate-180 bg-muted text-foreground" : "bg-foreground text-background"
+                          }`}
+                        >
+                          {isOpen ? <ChevronDown className="w-4 h-4" /> : <Check className="w-4 h-4" />}
+                        </span>
+                      </button>
+
+                      {isOpen && (
+                        <div className="rounded-lg border border-border p-2">
+                          <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground px-1 pb-2">
+                            Cores disponíveis
+                          </p>
+                          <div className="grid grid-cols-2 gap-2">
+                            {product.colorVariants!.map((variant, idx) => (
+                              <button
+                                key={idx}
+                                onClick={() => {
+                                  updatePick(slot, { color: idx });
+                                  setOpenColorSlot(null);
+                                  const imgIdx = images.findIndex((img) => img === variant.image);
+                                  if (imgIdx >= 0) setSelectedImage(imgIdx);
+                                }}
+                                className={`flex items-center gap-2 rounded-lg border-2 p-1.5 text-left transition-all ${
+                                  pick.color === idx ? "border-foreground" : "border-transparent hover:border-border"
+                                }`}
+                              >
+                                <img
+                                  src={variant.image}
+                                  alt={variant.label}
+                                  className="w-10 h-10 rounded object-cover flex-shrink-0"
+                                />
+                                <span className="flex-1 text-[11px] font-medium leading-tight text-foreground">
+                                  {variant.label}
+                                </span>
+                                {pick.color === idx && <Check className="w-4 h-4 flex-shrink-0 text-foreground" />}
+                              </button>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
 
                       <div>
-                        <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-widest">
-                          Tamanho
-                          {pick.size && <span className="text-foreground">: {pick.size}</span>}
+                        <p className="text-[10px] font-semibold text-muted-foreground mb-2 uppercase tracking-widest">
+                          Tamanho{pick.size ? `: ${pick.size}` : ": selecione"}
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {product.sizes!.map((size) => (
                             <button
                               key={size}
                               onClick={() => updatePick(slot, { size })}
-                              className={`min-w-[64px] h-10 px-4 rounded border text-sm font-medium transition-all ${
+                              className={`min-w-[60px] h-10 px-4 rounded-lg border text-sm font-semibold transition-all ${
                                 pick.size === size
                                   ? "border-foreground bg-foreground text-background"
                                   : "border-border text-foreground hover:border-foreground"
@@ -469,12 +521,14 @@ const ProductPage = () => {
                     </div>
                   );
                 })}
+
                 {picks[0].color === null || !picks[0].size ? (
                   <p className="text-xs text-muted-foreground">
                     Escolha a estampa e o tamanho da 1ª peça para liberar a 2ª.
                   </p>
                 ) : null}
               </div>
+
             ) : isKitMultiSize && product.colorVariants && product.sizes ? (
 
               <div id="variant-selector" className="rounded-xl border border-border bg-card p-4 sm:p-5 shadow-sm space-y-4">
