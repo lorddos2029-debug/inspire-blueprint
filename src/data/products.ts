@@ -21,8 +21,36 @@ const BC = "/assets/products-bc/";
 
 const ESC = "/assets/products-bc/escova-ions/";
 
+const COB = "/assets/products-bc/cobertor-flannel/";
+
 export const products: Product[] = [
   {
+    id: 27,
+    slug: "cobertor-manta-casal-queen-king-flannel-canelado-antialergico-300g",
+    name: "Cobertor Manta Casal Queen King Flannel Canelado Antialérgico 300g/m² Grosso Macio Com Barra Inverno Mantinha Quente",
+    price: 69.9,
+    originalPrice: 189.9,
+    image: `${COB}img-149.png`,
+    hoverImage: `${COB}img-150.png`,
+    images: [
+      `${COB}img-149.png`,
+      `${COB}img-150.png`,
+      `${COB}img-151.png`,
+      `${COB}img-152.png`,
+      `${COB}img-153.png`,
+      `${COB}img-154.png`,
+    ],
+    tag: "63% OFF",
+    description:
+      "Cobertor Manta Flannel Canelado de alta gramatura (300 g/m²) com acabamento em barra costurada, feito para enfrentar o inverno com muito conforto. O tecido flannel de microfibra passa por escovação dupla e ganha o relevo canelado 3D, que retém o calor do corpo e cria uma sensação de aconchego imediata ao deitar. Extra grosso, porém leve e maleável: aquece de verdade sem pesar sobre o corpo durante o sono. Tratamento antialérgico e antifungo, ideal para quem tem rinite, asma ou pele sensível — não solta fiapos, não embola e não desbota após as lavagens. As bordas recebem barra em veludo costurada ponto a ponto, dando caimento elegante na cama e durabilidade reforçada nas pontas. Tamanho Casal Queen/King (2,20 m x 2,40 m), com sobra generosa nas laterais para cobrir o colchão inteiro. Toque supermacio nos dois lados, secagem rápida e lavável na máquina em ciclo delicado. Perfeito também para usar no sofá, em viagens ou como manta decorativa no pé da cama.",
+    colorVariants: [
+      { label: "Bege", colors: ["#c3ae94"], image: `${COB}img-149.png` },
+      { label: "Cinza", colors: ["#8d9295"], image: `${COB}img-154.png` },
+    ],
+  },
+  {
+    id: 26,
+
     id: 26,
     slug: "escova-modeladora-ions-negativos-38mm-9-ajustes-temperatura",
     name: "GOKOCO Escova modeladora de íons negativos de 38 mm – 9 ajustes de temperatura",
