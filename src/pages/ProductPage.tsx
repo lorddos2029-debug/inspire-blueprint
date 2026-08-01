@@ -298,7 +298,7 @@ const ProductPage = () => {
             {/* Vendidos + avaliação */}
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <span className="inline-flex items-center rounded-full bg-topbar text-topbar-foreground text-xs font-semibold px-3 py-1">
-                +80 vendidos
+                +{soldCount} vendidos
               </span>
               <div className="flex items-center gap-1.5">
                 <div className="flex">
@@ -306,9 +306,10 @@ const ProductPage = () => {
                     <Star key={star} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <span className="text-sm font-semibold text-foreground">4.9</span>
-                <span className="text-sm text-muted-foreground">(847 avaliações)</span>
+                <span className="text-sm font-semibold text-foreground">{ratingValue}</span>
+                <span className="text-sm text-muted-foreground">({reviewCount.toLocaleString("pt-BR")} avaliações)</span>
               </div>
+
             </div>
 
             {/* Title */}
