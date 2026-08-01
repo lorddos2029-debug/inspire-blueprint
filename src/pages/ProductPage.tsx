@@ -75,8 +75,20 @@ const ProductPage = () => {
   const [showSizeError, setShowSizeError] = useState(false);
   const [kitSizes, setKitSizes] = useState<Record<number, string>>({});
   const [showKitError, setShowKitError] = useState(false);
+  /** Kit com N peças: cada peça tem cor (por imagem) + tamanho */
+  const picksCount = product?.kitPicks ?? 0;
+  const [picks, setPicks] = useState<{ color: number | null; size: string | null }[]>(
+    () => Array.from({ length: Math.max(picksCount, 0) }, () => ({ color: null, size: null })),
+  );
+  const [showPicksError, setShowPicksError] = useState(false);
+
+  const updatePick = (idx: number, patch: Partial<{ color: number | null; size: string | null }>) => {
+    setPicks((prev) => prev.map((p, i) => (i === idx ? { ...p, ...patch } : p)));
+    setShowPicksError(false);
+  };
 
   const isKitMultiSize = false;
+
 
 
 
