@@ -18,6 +18,7 @@ import ProductFAQ from "@/components/store/ProductFAQ";
 import ProductCard from "@/components/store/ProductCard";
 import SocialProofCarousel from "@/components/store/SocialProofCarousel";
 import QualityFeatures from "@/components/store/QualityFeatures";
+import StickyBuyBar from "@/components/store/StickyBuyBar";
 
 import {
   Truck,
@@ -232,14 +233,14 @@ const ProductPage = () => {
   const nextImage = () => setSelectedImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-24 lg:pb-0">
       <Header />
 
       <div className="container py-6 md:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
           {/* Image Gallery */}
           <div className="flex flex-col gap-3">
-            <div className="relative aspect-square overflow-hidden bg-secondary rounded-none">
+            <div className="relative h-[44vh] md:h-auto md:aspect-square overflow-hidden bg-secondary rounded-none">
               <img
                 src={images[selectedImage]}
                 alt={product.name}
@@ -580,6 +581,12 @@ const ProductPage = () => {
       <Newsletter />
       <Footer />
       <ExitIntentPopup />
+      <StickyBuyBar
+        productName={product.name}
+        price={product.price}
+        pixPrice={pixPrice}
+        onBuy={() => handleAddToCart(true)}
+      />
     </div>
   );
 };
