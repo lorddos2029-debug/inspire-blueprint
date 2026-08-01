@@ -183,10 +183,36 @@ const ProductPage = () => {
         ?.scrollIntoView({ behavior: "smooth", block: "center" });
     };
 
+    if (picksCount > 0) {
+      const incomplete = picks.some((p) => p.color === null || !p.size);
+      if (incomplete) {
+        setShowPicksError(true);
+        toast.error("Escolha a estampa e o tamanho das 2 peças");
+        document.getElementById("variant-selector")?.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      const description = picks
+        .map((p, i) => `Peça ${i + 1}: ${product.colorVariants?.[p.color!]?.label} · ${p.size}`)
+        .join(" | ");
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        originalPrice: product.originalPrice,
+        image: product.colorVariants?.[picks[0].color!]?.image || product.image,
+        tag: product.tag,
+        size: description,
+        color: picks.map((p) => product.colorVariants?.[p.color!]?.label).join(" + "),
+      }, { silent: goToCheckout });
+      if (goToCheckout) navigate("/checkout");
+      return;
+    }
+
     if (isKitMultiSize && product.colorVariants && product.sizes) {
       const allSelected = product.colorVariants.every((_, idx) => kitSizes[idx]);
       if (!allSelected) { failValidation(setShowKitError); return; }
     } else if (needsSize && !selectedSize) { failValidation(setShowSizeError); return; }
+
 
     const selectedColorLabel = needsColor
       ? product.colorVariants[selectedColor]?.label
