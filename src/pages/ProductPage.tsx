@@ -205,6 +205,7 @@ const ProductPage = () => {
         price: product.price,
         originalPrice: product.originalPrice,
         image: product.colorVariants?.[picks[0].color!]?.image || product.image,
+        images: picks.map((p) => product.colorVariants?.[p.color!]?.image || product.image),
         tag: product.tag,
         size: description,
         color: picks.map((p) => product.colorVariants?.[p.color!]?.label).join(" + "),
