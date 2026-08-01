@@ -83,7 +83,27 @@ const makeBreakdown = (total: number): { stars: number; count: number }[] => {
   ];
 };
 
+const COBF = "/assets/products-bc/cobertor-flannel/";
+
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
+  // 27 — Cobertor Manta Flannel Canelado
+  27: {
+    total: 1042,
+    avg: 4.9,
+    reviews: [
+      { name: "Simone Barreto", date: "Jul 2026", rating: 5, text: "Muito melhor do que eu esperava por esse preço. É bem grosso mesmo, os 300g fazem diferença: cobri e em 5 minutos já estava quentinha. O canelado é lindo na cama.", image: `${COBF}img-149.png` },
+      { name: "Renata Cavalcanti", date: "Jul 2026", rating: 5, text: "Comprei o bege e ficou perfeito no meu quarto. Cobre o colchão queen inteiro com sobra nas laterais. A barra de veludo dá um acabamento de loja cara.", image: `${COBF}img-150.png` },
+      { name: "Tatiane Moura", date: "Jun 2026", rating: 5, text: "Sou alérgica e não tive nenhuma crise de rinite dormindo com ele. Não solta fiapo nenhum, nem na primeira lavagem. Recomendo demais.", image: `${COBF}img-151.png` },
+      { name: "Aline Prado", date: "Jun 2026", rating: 5, text: "O toque é absurdo de macio, parece pelúcia dos dois lados. Meu marido reclamava de frio e agora dorme sem edredom por cima.", image: `${COBF}img-152.png` },
+      { name: "Débora Nunes", date: "Jun 2026", rating: 5, text: "Uso no sofá pra assistir série e virou o item favorito da casa. Leve, não pesa no corpo, mas segura o calor de verdade.", image: `${COBF}img-153.png` },
+      { name: "Priscila Andrade", date: "Mai 2026", rating: 5, text: "Peguei o cinza e a cor é exatamente igual à foto. Lavei na máquina em ciclo delicado 3 vezes e não desbotou nem embolou.", image: `${COBF}img-154.png` },
+      { name: "Fernanda Bastos", date: "Mai 2026", rating: 5, text: "Tamanho generoso, serve na minha king sem ficar curto. Seca rápido no varal mesmo em dia nublado." },
+      { name: "Luciana Reis", date: "Mai 2026", rating: 4, text: "Excelente cobertor, quentinho e macio. Só achei que demorou 2 dias a mais na entrega, mas o produto compensou." },
+      { name: "Camila Duarte", date: "Abr 2026", rating: 5, text: "Comprei um pra mim e um pra minha mãe. Ela amou, disse que é o cobertor mais confortável que já teve. Custo-benefício absurdo." },
+      { name: "Vanessa Lopes", date: "Abr 2026", rating: 5, text: "Aqui no sul o inverno é pesado e esse cobertor deu conta sozinho. Aquece muito e não faz aquele barulho de tecido sintético." },
+    ],
+  },
+
   // 6 — Cafeteira
   6: {
     total: 386,
