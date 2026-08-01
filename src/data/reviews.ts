@@ -86,7 +86,26 @@ const makeBreakdown = (total: number): { stars: number; count: number }[] => {
 const COBF = "/assets/products-bc/cobertor-flannel/";
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
+  // 28 — Kit 2 Detergente Lava Louças em Pó Ypê 1Kg
+  28: {
+    total: 763,
+    avg: 4.9,
+    reviews: [
+      { name: "Marcela Tavares", date: "Jul 2026", rating: 5, text: "Chegou certinho, vieram MESMO os 2 potes de 1kg cada, bem lacrados e sem vazar nada na caixa. Já usei nas duas primeiras semanas e a louça sai impecável." },
+      { name: "Rodrigo Salgado", date: "Jul 2026", rating: 5, text: "Kit com 2 unidades pelo preço que eu pagava em 1 no mercado. Vale muito. O pó dissolve rápido e não fica aquele fundo branco no copo." },
+      { name: "Elaine Ferraz", date: "Jul 2026", rating: 5, text: "Confesso que fiquei com medo de vir só 1, mas vieram os 2 potes direitinho. Como é 3 em 1 parei de comprar abrilhantador separado, economizei duas vezes." },
+      { name: "Patrícia Gomes", date: "Jun 2026", rating: 5, text: "Tira gordura pesada de panela e forma de assado sem eu precisar pré-lavar. Os talheres saem brilhando de verdade." },
+      { name: "Cláudio Ramos", date: "Jun 2026", rating: 5, text: "Uso 25g por ciclo como diz na embalagem e o pote está rendendo bastante. Com os 2 potes acho que passo o ano inteiro tranquilo." },
+      { name: "Silvana Duarte", date: "Jun 2026", rating: 5, text: "O que mais gostei foi o controle de odor. Antes minha máquina ficava com cheiro azedo entre as lavagens, agora não fica mais." },
+      { name: "Juliana Prado", date: "Mai 2026", rating: 4, text: "Produto ótimo, os 2 potes vieram perfeitos. Só tirei uma estrela porque a entrega demorou um pouquinho mais do que o previsto." },
+      { name: "Anderson Melo", date: "Mai 2026", rating: 5, text: "Tenho lava-louças Electrolux e funcionou perfeitamente. As taças de vidro saem sem mancha de água por causa do secante." },
+      { name: "Rosana Amaral", date: "Mai 2026", rating: 5, text: "Comprei o kit de 2 pra dividir com minha irmã, cada uma ficou com um pote. Saiu barato pra nós duas e o resultado é o mesmo do original do mercado." },
+      { name: "Beatriz Lacerda", date: "Abr 2026", rating: 5, text: "Ypê é marca que eu já confiava, mas em pó pra máquina superou. A tampa rosqueável protege bem da umidade, o pó não empedra." },
+    ],
+  },
+
   // 27 — Cobertor Manta Flannel Canelado
+
   27: {
     total: 1042,
     avg: 4.9,
