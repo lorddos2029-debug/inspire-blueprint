@@ -87,7 +87,28 @@ const COBF = "/assets/products-bc/cobertor-flannel/";
 
 const YPEF = "/assets/products-bc/ype/";
 
+const CLF = "/assets/products-bc/cobre-leito/";
+
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
+  // 29 — Kit 2 Cobre Leito Colcha Dupla Face Matelado Boutis
+  29: {
+    total: 1187,
+    avg: 4.9,
+    reviews: [
+      { name: "Rosângela Martins", date: "Jul 2026", rating: 5, text: "Vieram os 2 cobre leitos certinhos, cada um com suas fronhas. Escolhi o floral verde e o lilás do outro lado é um charme — dupla face de verdade, dá pra virar e parecer outra colcha.", image: `${CLF}review-1.png` },
+      { name: "Elaine Cardoso", date: "Jul 2026", rating: 5, text: "Peguei o queen e cobriu a cama inteira com sobra nas laterais. O matelado é bem firme, não enruga e o tecido 150 fios é fresquinho pra dormir.", image: `${CLF}review-2.png` },
+      { name: "Patrícia Nogueira", date: "Jul 2026", rating: 5, text: "O acabamento boutis é lindo ao vivo, tem todo aquele relevo trabalhado. Combinei com almofadas e meu quarto ficou com cara de hotel.", image: `${CLF}review-3.png` },
+      { name: "Marlene Souza", date: "Jun 2026", rating: 5, text: "Chegou embalado numa bolsa com zíper, super bem cuidado. O tecido é macio ao toque e não tem cheiro forte de fábrica.", image: `${CLF}review-4.png` },
+      { name: "Cristiane Alves", date: "Jun 2026", rating: 5, text: "Comprei 2 estampas diferentes pra revezar: uma folhagem bege e uma floral. Lavei na máquina e nenhuma das duas desbotou nem soltou fiapo.", image: `${CLF}review-5.png` },
+      { name: "Vanessa Lima", date: "Jun 2026", rating: 5, text: "Sou alérgica e esse antialérgico ajudou muito, acordo sem espirrar. Leve pro verão mas ainda dá um conforto gostoso à noite.", image: `${CLF}review-6.png` },
+      { name: "Simone Batista", date: "Mai 2026", rating: 5, text: "Levar 2 por esse preço foi o que me convenceu, e não me arrependi. Um fica na cama e o outro lavando, nunca fico sem." },
+      { name: "Aline Prado", date: "Mai 2026", rating: 4, text: "Produto ótimo, matelado bonito e bem costurado. Só achei que a entrega demorou uns dias a mais do que o previsto." },
+      { name: "Débora Ferraz", date: "Mai 2026", rating: 5, text: "Pedi o solteiro pro quarto da minha filha e o casal pro meu. Deu pra escolher tamanho diferente em cada peça, isso foi ótimo." },
+      { name: "Luciana Reis", date: "Abr 2026", rating: 5, text: "Seca rápido no varal e sai fácil o amassado, quase não precisa passar. Custo-benefício excelente por serem 2 peças." },
+    ],
+  },
+
+
   // 28 — Kit 2 Detergente Lava Louças em Pó Ypê 1Kg
   28: {
     total: 763,
