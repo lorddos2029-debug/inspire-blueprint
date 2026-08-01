@@ -146,6 +146,13 @@ const ProductPage = () => {
   /** Estoque exibido de forma determinística por produto (escassez) */
   const stockLeft = 8 + (product.id % 12);
 
+  /** Prova social determinística e distinta por produto */
+  const hashId = (product.id * 2654435761) % 100000;
+  const soldCount = 60 + (hashId % 260); // 60 a 319 vendidos
+  const reviewCount = 312 + ((hashId >> 3) % 1490); // 312 a 1801 avaliações
+  const ratingValue = (4.7 + ((hashId >> 5) % 3) / 10).toFixed(1); // 4.7 / 4.8 / 4.9
+
+
 
   /**
    * Adiciona o produto à sacola.
@@ -291,7 +298,7 @@ const ProductPage = () => {
             {/* Vendidos + avaliação */}
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <span className="inline-flex items-center rounded-full bg-topbar text-topbar-foreground text-xs font-semibold px-3 py-1">
-                +80 vendidos
+                +{soldCount} vendidos
               </span>
               <div className="flex items-center gap-1.5">
                 <div className="flex">
@@ -299,9 +306,10 @@ const ProductPage = () => {
                     <Star key={star} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <span className="text-sm font-semibold text-foreground">4.9</span>
-                <span className="text-sm text-muted-foreground">(847 avaliações)</span>
+                <span className="text-sm font-semibold text-foreground">{ratingValue}</span>
+                <span className="text-sm text-muted-foreground">({reviewCount.toLocaleString("pt-BR")} avaliações)</span>
               </div>
+
             </div>
 
             {/* Title */}
