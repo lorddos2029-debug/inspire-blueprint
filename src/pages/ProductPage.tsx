@@ -390,7 +390,93 @@ const ProductPage = () => {
 
 
             {/* Kit multi-tamanho: cada cor com seu próprio seletor de tamanho */}
-            {isKitMultiSize && product.colorVariants && product.sizes ? (
+            {picksCount > 0 && product.colorVariants && product.sizes ? (
+              <div id="variant-selector" className="space-y-4">
+                {showPicksError && (
+                  <p className="text-xs font-semibold text-destructive">
+                    ⚠ Escolha a estampa e o tamanho das {picksCount} peças
+                  </p>
+                )}
+                {picks.map((pick, slot) => {
+                  const unlocked = slot === 0 || (picks[slot - 1].color !== null && !!picks[slot - 1].size);
+                  if (!unlocked) return null;
+                  return (
+                    <div key={slot} className="rounded-xl border border-border bg-card p-4 space-y-4">
+                      <div className="flex items-center justify-between">
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
+                          {slot + 1}ª peça
+                        </p>
+                        {pick.color !== null && pick.size && (
+                          <span className="text-[10px] font-bold uppercase bg-primary text-primary-foreground px-2 py-1 rounded">
+                            Selecionada
+                          </span>
+                        )}
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-widest">
+                          Estampa
+                          {pick.color !== null && (
+                            <span className="text-foreground normal-case tracking-normal">
+                              {": "}{product.colorVariants![pick.color].label}
+                            </span>
+                          )}
+                        </p>
+                        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                          {product.colorVariants!.map((variant, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => {
+                                updatePick(slot, { color: idx });
+                                const imgIdx = images.findIndex((img) => img === variant.image);
+                                if (imgIdx >= 0) setSelectedImage(imgIdx);
+                              }}
+                              className={`rounded-lg overflow-hidden border-2 text-left transition-all ${
+                                pick.color === idx ? "border-foreground" : "border-border hover:border-muted-foreground/60"
+                              }`}
+                              title={variant.label}
+                            >
+                              <img src={variant.image} alt={variant.label} className="w-full aspect-square object-cover" />
+                              <span className="block px-1.5 py-1 text-[10px] font-semibold leading-tight text-foreground">
+                                {variant.label}
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-widest">
+                          Tamanho
+                          {pick.size && <span className="text-foreground">: {pick.size}</span>}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {product.sizes!.map((size) => (
+                            <button
+                              key={size}
+                              onClick={() => updatePick(slot, { size })}
+                              className={`min-w-[64px] h-10 px-4 rounded border text-sm font-medium transition-all ${
+                                pick.size === size
+                                  ? "border-foreground bg-foreground text-background"
+                                  : "border-border text-foreground hover:border-foreground"
+                              }`}
+                            >
+                              {size}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+                {picks[0].color === null || !picks[0].size ? (
+                  <p className="text-xs text-muted-foreground">
+                    Escolha a estampa e o tamanho da 1ª peça para liberar a 2ª.
+                  </p>
+                ) : null}
+              </div>
+            ) : isKitMultiSize && product.colorVariants && product.sizes ? (
+
               <div id="variant-selector" className="rounded-xl border border-border bg-card p-4 sm:p-5 shadow-sm space-y-4">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
