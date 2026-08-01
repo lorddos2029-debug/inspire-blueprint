@@ -85,14 +85,17 @@ const makeBreakdown = (total: number): { stars: number; count: number }[] => {
 
 const COBF = "/assets/products-bc/cobertor-flannel/";
 
+const YPEF = "/assets/products-bc/ype/";
+
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
   // 28 — Kit 2 Detergente Lava Louças em Pó Ypê 1Kg
   28: {
     total: 763,
     avg: 4.9,
     reviews: [
-      { name: "Marcela Tavares", date: "Jul 2026", rating: 5, text: "Chegou certinho, vieram MESMO os 2 potes de 1kg cada, bem lacrados e sem vazar nada na caixa. Já usei nas duas primeiras semanas e a louça sai impecável." },
-      { name: "Rodrigo Salgado", date: "Jul 2026", rating: 5, text: "Kit com 2 unidades pelo preço que eu pagava em 1 no mercado. Vale muito. O pó dissolve rápido e não fica aquele fundo branco no copo." },
+      { name: "Marcela Tavares", date: "Jul 2026", rating: 5, text: "Chegou certinho, vieram MESMO os 2 potes de 1kg cada, bem lacrados e sem vazar nada na caixa. Já usei nas duas primeiras semanas e a louça sai impecável.", image: `${YPEF}review-1.png` },
+      { name: "Rodrigo Salgado", date: "Jul 2026", rating: 5, text: "Kit com 2 unidades pelo preço que eu pagava em 1 no mercado. Vale muito. O pó dissolve rápido e não fica aquele fundo branco no copo.", image: `${YPEF}review-2.png` },
+
       { name: "Elaine Ferraz", date: "Jul 2026", rating: 5, text: "Confesso que fiquei com medo de vir só 1, mas vieram os 2 potes direitinho. Como é 3 em 1 parei de comprar abrilhantador separado, economizei duas vezes." },
       { name: "Patrícia Gomes", date: "Jun 2026", rating: 5, text: "Tira gordura pesada de panela e forma de assado sem eu precisar pré-lavar. Os talheres saem brilhando de verdade." },
       { name: "Cláudio Ramos", date: "Jun 2026", rating: 5, text: "Uso 25g por ciclo como diz na embalagem e o pote está rendendo bastante. Com os 2 potes acho que passo o ano inteiro tranquilo." },
