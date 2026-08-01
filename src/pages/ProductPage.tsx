@@ -233,7 +233,7 @@ const ProductPage = () => {
   const nextImage = () => setSelectedImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-24 lg:pb-0">
       <Header />
 
       <div className="container py-6 md:py-10">
@@ -581,6 +581,12 @@ const ProductPage = () => {
       <Newsletter />
       <Footer />
       <ExitIntentPopup />
+      <StickyBuyBar
+        productName={product.name}
+        price={product.price}
+        pixPrice={pixPrice}
+        onBuy={() => handleAddToCart(true)}
+      />
     </div>
   );
 };
