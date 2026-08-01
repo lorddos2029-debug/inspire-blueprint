@@ -6,6 +6,8 @@ export interface CartItem {
   price: number;
   originalPrice?: number;
   image: string;
+  /** Imagens adicionais das variantes escolhidas (ex.: kit com 2 cores) */
+  images?: string[];
   tag?: string;
   size?: string;
   color?: string;
