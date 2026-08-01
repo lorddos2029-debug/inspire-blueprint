@@ -146,6 +146,13 @@ const ProductPage = () => {
   /** Estoque exibido de forma determinística por produto (escassez) */
   const stockLeft = 8 + (product.id % 12);
 
+  /** Prova social determinística e distinta por produto */
+  const hashId = (product.id * 2654435761) % 100000;
+  const soldCount = 60 + (hashId % 260); // 60 a 319 vendidos
+  const reviewCount = 312 + ((hashId >> 3) % 1490); // 312 a 1801 avaliações
+  const ratingValue = (4.7 + ((hashId >> 5) % 3) / 10).toFixed(1); // 4.7 / 4.8 / 4.9
+
+
 
   /**
    * Adiciona o produto à sacola.
