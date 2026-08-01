@@ -78,9 +78,11 @@ const ProductPage = () => {
   /** Kit com N peças: cada peça tem cor (por imagem) + tamanho */
   const picksCount = product?.kitPicks ?? 0;
   const [picks, setPicks] = useState<{ color: number | null; size: string | null }[]>(
-    () => Array.from({ length: Math.max(picksCount, 0) }, () => ({ color: null, size: null })),
+    () => Array.from({ length: Math.max(picksCount, 0) }, () => ({ color: 0, size: null })),
   );
   const [showPicksError, setShowPicksError] = useState(false);
+  const [openColorSlot, setOpenColorSlot] = useState<number | null>(null);
+
 
   const updatePick = (idx: number, patch: Partial<{ color: number | null; size: string | null }>) => {
     setPicks((prev) => prev.map((p, i) => (i === idx ? { ...p, ...patch } : p)));
