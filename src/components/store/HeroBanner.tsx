@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import heroAsset from "@/assets/hero-banner-belacasa.png.asset.json";
 
-const heroImage = "/assets/cp/hero.webp";
+const heroImage = heroAsset.url;
 
 /**
  * Banner principal da home.
- * A arte já contém a chamada ("Design Premium para sua cozinha"), então a
- * imagem é usada inteira e clicável — sem sobreposição de texto duplicado.
+ * Arte atualizada com a identidade BelaCasa ("Tudo para transformar seu lar").
+ * Imagem usada inteira e clicável — sem sobreposição de texto duplicado.
  */
 const HeroBanner = () => {
   return (
@@ -17,7 +18,7 @@ const HeroBanner = () => {
       >
         <img
           src={heroImage}
-          alt="Air Fryer Innovare com design premium para sua cozinha"
+          alt="Tudo para transformar seu lar - BelaCasa"
           className="w-full h-auto object-cover"
           fetchPriority="high"
           decoding="async"
