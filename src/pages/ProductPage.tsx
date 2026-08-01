@@ -428,7 +428,8 @@ const ProductPage = () => {
                         </p>
                         {!pick.size && (
                           <span className="text-[10px] font-semibold text-destructive bg-destructive/10 px-2 py-1 rounded">
-                            Selecione o tamanho
+                            Selecione a cor e o tamanho
+
                           </span>
                         )}
                       </div>
