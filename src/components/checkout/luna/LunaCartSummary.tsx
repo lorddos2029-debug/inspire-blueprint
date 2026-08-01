@@ -35,13 +35,31 @@ export const LunaCartSummary = ({
         {items.map((item, idx) => (
           <div key={`${item.id}-${item.size || ""}-${item.color || ""}-${idx}`} className="flex items-center gap-3">
             <div className="relative shrink-0">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-16 h-16 rounded-lg object-cover border border-gray-200 bg-gray-50"
-                loading="lazy"
-                decoding="async"
-              />
+              {item.images && item.images.length > 1 ? (
+                <div className="relative w-16 h-16">
+                  {item.images.slice(0, 2).map((img, i) => (
+                    <img
+                      key={i}
+                      src={img}
+                      alt={`${item.name} - cor ${i + 1}`}
+                      className={`absolute top-0 h-16 w-11 object-cover border border-gray-200 bg-gray-50 ${
+                        i === 0 ? "left-0 rounded-l-lg z-10" : "right-0 rounded-r-lg border-l-2 border-l-white"
+                      }`}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ))}
+                </div>
+              ) : (
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-16 h-16 rounded-lg object-cover border border-gray-200 bg-gray-50"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+
               <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-[#be7e5b] text-white text-[10px] font-bold flex items-center justify-center">
                 {item.quantity}
               </span>
