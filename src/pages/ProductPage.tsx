@@ -27,7 +27,10 @@ import {
   Star,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  Check,
 } from "lucide-react";
+
 
 const fallbackCategoryProducts: Product[] = productCategories.flatMap((category, categoryIndex) =>
   category.products.map((product, productIndex) => ({
