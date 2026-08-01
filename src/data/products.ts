@@ -28,6 +28,9 @@ const COB = "/assets/products-bc/cobertor-flannel/";
 
 const YPE = "/assets/products-bc/ype/";
 
+const CL = "/assets/products-bc/cobre-leito/";
+
+
 export const products: Product[] = [
   {
     id: 29,
