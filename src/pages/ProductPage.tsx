@@ -75,8 +75,20 @@ const ProductPage = () => {
   const [showSizeError, setShowSizeError] = useState(false);
   const [kitSizes, setKitSizes] = useState<Record<number, string>>({});
   const [showKitError, setShowKitError] = useState(false);
+  /** Kit com N peças: cada peça tem cor (por imagem) + tamanho */
+  const picksCount = product?.kitPicks ?? 0;
+  const [picks, setPicks] = useState<{ color: number | null; size: string | null }[]>(
+    () => Array.from({ length: Math.max(picksCount, 0) }, () => ({ color: null, size: null })),
+  );
+  const [showPicksError, setShowPicksError] = useState(false);
+
+  const updatePick = (idx: number, patch: Partial<{ color: number | null; size: string | null }>) => {
+    setPicks((prev) => prev.map((p, i) => (i === idx ? { ...p, ...patch } : p)));
+    setShowPicksError(false);
+  };
 
   const isKitMultiSize = false;
+
 
 
 
@@ -171,10 +183,36 @@ const ProductPage = () => {
         ?.scrollIntoView({ behavior: "smooth", block: "center" });
     };
 
+    if (picksCount > 0) {
+      const incomplete = picks.some((p) => p.color === null || !p.size);
+      if (incomplete) {
+        setShowPicksError(true);
+        toast.error("Escolha a estampa e o tamanho das 2 peças");
+        document.getElementById("variant-selector")?.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      const description = picks
+        .map((p, i) => `Peça ${i + 1}: ${product.colorVariants?.[p.color!]?.label} · ${p.size}`)
+        .join(" | ");
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        originalPrice: product.originalPrice,
+        image: product.colorVariants?.[picks[0].color!]?.image || product.image,
+        tag: product.tag,
+        size: description,
+        color: picks.map((p) => product.colorVariants?.[p.color!]?.label).join(" + "),
+      }, { silent: goToCheckout });
+      if (goToCheckout) navigate("/checkout");
+      return;
+    }
+
     if (isKitMultiSize && product.colorVariants && product.sizes) {
       const allSelected = product.colorVariants.every((_, idx) => kitSizes[idx]);
       if (!allSelected) { failValidation(setShowKitError); return; }
     } else if (needsSize && !selectedSize) { failValidation(setShowSizeError); return; }
+
 
     const selectedColorLabel = needsColor
       ? product.colorVariants[selectedColor]?.label
@@ -352,7 +390,93 @@ const ProductPage = () => {
 
 
             {/* Kit multi-tamanho: cada cor com seu próprio seletor de tamanho */}
-            {isKitMultiSize && product.colorVariants && product.sizes ? (
+            {picksCount > 0 && product.colorVariants && product.sizes ? (
+              <div id="variant-selector" className="space-y-4">
+                {showPicksError && (
+                  <p className="text-xs font-semibold text-destructive">
+                    ⚠ Escolha a estampa e o tamanho das {picksCount} peças
+                  </p>
+                )}
+                {picks.map((pick, slot) => {
+                  const unlocked = slot === 0 || (picks[slot - 1].color !== null && !!picks[slot - 1].size);
+                  if (!unlocked) return null;
+                  return (
+                    <div key={slot} className="rounded-xl border border-border bg-card p-4 space-y-4">
+                      <div className="flex items-center justify-between">
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
+                          {slot + 1}ª peça
+                        </p>
+                        {pick.color !== null && pick.size && (
+                          <span className="text-[10px] font-bold uppercase bg-primary text-primary-foreground px-2 py-1 rounded">
+                            Selecionada
+                          </span>
+                        )}
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-widest">
+                          Estampa
+                          {pick.color !== null && (
+                            <span className="text-foreground normal-case tracking-normal">
+                              {": "}{product.colorVariants![pick.color].label}
+                            </span>
+                          )}
+                        </p>
+                        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                          {product.colorVariants!.map((variant, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => {
+                                updatePick(slot, { color: idx });
+                                const imgIdx = images.findIndex((img) => img === variant.image);
+                                if (imgIdx >= 0) setSelectedImage(imgIdx);
+                              }}
+                              className={`rounded-lg overflow-hidden border-2 text-left transition-all ${
+                                pick.color === idx ? "border-foreground" : "border-border hover:border-muted-foreground/60"
+                              }`}
+                              title={variant.label}
+                            >
+                              <img src={variant.image} alt={variant.label} className="w-full aspect-square object-cover" />
+                              <span className="block px-1.5 py-1 text-[10px] font-semibold leading-tight text-foreground">
+                                {variant.label}
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-widest">
+                          Tamanho
+                          {pick.size && <span className="text-foreground">: {pick.size}</span>}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {product.sizes!.map((size) => (
+                            <button
+                              key={size}
+                              onClick={() => updatePick(slot, { size })}
+                              className={`min-w-[64px] h-10 px-4 rounded border text-sm font-medium transition-all ${
+                                pick.size === size
+                                  ? "border-foreground bg-foreground text-background"
+                                  : "border-border text-foreground hover:border-foreground"
+                              }`}
+                            >
+                              {size}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+                {picks[0].color === null || !picks[0].size ? (
+                  <p className="text-xs text-muted-foreground">
+                    Escolha a estampa e o tamanho da 1ª peça para liberar a 2ª.
+                  </p>
+                ) : null}
+              </div>
+            ) : isKitMultiSize && product.colorVariants && product.sizes ? (
+
               <div id="variant-selector" className="rounded-xl border border-border bg-card p-4 sm:p-5 shadow-sm space-y-4">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">

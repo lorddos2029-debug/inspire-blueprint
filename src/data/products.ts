@@ -14,8 +14,11 @@ export interface Product {
   description?: string;
   sizes?: string[];
   sizeLabel?: string;
+  /** Quantidade de peças que o cliente escolhe (cor + tamanho por peça) */
+  kitPicks?: number;
   colorVariants?: { label: string; colors: string[]; image?: string }[];
 }
+
 
 const BC = "/assets/products-bc/";
 
@@ -25,8 +28,45 @@ const COB = "/assets/products-bc/cobertor-flannel/";
 
 const YPE = "/assets/products-bc/ype/";
 
+const CL = "/assets/products-bc/cobre-leito/";
+
+
 export const products: Product[] = [
   {
+    id: 29,
+    slug: "kit-2-cobre-leito-colcha-dupla-face-150-fios-matelado-boutis",
+    name: "Kit 2 Cobre Leito Colcha Dupla Face 150 Fios Matelado Boutis Estampado Toque Macio Antialérgico Hotel Premium",
+    price: 79.9,
+    originalPrice: 219.9,
+    image: `${CL}c1.png`,
+    hoverImage: `${CL}c4.png`,
+    images: [
+      `${CL}c1.png`,
+      `${CL}c2.png`,
+      `${CL}c3.png`,
+      `${CL}c4.png`,
+      `${CL}c5.png`,
+      `${CL}c6.png`,
+      `${CL}c7.png`,
+    ],
+    tag: "64% OFF",
+    kitPicks: 2,
+    sizes: ["Solteiro", "Casal", "Queen", "King"],
+    sizeLabel: "Tamanho",
+    description:
+      "Kit com 2 Cobre Leitos Colcha Dupla Face em tecido 150 fios com matelassê Boutis estampado, padrão Hotel Premium. Cada peça é reversível: de um lado a estampa floral/folhagem e do outro um tom liso trabalhado, dando dois visuais diferentes para o mesmo quarto. O enchimento em manta siliconada leve garante caimento bonito sobre a cama sem pesar, e o pesponto ultrassônico/matelado mantém a manta no lugar mesmo após várias lavagens. Toque macio e sedoso, tratamento antialérgico e antifungo — não solta fiapos e é indicado para quem tem rinite ou pele sensível. Secagem rápida, lavável na máquina em ciclo delicado e cores firmes que não desbotam. Você escolhe a estampa e o tamanho de cada uma das 2 peças (Solteiro, Casal, Queen ou King). Perfeito para trocar a cara do quarto, usar como colcha no verão ou sobreposto ao edredom no inverno.",
+    colorVariants: [
+      { label: "Floral Rosé Marfim", colors: ["#e8d9cd"], image: `${CL}c1.png` },
+      { label: "Floral Cinza Perolado", colors: ["#c3c5c2"], image: `${CL}c2.png` },
+      { label: "Folhagem Bege", colors: ["#d8d5c6"], image: `${CL}c3.png` },
+      { label: "Floral Vintage Bege", colors: ["#e2cfc3"], image: `${CL}c4.png` },
+      { label: "Floral Cinza Rosé", colors: ["#a8aca4"], image: `${CL}c5.png` },
+      { label: "Outono Terracota", colors: ["#b5583f"], image: `${CL}c6.png` },
+      { label: "Floral Lilás Taupe", colors: ["#a89a8e"], image: `${CL}c7.png` },
+    ],
+  },
+  {
+
     id: 28,
     slug: "kit-2-detergente-lava-loucas-em-po-para-maquina-ype-1kg",
     name: "Kit 2 Detergente Lava Louças em Pó para Máquina Ypê 1Kg",
