@@ -14,8 +14,11 @@ export interface Product {
   description?: string;
   sizes?: string[];
   sizeLabel?: string;
+  /** Quantidade de peças que o cliente escolhe (cor + tamanho por peça) */
+  kitPicks?: number;
   colorVariants?: { label: string; colors: string[]; image?: string }[];
 }
+
 
 const BC = "/assets/products-bc/";
 
