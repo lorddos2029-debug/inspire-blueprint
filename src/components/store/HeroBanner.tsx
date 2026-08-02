@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import heroAsset from "@/assets/hero-banner-belacasa.png.asset.json";
-
-const heroImage = heroAsset.url;
+import heroImage from "@/assets/hero-banner-belacasa.png";
 
 /**
  * Banner principal da home.

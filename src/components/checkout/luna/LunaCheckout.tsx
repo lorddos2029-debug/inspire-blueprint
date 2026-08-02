@@ -26,7 +26,7 @@ import PaymentStep from "../PaymentStep";
 
 const ACCENT = "#be7e5b";
 import pixIcon from "@/assets/pix-icon.png";
-import formasPagamento from "@/assets/formas-pagamento.png.asset.json";
+import formasPagamento from "@/assets/formas-pagamento.png";
 
 const formatPrice = (value: number) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -111,7 +111,7 @@ const CheckoutFooter = () => (
     <div className="container max-w-5xl mx-auto px-4 py-8 text-center space-y-4">
       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">Formas de pagamento</p>
       <img
-        src={formasPagamento.url}
+        src={formasPagamento}
         alt="Formas de pagamento aceitas: Pix, Boleto, Visa, Mastercard, Hipercard, Cielo, American Express, Diners Club, Discover e Elo"
         className="mx-auto w-full max-w-md h-auto"
         loading="lazy"
