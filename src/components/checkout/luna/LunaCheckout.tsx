@@ -435,6 +435,7 @@ export const LunaCheckout = () => {
           clearCart();
         }
       } catch (err) { console.error("PIX poll error:", err); }
+      finally { pixPollBusyRef.current = false; }
     }, 5000);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
