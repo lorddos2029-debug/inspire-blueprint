@@ -234,51 +234,9 @@ serve(async (req) => {
     // from the original campaign attribution.
     const utmifyOrderId = order.id || externalReference || order.transaction_id || transactionId;
 
-    // 1. Fire FB Conversions API Purchase event
-    const FB_TOKEN = Deno.env.get("FB_CAPI_ACCESS_TOKEN");
-    if (FB_TOKEN) {
-      const purchasePayload = {
-        data: [
-          {
-            event_name: "Purchase",
-            event_time: Math.floor(Date.now() / 1000),
-            action_source: "website",
-            event_source_url: "https://inspo-clone-craft.lovable.app/checkout",
-            user_data: {
-              em: order.customer_email
-                ? [await hashSHA256(order.customer_email.toLowerCase().trim())]
-                : undefined,
-              ph: order.customer_phone
-                ? [await hashSHA256(order.customer_phone.replace(/\D/g, ""))]
-                : undefined,
-              fn: order.customer_name
-                ? [await hashSHA256(order.customer_name.split(" ")[0].toLowerCase().trim())]
-                : undefined,
-              ln: order.customer_name
-                ? [await hashSHA256(order.customer_name.split(" ").slice(1).join(" ").toLowerCase().trim())]
-                : undefined,
-            },
-            custom_data: {
-              value: order.total,
-              currency: "BRL",
-              content_ids: items.map((i: any) => String(i.id)),
-              content_type: "product",
-              num_items: items.length,
-            },
-          },
-        ],
-      };
+    // 1. Purchase (Facebook CAPI) é disparado exclusivamente pelo client-side
+    // polling do checkout, evitando eventos duplicados de conversão.
 
-      const fbRes = await fetch(
-        `https://graph.facebook.com/v21.0/${PIXEL_ID}/events?access_token=${FB_TOKEN}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(purchasePayload),
-        }
-      );
-      console.log("FB CAPI Purchase response:", fbRes.status, await fbRes.text());
-    }
 
     // 2. Send to UTMIFY as paid exactly once
     const UTMIFY_API_TOKEN = Deno.env.get("UTMIFY_API_TOKEN");
