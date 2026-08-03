@@ -184,6 +184,8 @@ export const LunaCheckout = () => {
   const trackedSteps = useRef(new Set<string>());
   const restoredRef = useRef(false);
   const icFiredRef = useRef(false);
+  const pixPollBusyRef = useRef(false);
+  const pixConfirmHandledRef = useRef(false);
   const cardHolderInitialized = useRef(false);
 
   // ============ Totais ============
