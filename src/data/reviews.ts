@@ -89,17 +89,20 @@ const YPEF = "/assets/products-bc/ype/";
 
 const CLF = "/assets/products-bc/cobre-leito/";
 
+const TRVF = "/assets/products-bc/travesseiro/";
+
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
   // 30 — Travesseiro Ortopédico Borboleta Cervical
   30: {
     total: 942,
     avg: 4.9,
     reviews: [
-      { name: "Fernanda Coutinho", date: "Jul 2026", rating: 5, text: "Eu acordava todo dia com dor na base do pescoço e dor de cabeça. Na terceira noite com esse travesseiro a dor sumiu. O encaixe do pescoço é perfeito, sustenta mesmo." },
-      { name: "Marcos Vinícius", date: "Jul 2026", rating: 5, text: "Durmo de lado e as 'asas' do travesseiro acomodam o ombro sem ficar aquela pressão. Parei de acordar com o braço dormente." },
-      { name: "Regina Albuquerque", date: "Jul 2026", rating: 5, text: "Tenho hérnia de disco cervical e meu fisioterapeuta recomendou um travesseiro assim. A espuma volta devagar e não afunda igual travesseiro comum." },
-      { name: "Tatiane Moura", date: "Jun 2026", rating: 5, text: "O furinho no meio faz diferença de verdade, a nuca não fica esmagada. Acordo sem aquela sensação de peso na cabeça." },
+      { name: "Fernanda Coutinho", date: "Jul 2026", rating: 5, text: "Eu acordava todo dia com dor na base do pescoço e dor de cabeça. Na terceira noite com esse travesseiro a dor sumiu. O encaixe do pescoço é perfeito, sustenta mesmo.", image: `${TRVF}review-184.png` },
+      { name: "Marcos Vinícius", date: "Jul 2026", rating: 5, text: "Durmo de lado e as 'asas' do travesseiro acomodam o ombro sem ficar aquela pressão. Parei de acordar com o braço dormente.", image: `${TRVF}review-185.png` },
+      { name: "Regina Albuquerque", date: "Jul 2026", rating: 5, text: "Tenho hérnia de disco cervical e meu fisioterapeuta recomendou um travesseiro assim. A espuma volta devagar e não afunda igual travesseiro comum.", image: `${TRVF}review-186.png` },
+      { name: "Tatiane Moura", date: "Jun 2026", rating: 5, text: "O furinho no meio faz diferença de verdade, a nuca não fica esmagada. Acordo sem aquela sensação de peso na cabeça.", image: `${TRVF}review-187.png` },
       { name: "Cláudia Bernardes", date: "Jun 2026", rating: 5, text: "A capa sai com zíper e lavei na máquina, voltou como nova. O tecido matelassê é fresquinho, não esquenta a cabeça na madrugada." },
+
       { name: "Rodrigo Sanches", date: "Jun 2026", rating: 5, text: "Trabalho o dia inteiro no computador e vivia com torcicolo. Com um mês de uso a rigidez da manhã praticamente acabou." },
       { name: "Simone Vasques", date: "Mai 2026", rating: 4, text: "Excelente suporte, só leva uns 3 ou 4 dias pra acostumar porque é bem mais firme que o travesseiro comum. Depois disso você não troca mais." },
       { name: "Eduardo Prates", date: "Mai 2026", rating: 5, text: "Minha esposa reclamava do meu ronco e diminuiu bastante, acho que por causa do alinhamento do pescoço. Valeu cada centavo." },
