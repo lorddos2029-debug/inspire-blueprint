@@ -1,0 +1,1 @@
+UPDATE public.payment_settings SET pix_provider = 'pinpay', updated_at = now() WHERE id = 1;
