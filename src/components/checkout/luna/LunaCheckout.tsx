@@ -374,6 +374,10 @@ export const LunaCheckout = () => {
   useEffect(() => {
     if (!pixData?.transactionId || pixConfirmed) return;
     const interval = setInterval(async () => {
+      // Evita execuções sobrepostas do polling (cada ciclo faz chamadas assíncronas
+      // longas e poderia disparar eventos de conversão duplicados).
+      if (pixPollBusyRef.current || pixConfirmHandledRef.current) return;
+      pixPollBusyRef.current = true;
       try {
         // Rede de segurança: confirma direto no gateway caso o postback falhe,
         // preservando a atribuição de campanha na UTMify.
@@ -389,6 +393,8 @@ export const LunaCheckout = () => {
           .eq("transaction_id", pixData.transactionId!)
           .single();
         if (order && order.payment_status === "paid") {
+          if (pixConfirmHandledRef.current) return;
+          pixConfirmHandledRef.current = true;
           setPixConfirmed(true);
           clearInterval(interval);
           const purchaseData = {
