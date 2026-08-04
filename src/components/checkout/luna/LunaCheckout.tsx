@@ -732,13 +732,20 @@ export const LunaCheckout = () => {
         clientIp = ipJson?.ip || "";
       } catch {}
 
+      const { data: settings } = await supabase
+        .from("payment_settings")
+        .select("pix_provider")
+        .eq("id", 1)
+        .maybeSingle();
+      const selectedProvider = (settings?.pix_provider as string) || "pinpay";
+
       const { data, error } = await supabase.functions.invoke("create-pix-payment", {
         body: {
           customer: { name, email, cpf: onlyDigits(cpf), phone: onlyDigits(phone) },
           shipping: { cep, street, number, complement, neighborhood, city, state },
           items: items.map((item) => ({ name: item.name, price: item.price, quantity: item.quantity })),
           amount: grandTotal,
-          provider: "pinpay",
+          provider: selectedProvider,
           externalRef: orderReference,
           trackingParameters,
           client_ip: clientIp,
