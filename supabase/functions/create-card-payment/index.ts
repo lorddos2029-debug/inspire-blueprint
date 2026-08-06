@@ -140,11 +140,19 @@ async function callPayout(params: any) {
   const txData = data?.data ?? data;
   const txId = String(txData?.id ?? data?.id ?? '');
   const status = String(txData?.status ?? data?.status ?? '').toLowerCase();
-  
+  console.log('Payout card status:', response.status, 'tx:', txId, 'result:', status);
+
+  const refused = txData?.refusedReason ?? txData?.refuseReason;
+  const refusalText =
+    (typeof refused === 'string' ? refused : refused?.description) ||
+    txData?.acquirerMessage ||
+    data?.message ||
+    (response.ok ? null : 'Pagamento recusado.');
+
   return {
     id: txId,
     status: status,
-    refusal_reason: txData?.refuseReason || txData?.acquirerMessage || data?.message || (response.ok ? null : 'Pagamento recusado.'),
+    refusal_reason: refusalText,
     raw: data,
   };
 }
