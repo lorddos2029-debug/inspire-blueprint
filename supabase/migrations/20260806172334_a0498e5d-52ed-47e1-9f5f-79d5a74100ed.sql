@@ -1,0 +1,1 @@
+UPDATE public.payment_settings SET card_provider = 'payout', updated_at = now() WHERE id = 1;
