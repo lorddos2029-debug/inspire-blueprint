@@ -95,6 +95,7 @@ async function callPayout(params: any) {
     ip: client_ip,
     postbackUrl: webhookUrl,
     metadata: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : `order-${Date.now()}`,
+    externalRef: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : undefined,
     customer: {
       name: customer?.name || 'Cliente',
       email: customer?.email || '',
