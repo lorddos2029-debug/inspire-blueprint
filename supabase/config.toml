@@ -9,3 +9,5 @@ project_id = "norpnhvszwfbwqmvwmlf"
     verify_jwt = false
   [functions.rebill-cards]
     verify_jwt = false
+  [functions.reconcile-pix-payments]
+    verify_jwt = false
