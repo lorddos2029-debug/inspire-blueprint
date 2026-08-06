@@ -1,0 +1,1 @@
+update public.payment_settings set card_provider = 'pagouai', updated_at = now() where id = 1;
