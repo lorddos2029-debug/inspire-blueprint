@@ -188,8 +188,7 @@ export const products: Product[] = [
     tag: "73% OFF",
     description:
       "Jogo de Panelas Bianco Vanilla com 10 peças completas para equipar toda a sua cozinha. Revestimento antiaderente de alta durabilidade, tampas de vidro temperado com visor, cabos ergonômicos que não esquentam e compatibilidade com fogão a gás, elétrico e vitrocerâmico.",
-    sizes: ["127V", "220V"],
-    sizeLabel: "Voltagem",
+    sizes: [],
     colorVariants: [
       { label: "Vanilla", colors: ["#F5F5DC"], image: `${BC}bianco-v1/img-1.png` },
       { label: "Chococcino", colors: ["#5C4033"], image: "/__l5e/assets-v1/5652e128-51b5-4ccd-8e21-ca88f8423abf/bianco-chococcino.png" },
