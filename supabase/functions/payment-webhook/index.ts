@@ -34,6 +34,7 @@ serve(async (req) => {
     const externalReference = String(
       data?.externalRef || data?.externalReference || body?.externalReference || body?.externalRef || ""
     ).trim();
+    
     // metadata pode vir como string (Payout) ou objeto (PinPay)
     const rawMetadata = data?.metadata ?? body?.metadata ?? "";
     const orderIdMetadata = String(
@@ -41,9 +42,21 @@ serve(async (req) => {
         ? (rawMetadata.order_id || rawMetadata.orderId || rawMetadata.external_reference || rawMetadata.externalReference || "")
         : rawMetadata
     ).trim();
+    
+    // PinPay metadata aninhado
+    const pinpayInternalOrderId = data?.metadata?.order_id || body?.metadata?.order_id || "";
+
     const status = String(data?.status || body?.status || "").toLowerCase();
     const eventName = String(body?.event || body?.type || "").toLowerCase();
-    const webhookUtm = (data?.utm && typeof data.utm === "object" ? data.utm : body?.utm && typeof body.utm === "object" ? body.utm : {}) as Record<string, string>;
+    
+    // UTMs: PinPay as aninha em data.utm ou body.utm. Payout costuma não aninhar.
+    const webhookUtm = (
+      (data?.utm && typeof data.utm === "object" ? data.utm : {}) ||
+      (body?.utm && typeof body.utm === "object" ? body.utm : {}) ||
+      (data?.tracking_parameters && typeof data.tracking_parameters === "object" ? data.tracking_parameters : {}) ||
+      (body?.tracking_parameters && typeof body.tracking_parameters === "object" ? body.tracking_parameters : {}) ||
+      {}
+    ) as Record<string, string>;
     const lookupReference = transactionId || externalReference || orderIdMetadata;
 
     if (!lookupReference) {
