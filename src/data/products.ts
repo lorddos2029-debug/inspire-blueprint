@@ -188,7 +188,18 @@ export const products: Product[] = [
     tag: "73% OFF",
     description:
       "Jogo de Panelas Bianco Vanilla com 10 peças completas para equipar toda a sua cozinha. Revestimento antiaderente de alta durabilidade, tampas de vidro temperado com visor, cabos ergonômicos que não esquentam e compatibilidade com fogão a gás, elétrico e vitrocerâmico.",
-    sizes: [],
+    sizes: ["127V", "220V"],
+    sizeLabel: "Voltagem",
+    colorVariants: [
+      { label: "Vanilla", colors: ["#F5F5DC"], image: `${BC}bianco-v1/img-1.png` },
+      { label: "Chococcino", colors: ["#5C4033"], image: "/__l5e/assets-v1/5652e128-51b5-4ccd-8e21-ca88f8423abf/bianco-chococcino.png" },
+      { label: "Vermelho", colors: ["#B22222"], image: "/__l5e/assets-v1/245074e8-ca2e-43d5-9eb1-e0dfc242da65/bianco-red.png" },
+      { label: "Stone", colors: ["#A9A9A9"], image: "/__l5e/assets-v1/d9f4f08e-8d26-4ad6-8253-1d8eb41c2b4d/bianco-stone.png" },
+      { label: "Preto com Prata", colors: ["#2F4F4F"], image: "/__l5e/assets-v1/8f499789-5402-4c65-b707-ad8fca4c9173/bianco-black-silver.png" },
+      { label: "Rose", colors: ["#E6E6FA"], image: "/__l5e/assets-v1/b35c1bcc-f995-4134-936c-b7576de2267f/bianco-rose.png" },
+      { label: "Prestigio", colors: ["#4B3621"], image: "/__l5e/assets-v1/e6ffd952-292c-4d81-ac86-6e472bc68437/bianco-prestigio.png" },
+      { label: "Preto com Vermelho", colors: ["#000000", "#FF0000"], image: "/__l5e/assets-v1/df4ee396-89f9-4af5-bb0f-fba3fe87ecb9/bianco-black-red.png" },
+    ],
   },
   {
     id: 19,
