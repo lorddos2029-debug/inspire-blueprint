@@ -34,6 +34,7 @@ serve(async (req) => {
     const externalReference = String(
       data?.externalRef || data?.externalReference || body?.externalReference || body?.externalRef || ""
     ).trim();
+    
     // metadata pode vir como string (Payout) ou objeto (PinPay)
     const rawMetadata = data?.metadata ?? body?.metadata ?? "";
     const orderIdMetadata = String(
@@ -41,12 +42,25 @@ serve(async (req) => {
         ? (rawMetadata.order_id || rawMetadata.orderId || rawMetadata.external_reference || rawMetadata.externalReference || "")
         : rawMetadata
     ).trim();
+    
+    // PinPay metadata aninhado
+    const pinpayInternalOrderId = data?.metadata?.order_id || body?.metadata?.order_id || "";
+
     const status = String(data?.status || body?.status || "").toLowerCase();
     const eventName = String(body?.event || body?.type || "").toLowerCase();
-    const webhookUtm = (data?.utm && typeof data.utm === "object" ? data.utm : body?.utm && typeof body.utm === "object" ? body.utm : {}) as Record<string, string>;
-    const lookupReference = transactionId || externalReference || orderIdMetadata;
+    
+    // UTMs: PinPay as aninha em data.utm ou body.utm. Payout costuma não aninhar.
+    const webhookUtm = (
+      (data?.utm && typeof data.utm === "object" ? data.utm : {}) ||
+      (body?.utm && typeof body.utm === "object" ? body.utm : {}) ||
+      (data?.tracking_parameters && typeof data.tracking_parameters === "object" ? data.tracking_parameters : {}) ||
+      (body?.tracking_parameters && typeof body.tracking_parameters === "object" ? body.tracking_parameters : {}) ||
+      {}
+    ) as Record<string, string>;
+    const lookupReference = transactionId || externalReference || orderIdMetadata || pinpayInternalOrderId;
 
     if (!lookupReference) {
+      console.error("No transaction reference found in body:", JSON.stringify(body));
       return new Response(JSON.stringify({ error: "No transaction reference" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -82,11 +96,15 @@ serve(async (req) => {
         const { data: o } = await supabase.from("orders").select("*").eq("ticket", externalReference).maybeSingle();
         if (o) return o;
       }
+      if (pinpayInternalOrderId) {
+        const { data: o } = await supabase.from("orders").select("*").eq("id", pinpayInternalOrderId).maybeSingle();
+        if (o) return o;
+      }
       return null;
     };
 
     // Determine normalized status
-    const isPaid = eventName === "transaction.paid" || ["paid", "approved", "authorized"].includes(status);
+    const isPaid = eventName === "transaction.paid" || ["paid", "approved", "authorized", "completed", "succeeded", "active"].includes(status);
     const isRefused = ["refused", "failed", "denied", "rejected", "canceled", "cancelled", "chargeback"].includes(status)
       || eventName.includes("refused") || eventName.includes("failed") || eventName.includes("canceled");
 
@@ -319,11 +337,15 @@ serve(async (req) => {
           body: JSON.stringify(utmifyPayload),
         });
         const utmifyText = await utmifyRes.text();
-        console.log("UTMIFY webhook response:", utmifyRes.status, utmifyText);
+        console.log("UTMIFY webhook response:", utmifyRes.status, utmifyText, "for order:", order.id);
 
         if (!utmifyRes.ok) {
-          await supabase.from("orders").update({ utmify_paid_sent_at: null }).eq("id", order.id);
-          console.error("UTMIFY webhook rejected payload, lock reverted");
+          // No caso de erro na UTMify, não revertemos o lock imediatamente se for erro 4xx (payload inválido),
+          // pois tentar novamente com o mesmo payload falhará.
+          if (utmifyRes.status >= 500) {
+             await supabase.from("orders").update({ utmify_paid_sent_at: null }).eq("id", order.id);
+          }
+          console.error("UTMIFY webhook rejected payload");
         }
       } catch (utmErr: any) {
         await supabase.from("orders").update({ utmify_paid_sent_at: null }).eq("id", order.id);
