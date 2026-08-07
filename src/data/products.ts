@@ -189,8 +189,7 @@ export const products: Product[] = [
     tag: "73% OFF",
     description:
       "Jogo de Panelas Antiaderente com 10 peças completas para equipar toda a sua cozinha. Revestimento de alta durabilidade que não gruda, tampas de vidro temperado com saída de vapor, cabos e alças ergonômicos em baquelite que não aquecem para maior segurança no manuseio. Compatível com fogões a gás, elétrico e vitrocerâmico. Fácil de limpar e ideal para preparar refeições saudáveis com menos óleo.",
-    sizes: ["110V", "220V"],
-    sizeLabel: "Voltagem",
+    sizes: [],
     colorVariants: [
       { label: "Chococcino", colors: ["#5d3a1a"], image: `${BC}bianco-panelas-1.jpg` },
       { label: "Vermelho", colors: ["#a50000"], image: `${BC}bianco-panelas-2.jpg` },
