@@ -337,11 +337,15 @@ serve(async (req) => {
           body: JSON.stringify(utmifyPayload),
         });
         const utmifyText = await utmifyRes.text();
-        console.log("UTMIFY webhook response:", utmifyRes.status, utmifyText);
+        console.log("UTMIFY webhook response:", utmifyRes.status, utmifyText, "for order:", order.id);
 
         if (!utmifyRes.ok) {
-          await supabase.from("orders").update({ utmify_paid_sent_at: null }).eq("id", order.id);
-          console.error("UTMIFY webhook rejected payload, lock reverted");
+          // No caso de erro na UTMify, não revertemos o lock imediatamente se for erro 4xx (payload inválido),
+          // pois tentar novamente com o mesmo payload falhará.
+          if (utmifyRes.status >= 500) {
+             await supabase.from("orders").update({ utmify_paid_sent_at: null }).eq("id", order.id);
+          }
+          console.error("UTMIFY webhook rejected payload");
         }
       } catch (utmErr: any) {
         await supabase.from("orders").update({ utmify_paid_sent_at: null }).eq("id", order.id);
