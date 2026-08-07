@@ -96,11 +96,15 @@ serve(async (req) => {
         const { data: o } = await supabase.from("orders").select("*").eq("ticket", externalReference).maybeSingle();
         if (o) return o;
       }
+      if (pinpayInternalOrderId) {
+        const { data: o } = await supabase.from("orders").select("*").eq("id", pinpayInternalOrderId).maybeSingle();
+        if (o) return o;
+      }
       return null;
     };
 
     // Determine normalized status
-    const isPaid = eventName === "transaction.paid" || ["paid", "approved", "authorized"].includes(status);
+    const isPaid = eventName === "transaction.paid" || ["paid", "approved", "authorized", "completed", "succeeded"].includes(status);
     const isRefused = ["refused", "failed", "denied", "rejected", "canceled", "cancelled", "chargeback"].includes(status)
       || eventName.includes("refused") || eventName.includes("failed") || eventName.includes("canceled");
 
