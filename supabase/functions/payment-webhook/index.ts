@@ -57,9 +57,10 @@ serve(async (req) => {
       (body?.tracking_parameters && typeof body.tracking_parameters === "object" ? body.tracking_parameters : {}) ||
       {}
     ) as Record<string, string>;
-    const lookupReference = transactionId || externalReference || orderIdMetadata;
+    const lookupReference = transactionId || externalReference || orderIdMetadata || pinpayInternalOrderId;
 
     if (!lookupReference) {
+      console.error("No transaction reference found in body:", JSON.stringify(body));
       return new Response(JSON.stringify({ error: "No transaction reference" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
