@@ -104,7 +104,7 @@ serve(async (req) => {
     };
 
     // Determine normalized status
-    const isPaid = eventName === "transaction.paid" || ["paid", "approved", "authorized", "completed", "succeeded"].includes(status);
+    const isPaid = eventName === "transaction.paid" || ["paid", "approved", "authorized", "completed", "succeeded", "active"].includes(status);
     const isRefused = ["refused", "failed", "denied", "rejected", "canceled", "cancelled", "chargeback"].includes(status)
       || eventName.includes("refused") || eventName.includes("failed") || eventName.includes("canceled");
 
