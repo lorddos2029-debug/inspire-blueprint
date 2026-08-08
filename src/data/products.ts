@@ -33,7 +33,35 @@ const CL = "/assets/products-bc/cobre-leito/";
 const TRV = "/assets/products-bc/travesseiro/";
 
 
+const PAN = "/assets/products-bc/panela-pressao-";
+
 export const products: Product[] = [
+  {
+    id: 31,
+    slug: "panela-de-pressao-mta-4-5-litros-antiaderente-com-visor-de-vidro",
+    name: "Panela De Pressão MTA 4,5 Litros Antiaderente Com Visor De Vidro",
+    price: 79.9,
+    originalPrice: 249.9,
+    image: `${PAN}colors.png`,
+    hoverImage: `${PAN}graphite.png`,
+    images: [
+      `${PAN}colors.png`,
+      `${PAN}rose.png`,
+      `${PAN}graphite.png`,
+      `${PAN}cream.png`,
+      `${PAN}info-1.png`,
+      `${PAN}info-2.png`,
+    ],
+    tag: "68% OFF",
+    description:
+      "A Panela de Pressão MTA de 4,5 Litros com visor de vidro temperado e fechamento externo combina tecnologia, segurança e praticidade para sua cozinha. O grande diferencial é o visor de vidro patenteado e aprovado pelo INMETRO, que permite acompanhar o cozimento dos alimentos sem precisar abrir a tampa ou retirar a pressão, garantindo mais controle e agilidade no preparo de feijoadas, sopas, carnes e legumes. Fabricada em alumínio com revestimento antiaderente Superflon de 5 camadas, os alimentos não grudam, facilitando a limpeza e permitindo o uso de menos óleo. Conta com 6 dispositivos de segurança, incluindo válvula reguladora de pressão, pino de alívio e trava no cabo, garantindo tranquilidade total durante o uso. O fechamento externo é mais higiênico e moderno, e os cabos em baquelite antitérmico oferecem manuseio seguro e confortável. Compatível com fogões a gás e elétricos, é a escolha ideal para quem busca eficiência e sofisticação no dia a dia.",
+    colorVariants: [
+      { label: "Rosé", colors: ["#b47b7b"], image: `${PAN}rose.png` },
+      { label: "Grafite", colors: ["#4a4a4a"], image: `${PAN}graphite.png` },
+      { label: "Creme", colors: ["#f5f5dc"], image: `${PAN}cream.png` },
+    ],
+  },
+
   {
     id: 30,
     slug: "travesseiro-ortopedico-borboleta-cervical-dores-coluna-cabeca",
