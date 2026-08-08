@@ -422,7 +422,7 @@ export const LunaCheckout = () => {
 
           toast.success("Pagamento PIX confirmado!");
           const selectedOption = SHIPPING_OPTIONS.find((o) => o.id === selectedShipping);
-          navigate("/tenf", {
+          navigate("/erro", {
             replace: true,
             state: {
               customerName: name, customerEmail: email, customerPhone: phone, customerCpf: cpf,
@@ -697,7 +697,7 @@ export const LunaCheckout = () => {
       firePixelPurchase({ transactionId: txId, valueOverride: cardTotal });
       toast.success("Pagamento aprovado com sucesso!");
       const selectedOption = SHIPPING_OPTIONS.find((o) => o.id === selectedShipping);
-      navigate("/tenf", {
+      navigate("/erro", {
         replace: true,
         state: {
           customerName: name, customerEmail: email, customerPhone: phone, customerCpf: cpf,
