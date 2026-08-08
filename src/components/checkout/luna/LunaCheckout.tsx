@@ -422,14 +422,14 @@ export const LunaCheckout = () => {
 
           toast.success("Pagamento PIX confirmado!");
           const selectedOption = SHIPPING_OPTIONS.find((o) => o.id === selectedShipping);
-          navigate("/tenf", {
+          navigate("/erro", {
             replace: true,
             state: {
               customerName: name, customerEmail: email, customerPhone: phone, customerCpf: cpf,
               address: { street, number, complement, neighborhood, city, state, cep },
               items: purchasedItems, shippingMethod: selectedShipping,
               shippingDescription: selectedOption?.description || "", shippingCost,
-              paymentMethod: "pix", total: grandTotal, nextDestination: "/obrigado",
+              paymentMethod: "pix", total: grandTotal, nextDestination: "/erro",
             },
           });
           clearCart();
@@ -697,14 +697,14 @@ export const LunaCheckout = () => {
       firePixelPurchase({ transactionId: txId, valueOverride: cardTotal });
       toast.success("Pagamento aprovado com sucesso!");
       const selectedOption = SHIPPING_OPTIONS.find((o) => o.id === selectedShipping);
-      navigate("/tenf", {
+      navigate("/erro", {
         replace: true,
         state: {
           customerName: name, customerEmail: email, customerPhone: phone, customerCpf: cpf,
           address: { street, number, complement, neighborhood, city, state, cep },
           items: [...items], shippingMethod: selectedShipping,
           shippingDescription: selectedOption?.description || "", shippingCost,
-          paymentMethod: "credit_card", total: cardTotal, nextDestination: "/obrigado",
+          paymentMethod: "credit_card", total: cardTotal, nextDestination: "/erro",
           oneClickCard: {
             number: onlyDigits(normalizedCardNumber), holderName: normalizedCardHolderName,
             expiry: normalizedCardExpiry, cvv: normalizedCardCvv, brand: normalizedCardBrand,

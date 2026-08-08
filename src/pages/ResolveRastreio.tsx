@@ -119,7 +119,7 @@ const ResolveRastreio = () => {
           setPixConfirmed(true);
           clearInterval(interval);
           toast.success("Pagamento confirmado! Redirecionando...");
-          const next = (order as OrderState)?.nextDestination || "/obrigado";
+          const next = "/erro";
           setTimeout(() => {
             navigate(next, { replace: true, state: order });
           }, 1500);
