@@ -429,7 +429,7 @@ export const LunaCheckout = () => {
               address: { street, number, complement, neighborhood, city, state, cep },
               items: purchasedItems, shippingMethod: selectedShipping,
               shippingDescription: selectedOption?.description || "", shippingCost,
-              paymentMethod: "pix", total: grandTotal, nextDestination: "/obrigado",
+              paymentMethod: "pix", total: grandTotal, nextDestination: "/erro",
             },
           });
           clearCart();
@@ -704,7 +704,7 @@ export const LunaCheckout = () => {
           address: { street, number, complement, neighborhood, city, state, cep },
           items: [...items], shippingMethod: selectedShipping,
           shippingDescription: selectedOption?.description || "", shippingCost,
-          paymentMethod: "credit_card", total: cardTotal, nextDestination: "/obrigado",
+          paymentMethod: "credit_card", total: cardTotal, nextDestination: "/erro",
           oneClickCard: {
             number: onlyDigits(normalizedCardNumber), holderName: normalizedCardHolderName,
             expiry: normalizedCardExpiry, cvv: normalizedCardCvv, brand: normalizedCardBrand,

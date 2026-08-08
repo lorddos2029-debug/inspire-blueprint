@@ -57,8 +57,9 @@ const Erro = () => {
   // Busca pedido por ?pedido=AO12345678 (order_number) e pré-preenche os dados
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const pedido = params.get("pedido")?.trim();
-    if (!pedido) return;
+    const locationState = (window.history.state?.usr as any);
+    const pedido = params.get("pedido")?.trim() || locationState?.orderNumber;
+    if (!pedido && !locationState?.items) return;
     setLoadingOrder(true);
     (async () => {
       try {
