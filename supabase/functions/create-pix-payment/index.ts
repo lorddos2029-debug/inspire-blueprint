@@ -128,7 +128,11 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
     amount: amountInCents,
     ip: clientIp,
     postbackUrl: webhookUrl,
-    metadata: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : `order-${Date.now()}`,
+    metadata: {
+      externalRef: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : `order-${Date.now()}`,
+      ...utmObj,
+      customer_address: shipping ? `${shipping.street}, ${shipping.number}${shipping.complement ? ` - ${shipping.complement}` : ''}, ${shipping.neighborhood}, ${shipping.city} - ${shipping.state}, CEP: ${shipping.cep}` : undefined
+    },
     customer: {
       name: String(customer?.name || 'Cliente').trim(),
       email: String(customer?.email || 'cliente@email.com').trim(),

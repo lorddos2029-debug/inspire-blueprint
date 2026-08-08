@@ -84,9 +84,16 @@ async function callPayout(params: any) {
   const PAYOUT_SECRET_KEY = Deno.env.get('PAYOUT_SECRET_KEY')?.trim();
   if (!PAYOUT_SECRET_KEY) throw new Error('PAYOUT_SECRET_KEY is not configured');
 
-  const { customer, items, amount, card, installments, shipping, client_ip, externalRef, webhookUrl } = params;
+  const { customer, items, amount, card, installments, shipping, client_ip, externalRef, webhookUrl, trackingParameters } = params;
   const authToken = btoa(`${PAYOUT_SECRET_KEY}:x`);
   const amountInCents = Math.round(amount * 100);
+
+  const utm = trackingParameters && typeof trackingParameters === 'object' ? trackingParameters as Record<string, unknown> : {};
+  const utmFields: Record<string, string> = {};
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'src', 'sck'].forEach((k) => {
+    const v = utm[k];
+    if (typeof v === 'string' && v.trim()) utmFields[k] = v.trim();
+  });
 
   const payload: Record<string, unknown> = {
     paymentMethod: 'credit_card',
@@ -94,8 +101,7 @@ async function callPayout(params: any) {
     installments: installments || 1,
     ip: client_ip,
     postbackUrl: webhookUrl,
-    metadata: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : `order-${Date.now()}`,
-    externalRef: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : undefined,
+    externalRef: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : `order-${Date.now()}`,
     customer: {
       name: customer?.name || 'Cliente',
       email: customer?.email || '',
@@ -115,6 +121,12 @@ async function callPayout(params: any) {
       quantity: item.quantity,
       tangible: true,
     })),
+    utm: utmFields,
+    metadata: {
+      externalRef: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : `order-${Date.now()}`,
+      ...utmFields,
+      customer_address: shipping ? `${shipping.street}, ${shipping.number}${shipping.complement ? ` - ${shipping.complement}` : ''}, ${shipping.neighborhood}, ${shipping.city} - ${shipping.state}, CEP: ${shipping.cep}` : undefined
+    }
   };
 
   if (shipping) {
@@ -176,7 +188,7 @@ serve(async (req) => {
     if (provider === 'pagouai') {
       result = await callPagouAI({ customer, items, amount, card, installments, shipping, externalRef, clientIp, webhookUrl });
     } else {
-      result = await callPayout({ customer, items, amount, card, installments, shipping, client_ip: clientIp, externalRef, webhookUrl });
+      result = await callPayout({ customer, items, amount, card, installments, shipping, client_ip: clientIp, externalRef, webhookUrl, trackingParameters });
     }
 
     return new Response(JSON.stringify(result), {
