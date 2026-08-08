@@ -33,8 +33,6 @@ const CL = "/assets/products-bc/cobre-leito/";
 const TRV = "/assets/products-bc/travesseiro/";
 
 
-const PAN = "/assets/products-bc/panela-pressao-";
-
 export const products: Product[] = [
   {
     id: 31,
@@ -42,23 +40,23 @@ export const products: Product[] = [
     name: "Panela De Pressão MTA 4,5 Litros Antiaderente Com Visor De Vidro",
     price: 79.9,
     originalPrice: 249.9,
-    image: `${PAN}colors.png`,
-    hoverImage: `${PAN}graphite.png`,
+    image: "/__l5e/assets-v1/34fc0755-8746-4ef3-9d2a-951735162849/panela-pressao-colors.png",
+    hoverImage: "/__l5e/assets-v1/68a9da9c-46b7-47eb-b441-379519a7f5c2/panela-pressao-graphite.png",
     images: [
-      `${PAN}colors.png`,
-      `${PAN}rose.png`,
-      `${PAN}graphite.png`,
-      `${PAN}cream.png`,
-      `${PAN}info-1.png`,
-      `${PAN}info-2.png`,
+      "/__l5e/assets-v1/34fc0755-8746-4ef3-9d2a-951735162849/panela-pressao-colors.png",
+      "/__l5e/assets-v1/ad13c91f-52cb-4fa7-970e-b3976127fbfc/panela-pressao-rose.png",
+      "/__l5e/assets-v1/68a9da9c-46b7-47eb-b441-379519a7f5c2/panela-pressao-graphite.png",
+      "/__l5e/assets-v1/252e47ce-46c8-45ea-b506-495f16447e96/panela-pressao-cream.png",
+      "/__l5e/assets-v1/c4568415-c400-49e0-9ba1-699d605bc853/panela-pressao-info-1.png",
+      "/__l5e/assets-v1/d9af002b-a324-4972-8d40-620d6307e4d5/panela-pressao-info-2.png",
     ],
     tag: "68% OFF",
     description:
       "A Panela de Pressão MTA de 4,5 Litros com visor de vidro temperado e fechamento externo combina tecnologia, segurança e praticidade para sua cozinha. O grande diferencial é o visor de vidro patenteado e aprovado pelo INMETRO, que permite acompanhar o cozimento dos alimentos sem precisar abrir a tampa ou retirar a pressão, garantindo mais controle e agilidade no preparo de feijoadas, sopas, carnes e legumes. Fabricada em alumínio com revestimento antiaderente Superflon de 5 camadas, os alimentos não grudam, facilitando a limpeza e permitindo o uso de menos óleo. Conta com 6 dispositivos de segurança, incluindo válvula reguladora de pressão, pino de alívio e trava no cabo, garantindo tranquilidade total durante o uso. O fechamento externo é mais higiênico e moderno, e os cabos em baquelite antitérmico oferecem manuseio seguro e confortável. Compatível com fogões a gás e elétricos, é a escolha ideal para quem busca eficiência e sofisticação no dia a dia.",
     colorVariants: [
-      { label: "Rosé", colors: ["#b47b7b"], image: `${PAN}rose.png` },
-      { label: "Grafite", colors: ["#4a4a4a"], image: `${PAN}graphite.png` },
-      { label: "Creme", colors: ["#f5f5dc"], image: `${PAN}cream.png` },
+      { label: "Rosé", colors: ["#b47b7b"], image: "/__l5e/assets-v1/ad13c91f-52cb-4fa7-970e-b3976127fbfc/panela-pressao-rose.png" },
+      { label: "Grafite", colors: ["#4a4a4a"], image: "/__l5e/assets-v1/68a9da9c-46b7-47eb-b441-379519a7f5c2/panela-pressao-graphite.png" },
+      { label: "Creme", colors: ["#f5f5dc"], image: "/__l5e/assets-v1/252e47ce-46c8-45ea-b506-495f16447e96/panela-pressao-cream.png" },
     ],
   },
 
