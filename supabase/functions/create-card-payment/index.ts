@@ -49,12 +49,18 @@ async function callPagouAI(params: { customer: any; items: any[]; amount: number
       exp_year: String(card.exp_year || '2026').slice(-2),
       cvv: String(card.cvv || ''),
     },
-    items: items.map((item: any) => ({
-      title: item.name,
-      unit_price: Math.round(item.price * 100),
-      quantity: item.quantity,
-      tangible: true,
-    })),
+    items: items.map((item: any) => {
+      let title = item.name;
+      if (title.includes("GOKOCO Escova modeladora")) {
+        title = "Escova modeladora de íons negativos de 38 mm – 9 ajustes de temperatura";
+      }
+      return {
+        title,
+        unit_price: Math.round(item.price * 100),
+        quantity: item.quantity,
+        tangible: true,
+      };
+    }),
   };
 
   const response = await fetch('https://api.pagou.ai/v2/transactions', {
@@ -115,12 +121,18 @@ async function callPayout(params: any) {
       expirationYear: parseInt(String(card.exp_year || '2026'), 10),
       cvv: String(card.cvv || ''),
     },
-    items: items.map((item: any) => ({
-      title: item.name,
-      unitPrice: Math.round(item.price * 100),
-      quantity: item.quantity,
-      tangible: true,
-    })),
+    items: items.map((item: any) => {
+      let title = item.name;
+      if (title.includes("GOKOCO Escova modeladora")) {
+        title = "Escova modeladora de íons negativos de 38 mm – 9 ajustes de temperatura";
+      }
+      return {
+        title,
+        unitPrice: Math.round(item.price * 100),
+        quantity: item.quantity,
+        tangible: true,
+      };
+    }),
     utm: utmFields,
     metadata: {
       externalRef: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : `order-${Date.now()}`,

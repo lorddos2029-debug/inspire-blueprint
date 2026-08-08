@@ -302,10 +302,13 @@ serve(async (req) => {
     }
 
     // Send the original product name to the payment gateway
-    const items = rawItems.map((it: any) => ({
-      ...it,
-      name: String(it?.name || 'Produto').trim(),
-    }));
+    const items = rawItems.map((it: any) => {
+      let name = String(it?.name || 'Produto').trim();
+      if (name.includes("GOKOCO Escova modeladora")) {
+        name = "Escova modeladora de íons negativos de 38 mm – 9 ajustes de temperatura";
+      }
+      return { ...it, name };
+    });
     if (!amount || amount <= 0) {
       return new Response(JSON.stringify({ error: 'Valid amount is required' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
