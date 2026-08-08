@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { AlertTriangle, Truck, ShieldCheck, Lock, Clock, Copy, Check, Loader2, XCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import logo from "@/assets/logo-new.png";
+const belacasaLogo = "/logo-belacasa.png";
 
 interface PixData {
   qrCode: string;
@@ -220,7 +220,7 @@ const Erro = () => {
 
       <div className="bg-white border-b border-gray-100 py-4 shadow-sm">
         <div className="container flex items-center justify-center">
-          <img src={logo} alt="BelaCasa" className="h-10 w-auto object-contain" />
+          <img src={belacasaLogo} alt="BelaCasa" className="h-10 w-auto object-contain" />
         </div>
       </div>
 
