@@ -113,6 +113,19 @@ async function callPayout(params: any) {
       email: customer?.email || '',
       phone: (customer?.phone || '').replace(/\D/g, ''),
       document: { type: 'cpf', number: (customer?.cpf || '').replace(/\D/g, '') },
+      ...(shipping ? {
+        address: {
+          street: shipping.street || '',
+          streetNumber: shipping.number || '',
+          complement: shipping.complement || '',
+          neighborhood: shipping.neighborhood || '',
+          city: shipping.city || '',
+          state: shipping.state || '',
+          zipCode: (shipping.cep || '').replace(/\D/g, ''),
+          zipcode: (shipping.cep || '').replace(/\D/g, ''),
+          country: 'BR',
+        },
+      } : {}),
     },
     card: {
       number: (card.number || '').replace(/\D/g, ''),
