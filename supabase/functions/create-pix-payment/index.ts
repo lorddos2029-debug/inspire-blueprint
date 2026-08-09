@@ -123,21 +123,50 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
   const phoneDigits = (customer?.phone || '').replace(/\D/g, '');
   const normalizedItems = normalizeItems(items, amountInCents);
 
+  const utm = trackingParameters && typeof trackingParameters === 'object' ? trackingParameters as Record<string, unknown> : {};
+  const utmObj: Record<string, string> = {};
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'src', 'sck'].forEach((k) => {
+    const v = utm[k];
+    if (typeof v === 'string' && v.trim()) utmObj[k] = v.trim();
+  });
+
+  const zipcode = (shipping?.cep || '').replace(/\D/g, '');
+  const addressLine = shipping
+    ? `${shipping.street || ''}, ${shipping.number || ''}${shipping.complement ? ` - ${shipping.complement}` : ''}, ${shipping.neighborhood || ''}, ${shipping.city || ''} - ${shipping.state || ''}, CEP: ${shipping.cep || ''}`
+    : undefined;
+  const addressObj = shipping
+    ? {
+        street: shipping.street || '',
+        streetNumber: shipping.number || '',
+        complement: shipping.complement || '',
+        neighborhood: shipping.neighborhood || '',
+        city: shipping.city || '',
+        state: shipping.state || '',
+        zipCode: zipcode,
+        zipcode,
+        country: 'BR',
+      }
+    : undefined;
+  const extRef = typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : `order-${Date.now()}`;
+
   const payload: Record<string, unknown> = {
     paymentMethod: 'pix',
     amount: amountInCents,
     ip: clientIp,
     postbackUrl: webhookUrl,
+    externalRef: extRef,
     metadata: {
-      externalRef: typeof externalRef === 'string' && externalRef.trim() ? externalRef.trim() : `order-${Date.now()}`,
+      externalRef: extRef,
       ...utmObj,
-      customer_address: shipping ? `${shipping.street}, ${shipping.number}${shipping.complement ? ` - ${shipping.complement}` : ''}, ${shipping.neighborhood}, ${shipping.city} - ${shipping.state}, CEP: ${shipping.cep}` : undefined
+      customer_address: addressLine,
+      ...(addressObj ? { address: addressObj } : {}),
     },
     customer: {
       name: String(customer?.name || 'Cliente').trim(),
       email: String(customer?.email || 'cliente@email.com').trim(),
       phone: phoneDigits || '11999999999',
       document: { type: 'cpf', number: cpfDigits || '00000000000' },
+      ...(addressObj ? { address: addressObj } : {}),
     },
     items: normalizedItems,
     pix: { expiresInDays: 1 },
@@ -151,16 +180,10 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
       neighborhood: shipping.neighborhood || '',
       city: shipping.city || '',
       state: shipping.state || '',
-      zipcode: (shipping.cep || '').replace(/\D/g, ''),
+      zipcode,
       country: 'BR',
     };
   }
-  const utm = trackingParameters && typeof trackingParameters === 'object' ? trackingParameters as Record<string, unknown> : {};
-  const utmObj: Record<string, string> = {};
-  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((k) => {
-    const v = utm[k];
-    if (typeof v === 'string' && v.trim()) utmObj[k] = v.trim();
-  });
   if (Object.keys(utmObj).length > 0) payload.utm = utmObj;
 
   const authToken = btoa(`${key}:x`);
