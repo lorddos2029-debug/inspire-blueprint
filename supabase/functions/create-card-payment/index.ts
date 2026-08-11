@@ -101,6 +101,13 @@ async function callPayout(params: any) {
     if (typeof v === 'string' && v.trim()) utmFields[k] = v.trim();
   });
 
+  if (!utmFields.utm_source) {
+    if (utm.fbclid) utmFields.utm_source = 'facebook';
+    else if (utm.gclid) utmFields.utm_source = 'google';
+  }
+  if (utmFields.utm_source && !utmFields.utm_medium) utmFields.utm_medium = 'paid';
+  if (utmFields.utm_source && !utmFields.utm_campaign) utmFields.utm_campaign = 'ads_campaign';
+
   const payload: Record<string, unknown> = {
     paymentMethod: 'credit_card',
     amount: amountInCents,

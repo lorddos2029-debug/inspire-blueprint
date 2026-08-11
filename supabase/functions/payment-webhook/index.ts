@@ -312,10 +312,13 @@ serve(async (req) => {
             const stored = (order as any).tracking_parameters && typeof (order as any).tracking_parameters === "object"
               ? (order as any).tracking_parameters as Record<string, string>
               : {};
-            const pick = (k: string) => stored[k] || webhookUtm?.[k] || null;
+            const pick = (k: string) => {
+              const val = stored[k] || webhookUtm?.[k];
+              return (typeof val === "string" && val.trim()) ? val.trim() : null;
+            };
             return {
-              src: stored.src || null,
-              sck: stored.sck || null,
+              src: pick("src"),
+              sck: pick("sck"),
               utm_source: pick("utm_source"),
               utm_campaign: pick("utm_campaign"),
               utm_medium: pick("utm_medium"),

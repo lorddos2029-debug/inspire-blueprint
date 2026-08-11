@@ -101,6 +101,7 @@ export const getStoredUtmParams = (): UtmRecord => {
   }
 
   if (stored.utm_source && !stored.utm_medium) stored.utm_medium = "paid";
+  if (stored.utm_source && !stored.utm_campaign) stored.utm_campaign = "google_ads";
 
   return stored;
 };
