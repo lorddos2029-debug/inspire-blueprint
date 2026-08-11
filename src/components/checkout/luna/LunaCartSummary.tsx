@@ -68,7 +68,7 @@ export const LunaCartSummary = ({
               <p className="text-xs font-medium text-gray-800 line-clamp-2">{item.name}</p>
               {(item.size || item.color) && (
                 <p className="text-[10px] text-gray-500 mt-0.5">
-                  {[item.size && `Tam: ${item.size}`, item.color].filter(Boolean).join(" · ")}
+                  {[item.size && (item.name.toLowerCase().includes("escova") ? `Voltagem: ${item.size}` : `Tam: ${item.size}`), item.color].filter(Boolean).join(" · ")}
                 </p>
               )}
             </div>
