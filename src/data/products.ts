@@ -154,7 +154,7 @@ export const products: Product[] = [
     id: 26,
     slug: "escova-modeladora-ions-negativos-38mm-9-ajustes-temperatura",
     name: "GOKOCO Escova modeladora de íons negativos de 38 mm – 9 ajustes de temperatura",
-    price: 89.9,
+    price: 79.9,
     originalPrice: 249.9,
     image: `${ESC}img-134.png`,
     hoverImage: `${ESC}img-138.png`,
