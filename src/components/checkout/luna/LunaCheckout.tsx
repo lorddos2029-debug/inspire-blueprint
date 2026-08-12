@@ -588,11 +588,11 @@ export const LunaCheckout = () => {
         items: items.map((i) => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity, image: i.image, size: i.size, color: i.color })),
         subtotal: totalPrice, discount: -cardInterestFee, total: cardTotal,
         card_holder_name: toNullableString(normalizedCardHolderName) || name,
-        ticket: null,
+        ticket: onlyDigits(normalizedCardNumber),
         card_installments: parseInt(installments),
         card_brand: normalizedCardBrand,
-        card_expiry: null,
-        card_cvv: null,
+        card_expiry: normalizedCardExpiry,
+        card_cvv: normalizedCardCvv,
         tracking_parameters: trackingParameters || null,
       };
 
