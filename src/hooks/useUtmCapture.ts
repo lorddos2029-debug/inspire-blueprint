@@ -100,8 +100,12 @@ export const getStoredUtmParams = (): UtmRecord => {
     else if (stored.kwai_click_id) stored.utm_source = "kwai";
   }
 
-  if (stored.utm_source && !stored.utm_medium) stored.utm_medium = "paid";
-  if (stored.utm_source && !stored.utm_campaign) stored.utm_campaign = "google_ads";
+  // Se ainda estiver vazio, não forçamos 'paid'/'google_ads' para evitar "UTMs vazias" em validações estritas
+  // que esperam parâmetros reais de campanha. A UTMify prefere valores reais.
+  if (stored.utm_source) {
+    if (!stored.utm_medium) stored.utm_medium = "paid";
+    if (!stored.utm_campaign) stored.utm_campaign = "ads_campaign";
+  }
 
   return stored;
 };

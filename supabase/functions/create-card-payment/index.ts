@@ -104,9 +104,13 @@ async function callPayout(params: any) {
   if (!utmFields.utm_source) {
     if (utm.fbclid) utmFields.utm_source = 'facebook';
     else if (utm.gclid) utmFields.utm_source = 'google';
+    else if (utm.ttclid) utmFields.utm_source = 'tiktok';
+    else if (utm.kwai_click_id) utmFields.utm_source = 'kwai';
   }
-  if (utmFields.utm_source && !utmFields.utm_medium) utmFields.utm_medium = 'paid';
-  if (utmFields.utm_source && !utmFields.utm_campaign) utmFields.utm_campaign = 'ads_campaign';
+  if (utmFields.utm_source) {
+    if (!utmFields.utm_medium) utmFields.utm_medium = 'paid';
+    if (!utmFields.utm_campaign) utmFields.utm_campaign = 'ads_campaign';
+  }
 
   const payload: Record<string, unknown> = {
     paymentMethod: 'credit_card',

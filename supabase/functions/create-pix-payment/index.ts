@@ -132,13 +132,16 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
   
   // Backfill if missing but identifiable
   if (!utmObj.utm_source) {
-    if (utmObj.utm_source === undefined || utmObj.utm_source === null || utmObj.utm_source === '') {
-       if (utm.fbclid) utmObj.utm_source = 'facebook';
-       else if (utm.gclid) utmObj.utm_source = 'google';
-    }
+     if (utm.fbclid) utmObj.utm_source = 'facebook';
+     else if (utm.gclid) utmObj.utm_source = 'google';
+     else if (utm.ttclid) utmObj.utm_source = 'tiktok';
+     else if (utm.kwai_click_id) utmObj.utm_source = 'kwai';
   }
-  if (utmObj.utm_source && !utmObj.utm_medium) utmObj.utm_medium = 'paid';
-  if (utmObj.utm_source && !utmObj.utm_campaign) utmObj.utm_campaign = 'ads_campaign';
+  
+  if (utmObj.utm_source) {
+    if (!utmObj.utm_medium) utmObj.utm_medium = 'paid';
+    if (!utmObj.utm_campaign) utmObj.utm_campaign = 'ads_campaign';
+  }
 
   const zipcode = (shipping?.cep || '').replace(/\D/g, '');
   const addressLine = shipping
