@@ -46,19 +46,19 @@ export const products: Product[] = [
     name: "Cadeira de Escritório Suporte Lombar Ergonômico Malha Respirável Mesh Apoio Cabeça Confortável Art Cadeiras Presidente Premium (Cinza e Branco)",
     price: 127.9,
     originalPrice: 899.9,
-    image: "/assets/products-bc/cadeira-ergonomica/cadeira-main.png",
-    hoverImage: "/assets/products-bc/cadeira-ergonomica/cadeira-angle-front.png",
-
+    image: `${CAD}cadeira-main.png`,
+    hoverImage: `${CAD}cadeira-angle-front.png`,
     images: [
-      "/assets/products-bc/cadeira-ergonomica/cadeira-main.png",
-      "/assets/products-bc/cadeira-ergonomica/cadeira-front.png",
-      "/assets/products-bc/cadeira-ergonomica/cadeira-angle-front.png",
-      "/assets/products-bc/cadeira-ergonomica/cadeira-side.png",
-      "/assets/products-bc/cadeira-ergonomica/cadeira-back.png",
-      "/assets/products-bc/cadeira-ergonomica/cadeira-angle-back.png",
-      "/assets/products-bc/cadeira-ergonomica/cadeira-seat-detail.png",
-      "/assets/products-bc/cadeira-ergonomica/cadeira-dims.png",
+      `${CAD}cadeira-main.png`,
+      `${CAD}cadeira-front.png`,
+      `${CAD}cadeira-angle-front.png`,
+      `${CAD}cadeira-side.png`,
+      `${CAD}cadeira-back.png`,
+      `${CAD}cadeira-angle-back.png`,
+      `${CAD}cadeira-seat-detail.png`,
+      `${CAD}cadeira-dims.png`,
     ],
+
 
     tag: "85% OFF",
     description:

@@ -103,10 +103,11 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
     total: 1245,
     avg: 4.9,
     reviews: [
-      { name: "Guilherme Siqueira", date: "Ago 2026", rating: 5, text: "Simplesmente a melhor cadeira que já tive. O suporte lombar realmente funciona e o braço articulado é ótimo pra guardar a cadeira embaixo da mesa. A malha mesh é bem fresca.", image: "/assets/products-bc/cadeira-ergonomica/cadeira-main.png" },
-      { name: "Letícia Fernandes", date: "Jul 2026", rating: 5, text: "A montagem foi super tranquila, levei 15 minutos. A combinação de cinza com branco é linda e deixou meu setup muito clean. O assento é bem macio mas firme o suficiente.", image: "/assets/products-bc/cadeira-ergonomica/cadeira-seat-detail.png" },
-      { name: "Carlos Eduardo", date: "Jul 2026", rating: 5, text: "Trabalho 10 horas por dia sentado e minhas dores nas costas diminuíram muito. O encosto de cabeça ajustável faz toda a diferença pra relaxar entre as reuniões.", image: "/assets/products-bc/cadeira-ergonomica/cadeira-side.png" },
-      { name: "Amanda Castro", date: "Jun 2026", rating: 5, text: "Estava com medo de ser frágil por ser branca, mas o material é muito fácil de limpar. O design ergonômico é nota 10, encaixa perfeitamente no corpo.", image: "/assets/products-bc/cadeira-ergonomica/cadeira-angle-front.png" },
+      { name: "Guilherme Siqueira", date: "Ago 2026", rating: 5, text: "Simplesmente a melhor cadeira que já tive. O suporte lombar realmente funciona e o braço articulado é ótimo pra guardar a cadeira embaixo da mesa. A malha mesh é bem fresca.", image: `${CADF}cadeira-main.png` },
+      { name: "Letícia Fernandes", date: "Jul 2026", rating: 5, text: "A montagem foi super tranquila, levei 15 minutos. A combinação de cinza com branco é linda e deixou meu setup muito clean. O assento é bem macio mas firme o suficiente.", image: `${CADF}cadeira-seat-detail.png` },
+      { name: "Carlos Eduardo", date: "Jul 2026", rating: 5, text: "Trabalho 10 horas por dia sentado e minhas dores nas costas diminuíram muito. O encosto de cabeça ajustável faz toda a diferença pra relaxar entre as reuniões.", image: `${CADF}cadeira-side.png` },
+      { name: "Amanda Castro", date: "Jun 2026", rating: 5, text: "Estava com medo de ser frágil por ser branca, mas o material é muito fácil de limpar. O design ergonômico é nota 10, encaixa perfeitamente no corpo.", image: `${CADF}cadeira-angle-front.png` },
+
 
       { name: "Rodrigo Melo", date: "Jun 2026", rating: 5, text: "As rodinhas não riscam o piso e são muito silenciosas. O suporte para a lombar acompanha o movimento quando a gente se inclina, achei fantástico." },
       { name: "Fernanda Lima", date: "Mai 2026", rating: 5, text: "Custo-benefício imbatível. Uma cadeira dessa em lojas físicas custa o triplo. Chegou bem antes do prazo e muito bem embalada." },
