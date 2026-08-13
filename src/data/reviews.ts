@@ -124,10 +124,10 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
     total: 824,
     avg: 4.9,
     reviews: [
-      { name: "Sílvia Bernardes", date: "Jul 2026", rating: 5, text: "O visor de vidro é revolucionário! Consigo ver o feijão cozinhando sem ter que ficar tirando a pressão pra conferir se secou a água. A cor grafite é lindíssima e o antiaderente é excelente.", image: `${MTAF}panela-pressao-graphite.png` },
-      { name: "Mariana Costa", date: "Jul 2026", rating: 5, text: "Comprei a cor rosé e é a coisa mais linda da minha cozinha. O visor de vidro é bem resistente, lavei várias vezes e continua transparente. Muito segura com o fechamento externo.", image: `${MTAF}panela-pressao-rose.png` },
-      { name: "Antônio Carlos", date: "Jul 2026", rating: 5, text: "Essa panela facilitou muito o dia a dia. O acabamento é premium, os cabos não esquentam e a pressão pega muito rápido. O visor ajuda a não deixar queimar a comida.", image: `${MTAF}panela-pressao-cream.png` },
-      { name: "Patrícia Lima", date: "Jun 2026", rating: 5, text: "Estava com medo do vidro quebrar, mas é super grosso e resistente. Já fiz carne de panela e sopa, tudo muito rápido. Melhor investimento que fiz para a cozinha este ano.", image: `${MTAF}panela-pressao-info-1.png` },
+      { name: "Sílvia Bernardes", date: "Jul 2026", rating: 5, text: "O visor de vidro é revolucionário! Consigo ver o feijão cozinhando sem ter que ficar tirando a pressão pra conferir se secou a água. A cor grafite é lindíssima e o antiaderente é excelente.", image: `${MTAF}panela-pressao-2.png` },
+      { name: "Mariana Costa", date: "Jul 2026", rating: 5, text: "Comprei a cor rosé e é a coisa mais linda da minha cozinha. O visor de vidro é bem resistente, lavei várias vezes e continua transparente. Muito segura com o fechamento externo.", image: `${MTAF}panela-pressao-3.png` },
+      { name: "Antônio Carlos", date: "Jul 2026", rating: 5, text: "Essa panela facilitou muito o dia a dia. O acabamento é premium, os cabos não esquentam e a pressão pega muito rápido. O visor ajuda a não deixar queimar a comida.", image: `${MTAF}panela-pressao-4.png` },
+      { name: "Patrícia Lima", date: "Jun 2026", rating: 5, text: "Estava com medo do vidro quebrar, mas é super grosso e resistente. Já fiz carne de panela e sopa, tudo muito rápido. Melhor investimento que fiz para a cozinha este ano.", image: `${MTAF}panela-pressao-5.png` },
 
 
       { name: "Fernanda Souza", date: "Jun 2026", rating: 5, text: "O fechamento externo é muito mais prático e higiênico. A panela é robusta e o antiaderente é de ótima qualidade, não gruda nada no fundo." },
