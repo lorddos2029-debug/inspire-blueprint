@@ -148,19 +148,6 @@ export const products: Product[] = [
   },
   {
 
-    id: 28,
-    slug: "kit-2-detergente-lava-loucas-em-po-para-maquina-ype-1kg",
-    name: "Kit 2 Detergente Lava Louças em Pó para Máquina Ypê 1Kg",
-    price: 79.9,
-    originalPrice: 149.9,
-    image: `${YPE}img-1.jpg`,
-    images: [`${YPE}img-1.jpg`],
-    tag: "46% OFF",
-    description:
-      "Kit com 2 potes de 1 Kg cada (2 Kg no total) do Detergente Lava Louças em Pó Ypê 3 em 1 com Secante, desenvolvido exclusivamente para máquinas de lavar louças. A fórmula 3 em 1 reúne detergente desengordurante, secante e controle de odor no mesmo produto — você não precisa comprar o abrilhantador separado. O pó de alta concentração dissolve rápido no ciclo de lavagem, remove gordura pesada de panelas, travessas e talheres e não deixa resíduo esbranquiçado nos copos. O secante integrado acelera a secagem e evita manchas de água nas louças de vidro, enquanto o controle de odor mantém o interior da máquina com cheiro limpo entre um ciclo e outro. Rende mais: com dosagem média de 25 g por lavagem, cada pote entrega cerca de 40 ciclos — os 2 potes do kit somam aproximadamente 80 lavagens. Compatível com máquinas de todas as marcas e capacidades. Embalagem com tampa rosqueável que protege o pó da umidade. Produto Ypê, marca nº 1 na categoria de lava-louças.",
-  },
-  {
-
     id: 27,
     slug: "cobertor-manta-casal-queen-king-flannel-canelado-antialergico-300g",
     name: "Cobertor Manta Casal Queen King Flannel Canelado Antialérgico 300g/m² Grosso Macio Com Barra Inverno Mantinha Quente",
