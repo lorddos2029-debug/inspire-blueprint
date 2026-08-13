@@ -91,6 +91,9 @@ const CLF = "/assets/products-bc/cobre-leito/";
 
 const TRVF = "/assets/products-bc/travesseiro/";
 
+const MTAF = "/assets/products-bc/panela-mta/";
+
+
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
   // 31 — Panela de Pressão MTA 4,5 Litros
   31: {
