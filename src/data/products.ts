@@ -32,6 +32,9 @@ const CL = "/assets/products-bc/cobre-leito/";
 
 const TRV = "/assets/products-bc/travesseiro/";
 
+const MTA = "/assets/products-bc/panela-mta/";
+
+
 
 export const products: Product[] = [
   {
