@@ -58,9 +58,10 @@ export const products: Product[] = [
     description:
       "A Panela de Pressão MTA de 4,5 Litros com visor de vidro temperado e fechamento externo combina tecnologia, segurança e praticidade para sua cozinha. O grande diferencial é o visor de vidro patenteado e aprovado pelo INMETRO, que permite acompanhar o cozimento dos alimentos sem precisar abrir a tampa ou retirar a pressão, garantindo mais controle e agilidade no preparo de feijoadas, sopas, carnes e legumes. Fabricada em alumínio com revestimento antiaderente Superflon de 5 camadas, os alimentos não grudam, facilitando a limpeza e permitindo o uso de menos óleo. Conta com 6 dispositivos de segurança, incluindo válvula reguladora de pressão, pino de alívio e trava no cabo, garantindo tranquilidade total durante o uso. O fechamento externo é mais higiênico e moderno, e os cabos em baquelite antitérmico oferecem manuseio seguro e confortável. Compatível com fogões a gás e elétricos, é a escolha ideal para quem busca eficiência e sofisticação no dia a dia.",
     colorVariants: [
-      { label: "Rosé", colors: ["#b47b7b"], image: `${MTA}panela-pressao-rose.png` },
-      { label: "Grafite", colors: ["#4a4a4a"], image: `${MTA}panela-pressao-graphite.png` },
-      { label: "Creme", colors: ["#f5f5dc"], image: `${MTA}panela-pressao-cream.png` },
+      { label: "Rosé", colors: ["#b47b7b"], image: "https://images.tcdn.com.br/img/img_prod/756819/panela_de_pressao_mta_4_5l_com_visor_antiaderente_fechamento_externo_superflon_mta_varias_cores_2441_2_20240924151240.jpg" },
+      { label: "Grafite", colors: ["#4a4a4a"], image: "https://images.tcdn.com.br/img/img_prod/756819/panela_de_pressao_mta_4_5l_com_visor_antiaderente_fechamento_externo_superflon_mta_varias_cores_2441_3_20240924151240.jpg" },
+      { label: "Creme", colors: ["#f5f5dc"], image: "https://images.tcdn.com.br/img/img_prod/756819/panela_de_pressao_mta_4_5l_com_visor_antiaderente_fechamento_externo_superflon_mta_varias_cores_2441_4_20240924151240.jpg" },
+
     ],
   },
 
