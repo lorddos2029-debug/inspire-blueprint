@@ -97,6 +97,7 @@ const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 
 
+
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
   // 32 — Cadeira de Escritório Presidente Premium
   32: {

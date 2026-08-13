@@ -39,6 +39,7 @@ const CAD = "/assets/products-bc/cadeira-ergonomica/";
 
 
 
+
 export const products: Product[] = [
   {
     id: 32,
