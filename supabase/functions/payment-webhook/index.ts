@@ -312,11 +312,13 @@ serve(async (req) => {
             const stored = (order as any).tracking_parameters && typeof (order as any).tracking_parameters === "object"
               ? (order as any).tracking_parameters as Record<string, string>
               : {};
+            
             const pick = (k: string) => {
-              const val = stored[k] || webhookUtm?.[k];
+              const val = webhookUtm?.[k] || stored[k];
               return (typeof val === "string" && val.trim()) ? val.trim() : null;
             };
-            return {
+
+            const utms: Record<string, any> = {
               src: pick("src"),
               sck: pick("sck"),
               utm_source: pick("utm_source"),
@@ -325,6 +327,21 @@ serve(async (req) => {
               utm_content: pick("utm_content"),
               utm_term: pick("utm_term"),
             };
+
+            // Backfill logic for Webhook context to ensure UTMify receives source
+            if (!utms.utm_source) {
+              const fbclid = pick("fbclid");
+              const gclid = pick("gclid");
+              if (fbclid) utms.utm_source = "facebook";
+              else if (gclid) utms.utm_source = "google";
+            }
+
+            if (utms.utm_source) {
+              if (!utms.utm_medium) utms.utm_medium = "paid";
+              if (!utms.utm_campaign) utms.utm_campaign = "ads_campaign";
+            }
+
+            return utms;
           })(),
           commission: {
             totalPriceInCents: Math.round(Number(order.total) * 100),
