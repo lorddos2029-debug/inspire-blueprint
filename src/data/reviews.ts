@@ -91,16 +91,20 @@ const CLF = "/assets/products-bc/cobre-leito/";
 
 const TRVF = "/assets/products-bc/travesseiro/";
 
+const MTAF = "/assets/products-bc/panela-mta/";
+
+
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
   // 31 — Panela de Pressão MTA 4,5 Litros
   31: {
     total: 824,
     avg: 4.9,
     reviews: [
-      { name: "Sílvia Bernardes", date: "Jul 2026", rating: 5, text: "O visor de vidro é revolucionário! Consigo ver o feijão cozinhando sem ter que ficar tirando a pressão pra conferir se secou a água. A cor grafite é lindíssima e o antiaderente é excelente.", image: "/__l5e/assets-v1/68a9da9c-46b7-47eb-b441-379519a7f5c2/panela-pressao-graphite.png" },
-      { name: "Mariana Costa", date: "Jul 2026", rating: 5, text: "Comprei a cor rosé e é a coisa mais linda da minha cozinha. O visor de vidro é bem resistente, lavei várias vezes e continua transparente. Muito segura com o fechamento externo.", image: "/__l5e/assets-v1/ad13c91f-52cb-4fa7-970e-b3976127fbfc/panela-pressao-rose.png" },
-      { name: "Antônio Carlos", date: "Jul 2026", rating: 5, text: "Essa panela facilitou muito o dia a dia. O acabamento é premium, os cabos não esquentam e a pressão pega muito rápido. O visor ajuda a não deixar queimar a comida.", image: "/__l5e/assets-v1/252e47ce-46c8-45ea-b506-495f16447e96/panela-pressao-cream.png" },
-      { name: "Patrícia Lima", date: "Jun 2026", rating: 5, text: "Estava com medo do vidro quebrar, mas é super grosso e resistente. Já fiz carne de panela e sopa, tudo muito rápido. Melhor investimento que fiz para a cozinha este ano.", image: "/__l5e/assets-v1/34fc0755-8746-4ef3-9d2a-951735162849/panela-pressao-colors.png" },
+      { name: "Sílvia Bernardes", date: "Jul 2026", rating: 5, text: "O visor de vidro é revolucionário! Consigo ver o feijão cozinhando sem ter que ficar tirando a pressão pra conferir se secou a água. A cor grafite é lindíssima e o antiaderente é excelente.", image: "https://images.tcdn.com.br/img/img_prod/756819/panela_de_pressao_mta_4_5l_com_visor_antiaderente_fechamento_externo_superflon_mta_varias_cores_2441_3_20240924151240.jpg" },
+      { name: "Mariana Costa", date: "Jul 2026", rating: 5, text: "Comprei a cor rosé e é a coisa mais linda da minha cozinha. O visor de vidro é bem resistente, lavei várias vezes e continua transparente. Muito segura com o fechamento externo.", image: "https://images.tcdn.com.br/img/img_prod/756819/panela_de_pressao_mta_4_5l_com_visor_antiaderente_fechamento_externo_superflon_mta_varias_cores_2441_2_20240924151240.jpg" },
+      { name: "Antônio Carlos", date: "Jul 2026", rating: 5, text: "Essa panela facilitou muito o dia a dia. O acabamento é premium, os cabos não esquentam e a pressão pega muito rápido. O visor ajuda a não deixar queimar a comida.", image: "https://images.tcdn.com.br/img/img_prod/756819/panela_de_pressao_mta_4_5l_com_visor_antiaderente_fechamento_externo_superflon_mta_varias_cores_2441_4_20240924151240.jpg" },
+      { name: "Patrícia Lima", date: "Jun 2026", rating: 5, text: "Estava com medo do vidro quebrar, mas é super grosso e resistente. Já fiz carne de panela e sopa, tudo muito rápido. Melhor investimento que fiz para a cozinha este ano.", image: "https://images.tcdn.com.br/img/img_prod/756819/panela_de_pressao_mta_4_5l_com_visor_antiaderente_fechamento_externo_superflon_mta_varias_cores_2441_1_20240924151240.jpg" },
+
       { name: "Fernanda Souza", date: "Jun 2026", rating: 5, text: "O fechamento externo é muito mais prático e higiênico. A panela é robusta e o antiaderente é de ótima qualidade, não gruda nada no fundo." },
       { name: "Ricardo Oliveira", date: "Jun 2026", rating: 5, text: "A entrega foi super rápida. A panela vem bem embalada e com manual explicando tudo sobre o visor. Funciona perfeitamente no meu fogão a gás." },
       { name: "Carla Meirelles", date: "Mai 2026", rating: 5, text: "O visor de vidro temperado é a melhor invenção. Dá uma segurança enorme poder ver o que está acontecendo lá dentro. Comprei o kit completo de panelas e essa foi o destaque." },
@@ -109,6 +113,7 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Luciana Alves", date: "Abr 2026", rating: 5, text: "Acabamento nota 10. A cor creme é muito elegante. Recomendo pra quem quer uma panela de pressão moderna e segura." },
     ],
   },
+
 
   // 30 — Travesseiro Ortopédico Borboleta Cervical
   30: {
