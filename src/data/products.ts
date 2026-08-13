@@ -34,9 +34,37 @@ const TRV = "/assets/products-bc/travesseiro/";
 
 const MTA = "/assets/products-bc/panela-mta/";
 
+const CAD = "/assets/products-bc/cadeira-ergonomica/";
+
+
 
 
 export const products: Product[] = [
+  {
+    id: 32,
+    slug: "cadeira-escritorio-suporte-lombar-ergonomico-mesh-presidente-premium",
+    name: "Cadeira de Escritório Suporte Lombar Ergonômico Malha Respirável Mesh Apoio Cabeça Confortável Art Cadeiras Presidente Premium (Cinza e Branco)",
+    price: 127.9,
+    originalPrice: 899.9,
+    image: `${CAD}cadeira-main.png`,
+    hoverImage: `${CAD}cadeira-angle-front.png`,
+    images: [
+      `${CAD}cadeira-main.png`,
+      `${CAD}cadeira-front.png`,
+      `${CAD}cadeira-angle-front.png`,
+      `${CAD}cadeira-side.png`,
+      `${CAD}cadeira-back.png`,
+      `${CAD}cadeira-angle-back.png`,
+      `${CAD}cadeira-seat-detail.png`,
+      `${CAD}cadeira-dims.png`,
+    ],
+
+
+    tag: "85% OFF",
+    description:
+      "Cadeira de Escritório Presidente Premium com foco total em ergonomia e saúde postural. Projetada com Suporte Lombar 3D dinâmico que se ajusta automaticamente ao movimento das suas costas, aliviando a pressão na coluna durante longas horas de trabalho ou estudo. O revestimento em Malha Mesh Respirável de alta densidade promove a circulação de ar, evitando o acúmulo de calor e suor. Possui Apoio de Cabeça com ajuste de altura e ângulo, braços articulados que permitem aproximar a cadeira da mesa com facilidade, e assento com espuma de memória revestida em tecido tecnológico que não deforma. A base reforçada em nylon branco com rodízios anti-ruído garante estabilidade e suavidade no deslocamento. O design minimalista em Cinza e Branco traz sofisticação moderna para qualquer ambiente de home office ou escritório corporativo. Funções completas de ajuste de altura por pistão a gás classe 4 e sistema relax com trava.",
+  },
+
   {
     id: 31,
     slug: "panela-de-pressao-mta-4-5-litros-antiaderente-com-visor-de-vidro",

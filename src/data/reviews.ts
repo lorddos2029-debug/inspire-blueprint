@@ -93,8 +93,31 @@ const TRVF = "/assets/products-bc/travesseiro/";
 
 const MTAF = "/assets/products-bc/panela-mta/";
 
+const CADF = "/assets/products-bc/cadeira-ergonomica/";
+
+
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
+  // 32 — Cadeira de Escritório Presidente Premium
+  32: {
+    total: 1245,
+    avg: 4.9,
+    reviews: [
+      { name: "Guilherme Siqueira", date: "Ago 2026", rating: 5, text: "Simplesmente a melhor cadeira que já tive. O suporte lombar realmente funciona e o braço articulado é ótimo pra guardar a cadeira embaixo da mesa. A malha mesh é bem fresca.", image: `${CADF}cadeira-main.png` },
+      { name: "Letícia Fernandes", date: "Jul 2026", rating: 5, text: "A montagem foi super tranquila, levei 15 minutos. A combinação de cinza com branco é linda e deixou meu setup muito clean. O assento é bem macio mas firme o suficiente.", image: `${CADF}cadeira-seat-detail.png` },
+      { name: "Carlos Eduardo", date: "Jul 2026", rating: 5, text: "Trabalho 10 horas por dia sentado e minhas dores nas costas diminuíram muito. O encosto de cabeça ajustável faz toda a diferença pra relaxar entre as reuniões.", image: `${CADF}cadeira-side.png` },
+      { name: "Amanda Castro", date: "Jun 2026", rating: 5, text: "Estava com medo de ser frágil por ser branca, mas o material é muito fácil de limpar. O design ergonômico é nota 10, encaixa perfeitamente no corpo.", image: `${CADF}cadeira-angle-front.png` },
+
+
+      { name: "Rodrigo Melo", date: "Jun 2026", rating: 5, text: "As rodinhas não riscam o piso e são muito silenciosas. O suporte para a lombar acompanha o movimento quando a gente se inclina, achei fantástico." },
+      { name: "Fernanda Lima", date: "Mai 2026", rating: 5, text: "Custo-benefício imbatível. Uma cadeira dessa em lojas físicas custa o triplo. Chegou bem antes do prazo e muito bem embalada." },
+      { name: "Pedro Henrique", date: "Mai 2026", rating: 5, text: "O suporte de cabeça é o diferencial. Consigo ajustar exatamente na altura da minha nuca. A malha mesh parece ser bem durável, não afrouxou nada." },
+      { name: "Mariana Costa", date: "Abr 2026", rating: 4, text: "Cadeira excelente. Só achei o ajuste de altura um pouco duro no começo, mas depois de usar uns dias ficou normal. Muito confortável." },
+      { name: "Roberto Santos", date: "Abr 2026", rating: 5, text: "Design moderno e ergonômico. O apoio de braço tem um toque macio muito gostoso. Recomendo pra quem quer conforto de verdade." },
+      { name: "Beatriz Nogueira", date: "Mar 2026", rating: 5, text: "Melhor investimento pro meu home office. Acordo no outro dia sem aquela rigidez no pescoço. Nota máxima!" },
+    ],
+  },
+
   // 31 — Panela de Pressão MTA 4,5 Litros
   31: {
     total: 824,
