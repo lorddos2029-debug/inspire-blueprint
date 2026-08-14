@@ -93,6 +93,7 @@ export const captureUtmParams = () => {
 export const getStoredUtmParams = (): UtmRecord => {
   const stored = { ...readStoredParams() };
 
+  // Priorizar click IDs para backfill
   if (!stored.utm_source) {
     if (stored.fbclid) stored.utm_source = "facebook";
     else if (stored.gclid) stored.utm_source = "google";
@@ -100,11 +101,24 @@ export const getStoredUtmParams = (): UtmRecord => {
     else if (stored.kwai_click_id) stored.utm_source = "kwai";
   }
 
-  // Se ainda estiver vazio, não forçamos 'paid'/'google_ads' para evitar "UTMs vazias" em validações estritas
-  // que esperam parâmetros reais de campanha. A UTMify prefere valores reais.
+  // Se ainda estiver vazio, verificamos se veio de alguma origem conhecida via referer ou se é tráfego direto/orgânico
+  if (!stored.utm_source) {
+    const referrer = document.referrer.toLowerCase();
+    if (referrer.includes("facebook.com") || referrer.includes("fb.me")) stored.utm_source = "facebook";
+    else if (referrer.includes("google.com")) stored.utm_source = "google";
+    else if (referrer.includes("tiktok.com")) stored.utm_source = "tiktok";
+    else if (referrer.includes("instagram.com")) stored.utm_source = "instagram";
+  }
+
+  // Fallback final para evitar "Outra Fonte" na UTMify
   if (stored.utm_source) {
     if (!stored.utm_medium) stored.utm_medium = "paid";
     if (!stored.utm_campaign) stored.utm_campaign = "ads_campaign";
+  } else {
+    // Se não conseguimos identificar nada, marcamos como tráfego direto para que a UTMify processe
+    stored.utm_source = "direct";
+    stored.utm_medium = "none";
+    stored.utm_campaign = "organic";
   }
 
   return stored;

@@ -332,13 +332,23 @@ serve(async (req) => {
             if (!utms.utm_source) {
               const fbclid = pick("fbclid");
               const gclid = pick("gclid");
+              const ttclid = pick("ttclid");
+              const kwai_click_id = pick("kwai_click_id");
+              
               if (fbclid) utms.utm_source = "facebook";
               else if (gclid) utms.utm_source = "google";
+              else if (ttclid) utms.utm_source = "tiktok";
+              else if (kwai_click_id) utms.utm_source = "kwai";
             }
 
             if (utms.utm_source) {
               if (!utms.utm_medium) utms.utm_medium = "paid";
               if (!utms.utm_campaign) utms.utm_campaign = "ads_campaign";
+            } else {
+              // Fallback final para evitar "Outra Fonte" no webhook
+              utms.utm_source = "direct";
+              utms.utm_medium = "none";
+              utms.utm_campaign = "organic";
             }
 
             return utms;

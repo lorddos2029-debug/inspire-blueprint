@@ -358,17 +358,35 @@ export const LunaCheckout = () => {
   useEffect(() => {
     if (icFiredRef.current || items.length === 0) return;
     icFiredRef.current = true;
+    
     const icData = {
-      value: totalPrice, currency: "BRL", num_items: items.length,
-      content_ids: items.map((i) => String(i.id)), content_type: "product",
+      value: totalPrice,
+      currency: "BRL",
+      num_items: items.length,
+      content_ids: items.map((i) => String(i.id)),
+      content_type: "product",
     };
-    if (typeof window !== "undefined" && (window as any).fbq) (window as any).fbq("track", "InitiateCheckout", icData);
-    if (typeof window !== "undefined" && (window as any).utmify) {
-      try { (window as any).utmify("track", "InitiateCheckout", { value: totalPrice, currency: "BRL" }); } catch {}
+
+    // 1. Pixel do Facebook (Browser)
+    if (typeof window !== "undefined" && (window as any).fbq) {
+      (window as any).fbq("track", "InitiateCheckout", icData);
     }
+
+    // 2. UTMify (Browser)
+    if (typeof window !== "undefined" && (window as any).utmify) {
+      try {
+        (window as any).utmify("track", "InitiateCheckout", {
+          value: totalPrice,
+          currency: "BRL"
+        });
+      } catch (e) {
+        console.warn("UTMify IC track error:", e);
+      }
+    }
+
+    // 3. Facebook CAPI (Server)
     fireServerEvent("InitiateCheckout", icData);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items.length]);
+  }, [items.length, totalPrice]);
 
   // Polling do PIX
   useEffect(() => {
