@@ -59,6 +59,7 @@ export const products: Product[] = [
     description:
       "A solução definitiva para limpezas pesadas e delicadas. Esta escova elétrica 9 em 1 é totalmente retrátil, com cabo extensível de aço inoxidável que permite alcançar cantos altos, teto e azulejos sem esforço. Equipada com bateria de 3000mAh e carregamento USB-C, oferece autonomia para limpar banheiro, cozinha, janelas e até o carro. Acompanha 9 tipos de cerdas e esponjas para diferentes superfícies.",
   },
+  {
     id: 32,
     slug: "cadeira-escritorio-suporte-lombar-ergonomico-mesh-presidente-premium",
     name: "Cadeira de Escritório Suporte Lombar Ergonômico Malha Respirável Mesh Apoio Cabeça Confortável Art Cadeiras Presidente Premium (Cinza e Branco)",
