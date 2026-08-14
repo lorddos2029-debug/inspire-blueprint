@@ -42,6 +42,23 @@ const CAD = "/assets/products-bc/cadeira-ergonomica/";
 
 export const products: Product[] = [
   {
+    id: 33,
+    slug: "escova-de-limpeza-eletrica-multifuncional-9-em-1-retratil",
+    name: "Escova de limpeza elétrica multifuncional 9 em 1",
+    price: 59.9,
+    originalPrice: 129,
+    image: "/assets/products-bc/escova-limpeza-9em1/escova-1.png.asset.json",
+    images: [
+      "/assets/products-bc/escova-limpeza-9em1/escova-1.png.asset.json",
+      "/assets/products-bc/escova-limpeza-9em1/escova-2.png.asset.json",
+      "/assets/products-bc/escova-limpeza-9em1/escova-3.png.asset.json",
+      "/assets/products-bc/escova-limpeza-9em1/escova-4.png.asset.json",
+      "/assets/products-bc/escova-limpeza-9em1/escova-7.png.asset.json",
+    ],
+    tag: "54% OFF",
+    description:
+      "A solução definitiva para limpezas pesadas e delicadas. Esta escova elétrica 9 em 1 é totalmente retrátil, com cabo extensível de aço inoxidável que permite alcançar cantos altos, teto e azulejos sem esforço. Equipada com bateria de 3000mAh e carregamento USB-C, oferece autonomia para limpar banheiro, cozinha, janelas e até o carro. Acompanha 9 tipos de cerdas e esponjas para diferentes superfícies.",
+  },
     id: 32,
     slug: "cadeira-escritorio-suporte-lombar-ergonomico-mesh-presidente-premium",
     name: "Cadeira de Escritório Suporte Lombar Ergonômico Malha Respirável Mesh Apoio Cabeça Confortável Art Cadeiras Presidente Premium (Cinza e Branco)",
@@ -491,21 +508,15 @@ export const products: Product[] = [
       "Kit esfregão mop com balde de 10,5 litros, cesto centrifugador em inox, cabo de 140cm e 2 refis de microfibra.",
   },
   {
-    id: 33,
-    slug: "escova-de-limpeza-eletrica-multifuncional-9-em-1-retratil",
-    name: "Escova de limpeza elétrica multifuncional 9 em 1",
-    price: 59.9,
-    originalPrice: 129,
-    image: "/assets/products-bc/escova-limpeza-9em1/escova-1.png.asset.json",
-    images: [
-      "/assets/products-bc/escova-limpeza-9em1/escova-1.png.asset.json",
-      "/assets/products-bc/escova-limpeza-9em1/escova-2.png.asset.json",
-      "/assets/products-bc/escova-limpeza-9em1/escova-3.png.asset.json",
-      "/assets/products-bc/escova-limpeza-9em1/escova-4.png.asset.json",
-      "/assets/products-bc/escova-limpeza-9em1/escova-7.png.asset.json",
-    ],
-    tag: "54% OFF",
+    id: 115,
+    slug: "esfregao-mop-inox-balde-10-litros-e-refil-microfibra",
+    name: "Esfregão Mop Inox Balde 10,5 litros e 2 Refil Microfibra Cabo 140 cm",
+    price: 89.9,
+    originalPrice: 139,
+    image: `${CP}mopinox-1.webp`,
+    images: [`${CP}mopinox-1.webp`],
+    tag: "35% OFF",
     description:
-      "A solução definitiva para limpezas pesadas e delicadas. Esta escova elétrica 9 em 1 é totalmente retrátil, com cabo extensível de aço inoxidável que permite alcançar cantos altos, teto e azulejos sem esforço. Equipada com bateria de 3000mAh e carregamento USB-C, oferece autonomia para limpar banheiro, cozinha, janelas e até o carro. Acompanha 9 tipos de cerdas e esponjas para diferentes superfícies.",
+      "Kit esfregão mop com balde de 10,5 litros, cesto centrifugador em inox, cabo de 140cm e 2 refis de microfibra.",
   },
 ];
