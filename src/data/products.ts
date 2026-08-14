@@ -508,16 +508,4 @@ export const products: Product[] = [
     description:
       "Kit esfregão mop com balde de 10,5 litros, cesto centrifugador em inox, cabo de 140cm e 2 refis de microfibra.",
   },
-  {
-    id: 115,
-    slug: "esfregao-mop-inox-balde-10-litros-e-refil-microfibra",
-    name: "Esfregão Mop Inox Balde 10,5 litros e 2 Refil Microfibra Cabo 140 cm",
-    price: 89.9,
-    originalPrice: 139,
-    image: `${CP}mopinox-1.webp`,
-    images: [`${CP}mopinox-1.webp`],
-    tag: "35% OFF",
-    description:
-      "Kit esfregão mop com balde de 10,5 litros, cesto centrifugador em inox, cabo de 140cm e 2 refis de microfibra.",
-  },
 ];
