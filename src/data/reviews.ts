@@ -519,6 +519,46 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Juliana Castilho", date: "Abr 2026", rating: 5, text: "Entrega rápida e a GOKOCO é igualzinho às fotos. Rosé com preto é lindo, fica bonito até na bancada do banheiro. Recomendo de olhos fechados." },
     ],
   },
+  // 33 — Escova de Limpeza Elétrica 9 em 1
+  33: {
+    total: 942,
+    avg: 4.9,
+    reviews: [
+      { 
+        name: "Cláudia Silveira", 
+        date: "Ago 2026", 
+        rating: 5, 
+        text: "Fantástica! O cabo extensível é firme e ajuda muito a limpar o teto do banheiro sem precisar de escada. A força da rotação é ótima, removeu o limo dos azulejos em minutos.",
+        image: "/assets/products-bc/escova-limpeza-9em1/escova-4.png.asset.json"
+      },
+      { 
+        name: "Marcelo Dutra", 
+        date: "Ago 2026", 
+        rating: 5, 
+        text: "Uso pra lavar o carro e a cozinha. O carregamento USB-C é rápido e a bateria dura bastante, fiz a limpeza pesada da área externa e ainda sobrou carga. Os acessórios são fáceis de trocar.",
+        image: "/assets/products-bc/escova-limpeza-9em1/escova-6.png.asset.json"
+      },
+      { 
+        name: "Elaine Barros", 
+        date: "Jul 2026", 
+        rating: 5, 
+        text: "Chegou super rápido. Testei no sofá com a ponteira de esponja macia e ficou novo. O fato de ser retrátil facilita muito na hora de guardar no armário. Recomendo demais!",
+        image: "/assets/products-bc/escova-limpeza-9em1/escova-7.png.asset.json"
+      },
+      { 
+        name: "Rodrigo Santos", 
+        date: "Jul 2026", 
+        rating: 5, 
+        text: "Muito prática. O visor de bateria ajuda a não ser pego de surpresa. O motor é potente e não trava mesmo fazendo pressão contra a superfície. Melhor compra do mês."
+      },
+      { 
+        name: "Patrícia Nunes", 
+        date: "Jun 2026", 
+        rating: 5, 
+        text: "Minhas costas agradecem! Limpar o box do banheiro era um martírio, agora faço tudo em pé sem me curvar. As 9 ponteiras cobrem absolutamente todas as necessidades da casa."
+      }
+    ],
+  },
 };
 
 
