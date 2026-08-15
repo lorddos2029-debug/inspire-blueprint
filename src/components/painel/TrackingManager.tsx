@@ -284,8 +284,32 @@ export default function TrackingManager() {
     { id: "all", label: "Tudo" },
   ];
 
+  const handleProcessBacklog = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke("process-tracking-backlog");
+      if (error) throw error;
+      toast.success(`Backlog processado: ${data.updated} pedidos atualizados.`);
+      load();
+    } catch (error: any) {
+      toast.error("Erro ao processar backlog: " + error.message);
+    }
+  };
+
   return (
     <div className="space-y-4">
+      <div className="flex justify-end">
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={handleProcessBacklog}
+          className="gap-2 border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100 dark:bg-amber-950/20 dark:border-amber-900/50"
+        >
+          <Clock className="w-4 h-4" />
+          Processar Backlog (35+ dias)
+        </Button>
+      </div>
+
+
       {/* Filtro de data */}
       <div className="rounded-xl border border-border bg-card p-3 flex items-center gap-2 flex-wrap">
         <CalendarIcon className="w-4 h-4 text-muted-foreground" />
