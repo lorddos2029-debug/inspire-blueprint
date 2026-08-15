@@ -155,7 +155,25 @@ serve(async (req) => {
       });
     }
 
-    // 0a. Enviar pedido para PósVenda Pro (rastreio + SMS automático)
+    // Configurar fluxo automático de rastreio (avanço automático)
+    try {
+      const now = new Date();
+      // Preparando pedido em 2 horas
+      const nextStatusAt = new Date(now.getTime() + 2 * 60 * 60 * 1000).toISOString();
+      
+      await supabase
+        .from("orders")
+        .update({
+          auto_advance_enabled: true,
+          auto_next_status: "preparando_pedido",
+          auto_next_at: nextStatusAt
+        })
+        .eq("id", order.id);
+      console.log(`Auto-advance initialized for order ${order.id}`);
+    } catch (autoErr) {
+      console.warn("Auto-advance setup failed:", autoErr);
+    }
+
     try {
       const POSVENDA_TOKEN = "RAIO-99BF99";
       const items = (order.items as any[]) || [];
