@@ -17,37 +17,37 @@ serve(async (req) => {
     const now = new Date();
     const thirtyFiveDaysAgo = new Date(now.getTime() - 35 * 24 * 60 * 60 * 1000).toISOString();
 
-    console.log(`Processing backlog: orders older than ${thirtyFiveDaysAgo}`);
-
     // 1. Identificar pedidos PAGO de 35+ dias com status inicial e auto-avanço habilitado
-    // que não avançaram por algum motivo.
     const { data: backlog, error: fetchError } = await supabase
       .from("orders")
-      .select("id, tracking_status, auto_advance_enabled")
+      .select("id, tracking_status")
       .eq("payment_status", "paid")
       .or("tracking_status.eq.pagamento_aprovado,tracking_status.eq.pedido_recebido,tracking_status.eq.em_separacao")
       .lt("created_at", thirtyFiveDaysAgo)
-      .limit(200);
-
+      .limit(100);
 
     if (fetchError) throw fetchError;
 
     let updated = 0;
     for (const order of backlog || []) {
+      // Usar status_history ou outro campo para forçar o update se o RLS estiver bloqueando
+      // Mas aqui vamos tentar o update direto novamente com o SERVICE_ROLE_KEY (que ignora RLS)
       const nextFlow = { next: "pedido_enviado", delayHours: 1 };
       const nextAt = new Date(now.getTime() + nextFlow.delayHours * 60 * 60 * 1000).toISOString();
       
-      const { error: updError } = await supabase.rpc('update_order_tracking_backlog', {
-        p_order_id: order.id,
-        p_next_status: nextFlow.next,
-        p_next_at: nextAt
-      });
+      const { error: updError } = await supabase
+        .from("orders")
+        .update({
+          tracking_status: "preparando_pedido",
+          auto_next_status: nextFlow.next,
+          auto_next_at: nextAt,
+          auto_advance_enabled: true
+        })
+        .eq("id", order.id);
 
       if (!updError) updated++;
-      else console.error(`RPC error for ${order.id}:`, updError);
+      else console.error(`Error for ${order.id}:`, updError.message);
     }
-
-
 
     return new Response(JSON.stringify({ success: true, processed: backlog?.length || 0, updated }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
