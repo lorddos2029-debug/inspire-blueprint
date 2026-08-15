@@ -20,21 +20,14 @@ export interface Product {
 }
 
 
-const BC = "/assets/products-bc/";
-
-const ESC = "/assets/products-bc/escova-ions/";
-
-const COB = "/assets/products-bc/cobertor-flannel/";
-
-const YPE = "/assets/products-bc/ype/";
-
-const CL = "/assets/products-bc/cobre-leito/";
-
-const TRV = "/assets/products-bc/travesseiro/";
-
-const MTA = "/assets/products-bc/panela-mta/";
-
-const CAD = "/assets/products-bc/cadeira-ergonomica/";
+const BC = "/src/assets/products-bc/";
+const ESC = "/src/assets/products-bc/escova-ions/";
+const COB = "/src/assets/products-bc/cobertor-flannel/";
+const YPE = "/src/assets/products-bc/ype/";
+const CL = "/src/assets/products-bc/cobre-leito/";
+const TRV = "/src/assets/products-bc/travesseiro/";
+const MTA = "/src/assets/products-bc/panela-mta/";
+const CAD = "/src/assets/products-bc/cadeira-ergonomica/";
 
 
 
