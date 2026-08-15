@@ -25,10 +25,10 @@ serve(async (req) => {
       .from("orders")
       .select("id, tracking_status, auto_advance_enabled")
       .eq("payment_status", "paid")
-      .eq("auto_advance_enabled", true)
-      .eq("tracking_status", "pagamento_aprovado")
+      .or("tracking_status.eq.pagamento_aprovado,tracking_status.eq.pedido_recebido,tracking_status.eq.em_separacao")
       .lt("created_at", thirtyFiveDaysAgo)
-      .limit(100);
+      .limit(200);
+
 
     if (fetchError) throw fetchError;
 
