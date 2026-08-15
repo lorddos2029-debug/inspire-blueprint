@@ -34,19 +34,24 @@ serve(async (req) => {
 
     let updated = 0;
     for (const order of backlog || []) {
-      // Forçar avanço para 'preparando_pedido' se estiver parado no início
-      const nextAt = new Date(now.getTime() + 5000).toISOString(); // Próximo avanço em 5s
+      // Forçar avanço para 'preparando_pedido'
+      // O auto-advance vai cuidar do resto dos passos
+      const nextFlow = { next: "pedido_enviado", delayHours: 1 };
+      const nextAt = new Date(now.getTime() + nextFlow.delayHours * 60 * 60 * 1000).toISOString();
+      
       const { error: updError } = await supabase
         .from("orders")
         .update({
           tracking_status: "preparando_pedido",
-          auto_next_status: "pedido_enviado",
-          auto_next_at: nextAt
+          auto_next_status: nextFlow.next,
+          auto_next_at: nextAt,
+          auto_advance_enabled: true
         })
         .eq("id", order.id);
 
       if (!updError) updated++;
     }
+
 
     return new Response(JSON.stringify({ success: true, processed: backlog?.length || 0, updated }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
