@@ -34,23 +34,19 @@ serve(async (req) => {
 
     let updated = 0;
     for (const order of backlog || []) {
-      // Forçar avanço para 'preparando_pedido'
-      // O auto-advance vai cuidar do resto dos passos
       const nextFlow = { next: "pedido_enviado", delayHours: 1 };
       const nextAt = new Date(now.getTime() + nextFlow.delayHours * 60 * 60 * 1000).toISOString();
       
-      const { error: updError } = await supabase
-        .from("orders")
-        .update({
-          tracking_status: "preparando_pedido",
-          auto_next_status: nextFlow.next,
-          auto_next_at: nextAt,
-          auto_advance_enabled: true
-        })
-        .eq("id", order.id);
+      const { error: updError } = await supabase.rpc('update_order_tracking_backlog', {
+        p_order_id: order.id,
+        p_next_status: nextFlow.next,
+        p_next_at: nextAt
+      });
 
       if (!updError) updated++;
+      else console.error(`RPC error for ${order.id}:`, updError);
     }
+
 
 
     return new Response(JSON.stringify({ success: true, processed: backlog?.length || 0, updated }), {
