@@ -7,10 +7,15 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const STATUS_TO_EMAIL: Record<string, string> = {
-  pedido_enviado: "order-shipped",
-  entregue: "order-delivered",
+const STATUS_FLOW: Record<string, { next: string | null; delayHours: number; emailTemplate: string | null }> = {
+  pagamento_aprovado: { next: "preparando_pedido", delayHours: 2, emailTemplate: "payment-approved" },
+  preparando_pedido: { next: "pedido_enviado", delayHours: 24, emailTemplate: "order-created" },
+  pedido_enviado: { next: "em_transito", delayHours: 48, emailTemplate: "order-shipped" },
+  em_transito: { next: "saiu_para_entrega", delayHours: 72, emailTemplate: null },
+  saiu_para_entrega: { next: "entregue", delayHours: 8, emailTemplate: null },
+  entregue: { next: null, delayHours: 0, emailTemplate: "order-delivered" },
 };
+
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
@@ -42,12 +47,24 @@ Deno.serve(async (req) => {
   const errors: string[] = [];
 
   for (const o of due || []) {
+    const currentStatus = o.tracking_status;
+    const flowConfig = STATUS_FLOW[currentStatus] || STATUS_FLOW[o.auto_next_status || ""];
     const newStatus = o.auto_next_status as string;
+    
+    // Determinar próximo passo após este
+    const nextFlow = STATUS_FLOW[newStatus];
+    const nextStatus = nextFlow?.next || null;
+    const nextAt = nextFlow ? new Date(new Date().getTime() + nextFlow.delayHours * 60 * 60 * 1000).toISOString() : null;
+
     const { error: updErr } = await supabase
       .from("orders")
-      .update({ tracking_status: newStatus })
+      .update({ 
+        tracking_status: newStatus,
+        auto_next_status: nextStatus,
+        auto_next_at: nextAt
+      })
       .eq("id", o.id)
-      .eq("tracking_status", o.tracking_status); // evita corrida
+      .eq("tracking_status", o.tracking_status);
 
     if (updErr) {
       errors.push(`${o.id}: ${updErr.message}`);
@@ -55,14 +72,14 @@ Deno.serve(async (req) => {
     }
     advanced++;
 
-    const tpl = STATUS_TO_EMAIL[newStatus];
+    const tpl = flowConfig?.emailTemplate;
     if (tpl && o.customer_email && o.payment_status === "paid") {
       try {
         await supabase.functions.invoke("send-transactional-email", {
           body: {
             templateName: tpl,
             recipientEmail: o.customer_email,
-            idempotencyKey: `${tpl}-${o.id}`,
+            idempotencyKey: `${tpl}-${o.id}-${newStatus}`,
             templateData: {
               customerName: o.customer_name,
               orderNumber: o.order_number,
