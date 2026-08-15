@@ -83,17 +83,12 @@ const makeBreakdown = (total: number): { stars: number; count: number }[] => {
   ];
 };
 
-const COBF = "/assets/products-bc/cobertor-flannel/";
-
-const YPEF = "/assets/products-bc/ype/";
-
-const CLF = "/assets/products-bc/cobre-leito/";
-
-const TRVF = "/assets/products-bc/travesseiro/";
-
-const MTAF = "/assets/products-bc/panela-mta/";
-
-const CADF = "/assets/products-bc/cadeira-ergonomica/";
+const COBF = "/src/assets/products-bc/cobertor-flannel/";
+const YPEF = "/src/assets/products-bc/ype/";
+const CLF = "/src/assets/products-bc/cobre-leito/";
+const TRVF = "/src/assets/products-bc/travesseiro/";
+const MTAF = "/src/assets/products-bc/panela-mta/";
+const CADF = "/src/assets/products-bc/cadeira-ergonomica/";
 
 import chairRev1 from "@/assets/chair-rev-1.png.asset.json";
 import chairRev2 from "@/assets/chair-rev-2.png.asset.json";
