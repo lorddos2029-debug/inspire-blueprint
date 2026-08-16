@@ -77,32 +77,7 @@ export const products: Product[] = [
       "Cadeira de Escritório Presidente Premium com foco total em ergonomia e saúde postural. Projetada com Suporte Lombar 3D dinâmico que se ajusta automaticamente ao movimento das suas costas, aliviando a pressão na coluna durante longas horas de trabalho ou estudo. O revestimento em Malha Mesh Respirável de alta densidade promove a circulação de ar, evitando o acúmulo de calor e suor. Possui Apoio de Cabeça com ajuste de altura e ângulo, braços articulados que permitem aproximar a cadeira da mesa com facilidade, e assento com espuma de memória revestida em tecido tecnológico que não deforma. A base reforçada em nylon branco com rodízios anti-ruído garante estabilidade e suavidade no deslocamento. O design minimalista em Cinza e Branco traz sofisticação moderna para qualquer ambiente de home office ou escritório corporativo. Funções completas de ajuste de altura por pistão a gás classe 4 e sistema relax com trava.",
   },
 
-  {
-    id: 31,
-    slug: "panela-de-pressao-mta-4-5-litros-antiaderente-com-visor-de-vidro",
-    name: "Panela De Pressão MTA 4,5 Litros Antiaderente Com Visor De Vidro",
-    price: 79.9,
-    originalPrice: 249.9,
-    image: "/assets/products-bc/panela-mta/panela-pressao-colors.png",
-    hoverImage: "/assets/products-bc/panela-mta/panela-pressao-info-1.png",
-    images: [
-      "/assets/products-bc/panela-mta/panela-pressao-colors.png",
-      "/assets/products-bc/panela-mta/panela-pressao-rose.png",
-      "/assets/products-bc/panela-mta/panela-pressao-graphite.png",
-      "/assets/products-bc/panela-mta/panela-pressao-cream.png",
-      "/assets/products-bc/panela-mta/panela-pressao-info-1.png",
-      "/assets/products-bc/panela-mta/panela-pressao-info-2.png",
-    ],
-    tag: "68% OFF",
-    description:
-      "A Panela de Pressão MTA de 4,5 Litros com visor de vidro temperado e fechamento externo combina tecnologia, segurança e praticidade para sua cozinha. O grande diferencial é o visor de vidro patenteado e aprovado pelo INMETRO, que permite acompanhar o cozimento dos alimentos sem precisar abrir a tampa ou retirar a pressão, garantindo mais controle e agilidade no preparo de feijoadas, sopas, carnes e legumes. Fabricada em alumínio com revestimento antiaderente Superflon de 5 camadas, os alimentos não grudam, facilitando a limpeza e permitindo o uso de menos óleo. Conta com 6 dispositivos de segurança, incluindo válvula reguladora de pressão, pino de alívio e trava no cabo, garantindo tranquilidade total durante o uso. O fechamento externo é mais higiênico e moderno, e os cabos em baquelite antitérmico oferecem manuseio seguro e confortável. Compatível com fogões a gás e elétricos, é a escolha ideal para quem busca eficiência e sofisticação no dia a dia.",
-    colorVariants: [
-      { label: "Rosé", colors: ["#b47b7b"], image: "/assets/products-bc/panela-mta/panela-pressao-rose.png" },
-      { label: "Grafite", colors: ["#4a4a4a"], image: "/assets/products-bc/panela-mta/panela-pressao-graphite.png" },
-      { label: "Creme", colors: ["#f5f5dc"], image: "/assets/products-bc/panela-mta/panela-pressao-cream.png" },
-    ],
-
-  },
+  
 
 
   {
