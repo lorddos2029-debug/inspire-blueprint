@@ -10,7 +10,6 @@ import HomeFAQ from "@/components/store/HomeFAQ";
 import Newsletter from "@/components/store/Newsletter";
 import Footer from "@/components/store/Footer";
 import ExitIntentPopup from "@/components/store/ExitIntentPopup";
-import SocialProofToast from "@/components/store/SocialProofToast";
 import { products } from "@/data/products";
 
 const Index = () => {
@@ -56,7 +55,6 @@ const Index = () => {
       <Newsletter />
       <Footer />
       <ExitIntentPopup />
-      <SocialProofToast />
     </div>
   );
 };
