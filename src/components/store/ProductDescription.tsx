@@ -202,6 +202,32 @@ const productHighlights: Record<number, { headline: string; intro: string; detai
     ],
     closing: "Cachos duradouros pela manhã, ondas volumosas à noite — salão em casa todos os dias.",
   },
+  32: {
+    headline: "ERGONOMIA DE ELITE PARA O SEU DIA A DIA",
+    intro: "Cadeira Presidente Premium com foco total em saúde postural. Projetada com suporte lombar 3D e malha mesh respirável de alta densidade, garante conforto térmico e alinhamento da coluna por mais de 8 horas de uso contínuo.",
+    details: [
+      { title: "Suporte Lombar 3D", desc: "Ajuste automático que acompanha o movimento das costas" },
+      { title: "Malha Mesh High-Density", desc: "Circulação de ar total, evita calor e suor" },
+      { title: "Braços Articulados", desc: "Facilita a aproximação da mesa e otimiza o espaço" },
+      { title: "Pistão Classe 4", desc: "Segurança e suavidade no ajuste de altura" },
+      { title: "Apoio de Cabeça 2D", desc: "Ajuste de altura e ângulo para relaxamento cervical" },
+      { title: "Rodízios Anti-ruído", desc: "Deslizamento suave que não risca o piso" },
+    ],
+    closing: "Invista na sua produtividade e saúde com a cadeira que redefine o conceito de sentar bem.",
+  },
+  33: {
+    headline: "A REVOLUÇÃO DA LIMPEZA DOMÉSTICA",
+    intro: "Escova Elétrica Multifuncional 9 em 1 com cabo retrátil. Esqueça o esforço de esfregar: a alta rotação e os 9 acessórios limpam desde azulejos e janelas até o teto sem que você precise se abaixar ou subir em escadas.",
+    details: [
+      { title: "9 Acessórios Inclusos", desc: "Cerdas e esponjas para cada tipo de superfície" },
+      { title: "Cabo Retrátil de Aço", desc: "Alcance até 1,5m: teto, janelas altas e cantos sem esforço" },
+      { title: "Bateria 3000mAh", desc: "Até 90 minutos de limpeza contínua com carregamento USB-C" },
+      { title: "Alta Rotação Power", desc: "Remove manchas difíceis e limo sem precisar esfregar" },
+      { title: "À Prova d'Água IPX7", desc: "Segurança total para limpar banheiros e áreas úmidas" },
+      { title: "Design Ergonômico", desc: "Leve e fácil de manusear por qualquer pessoa" },
+    ],
+    closing: "Limpeza pesada feita em minutos, com a tecnologia que seu lar merece.",
+  },
 };
 
 const ProductDescription = ({ productId }: ProductDescriptionProps) => {
