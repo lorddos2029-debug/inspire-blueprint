@@ -20,14 +20,14 @@ export interface Product {
 }
 
 
-const BC = "/src/assets/products-bc/";
-const ESC = "/src/assets/products-bc/escova-ions/";
-const COB = "/src/assets/products-bc/cobertor-flannel/";
-const YPE = "/src/assets/products-bc/ype/";
-const CL = "/src/assets/products-bc/cobre-leito/";
-const TRV = "/src/assets/products-bc/travesseiro/";
-const MTA = "/src/assets/products-bc/panela-mta/";
-const CAD = "/src/assets/products-bc/cadeira-ergonomica/";
+const BC = "/assets/products-bc/";
+const ESC = "/assets/products-bc/escova-ions/";
+const COB = "/assets/products-bc/cobertor-flannel/";
+const YPE = "/assets/products-bc/ype/";
+const CL = "/assets/products-bc/cobre-leito/";
+const TRV = "/assets/products-bc/travesseiro/";
+const MTA = "/assets/products-bc/panela-mta/";
+const CAD = "/assets/products-bc/cadeira-ergonomica/";
 
 
 
@@ -40,13 +40,13 @@ export const products: Product[] = [
     name: "Escova de limpeza elétrica multifuncional 9 em 1",
     price: 59.9,
     originalPrice: 129,
-    image: "/src/assets/products-bc/escova-limpeza-9em1/escova-1.png.asset.json",
+    image: "/assets/products-bc/escova-limpeza-9em1/escova-1.png.asset.json",
     images: [
-      "/src/assets/products-bc/escova-limpeza-9em1/escova-1.png.asset.json",
-      "/src/assets/products-bc/escova-limpeza-9em1/escova-2.png.asset.json",
-      "/src/assets/products-bc/escova-limpeza-9em1/escova-3.png.asset.json",
-      "/src/assets/products-bc/escova-limpeza-9em1/escova-4.png.asset.json",
-      "/src/assets/products-bc/escova-limpeza-9em1/escova-7.png.asset.json",
+      "/assets/products-bc/escova-limpeza-9em1/escova-1.png.asset.json",
+      "/assets/products-bc/escova-limpeza-9em1/escova-2.png.asset.json",
+      "/assets/products-bc/escova-limpeza-9em1/escova-3.png.asset.json",
+      "/assets/products-bc/escova-limpeza-9em1/escova-4.png.asset.json",
+      "/assets/products-bc/escova-limpeza-9em1/escova-7.png.asset.json",
     ],
     tag: "54% OFF",
     description:
@@ -83,23 +83,23 @@ export const products: Product[] = [
     name: "Panela De Pressão MTA 4,5 Litros Antiaderente Com Visor De Vidro",
     price: 79.9,
     originalPrice: 249.9,
-    image: "/src/assets/products-bc/panela-mta/panela-pressao-colors.png",
-    hoverImage: "/src/assets/products-bc/panela-mta/panela-pressao-info-1.png",
+    image: "/assets/products-bc/panela-mta/panela-pressao-colors.png",
+    hoverImage: "/assets/products-bc/panela-mta/panela-pressao-info-1.png",
     images: [
-      "/src/assets/products-bc/panela-mta/panela-pressao-colors.png",
-      "/src/assets/products-bc/panela-mta/panela-pressao-rose.png",
-      "/src/assets/products-bc/panela-mta/panela-pressao-graphite.png",
-      "/src/assets/products-bc/panela-mta/panela-pressao-cream.png",
-      "/src/assets/products-bc/panela-mta/panela-pressao-info-1.png",
-      "/src/assets/products-bc/panela-mta/panela-pressao-info-2.png",
+      "/assets/products-bc/panela-mta/panela-pressao-colors.png",
+      "/assets/products-bc/panela-mta/panela-pressao-rose.png",
+      "/assets/products-bc/panela-mta/panela-pressao-graphite.png",
+      "/assets/products-bc/panela-mta/panela-pressao-cream.png",
+      "/assets/products-bc/panela-mta/panela-pressao-info-1.png",
+      "/assets/products-bc/panela-mta/panela-pressao-info-2.png",
     ],
     tag: "68% OFF",
     description:
       "A Panela de Pressão MTA de 4,5 Litros com visor de vidro temperado e fechamento externo combina tecnologia, segurança e praticidade para sua cozinha. O grande diferencial é o visor de vidro patenteado e aprovado pelo INMETRO, que permite acompanhar o cozimento dos alimentos sem precisar abrir a tampa ou retirar a pressão, garantindo mais controle e agilidade no preparo de feijoadas, sopas, carnes e legumes. Fabricada em alumínio com revestimento antiaderente Superflon de 5 camadas, os alimentos não grudam, facilitando a limpeza e permitindo o uso de menos óleo. Conta com 6 dispositivos de segurança, incluindo válvula reguladora de pressão, pino de alívio e trava no cabo, garantindo tranquilidade total durante o uso. O fechamento externo é mais higiênico e moderno, e os cabos em baquelite antitérmico oferecem manuseio seguro e confortável. Compatível com fogões a gás e elétricos, é a escolha ideal para quem busca eficiência e sofisticação no dia a dia.",
     colorVariants: [
-      { label: "Rosé", colors: ["#b47b7b"], image: "/src/assets/products-bc/panela-mta/panela-pressao-rose.png" },
-      { label: "Grafite", colors: ["#4a4a4a"], image: "/src/assets/products-bc/panela-mta/panela-pressao-graphite.png" },
-      { label: "Creme", colors: ["#f5f5dc"], image: "/src/assets/products-bc/panela-mta/panela-pressao-cream.png" },
+      { label: "Rosé", colors: ["#b47b7b"], image: "/assets/products-bc/panela-mta/panela-pressao-rose.png" },
+      { label: "Grafite", colors: ["#4a4a4a"], image: "/assets/products-bc/panela-mta/panela-pressao-graphite.png" },
+      { label: "Creme", colors: ["#f5f5dc"], image: "/assets/products-bc/panela-mta/panela-pressao-cream.png" },
     ],
 
   },
