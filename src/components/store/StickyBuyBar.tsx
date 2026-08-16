@@ -32,19 +32,27 @@ const StickyBuyBar = ({ productName, price, pixPrice, onBuy }: StickyBuyBarProps
     >
       <div className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
-          <p className="truncate text-[11px] text-muted-foreground">{productName}</p>
-          <p className="text-base font-bold leading-tight text-foreground">
-            {formatPrice(price)}
-          </p>
-          <p className="text-[11px] font-semibold text-primary">
-            {formatPrice(pixPrice)} no Pix
-          </p>
+          <p className="truncate text-[10px] text-muted-foreground mb-0.5">{productName}</p>
+          <div className="flex items-baseline gap-1.5">
+            <p className="text-lg font-bold leading-none text-foreground">
+              {formatPrice(price)}
+            </p>
+            <p className="text-[10px] text-muted-foreground line-through opacity-70">
+              {formatPrice(price * 1.4)}
+            </p>
+          </div>
+          <div className="flex items-center gap-1 mt-0.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+            <p className="text-[10px] font-bold text-primary uppercase">
+              {formatPrice(pixPrice)} no Pix
+            </p>
+          </div>
         </div>
         <Button
-          className="h-12 shrink-0 px-7 text-sm font-bold uppercase tracking-wider"
+          className="h-[52px] shrink-0 px-8 text-sm font-bold uppercase tracking-[0.1em] rounded-xl shadow-lg shadow-primary/20 active:scale-95 transition-transform"
           onClick={onBuy}
         >
-          Comprar
+          Comprar Agora
         </Button>
       </div>
     </div>
