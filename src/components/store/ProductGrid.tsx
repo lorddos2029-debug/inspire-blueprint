@@ -15,7 +15,7 @@ const ProductGrid = () => {
   const query = searchParams.get("q")?.trim() ?? "";
 
   const visibleProducts = useMemo(() => {
-    if (!query) return products;
+    if (!query) return products.slice(0, 8); // Apenas os 8 primeiros na home para não poluir
     const term = normalize(query);
     return products.filter((product) => normalize(product.name).includes(term));
   }, [query]);
