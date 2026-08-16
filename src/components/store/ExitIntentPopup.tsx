@@ -121,54 +121,59 @@ const ExitIntentPopup = ({ enabled = true }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={(o) => { if (!o) setOpen(false); }}>
-      <DialogContent className="max-w-sm p-0 overflow-hidden border-0 bg-background rounded-2xl">
+      <DialogContent className="max-w-[90vw] md:max-w-md p-0 overflow-hidden border-0 bg-background rounded-3xl shadow-2xl">
         <DialogHeader className="sr-only">
           <DialogTitle>Espere! Cupom exclusivo de 5%</DialogTitle>
         </DialogHeader>
 
-        <div className="relative bg-foreground text-background px-6 pt-8 pb-6 text-center">
+        <div className="relative bg-primary text-primary-foreground px-8 pt-12 pb-8 text-center">
           <button
             onClick={() => setOpen(false)}
-            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition"
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition"
             aria-label="Fechar"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
 
-          <div className="flex justify-center mb-4">
-            <div className="bg-white rounded-xl px-3 py-1.5 inline-flex">
-              <img src={belacasaLogo} alt="BelaCasa" className="h-14 w-auto object-contain" decoding="async" />
+          <div className="flex justify-center mb-6">
+            <div className="bg-white rounded-2xl px-4 py-2 inline-flex shadow-lg transform -rotate-2">
+              <img src={belacasaLogo} alt="BelaCasa" className="h-16 w-auto object-contain" decoding="async" />
             </div>
           </div>
 
-          <h3 className="text-2xl font-bold leading-tight">
-            Espere! Não vá embora
+          <h3 className="font-display text-3xl md:text-4xl font-medium leading-tight mb-3">
+            Não vá embora de mãos vazias!
           </h3>
-          <p className="text-sm opacity-90 mt-2 leading-relaxed">
-            Liberamos um <strong>cupom de 5% OFF</strong> exclusivo pra você fechar seu pedido agora.
+          <p className="text-sm md:text-base opacity-90 leading-relaxed max-w-[280px] mx-auto">
+            Ganhamos sua confiança? Aqui está um <span className="text-[hsl(var(--gold))] font-bold">cupom de 5% OFF</span> extra para você transformar seu lar hoje.
           </p>
         </div>
 
-        <div className="p-6 space-y-4 bg-background">
-          <div className="bg-secondary/50 rounded-xl p-4 text-center">
-            <p className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Seu cupom</p>
-            <p className="text-2xl font-bold text-foreground tracking-[0.2em] mt-1">BELACASA</p>
-            <p className="text-[11px] text-muted-foreground mt-1">5% OFF em todo o carrinho</p>
+        <div className="p-8 space-y-6 bg-background">
+          <div className="bg-secondary/80 rounded-2xl p-6 text-center border-2 border-dashed border-border relative">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-background px-3 py-1 rounded-full text-[10px] font-bold text-primary border border-border">
+              CÓDIGO EXCLUSIVO
+            </div>
+            <p className="text-3xl font-bold text-foreground tracking-[0.3em] font-display">BELACASA</p>
+            <div className="flex items-center justify-center gap-2 mt-2 text-xs text-muted-foreground">
+              <Sparkles className="w-3 h-3 text-[hsl(var(--gold))]" />
+              <span>Válido apenas pelos próximos 15 minutos</span>
+            </div>
           </div>
 
           <Button
             onClick={handleApply}
             disabled={applied}
-            className="w-full h-[60px] text-base font-bold rounded-xl bg-foreground text-background hover:bg-foreground/90 disabled:opacity-70"
+            className="w-full h-[68px] text-lg font-bold rounded-2xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-70"
           >
-            {applied ? "✓ Cupom aplicado!" : "APLICAR DESCONTO"}
+            {applied ? "✓ DESCONTO ATIVADO!" : "QUERO MEU DESCONTO AGORA"}
           </Button>
 
           <button
             onClick={() => setOpen(false)}
-            className="w-full text-center text-[11px] text-muted-foreground underline py-1"
+            className="w-full text-center text-xs text-muted-foreground/60 hover:text-foreground transition-colors py-1"
           >
-            Não, prefiro pagar o preço cheio
+            Continuar sem o desconto
           </button>
         </div>
       </DialogContent>

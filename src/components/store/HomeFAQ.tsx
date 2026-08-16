@@ -8,11 +8,11 @@ import {
 const faqs = [
   {
     q: "Qual o prazo de entrega dos produtos?",
-    a: "Trabalhamos com PAC (frete grátis acima de R$ 199) e SEDEX. O prazo varia conforme a região, geralmente 3 a 8 dias úteis para PAC e 1 a 3 dias úteis para SEDEX após a postagem.",
+    a: "Trabalhamos com PAC (Frete Grátis) e SEDEX. O prazo varia conforme a região, geralmente 2 a 7 dias úteis após a postagem. Todos os pedidos possuem código de rastreamento.",
   },
   {
     q: "Quais formas de pagamento vocês aceitam?",
-    a: "Aceitamos PIX (com 3% de desconto e aprovação imediata) e cartão de crédito em até 12x sem juros. Todas as transações são processadas em ambiente 100% seguro e criptografado.",
+    a: "Aceitamos PIX (com 10% de desconto e aprovação imediata) e cartão de crédito em até 12x sem juros. Nossas transações são processadas via Pagou.ai e PinPay, garantindo segurança total.",
   },
   {
     q: "Como funciona a troca ou devolução?",

@@ -28,10 +28,15 @@ const ProductCard = ({ slug, name, price, originalPrice, image, hoverImage }: Pr
       className="group flex h-full flex-col bg-card rounded-xl overflow-hidden border border-border/60 transition-shadow hover:shadow-[0_16px_40px_-24px_rgba(0,0,0,0.45)]"
     >
       <div className="relative aspect-square overflow-hidden bg-card">
+        {discount > 0 && (
+          <div className="absolute top-3 left-3 z-10 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest shadow-lg">
+            -{discount}%
+          </div>
+        )}
         <img
           src={image}
           alt={name}
-          className={`absolute inset-0 w-full h-full object-contain p-3 transition-opacity duration-500 ${
+          className={`absolute inset-0 w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105 ${
             hoverImage ? "group-hover:opacity-0" : ""
           }`}
           loading="lazy"
@@ -44,7 +49,7 @@ const ProductCard = ({ slug, name, price, originalPrice, image, hoverImage }: Pr
             src={hoverImage}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-contain p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            className="absolute inset-0 w-full h-full object-contain p-4 opacity-0 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"
             loading="lazy"
             decoding="async"
           />
