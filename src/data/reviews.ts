@@ -87,7 +87,6 @@ const COBF = "/assets/products-bc/cobertor-flannel/";
 const YPEF = "/assets/products-bc/ype/";
 const CLF = "/assets/products-bc/cobre-leito/";
 const TRVF = "/assets/products-bc/travesseiro/";
-const MTAF = "/assets/products-bc/panela-mta/";
 const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 

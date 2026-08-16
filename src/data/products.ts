@@ -26,7 +26,6 @@ const COB = "/assets/products-bc/cobertor-flannel/";
 const YPE = "/assets/products-bc/ype/";
 const CL = "/assets/products-bc/cobre-leito/";
 const TRV = "/assets/products-bc/travesseiro/";
-const MTA = "/assets/products-bc/panela-mta/";
 const CAD = "/assets/products-bc/cadeira-ergonomica/";
 
 
