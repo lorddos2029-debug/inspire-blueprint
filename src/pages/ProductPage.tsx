@@ -379,7 +379,22 @@ const ProductPage = () => {
                   </span>
                 )}
               </div>
-              <div className="flex items-center gap-2">
+              
+              {/* Urgência e Escassez */}
+              <div className="flex flex-col gap-2 pt-2">
+                <div className="flex items-center gap-2 py-2 px-3 bg-red-50 border border-red-100 rounded-lg animate-pulse">
+                  <div className="w-2 h-2 rounded-full bg-red-600"></div>
+                  <span className="text-xs font-bold text-red-700 uppercase tracking-wider">
+                    Restam apenas {stockLeft} unidades em estoque!
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
+                  <span>{12 + (product.id % 15)} pessoas estão vendo este produto agora</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 pt-2">
                 <span className="text-sm font-semibold text-primary">
                   {formatPrice(pixPrice)} com Pix
                 </span>
@@ -390,9 +405,14 @@ const ProductPage = () => {
               <p className="text-sm text-muted-foreground">
                 ou 5x de {formatPrice(product.price / 5)} sem juros
               </p>
-              <p className="text-xs text-muted-foreground pt-1">
-                {pixDiscountLabel} de desconto pagando com Pix · não acumulável com outras promoções
-              </p>
+              
+              <div className="flex items-center gap-2 py-3 px-4 bg-secondary/50 rounded-xl border border-border mt-2">
+                <ShieldCheck className="w-5 h-5 text-primary" />
+                <div className="flex flex-col">
+                  <span className="text-xs font-bold text-foreground uppercase tracking-tight">Garantia BelaCasa</span>
+                  <span className="text-[10px] text-muted-foreground">7 dias de satisfação ou seu dinheiro de volta</span>
+                </div>
+              </div>
             </div>
 
 

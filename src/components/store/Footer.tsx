@@ -143,10 +143,30 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-border mt-8 md:mt-12 pt-6 md:pt-8 text-center">
-          <p className="text-xs text-muted-foreground">
-            © 2026 BelaCasa. Todos os direitos reservados. CNPJ: 27.672.847/0001-79
-          </p>
+        <div className="border-t border-border mt-8 md:mt-12 pt-8 md:pt-12">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex flex-col items-center md:items-start gap-4">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Logística e Segurança</p>
+              <div className="flex items-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all">
+                <img src="/assets/security-google.svg" alt="Google Safe Browsing" className="h-8 w-auto" />
+                <img src="/assets/security-100.svg" alt="Site 100% Seguro" className="h-8 w-auto" />
+                <div className="flex items-center gap-2 border border-border px-3 py-1 rounded text-[10px] font-bold text-muted-foreground">
+                  CORREIOS
+                </div>
+                <div className="flex items-center gap-2 border border-border px-3 py-1 rounded text-[10px] font-bold text-muted-foreground">
+                  JADLOG
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-center md:items-end gap-3">
+              <p className="text-xs text-muted-foreground">
+                © 2026 BelaCasa. Todos os direitos reservados.
+              </p>
+              <p className="text-[10px] text-muted-foreground/60 uppercase tracking-widest font-medium">
+                CNPJ: 27.672.847/0001-79
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
