@@ -29,6 +29,7 @@ import {
   ChevronRight,
   ChevronDown,
   Check,
+  ShieldCheck,
 } from "lucide-react";
 
 
