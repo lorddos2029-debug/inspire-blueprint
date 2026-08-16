@@ -1,57 +1,57 @@
-const tomimiReview1 = "/src/assets/products-bc/tomimi-review-1.jpg";
-const tomimiReview2 = "/src/assets/products-bc/tomimi-review-2.jpg";
-const tomimiReview3 = "/src/assets/products-bc/tomimi-review-3.jpg";
-const tomimiReview4 = "/src/assets/products-bc/tomimi-review-4.jpg";
-const tomimiReview5 = "/src/assets/products-bc/tomimi-review-5.jpg";
-const tomimiReview6 = "/src/assets/products-bc/tomimi-review-6.jpg";
-const biancoReview1 = "/src/assets/products-bc/bianco-review-1.jpg";
-const biancoReview2 = "/src/assets/products-bc/bianco-review-2.jpg";
-const biancoReview3 = "/src/assets/products-bc/bianco-review-3.jpg";
-const biancoReview4 = "/src/assets/products-bc/bianco-review-4.jpg";
-const biancoReview5 = "/src/assets/products-bc/bianco-review-5.jpg";
-const biancoReview6 = "/src/assets/products-bc/bianco-review-6.jpg";
-const sherpaReview1 = "/src/assets/products-bc/sherpa-review-1.jpg";
-const sherpaReview2 = "/src/assets/products-bc/sherpa-review-2.jpg";
-const sherpaReview3 = "/src/assets/products-bc/sherpa-review-3.jpg";
-const sherpaReview4 = "/src/assets/products-bc/sherpa-review-4.jpg";
-const sherpaReview5 = "/src/assets/products-bc/sherpa-review-5.jpg";
-const sherpaReview6 = "/src/assets/products-bc/sherpa-review-6.jpg";
-const kit6Review1 = "/src/assets/products-bc/kit6-review-1.jpg";
-const kit6Review2 = "/src/assets/products-bc/kit6-review-2.jpg";
-const kit6Review3 = "/src/assets/products-bc/kit6-review-3.jpg";
-const kit6Review4 = "/src/assets/products-bc/kit6-review-4.jpg";
-const kit6Review5 = "/src/assets/products-bc/kit6-review-5.jpg";
-const kit6Review6 = "/src/assets/products-bc/kit6-review-6.jpg";
-const mondialL99Review1 = "/src/assets/products-bc/mondial-l99-review-1.jpg";
-const mondialL99Review2 = "/src/assets/products-bc/mondial-l99-review-2.jpg";
-const mondialL99Review3 = "/src/assets/products-bc/mondial-l99-review-3.jpg";
-const mondialL99Review4 = "/src/assets/products-bc/mondial-l99-review-4.jpg";
-const mondialL99Review5 = "/src/assets/products-bc/mondial-l99-review-5.jpg";
-const idaliR85 = "/src/assets/products-bc/idali/review-85.png";
-const idaliR86 = "/src/assets/products-bc/idali/review-86.png";
-const idaliR87 = "/src/assets/products-bc/idali/review-87.png";
-const idaliR88 = "/src/assets/products-bc/idali/review-88.png";
-const idaliR89 = "/src/assets/products-bc/idali/review-89.png";
-const idaliR90 = "/src/assets/products-bc/idali/review-90.png";
-const idaliR91 = "/src/assets/products-bc/idali/review-91.png";
-const idaliR92 = "/src/assets/products-bc/idali/review-92.png";
-const ventisolReview1 = "/src/assets/products-bc/ventisol-review-1.png";
-const ventisolReview2 = "/src/assets/products-bc/ventisol-review-2.png";
-const ventisolReview3 = "/src/assets/products-bc/ventisol-review-3.png";
-const ventisolReview4 = "/src/assets/products-bc/ventisol-review-4.png";
-const ventisolReview5 = "/src/assets/products-bc/ventisol-review-5.png";
-const ventisolReview6 = "/src/assets/products-bc/ventisol-review-6.png";
-const escovaReview1 = "/src/assets/products-bc/escova/review-1.png";
-const escovaReview2 = "/src/assets/products-bc/escova/review-2.png";
-const escovaReview3 = "/src/assets/products-bc/escova/review-3.png";
-const escovaReview4 = "/src/assets/products-bc/escova/review-4.png";
-const escovaReview5 = "/src/assets/products-bc/escova/review-5.png";
-const escovaReview6 = "/src/assets/products-bc/escova/review-6.png";
-const escovaIonsReview1 = "/src/assets/products-bc/escova-ions/review-1.png";
-const escovaIonsReview2 = "/src/assets/products-bc/escova-ions/review-2.png";
-const escovaIonsReview3 = "/src/assets/products-bc/escova-ions/review-3.png";
-const escovaIonsReview4 = "/src/assets/products-bc/escova-ions/review-4.png";
-const escovaIonsReview5 = "/src/assets/products-bc/escova-ions/review-5.png";
+const tomimiReview1 = "/assets/products-bc/tomimi-review-1.jpg";
+const tomimiReview2 = "/assets/products-bc/tomimi-review-2.jpg";
+const tomimiReview3 = "/assets/products-bc/tomimi-review-3.jpg";
+const tomimiReview4 = "/assets/products-bc/tomimi-review-4.jpg";
+const tomimiReview5 = "/assets/products-bc/tomimi-review-5.jpg";
+const tomimiReview6 = "/assets/products-bc/tomimi-review-6.jpg";
+const biancoReview1 = "/assets/products-bc/bianco-review-1.jpg";
+const biancoReview2 = "/assets/products-bc/bianco-review-2.jpg";
+const biancoReview3 = "/assets/products-bc/bianco-review-3.jpg";
+const biancoReview4 = "/assets/products-bc/bianco-review-4.jpg";
+const biancoReview5 = "/assets/products-bc/bianco-review-5.jpg";
+const biancoReview6 = "/assets/products-bc/bianco-review-6.jpg";
+const sherpaReview1 = "/assets/products-bc/sherpa-review-1.jpg";
+const sherpaReview2 = "/assets/products-bc/sherpa-review-2.jpg";
+const sherpaReview3 = "/assets/products-bc/sherpa-review-3.jpg";
+const sherpaReview4 = "/assets/products-bc/sherpa-review-4.jpg";
+const sherpaReview5 = "/assets/products-bc/sherpa-review-5.jpg";
+const sherpaReview6 = "/assets/products-bc/sherpa-review-6.jpg";
+const kit6Review1 = "/assets/products-bc/kit6-review-1.jpg";
+const kit6Review2 = "/assets/products-bc/kit6-review-2.jpg";
+const kit6Review3 = "/assets/products-bc/kit6-review-3.jpg";
+const kit6Review4 = "/assets/products-bc/kit6-review-4.jpg";
+const kit6Review5 = "/assets/products-bc/kit6-review-5.jpg";
+const kit6Review6 = "/assets/products-bc/kit6-review-6.jpg";
+const mondialL99Review1 = "/assets/products-bc/mondial-l99-review-1.jpg";
+const mondialL99Review2 = "/assets/products-bc/mondial-l99-review-2.jpg";
+const mondialL99Review3 = "/assets/products-bc/mondial-l99-review-3.jpg";
+const mondialL99Review4 = "/assets/products-bc/mondial-l99-review-4.jpg";
+const mondialL99Review5 = "/assets/products-bc/mondial-l99-review-5.jpg";
+const idaliR85 = "/assets/products-bc/idali/review-85.png";
+const idaliR86 = "/assets/products-bc/idali/review-86.png";
+const idaliR87 = "/assets/products-bc/idali/review-87.png";
+const idaliR88 = "/assets/products-bc/idali/review-88.png";
+const idaliR89 = "/assets/products-bc/idali/review-89.png";
+const idaliR90 = "/assets/products-bc/idali/review-90.png";
+const idaliR91 = "/assets/products-bc/idali/review-91.png";
+const idaliR92 = "/assets/products-bc/idali/review-92.png";
+const ventisolReview1 = "/assets/products-bc/ventisol-review-1.png";
+const ventisolReview2 = "/assets/products-bc/ventisol-review-2.png";
+const ventisolReview3 = "/assets/products-bc/ventisol-review-3.png";
+const ventisolReview4 = "/assets/products-bc/ventisol-review-4.png";
+const ventisolReview5 = "/assets/products-bc/ventisol-review-5.png";
+const ventisolReview6 = "/assets/products-bc/ventisol-review-6.png";
+const escovaReview1 = "/assets/products-bc/escova/review-1.png";
+const escovaReview2 = "/assets/products-bc/escova/review-2.png";
+const escovaReview3 = "/assets/products-bc/escova/review-3.png";
+const escovaReview4 = "/assets/products-bc/escova/review-4.png";
+const escovaReview5 = "/assets/products-bc/escova/review-5.png";
+const escovaReview6 = "/assets/products-bc/escova/review-6.png";
+const escovaIonsReview1 = "/assets/products-bc/escova-ions/review-1.png";
+const escovaIonsReview2 = "/assets/products-bc/escova-ions/review-2.png";
+const escovaIonsReview3 = "/assets/products-bc/escova-ions/review-3.png";
+const escovaIonsReview4 = "/assets/products-bc/escova-ions/review-4.png";
+const escovaIonsReview5 = "/assets/products-bc/escova-ions/review-5.png";
 
 export interface Review {
   name: string;
@@ -83,17 +83,13 @@ const makeBreakdown = (total: number): { stars: number; count: number }[] => {
   ];
 };
 
-const COBF = "/src/assets/products-bc/cobertor-flannel/";
-const YPEF = "/src/assets/products-bc/ype/";
-const CLF = "/src/assets/products-bc/cobre-leito/";
-const TRVF = "/src/assets/products-bc/travesseiro/";
-const MTAF = "/src/assets/products-bc/panela-mta/";
-const CADF = "/src/assets/products-bc/cadeira-ergonomica/";
+const COBF = "/assets/products-bc/cobertor-flannel/";
+const YPEF = "/assets/products-bc/ype/";
+const CLF = "/assets/products-bc/cobre-leito/";
+const TRVF = "/assets/products-bc/travesseiro/";
+const MTAF = "/assets/products-bc/panela-mta/";
+const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
-import chairRev1 from "@/assets/chair-rev-1.png.asset.json";
-import chairRev2 from "@/assets/chair-rev-2.png.asset.json";
-import chairRev3 from "@/assets/chair-rev-3.png.asset.json";
-import chairRev4 from "@/assets/chair-rev-4.png.asset.json";
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
   // 32 — Cadeira de Escritório Presidente Premium
@@ -101,10 +97,10 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
     total: 1245,
     avg: 4.9,
     reviews: [
-      { name: "Guilherme Siqueira", date: "Ago 2026", rating: 5, text: "Simplesmente a melhor cadeira que já tive. O suporte lombar realmente funciona e o braço articulado é ótimo pra guardar a cadeira embaixo da mesa. A malha mesh é bem fresca.", image: chairRev1.url },
-      { name: "Letícia Fernandes", date: "Jul 2026", rating: 5, text: "A montagem foi super tranquila, levei 15 minutos. A combinação de cinza com branco é linda e deixou meu setup muito clean. O assento é bem macio mas firme o suficiente.", image: chairRev2.url },
-      { name: "Carlos Eduardo", date: "Jul 2026", rating: 5, text: "Trabalho 10 horas por dia sentado e minhas dores nas costas diminuíram muito. O encosto de cabeça ajustável faz toda a diferença pra relaxar entre as reuniões.", image: chairRev3.url },
-      { name: "Amanda Castro", date: "Jun 2026", rating: 5, text: "Estava com medo de ser frágil por ser branca, mas o material é muito fácil de limpar. O design ergonômico é nota 10, encaixa perfeitamente no corpo.", image: chairRev4.url },
+      { name: "Guilherme Siqueira", date: "Ago 2026", rating: 5, text: "Simplesmente a melhor cadeira que já tive. O suporte lombar realmente funciona e o braço articulado é ótimo pra guardar a cadeira embaixo da mesa. A malha mesh é bem fresca.", image: "/assets/chair-rev-1.png" },
+      { name: "Letícia Fernandes", date: "Jul 2026", rating: 5, text: "A montagem foi super tranquila, levei 15 minutos. A combinação de cinza com branco é linda e deixou meu setup muito clean. O assento é bem macio mas firme o suficiente.", image: "/assets/chair-rev-2.png" },
+      { name: "Carlos Eduardo", date: "Jul 2026", rating: 5, text: "Trabalho 10 horas por dia sentado e minhas dores nas costas diminuíram muito. O encosto de cabeça ajustável faz toda a diferença pra relaxar entre as reuniões.", image: "/assets/chair-rev-3.png" },
+      { name: "Amanda Castro", date: "Jun 2026", rating: 5, text: "Estava com medo de ser frágil por ser branca, mas o material é muito fácil de limpar. O design ergonômico é nota 10, encaixa perfeitamente no corpo.", image: "/assets/chair-rev-4.png" },
       { name: "Rodrigo Melo", date: "Jun 2026", rating: 5, text: "As rodinhas não riscam o piso e são muito silenciosas. O suporte para a lombar acompanha o movimento quando a gente se inclina, achei fantástico." },
       { name: "Fernanda Lima", date: "Mai 2026", rating: 5, text: "Custo-benefício imbatível. Uma cadeira dessa em lojas físicas custa o triplo. Chegou bem antes do prazo e muito bem embalada." },
       { name: "Pedro Henrique", date: "Mai 2026", rating: 5, text: "O suporte de cabeça é o diferencial. Consigo ajustar exatamente na altura da minha nuca. A malha mesh parece ser bem durável, não afrouxou nada." },
@@ -524,21 +520,21 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
         date: "Ago 2026", 
         rating: 5, 
         text: "Fantástica! O cabo extensível é firme e ajuda muito a limpar o teto do banheiro sem precisar de escada. A força da rotação é ótima, removeu o limo dos azulejos em minutos.",
-        image: "/src/assets/products-bc/escova-limpeza-9em1/escova-4.png.asset.json"
+        image: "/assets/products-bc/escova-limpeza-9em1/escova-4.png"
       },
       { 
         name: "Marcelo Dutra", 
         date: "Ago 2026", 
         rating: 5, 
         text: "Uso pra lavar o carro e a cozinha. O carregamento USB-C é rápido e a bateria dura bastante, fiz a limpeza pesada da área externa e ainda sobrou carga. Os acessórios são fáceis de trocar.",
-        image: "/src/assets/products-bc/escova-limpeza-9em1/escova-6.png.asset.json"
+        image: "/assets/products-bc/escova-limpeza-9em1/escova-6.png"
       },
       { 
         name: "Elaine Barros", 
         date: "Jul 2026", 
         rating: 5, 
         text: "Chegou super rápido. Testei no sofá com a ponteira de esponja macia e ficou novo. O fato de ser retrátil facilita muito na hora de guardar no armário. Recomendo demais!",
-        image: "/src/assets/products-bc/escova-limpeza-9em1/escova-7.png.asset.json"
+        image: "/assets/products-bc/escova-limpeza-9em1/escova-7.png"
       },
       { 
         name: "Rodrigo Santos", 
