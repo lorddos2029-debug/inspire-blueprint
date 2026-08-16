@@ -43,7 +43,7 @@ const categories = [
 const CategoryIcons = () => {
   return (
     <section className="py-10 bg-background overflow-hidden">
-      <div className="container overflow-x-auto pb-4 scrollbar-hide cursor-grab active:cursor-grabbing select-none">
+      <div className="container overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none">
         <div className="flex items-center justify-between gap-6 md:gap-10 min-w-max md:min-w-0 md:justify-center px-4">
           {categories.map((cat, idx) => (
             <Link
