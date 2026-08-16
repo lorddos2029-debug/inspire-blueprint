@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ShoppingCart, Menu, X, Search, User } from "lucide-react";
+import { ShoppingCart, Menu, X, Search, User, Sparkles, Home, Box, HelpCircle } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import CouponBar from "./CouponBar";
@@ -7,10 +7,10 @@ import CouponBar from "./CouponBar";
 const belacasaLogo = "/logo-belacasa.png";
 
 const navLinks = [
-  { label: "Início", href: "/" },
-  { label: "Escova Modeladora", href: "/produto/escova-modeladora-ions-negativos-38mm-9-ajustes-temperatura" },
-  { label: "Todos os Produtos", href: "/#tudo-para-sua-casa" },
-  { label: "Como Comprar", href: "/central-de-ajuda" },
+  { label: "Início", href: "/", icon: Home },
+  { label: "Mais Vendidos", href: "/#tudo-para-sua-casa", icon: Sparkles },
+  { label: "Coleções", href: "/#tudo-para-sua-casa", icon: Box },
+  { label: "Ajuda", href: "/central-de-ajuda", icon: HelpCircle },
 ];
 
 const Header = () => {
@@ -167,16 +167,21 @@ const Header = () => {
                 <Search className="w-4 h-4" />
               </button>
             </form>
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-sm font-medium text-foreground py-3 border-b border-border last:border-0"
-              >
-                {link.label}
-              </Link>
-            ))}
+            <div className="grid grid-cols-2 gap-3 mt-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className="flex flex-col items-center justify-center p-4 bg-secondary/40 rounded-2xl border border-border group active:scale-95 transition-all"
+                >
+                  <link.icon className="w-6 h-6 text-primary mb-2 group-hover:scale-110 transition-transform" />
+                  <span className="text-[11px] font-bold text-foreground uppercase tracking-wider text-center">
+                    {link.label}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       )}
