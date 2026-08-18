@@ -389,10 +389,6 @@ const ProductPage = () => {
                     Restam apenas {stockLeft} unidades em estoque!
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
-                  <span>{12 + (product.id % 15)} pessoas estão vendo este produto agora</span>
-                </div>
               </div>
 
               <div className="flex items-center gap-2 pt-2">
