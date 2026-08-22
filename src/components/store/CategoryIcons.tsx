@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Utensils, LayoutGrid, Zap, Bath, Bed, Pillows, Package } from "lucide-react";
+import { Utensils, LayoutGrid, Zap, Bath, Bed, Moon, Package } from "lucide-react";
 
 const categories = [
   {
@@ -34,7 +34,7 @@ const categories = [
   },
   {
     label: "Travesseiros",
-    icon: Pillows,
+    icon: Moon,
     href: "/?q=travesseiro#tudo-para-sua-casa",
     color: "bg-primary/5 text-primary"
   },
