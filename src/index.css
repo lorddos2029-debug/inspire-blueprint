@@ -7,52 +7,52 @@
 
 @layer base {
   :root {
-    /* Casa Prestige palette: creme background, coral-terracota accent, grafite text */
-    --background: 30 56% 93%;
-    --foreground: 0 0% 18%;
+    /* Velaris Home palette: off-white background, navy primary, gold accent */
+    --background: 36 33% 97%;
+    --foreground: 216 37% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 18%;
+    --card-foreground: 216 37% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 18%;
+    --popover-foreground: 216 37% 13%;
 
-    --primary: 17 75% 64%;
+    --primary: 216 37% 13%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 45% 96%;
-    --secondary-foreground: 0 0% 18%;
+    --secondary: 36 33% 95%;
+    --secondary-foreground: 216 37% 13%;
 
-    --muted: 30 35% 95%;
-    --muted-foreground: 25 8% 45%;
+    --muted: 36 20% 92%;
+    --muted-foreground: 216 10% 40%;
 
-    --accent: 29 65% 77%;
-    --accent-foreground: 0 0% 18%;
+    --accent: 36 38% 56%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 70% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 25% 88%;
-    --input: 30 25% 88%;
-    --ring: 17 75% 64%;
+    --border: 36 15% 88%;
+    --input: 36 15% 88%;
+    --ring: 216 37% 13%;
 
-    /* Casa Prestige extras */
-    --topbar: 29 65% 77%;
-    --topbar-foreground: 0 0% 18%;
-    --gold: 29 65% 70%;
+    /* Velaris extras */
+    --topbar: 216 37% 13%;
+    --topbar-foreground: 0 0% 100%;
+    --gold: 36 38% 56%;
     --wood: 28 30% 60%;
-    --ink: 0 0% 12%;
+    --ink: 216 37% 10%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 30 56% 93%;
-    --sidebar-foreground: 0 0% 25%;
-    --sidebar-primary: 17 75% 64%;
+    --sidebar-background: 36 33% 97%;
+    --sidebar-foreground: 216 37% 20%;
+    --sidebar-primary: 216 37% 13%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 30 45% 96%;
-    --sidebar-accent-foreground: 0 0% 18%;
-    --sidebar-border: 30 25% 88%;
-    --sidebar-ring: 17 75% 64%;
+    --sidebar-accent: 36 33% 95%;
+    --sidebar-accent-foreground: 216 37% 13%;
+    --sidebar-border: 36 15% 88%;
+    --sidebar-ring: 216 37% 13%;
   }
 
   .dark {
