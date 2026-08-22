@@ -5,6 +5,7 @@ import CategoryIcons from "@/components/store/CategoryIcons";
 import ProductGrid from "@/components/store/ProductGrid";
 import LifestyleSection from "@/components/store/LifestyleSection";
 import GuaranteeBanners from "@/components/store/GuaranteeBanners";
+import VelarisHomeSection from "@/components/store/VelarisHomeSection";
 import AboutUs from "@/components/store/AboutUs";
 import HomeFAQ from "@/components/store/HomeFAQ";
 import Newsletter from "@/components/store/Newsletter";
@@ -26,6 +27,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <HeroBanner />
+      <VelarisHomeSection />
       <BenefitGrid />
       <CategoryIcons />
       

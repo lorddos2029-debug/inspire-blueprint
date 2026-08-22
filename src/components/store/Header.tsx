@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ShoppingCart, Menu, X, Search, User, Sparkles, Home, Box, HelpCircle } from "lucide-react";
+import { ShoppingCart, Menu, X, Search, User, ChevronRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import CouponBar from "./CouponBar";
@@ -7,10 +7,13 @@ import CouponBar from "./CouponBar";
 const belacasaLogo = "/logo-belacasa.png";
 
 const navLinks = [
-  { label: "Início", href: "/", icon: Home },
-  { label: "Mais Vendidos", href: "/#tudo-para-sua-casa", icon: Sparkles },
-  { label: "Coleções", href: "/#tudo-para-sua-casa", icon: Box },
-  { label: "Ajuda", href: "/central-de-ajuda", icon: HelpCircle },
+  { label: "COZINHA", href: "/?q=cozinha#tudo-para-sua-casa" },
+  { label: "ORGANIZAÇÃO", href: "/?q=organizacao#tudo-para-sua-casa" },
+  { label: "ELETRO", href: "/?q=eletro#tudo-para-sua-casa" },
+  { label: "CASA & BANHO", href: "/?q=banho#tudo-para-sua-casa" },
+  { label: "JOGO DE CAMA", href: "/?q=cama#tudo-para-sua-casa" },
+  { label: "TRAVESSEIROS", href: "/?q=travesseiro#tudo-para-sua-casa" },
+  { label: "UTILIDADES", href: "/?q=utilidades#tudo-para-sua-casa" },
 ];
 
 const Header = () => {
@@ -131,13 +134,13 @@ const Header = () => {
       {/* Barra de navegação flutuante */}
       <nav className="hidden md:block bg-transparent">
         <div className="container px-0">
-          <div className="bg-card rounded-b-3xl shadow-[0_10px_30px_-18px_rgba(0,0,0,0.35)] flex items-center justify-center gap-10 h-14">
+          <div className="bg-card flex items-center justify-center gap-6 lg:gap-8 h-12 border-b border-border shadow-sm">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 to={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="text-sm font-medium text-foreground/85 hover:text-primary transition-colors"
+                className="text-[11px] font-bold text-foreground hover:text-accent transition-colors tracking-widest"
               >
                 {link.label}
               </Link>
@@ -167,18 +170,18 @@ const Header = () => {
                 <Search className="w-4 h-4" />
               </button>
             </form>
-            <div className="grid grid-cols-2 gap-3 mt-2">
+            <div className="flex flex-col gap-2 mt-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   to={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="flex flex-col items-center justify-center p-4 bg-secondary/40 rounded-2xl border border-border group active:scale-95 transition-all"
+                  className="flex items-center justify-between p-4 bg-secondary/40 rounded-xl border border-border group active:scale-95 transition-all"
                 >
-                  <link.icon className="w-6 h-6 text-primary mb-2 group-hover:scale-110 transition-transform" />
-                  <span className="text-[11px] font-bold text-foreground uppercase tracking-wider text-center">
+                  <span className="text-[11px] font-bold text-foreground uppercase tracking-widest">
                     {link.label}
                   </span>
+                  <ChevronRight className="w-4 h-4 text-muted-foreground" />
                 </Link>
               ))}
             </div>
