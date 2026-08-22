@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ShoppingCart, Menu, X, Search, User, Sparkles, Home, Box, HelpCircle } from "lucide-react";
+import { ShoppingCart, Menu, X, Search, User, ChevronRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import CouponBar from "./CouponBar";
@@ -170,18 +170,18 @@ const Header = () => {
                 <Search className="w-4 h-4" />
               </button>
             </form>
-            <div className="grid grid-cols-2 gap-3 mt-2">
+            <div className="flex flex-col gap-2 mt-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   to={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="flex flex-col items-center justify-center p-4 bg-secondary/40 rounded-2xl border border-border group active:scale-95 transition-all"
+                  className="flex items-center justify-between p-4 bg-secondary/40 rounded-xl border border-border group active:scale-95 transition-all"
                 >
-                  {link.icon && <link.icon className="w-6 h-6 text-primary mb-2 group-hover:scale-110 transition-transform" />}
-                  <span className="text-[11px] font-bold text-foreground uppercase tracking-wider text-center">
+                  <span className="text-[11px] font-bold text-foreground uppercase tracking-widest">
                     {link.label}
                   </span>
+                  <ChevronRight className="w-4 h-4 text-muted-foreground" />
                 </Link>
               ))}
             </div>

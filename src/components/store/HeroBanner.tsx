@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
  */
 const HeroBanner = () => {
   return (
-    <section className="w-full bg-background overflow-hidden">
+    <section className="w-full bg-background overflow-hidden border-b border-border">
       <Link
         to="/#tudo-para-sua-casa"
         aria-label="Ver todos os produtos BelaCasa"
