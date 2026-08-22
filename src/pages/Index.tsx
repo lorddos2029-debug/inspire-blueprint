@@ -29,7 +29,7 @@ const Index = () => {
       <HeroBanner />
       {/* VelarisHomeSection removido conforme solicitação */}
       <BenefitGrid />
-      <CategoryIcons />
+      {/* CategoryIcons removido conforme solicitação */}
       
       <ProductGrid />
       
