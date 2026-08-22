@@ -27,7 +27,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <HeroBanner />
-      <VelarisHomeSection />
+      {/* VelarisHomeSection removido conforme solicitação */}
       <BenefitGrid />
       <CategoryIcons />
       
