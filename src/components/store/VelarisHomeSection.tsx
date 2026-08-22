@@ -3,6 +3,10 @@ import ProductCard from "./ProductCard";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
+/**
+ * Seção de introdução no estilo da loja de referência.
+ * Atualizado para manter o nome original BelaCasa.
+ */
 const VelarisHomeSection = () => {
   return (
     <section className="py-16 md:py-24 bg-background">
@@ -13,7 +17,7 @@ const VelarisHomeSection = () => {
               BEM-VINDO À
             </span>
             <h2 className="text-4xl md:text-6xl font-bold text-primary tracking-tight">
-              Velaris Home
+              BelaCasa
             </h2>
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Produtos inteligentes para a rotina real da sua casa. Cozinha, organização, eletro, casa e banho — com entrega para todo o Brasil.
