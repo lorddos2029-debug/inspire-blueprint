@@ -699,10 +699,6 @@ const ProductPage = () => {
               </div>
             </div>
 
-            {/* Escassez */}
-            <p className="text-sm font-semibold text-primary">
-              Atenção! Só restam {stockLeft} em estoque
-            </p>
 
             {/* CTA principal: compra em 1 clique */}
             <Button
