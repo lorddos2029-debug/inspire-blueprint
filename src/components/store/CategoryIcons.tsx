@@ -1,23 +1,17 @@
 import { Link } from "react-router-dom";
-import { Bed, Utensils, ShowerHead, Zap, CookingPot, Tag } from "lucide-react";
+import { Utensils, LayoutGrid, Zap, Bath, Bed, Pillows, Package } from "lucide-react";
 
 const categories = [
   {
-    label: "Cama",
-    icon: Bed,
-    href: "/?q=cama#tudo-para-sua-casa",
-    color: "bg-primary/5 text-primary"
-  },
-  {
-    label: "Mesa",
+    label: "Cozinha",
     icon: Utensils,
-    href: "/?q=mesa#tudo-para-sua-casa",
+    href: "/?q=cozinha#tudo-para-sua-casa",
     color: "bg-primary/5 text-primary"
   },
   {
-    label: "Banho",
-    icon: ShowerHead,
-    href: "/?q=banho#tudo-para-sua-casa",
+    label: "Organização",
+    icon: LayoutGrid,
+    href: "/?q=organizacao#tudo-para-sua-casa",
     color: "bg-primary/5 text-primary"
   },
   {
@@ -27,16 +21,28 @@ const categories = [
     color: "bg-primary/5 text-primary"
   },
   {
-    label: "Cozinha",
-    icon: CookingPot,
-    href: "/?q=cozinha#tudo-para-sua-casa",
+    label: "Casa & Banho",
+    icon: Bath,
+    href: "/?q=banho#tudo-para-sua-casa",
     color: "bg-primary/5 text-primary"
   },
   {
-    label: "Ofertas",
-    icon: Tag,
-    href: "/#tudo-para-sua-casa",
-    color: "bg-primary/10 text-primary"
+    label: "Jogo de Cama",
+    icon: Bed,
+    href: "/?q=cama#tudo-para-sua-casa",
+    color: "bg-primary/5 text-primary"
+  },
+  {
+    label: "Travesseiros",
+    icon: Pillows,
+    href: "/?q=travesseiro#tudo-para-sua-casa",
+    color: "bg-primary/5 text-primary"
+  },
+  {
+    label: "Utilidades",
+    icon: Package,
+    href: "/?q=utilidades#tudo-para-sua-casa",
+    color: "bg-primary/5 text-primary"
   }
 ];
 
