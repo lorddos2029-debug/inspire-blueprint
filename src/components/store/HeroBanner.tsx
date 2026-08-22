@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-
+import heroAsset from "@/assets/home-banner-belacasa.png.asset.json";
 
 /**
  * Banner principal da home.
- * Arte atualizada com a nova imagem fornecida pelo usuário.
+ * Atualizado com a nova imagem institucional BelaCasa.
  */
 const HeroBanner = () => {
   return (
@@ -14,7 +14,7 @@ const HeroBanner = () => {
         className="block w-full hover:opacity-95 transition-opacity"
       >
         <img
-          src="/assets/store/home-banner-new.png"
+          src={heroAsset.url}
           alt="Tudo para transformar seu lar - BelaCasa"
           className="w-full h-auto object-cover md:max-h-[600px] lg:max-h-[650px]"
           fetchPriority="high"
