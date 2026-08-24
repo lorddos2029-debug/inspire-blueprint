@@ -83,7 +83,7 @@ export const products: Product[] = [
     id: 30,
     slug: "travesseiro-ortopedico-borboleta-cervical-dores-coluna-cabeca",
     name: "Travesseiro ortopédico borboleta cervical para combate a dores na coluna, dores de cabeça",
-    price: 79.9,
+    price: 69.9,
     originalPrice: 199.9,
     image: `${TRV}img-180.png`,
     hoverImage: `${TRV}img-181.png`,
