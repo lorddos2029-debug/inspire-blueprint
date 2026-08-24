@@ -21,7 +21,7 @@ export const LunaHeader = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
-      <div className="container max-w-5xl mx-auto px-4 h-16 flex items-center justify-between gap-2">
+      <div className="container max-w-5xl mx-auto px-4 h-16 flex items-center justify-between gap-2 relative">
         <button
           type="button"
           onClick={handleBack}
@@ -35,9 +35,10 @@ export const LunaHeader = () => {
         <img
           src={STORE_LOGO}
           alt="BelaCasa"
-          className="h-9 md:h-11 w-auto object-contain select-none"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-9 md:h-11 w-auto object-contain select-none pointer-events-none"
           decoding="async"
         />
+
 
         <div className="flex items-center gap-1.5 text-gray-500">
           <Lock className="w-3.5 h-3.5 text-[#C2A063]" />

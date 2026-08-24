@@ -46,7 +46,8 @@ const Header = () => {
       <CouponBar />
 
       <div className="bg-card">
-        <div className="container grid grid-cols-[auto_1fr_auto] md:grid-cols-3 items-center gap-3 h-20 md:h-28">
+        <div className="container relative grid grid-cols-[auto_1fr_auto] md:grid-cols-3 items-center gap-3 h-20 md:h-28">
+
           {/* Busca (desktop) / menu (mobile) */}
           <div className="flex items-center">
             <button
@@ -79,7 +80,8 @@ const Header = () => {
           </div>
 
           {/* Logo */}
-          <div className="flex justify-center items-center">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
+
             <Link to="/" aria-label="BelaCasa - Início" className="flex items-center justify-center">
               <img
                 src={belacasaLogo}
