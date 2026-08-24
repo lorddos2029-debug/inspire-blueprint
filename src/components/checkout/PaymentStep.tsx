@@ -36,7 +36,7 @@ export interface PaymentStepProps {
 
 const labelClass = "text-[10px] font-semibold uppercase tracking-wide text-gray-500";
 const fieldClass =
-  "h-11 rounded-md border-gray-300 bg-white text-sm focus-visible:ring-[#be7e5b] focus-visible:border-[#be7e5b]";
+  "h-11 rounded-md border-gray-300 bg-white text-sm focus-visible:ring-[#C2A063] focus-visible:border-[#C2A063]";
 
 export const PaymentStep = ({
   paymentMethod,
@@ -75,13 +75,13 @@ export const PaymentStep = ({
           onClick={() => onSelectMethod("pix")}
           className={cn(
             "relative rounded-xl border p-4 text-left transition-colors",
-            isPix ? "border-[#be7e5b] bg-[#be7e5b]/5" : "border-gray-200 bg-white hover:border-gray-300",
+            isPix ? "border-[#C2A063] bg-[#C2A063]/5" : "border-gray-200 bg-white hover:border-gray-300",
           )}
         >
-          <span className="absolute -top-2 left-3 rounded-full bg-[#be7e5b] px-2 py-0.5 text-[9px] font-bold uppercase text-white">
+          <span className="absolute -top-2 left-3 rounded-full bg-[#C2A063] px-2 py-0.5 text-[9px] font-bold uppercase text-white">
             Aprovação imediata
           </span>
-          <QrCode className={cn("w-5 h-5 mb-2", isPix ? "text-[#be7e5b]" : "text-gray-400")} />
+          <QrCode className={cn("w-5 h-5 mb-2", isPix ? "text-[#C2A063]" : "text-gray-400")} />
           <span className="block text-xs font-bold text-gray-900">PIX</span>
           <span className="block text-[10px] font-semibold text-green-600">{pixDiscountLabel} de desconto</span>
         </button>
@@ -91,10 +91,10 @@ export const PaymentStep = ({
           onClick={() => onSelectMethod("credit")}
           className={cn(
             "rounded-xl border p-4 text-left transition-colors",
-            !isPix ? "border-[#be7e5b] bg-[#be7e5b]/5" : "border-gray-200 bg-white hover:border-gray-300",
+            !isPix ? "border-[#C2A063] bg-[#C2A063]/5" : "border-gray-200 bg-white hover:border-gray-300",
           )}
         >
-          <CreditCard className={cn("w-5 h-5 mb-2", !isPix ? "text-[#be7e5b]" : "text-gray-400")} />
+          <CreditCard className={cn("w-5 h-5 mb-2", !isPix ? "text-[#C2A063]" : "text-gray-400")} />
           <span className="block text-xs font-bold text-gray-900">Cartão de crédito</span>
           <span className="block text-[10px] text-gray-500">Em até 12x</span>
         </button>
@@ -118,7 +118,7 @@ export const PaymentStep = ({
                 className={fieldClass}
               />
               {cardBrand && (
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-semibold text-[#be7e5b]">
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-semibold text-[#C2A063]">
                   {cardBrand}
                 </span>
               )}
@@ -139,7 +139,7 @@ export const PaymentStep = ({
             <select
               value={installments}
               onChange={(e) => onInstallmentsChange(e.target.value)}
-              className="w-full h-11 rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#be7e5b]"
+              className="w-full h-11 rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#C2A063]"
             >
               {installmentOptions.map((opt) => (
                 <option key={opt.n} value={String(opt.n)}>
@@ -179,7 +179,7 @@ export const PaymentStep = ({
         <div className="h-px bg-gray-200" />
         <div className="flex items-center justify-between">
           <span className="text-sm font-semibold text-gray-800">Total</span>
-          <span className="text-lg font-bold text-[#be7e5b]">{formatPrice(displayTotal)}</span>
+          <span className="text-lg font-bold text-[#C2A063]">{formatPrice(displayTotal)}</span>
         </div>
       </div>
 
@@ -187,7 +187,7 @@ export const PaymentStep = ({
         type="button"
         onClick={onSubmit}
         disabled={isSubmitting}
-        className="w-full bg-[#be7e5b] hover:bg-[#a66b48] text-white font-bold h-[58px] md:h-[68px] text-base md:text-lg rounded-md uppercase disabled:opacity-70"
+        className="w-full bg-[#15202D] hover:bg-[#22344A] text-white font-bold h-[58px] md:h-[68px] text-base md:text-lg rounded-md uppercase disabled:opacity-70"
       >
         {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : "Finalizar compra"}
       </Button>
@@ -195,7 +195,7 @@ export const PaymentStep = ({
       <SslNote />
 
 
-      <button type="button" onClick={onBack} className="w-full text-xs text-gray-500 hover:text-[#be7e5b] transition-colors">
+      <button type="button" onClick={onBack} className="w-full text-xs text-gray-500 hover:text-[#C2A063] transition-colors">
         Voltar
       </button>
     </div>

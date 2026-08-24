@@ -35,7 +35,7 @@ export const SHIPPING_OPTIONS = [
 const labelClass = "text-[10px] font-semibold uppercase tracking-wide text-gray-500";
 const compactField = (hasError?: boolean) =>
   cn(
-    "h-9 rounded-md border-gray-300 bg-white text-sm focus-visible:ring-[#be7e5b] focus-visible:border-[#be7e5b]",
+    "h-9 rounded-md border-gray-300 bg-white text-sm focus-visible:ring-[#C2A063] focus-visible:border-[#C2A063]",
     hasError && "border-red-500",
   );
 
@@ -54,7 +54,7 @@ export const ShippingStep = ({
   return (
     <div className="space-y-5">
       <div className="flex items-center gap-2">
-        <MapPin className="w-4 h-4 text-[#be7e5b]" />
+        <MapPin className="w-4 h-4 text-[#C2A063]" />
         <h2 className="text-sm font-bold text-gray-900">Endereço de entrega</h2>
       </div>
 
@@ -70,12 +70,12 @@ export const ShippingStep = ({
             value={values.cep}
             onChange={(e) => onCepChange(e.target.value)}
             className={cn(
-              "h-12 rounded-md border-2 border-[#be7e5b] bg-white text-sm focus-visible:ring-[#be7e5b]",
+              "h-12 rounded-md border-2 border-[#C2A063] bg-white text-sm focus-visible:ring-[#C2A063]",
               errors.cep && "border-red-500",
             )}
           />
           {loadingCep && (
-            <Loader2 className="w-4 h-4 animate-spin text-[#be7e5b] absolute right-3 top-1/2 -translate-y-1/2" />
+            <Loader2 className="w-4 h-4 animate-spin text-[#C2A063] absolute right-3 top-1/2 -translate-y-1/2" />
           )}
         </div>
         {errors.cep && <p className="text-[10px] text-red-500">{errors.cep}</p>}
@@ -130,18 +130,18 @@ export const ShippingStep = ({
                   onClick={() => onSelectShipping(option.id)}
                   className={cn(
                     "w-full flex items-center gap-3 rounded-xl border p-3 text-left transition-colors",
-                    active ? "border-[#be7e5b] bg-[#be7e5b]/5" : "border-gray-200 bg-white hover:border-gray-300",
+                    active ? "border-[#C2A063] bg-[#C2A063]/5" : "border-gray-200 bg-white hover:border-gray-300",
                   )}
                 >
                   <span
                     className={cn(
                       "w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0",
-                      active ? "border-[#be7e5b]" : "border-gray-300",
+                      active ? "border-[#C2A063]" : "border-gray-300",
                     )}
                   >
-                    {active && <span className="w-2 h-2 rounded-full bg-[#be7e5b]" />}
+                    {active && <span className="w-2 h-2 rounded-full bg-[#C2A063]" />}
                   </span>
-                  <Icon className={cn("w-4 h-4", active ? "text-[#be7e5b]" : "text-gray-400")} />
+                  <Icon className={cn("w-4 h-4", active ? "text-[#C2A063]" : "text-gray-400")} />
                   <span className="flex-1 min-w-0">
                     <span className="block text-xs font-bold text-gray-900">{option.label}</span>
                     <span className="block text-[10px] text-gray-500">{option.description}</span>
@@ -161,14 +161,14 @@ export const ShippingStep = ({
       <Button
         type="button"
         onClick={onContinue}
-        className="w-full bg-[#be7e5b] hover:bg-[#a66b48] text-white font-bold h-[58px] md:h-[68px] text-base md:text-lg rounded-md uppercase"
+        className="w-full bg-[#15202D] hover:bg-[#22344A] text-white font-bold h-[58px] md:h-[68px] text-base md:text-lg rounded-md uppercase"
       >
         Continuar para pagamento
       </Button>
 
       <SslNote />
 
-      <button type="button" onClick={onBack} className="w-full text-xs text-gray-500 hover:text-[#be7e5b] transition-colors">
+      <button type="button" onClick={onBack} className="w-full text-xs text-gray-500 hover:text-[#C2A063] transition-colors">
         Voltar
       </button>
     </div>

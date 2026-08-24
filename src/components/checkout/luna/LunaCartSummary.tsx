@@ -60,7 +60,7 @@ export const LunaCartSummary = ({
                 />
               )}
 
-              <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-[#be7e5b] text-white text-[10px] font-bold flex items-center justify-center">
+              <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-[#C2A063] text-white text-[10px] font-bold flex items-center justify-center">
                 {item.quantity}
               </span>
             </div>
@@ -108,7 +108,7 @@ export const LunaCartSummary = ({
 
       <div className="flex items-center justify-between">
         <span className="text-sm font-semibold text-gray-800">Total</span>
-        <span className="text-xl font-bold text-[#be7e5b]">{formatPrice(total)}</span>
+        <span className="text-xl font-bold text-[#C2A063]">{formatPrice(total)}</span>
       </div>
     </div>
   );
@@ -124,11 +124,11 @@ export const LunaCartSummary = ({
           aria-expanded={open}
         >
           <span className="flex items-center gap-2 text-xs font-semibold text-gray-700">
-            <ShoppingBag className="w-4 h-4 text-[#be7e5b]" />
+            <ShoppingBag className="w-4 h-4 text-[#C2A063]" />
             {open ? "Ocultar resumo do pedido" : "Exibir resumo do pedido"}
             <ChevronDown className={cn("w-4 h-4 transition-transform", open && "rotate-180")} />
           </span>
-          <span className="text-sm font-bold text-[#be7e5b]">{formatPrice(total)}</span>
+          <span className="text-sm font-bold text-[#C2A063]">{formatPrice(total)}</span>
         </button>
         {open && <div className="px-4 pb-4">{body}</div>}
       </div>

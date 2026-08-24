@@ -28,7 +28,7 @@ const ITEMS: TrustItem[] = [
  * Bloco de reforço de confiança exibido abaixo do formulário do checkout.
  */
 export const LunaTrustSection = () => (
-  <section className="w-full border-t border-gray-200 bg-[#F5F5F5]">
+  <section className="w-full border-t border-gray-200 bg-[#F9F6F1]">
     <div className="container max-w-5xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
       {ITEMS.map(({ icon: Icon, title, description }) => (
         <div key={title} className="flex flex-col items-center text-center gap-2">
