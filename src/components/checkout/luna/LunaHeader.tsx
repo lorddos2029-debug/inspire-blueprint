@@ -25,7 +25,7 @@ export const LunaHeader = () => {
         <button
           type="button"
           onClick={handleBack}
-          className="flex items-center gap-1 text-xs md:text-sm text-gray-500 hover:text-[#be7e5b] transition-colors"
+          className="flex items-center gap-1 text-xs md:text-sm text-gray-500 hover:text-[#C2A063] transition-colors"
           aria-label="Voltar"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -40,7 +40,7 @@ export const LunaHeader = () => {
         />
 
         <div className="flex items-center gap-1.5 text-gray-500">
-          <Lock className="w-3.5 h-3.5 text-[#be7e5b]" />
+          <Lock className="w-3.5 h-3.5 text-[#C2A063]" />
           <span className="text-[10px] md:text-xs font-medium leading-tight">
             Ambiente
             <br className="sm:hidden" /> Seguro

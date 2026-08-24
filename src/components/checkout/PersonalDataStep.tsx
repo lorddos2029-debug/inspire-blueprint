@@ -16,7 +16,7 @@ export interface PersonalDataStepProps {
 
 const fieldClass = (hasError: boolean) =>
   cn(
-    "h-12 rounded-md border-gray-300 bg-white text-sm focus-visible:ring-[#be7e5b] focus-visible:border-[#be7e5b]",
+    "h-12 rounded-md border-gray-300 bg-white text-sm focus-visible:ring-[#C2A063] focus-visible:border-[#C2A063]",
     hasError && "border-red-500",
   );
 
@@ -34,7 +34,7 @@ export const PersonalDataStep = ({
   return (
     <div className="space-y-5">
       <div className="flex items-center gap-2">
-        <User className="w-4 h-4 text-[#be7e5b]" />
+        <User className="w-4 h-4 text-[#C2A063]" />
         <h2 className="text-sm font-bold text-gray-900">Seus dados</h2>
       </div>
 
@@ -100,7 +100,7 @@ export const PersonalDataStep = ({
       <Button
         type="button"
         onClick={onContinue}
-        className="w-full bg-[#be7e5b] hover:bg-[#a66b48] text-white font-bold h-[58px] md:h-[68px] text-base md:text-lg rounded-md uppercase"
+        className="w-full bg-[#15202D] hover:bg-[#22344A] text-white font-bold h-[58px] md:h-[68px] text-base md:text-lg rounded-md uppercase"
       >
         Continuar para entrega
       </Button>

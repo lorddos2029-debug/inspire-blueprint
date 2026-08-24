@@ -24,7 +24,7 @@ import PersonalDataStep from "../PersonalDataStep";
 import ShippingStep, { SHIPPING_OPTIONS } from "../ShippingStep";
 import PaymentStep from "../PaymentStep";
 
-const ACCENT = "#be7e5b";
+const ACCENT = "#C2A063";
 import pixIcon from "@/assets/pix-icon.png";
 import formasPagamento from "@/assets/formas-pagamento.png";
 
@@ -107,7 +107,7 @@ const FOOTER_LINKS = [
 ];
 
 const CheckoutFooter = () => (
-  <footer className="border-t border-gray-200 bg-[#EFEDEA]">
+  <footer className="border-t border-gray-200 bg-[#F2EEE7]">
     <div className="container max-w-5xl mx-auto px-4 py-8 text-center space-y-4">
       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">Formas de pagamento</p>
       <img
@@ -122,7 +122,7 @@ const CheckoutFooter = () => (
           <Link
             key={link.to}
             to={link.to}
-            className="text-xs text-gray-600 hover:text-[#be7e5b] transition-colors"
+            className="text-xs text-gray-600 hover:text-[#C2A063] transition-colors"
           >
             {link.label}
           </Link>
@@ -845,7 +845,7 @@ export const LunaCheckout = () => {
   };
 
   // ============ Telas ============
-  const shellClass = "min-h-screen flex flex-col bg-[#F5F5F5] font-['Montserrat',sans-serif]";
+  const shellClass = "min-h-screen flex flex-col bg-[#F9F6F1] font-['Montserrat',sans-serif]";
 
   if (items.length === 0 && !pixData) {
     return (
@@ -857,7 +857,7 @@ export const LunaCheckout = () => {
           <h1 className="text-lg font-bold text-gray-900 mb-2">Seu carrinho está vazio</h1>
           <p className="text-sm text-gray-500 mb-6">Adicione produtos ao carrinho para continuar com a compra.</p>
           <Link to="/" className="w-full max-w-sm">
-            <Button className="w-full bg-[#be7e5b] hover:bg-[#a66b48] text-white font-bold h-[58px] rounded-md uppercase">
+            <Button className="w-full bg-[#15202D] hover:bg-[#22344A] text-white font-bold h-[58px] rounded-md uppercase">
               Voltar para a loja
             </Button>
           </Link>
@@ -880,7 +880,7 @@ export const LunaCheckout = () => {
             <h2 className="text-lg font-bold text-gray-900">PIX gerado com sucesso!</h2>
             <div className="flex items-center justify-center gap-2">
               <span className="text-sm text-gray-400 line-through">{formatPrice(subtotalWithShipping)}</span>
-              <span className="text-xl font-bold text-[#be7e5b]">{formatPrice(grandTotal)}</span>
+              <span className="text-xl font-bold text-[#C2A063]">{formatPrice(grandTotal)}</span>
             </div>
             <p className="text-xs text-gray-500">Escaneie o QR Code ou copie o código abaixo</p>
           </div>
@@ -888,7 +888,7 @@ export const LunaCheckout = () => {
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5 space-y-4">
             <div className="flex justify-center">
               {pixCode ? (
-                <div className="rounded-xl border-2 border-[#be7e5b]/30 p-3">
+                <div className="rounded-xl border-2 border-[#C2A063]/30 p-3">
                   <QRCodeSVG value={pixCode} size={200} level="M" />
                 </div>
               ) : (
@@ -905,7 +905,7 @@ export const LunaCheckout = () => {
                 </div>
                 <Button
                   onClick={handleCopyPix}
-                  className="w-full bg-[#be7e5b] hover:bg-[#a66b48] text-white font-bold h-[58px] rounded-md gap-2 uppercase"
+                  className="w-full bg-[#15202D] hover:bg-[#22344A] text-white font-bold h-[58px] rounded-md gap-2 uppercase"
                 >
                   {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                   {copied ? "Código copiado!" : "Copiar código PIX"}
@@ -923,7 +923,7 @@ export const LunaCheckout = () => {
               { step: "4", title: "Confirme o pagamento", desc: "Confira o valor e confirme. A aprovação é instantânea!" },
             ].map((s) => (
               <div key={s.step} className="flex items-start gap-3">
-                <span className="w-7 h-7 rounded-full bg-[#be7e5b] text-white text-xs font-bold flex items-center justify-center shrink-0">
+                <span className="w-7 h-7 rounded-full bg-[#C2A063] text-white text-xs font-bold flex items-center justify-center shrink-0">
                   {s.step}
                 </span>
                 <div>
@@ -932,8 +932,8 @@ export const LunaCheckout = () => {
                 </div>
               </div>
             ))}
-            <div className="flex items-center gap-2 rounded-lg bg-[#be7e5b]/5 border border-[#be7e5b]/30 px-4 py-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#be7e5b] animate-pulse shrink-0" />
+            <div className="flex items-center gap-2 rounded-lg bg-[#C2A063]/5 border border-[#C2A063]/30 px-4 py-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#C2A063] animate-pulse shrink-0" />
               <p className="text-xs font-medium text-gray-700">Aguardando confirmação do pagamento...</p>
             </div>
           </div>
@@ -968,7 +968,7 @@ export const LunaCheckout = () => {
                     className={cn(
                       "flex-1 py-3 text-[11px] md:text-sm font-semibold transition-colors border-b-2",
                       currentStep === tab.n
-                        ? "text-[#be7e5b] border-[#be7e5b]"
+                        ? "text-[#C2A063] border-[#C2A063]"
                         : "text-gray-400 border-transparent",
                     )}
                   >
@@ -1028,7 +1028,7 @@ export const LunaCheckout = () => {
                         onClick={handleAddOrderBump}
                         className={cn(
                           "w-full rounded-xl border p-3 text-left text-xs transition-colors",
-                          orderBumpAdded ? "border-[#be7e5b] bg-[#be7e5b]/5" : "border-dashed border-gray-300 bg-white",
+                          orderBumpAdded ? "border-[#C2A063] bg-[#C2A063]/5" : "border-dashed border-gray-300 bg-white",
                         )}
                       >
                         <span className="font-bold text-gray-900">Kit 12 Pares Meia Soquete Sortido</span>
@@ -1064,13 +1064,13 @@ export const LunaCheckout = () => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle className="flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-[#be7e5b]" style={{ color: ACCENT }} />
+              <ShieldCheck className="w-5 h-5 text-[#C2A063]" style={{ color: ACCENT }} />
               Pagamento não aprovado
             </AlertDialogTitle>
             <AlertDialogDescription>{refusalReason}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogAction className="bg-[#be7e5b] hover:bg-[#a66b48] text-white">
+            <AlertDialogAction className="bg-[#C2A063] hover:bg-[#A8874C] text-white">
               Tentar novamente
             </AlertDialogAction>
           </AlertDialogFooter>
