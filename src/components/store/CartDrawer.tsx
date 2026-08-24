@@ -66,7 +66,7 @@ const CartDrawer = () => {
                     {item.color && (
                       <p className="text-xs text-muted-foreground mt-0.5">Cor: {item.color}</p>
                     )}
-                    <p className="text-sm font-bold text-emerald-600 mt-1">
+                    <p className="text-sm font-bold text-[hsl(var(--gold))] mt-1">
                       {formatPrice(item.price)}
                     </p>
                     <div className="flex items-center justify-between mt-2">
@@ -108,16 +108,16 @@ const CartDrawer = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-bold text-foreground">TOTAL</span>
-                  <span className="text-lg font-bold text-emerald-600">{formatPrice(totalPrice)}</span>
+                  <span className="text-lg font-bold text-[hsl(var(--gold))]">{formatPrice(totalPrice)}</span>
                 </div>
-                <div className="flex justify-between items-center bg-emerald-50 px-3 py-2 rounded-md">
-                  <span className="text-sm font-medium text-emerald-700">{pixDiscountLabel} OFF no PIX</span>
-                  <span className="text-sm font-bold text-emerald-700">{formatPrice(pixTotalPrice)}</span>
+                <div className="flex justify-between items-center bg-[hsl(var(--gold))]/10 border border-[hsl(var(--gold))]/25 px-3 py-2 rounded-md">
+                  <span className="text-sm font-medium text-[hsl(var(--gold))]">{pixDiscountLabel} OFF no PIX</span>
+                  <span className="text-sm font-bold text-[hsl(var(--gold))]">{formatPrice(pixTotalPrice)}</span>
                 </div>
               </div>
               <div className="px-5 pb-5 pt-3 space-y-2">
                 <Button
-                  className="w-full h-12 text-sm font-bold tracking-wider rounded-full bg-emerald-600 hover:bg-emerald-700 text-background"
+                  className="w-full h-12 text-sm font-bold tracking-wider rounded-full bg-primary hover:bg-primary/90 text-primary-foreground"
                   onClick={() => {
                     setIsCartOpen(false);
                     navigate("/checkout");
