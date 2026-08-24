@@ -14,7 +14,7 @@ const HeroBanner = () => {
         className="block w-full hover:opacity-95 transition-opacity"
       >
         <img
-          src={heroAsset.url}
+          src={heroBanner}
           alt="Tudo para transformar seu lar - BelaCasa"
           className="w-full h-auto object-cover md:max-h-[600px] lg:max-h-[650px]"
           fetchPriority="high"
