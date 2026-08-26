@@ -278,7 +278,7 @@ const ProductPage = () => {
     addItem({
       id: product.id,
       name: product.name,
-      price: product.price,
+      price: currentPrice,
       originalPrice: product.originalPrice,
       image: selectedVariantImage,
       tag: product.tag,
