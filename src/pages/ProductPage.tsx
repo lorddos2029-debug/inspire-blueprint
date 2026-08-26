@@ -155,13 +155,18 @@ const ProductPage = () => {
   const formatPrice = (value: number) =>
     value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
+  const currentPrice =
+    selectedSize && product.sizePrices?.[selectedSize]
+      ? product.sizePrices[selectedSize]
+      : product.price;
+
   const discount = product.originalPrice
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    ? Math.round(((product.originalPrice - currentPrice) / product.originalPrice) * 100)
     : 0;
 
   const pixDiscountRate = product.id === 46 ? 0.05 : 0.10;
   const pixDiscountLabel = product.id === 46 ? "5%" : "10%";
-  const pixPrice = product.price * (1 - pixDiscountRate);
+  const pixPrice = currentPrice * (1 - pixDiscountRate);
 
   /** Estoque exibido de forma determinística por produto (escassez) */
   const stockLeft = 8 + (product.id % 12);
