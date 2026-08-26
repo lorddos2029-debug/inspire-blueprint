@@ -379,7 +379,7 @@ const ProductPage = () => {
               )}
               <div className="flex items-center gap-3">
                 <span className="text-3xl md:text-[32px] font-bold text-foreground">
-                  {formatPrice(product.price)}
+                  {formatPrice(currentPrice)}
                 </span>
                 {discount > 0 && (
                   <span className="bg-primary text-primary-foreground text-xs font-bold px-2.5 py-1 rounded">
@@ -407,7 +407,7 @@ const ProductPage = () => {
                 </span>
               </div>
               <p className="text-sm text-muted-foreground">
-                ou 5x de {formatPrice(product.price / 5)} sem juros
+                ou 5x de {formatPrice(currentPrice / 5)} sem juros
               </p>
               
               <div className="flex items-center gap-2 py-3 px-4 bg-secondary/50 rounded-xl border border-border mt-2">
