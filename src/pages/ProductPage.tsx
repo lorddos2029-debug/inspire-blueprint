@@ -239,7 +239,7 @@ const ProductPage = () => {
         content_ids: [String(product.id)],
         content_name: product.name,
         content_type: 'product',
-        value: product.price,
+        value: currentPrice,
         currency: 'BRL',
         num_items: 1,
       });
@@ -248,7 +248,7 @@ const ProductPage = () => {
     // UTMIFY - AddToCart
     if (typeof window !== 'undefined' && (window as any).utmify) {
       (window as any).utmify('track', 'AddToCart', {
-        value: product.price,
+        value: currentPrice,
         currency: 'BRL',
       });
     }
