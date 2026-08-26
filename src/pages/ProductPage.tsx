@@ -73,7 +73,9 @@ const ProductPage = () => {
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(
-    product?.sizes && product.sizes.length === 1 ? product.sizes[0] : null
+    product?.sizes && (product.sizes.length === 1 || product.sizePrices)
+      ? product.sizes[0]
+      : null
   );
   const [selectedColor, setSelectedColor] = useState<number>(0);
   const [showSizeError, setShowSizeError] = useState(false);
@@ -111,7 +113,7 @@ const ProductPage = () => {
         content_ids: [String(product.id)],
         content_name: product.name,
         content_type: 'product',
-        value: product.price,
+        value: currentPrice,
         currency: 'BRL',
       });
     }
@@ -153,13 +155,18 @@ const ProductPage = () => {
   const formatPrice = (value: number) =>
     value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
+  const currentPrice =
+    selectedSize && product.sizePrices?.[selectedSize]
+      ? product.sizePrices[selectedSize]
+      : product.price;
+
   const discount = product.originalPrice
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    ? Math.round(((product.originalPrice - currentPrice) / product.originalPrice) * 100)
     : 0;
 
   const pixDiscountRate = product.id === 46 ? 0.05 : 0.10;
   const pixDiscountLabel = product.id === 46 ? "5%" : "10%";
-  const pixPrice = product.price * (1 - pixDiscountRate);
+  const pixPrice = currentPrice * (1 - pixDiscountRate);
 
   /** Estoque exibido de forma determinística por produto (escassez) */
   const stockLeft = 8 + (product.id % 12);
@@ -232,7 +239,7 @@ const ProductPage = () => {
         content_ids: [String(product.id)],
         content_name: product.name,
         content_type: 'product',
-        value: product.price,
+        value: currentPrice,
         currency: 'BRL',
         num_items: 1,
       });
@@ -241,7 +248,7 @@ const ProductPage = () => {
     // UTMIFY - AddToCart
     if (typeof window !== 'undefined' && (window as any).utmify) {
       (window as any).utmify('track', 'AddToCart', {
-        value: product.price,
+        value: currentPrice,
         currency: 'BRL',
       });
     }
@@ -271,7 +278,7 @@ const ProductPage = () => {
     addItem({
       id: product.id,
       name: product.name,
-      price: product.price,
+      price: currentPrice,
       originalPrice: product.originalPrice,
       image: selectedVariantImage,
       tag: product.tag,
@@ -372,7 +379,7 @@ const ProductPage = () => {
               )}
               <div className="flex items-center gap-3">
                 <span className="text-3xl md:text-[32px] font-bold text-foreground">
-                  {formatPrice(product.price)}
+                  {formatPrice(currentPrice)}
                 </span>
                 {discount > 0 && (
                   <span className="bg-primary text-primary-foreground text-xs font-bold px-2.5 py-1 rounded">
@@ -400,7 +407,7 @@ const ProductPage = () => {
                 </span>
               </div>
               <p className="text-sm text-muted-foreground">
-                ou 5x de {formatPrice(product.price / 5)} sem juros
+                ou 5x de {formatPrice(currentPrice / 5)} sem juros
               </p>
               
               <div className="flex items-center gap-2 py-3 px-4 bg-secondary/50 rounded-xl border border-border mt-2">
@@ -785,7 +792,7 @@ const ProductPage = () => {
       <ExitIntentPopup />
       <StickyBuyBar
         productName={product.name}
-        price={product.price}
+        price={currentPrice}
         pixPrice={pixPrice}
         onBuy={() => handleAddToCart(true)}
       />
