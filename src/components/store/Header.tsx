@@ -46,7 +46,7 @@ const Header = () => {
       <CouponBar />
 
       <div className="bg-card">
-        <div className="container relative grid grid-cols-[auto_1fr_auto] md:grid-cols-3 items-center gap-3 h-20 md:h-28">
+        <div className="container grid grid-cols-[auto_1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center gap-3 md:gap-6 h-20 md:h-28">
 
           {/* Busca (desktop) / menu (mobile) */}
           <div className="flex items-center">
