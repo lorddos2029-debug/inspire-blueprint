@@ -80,13 +80,12 @@ const Header = () => {
           </div>
 
           {/* Logo */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
-
+          <div className="flex justify-center items-center min-w-0">
             <Link to="/" aria-label="BelaCasa - Início" className="flex items-center justify-center">
               <img
                 src={belacasaLogo}
                 alt="BelaCasa"
-                className="h-16 md:h-28 w-auto object-contain select-none"
+                className="h-16 md:h-24 w-auto object-contain select-none"
                 width={500}
                 height={500}
                 fetchPriority="high"
@@ -94,6 +93,7 @@ const Header = () => {
               />
             </Link>
           </div>
+
 
 
           {/* Conta + carrinho */}
