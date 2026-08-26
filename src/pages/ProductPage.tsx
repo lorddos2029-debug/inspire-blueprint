@@ -792,7 +792,7 @@ const ProductPage = () => {
       <ExitIntentPopup />
       <StickyBuyBar
         productName={product.name}
-        price={product.price}
+        price={currentPrice}
         pixPrice={pixPrice}
         onBuy={() => handleAddToCart(true)}
       />
