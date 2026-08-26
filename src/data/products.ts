@@ -14,6 +14,8 @@ export interface Product {
   description?: string;
   sizes?: string[];
   sizeLabel?: string;
+  /** Preço por tamanho/quantidade quando o valor deve variar (ex.: 1 ou 2 unidades) */
+  sizePrices?: Record<string, number>;
   /** Quantidade de peças que o cliente escolhe (cor + tamanho por peça) */
   kitPicks?: number;
   colorVariants?: { label: string; colors: string[]; image?: string }[];
