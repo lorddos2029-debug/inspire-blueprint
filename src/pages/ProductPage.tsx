@@ -73,7 +73,9 @@ const ProductPage = () => {
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(
-    product?.sizes && product.sizes.length === 1 ? product.sizes[0] : null
+    product?.sizes && (product.sizes.length === 1 || product.sizePrices)
+      ? product.sizes[0]
+      : null
   );
   const [selectedColor, setSelectedColor] = useState<number>(0);
   const [showSizeError, setShowSizeError] = useState(false);
