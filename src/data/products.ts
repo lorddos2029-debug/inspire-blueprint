@@ -162,7 +162,7 @@ export const products: Product[] = [
     id: 26,
     slug: "escova-modeladora-ions-negativos-38mm-9-ajustes-temperatura",
     name: "GOKOCO Escova modeladora de íons negativos de 38 mm – 9 ajustes de temperatura",
-    price: 89.9,
+    price: 69.9,
     originalPrice: 249.9,
     image: `${ESC}img-134.png`,
     hoverImage: `${ESC}img-138.png`,
@@ -176,7 +176,7 @@ export const products: Product[] = [
       `${ESC}img-140.png`,
       `${ESC}img-141.png`,
     ],
-    tag: "64% OFF",
+    tag: "72% OFF",
     description:
       "Escova Modeladora de Íons Negativos com barril cerâmico de 38 mm e 9 ajustes de temperatura (130°C a 210°C) para cabelos finos, médios e grossos. O aquecimento PTC duplo deixa a escova pronta em apenas 30 segundos com calor uniforme, enquanto o controle NTC monitora a temperatura em tempo real para proteger os fios do superaquecimento. A liberação de 3 milhões de íons negativos neutraliza o frizz, fecha a cutícula e reduz pontas duplas, deixando o cabelo mais liso, alinhado e brilhante. As cerdas mistas antiembaraço deslizam sem puxar, o visor digital mostra a temperatura escolhida, o cabo giratório de 360° evita torções e o corpo leve de apenas 350 g reduz o cansaço nas mãos. Conta ainda com desligamento automático em 1 hora para sua segurança. Ideal para modelar cachos duradouros, ondas volumosas ou um liso escovado com aparência de salão em poucos minutos.",
     sizes: ["110V", "220V"],
