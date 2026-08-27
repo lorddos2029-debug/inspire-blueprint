@@ -4,302 +4,345 @@ interface ProductDescriptionProps {
   productId: number;
 }
 
-const productHighlights: Record<number, { headline: string; intro: string; details: { title: string; desc: string }[]; closing: string }> = {
-  1: {
-    headline: "CONFORTO QUE ABRAÇA O SEU CORPO",
-    intro: "Cobertor plush king size com toque ultramacio e fibras térmicas que aquecem sem pesar. Ideal para noites de inverno e ambientes climatizados, antialérgico e seguro para toda a família.",
-    details: [
-      { title: "Toque de nuvem", desc: "Pelo plush ultramacio que envolve o corpo" },
-      { title: "Antialérgico", desc: "Fibras hipoalergênicas, seguras para crianças" },
-      { title: "Térmico inteligente", desc: "Mantém o calor sem sufocar nem pesar" },
-      { title: "Costura reforçada", desc: "Acabamento premium duradouro" },
-      { title: "Tamanho generoso", desc: "King size 2,40m x 2,60m cobre com folga" },
+interface Spec {
+  label: string;
+  value: string;
+}
+
+interface ProductSheet {
+  about: string;
+  specs: Spec[];
+}
+
+const productSheets: Record<number, ProductSheet> = {
+  33: {
+    about:
+      "A Escova de Limpeza Elétrica Multifuncional 9 em 1 é retrátil e foi feita para eliminar o esforço da limpeza pesada. O cabo extensível em aço inoxidável alcança teto, azulejos, janelas altas e cantos sem escada, enquanto a alta rotação remove limo e manchas difíceis sem esfregar. Com 9 acessórios entre cerdas e esponjas, atende banheiro, cozinha, área externa e até o carro.",
+    specs: [
+      { label: "Categoria", value: "Utilidades / Limpeza" },
+      { label: "Acessórios", value: "9 cabeças (cerdas e esponjas)" },
+      { label: "Cabo", value: "Retrátil em aço inox, alcance até 1,5 m" },
+      { label: "Bateria", value: "3000 mAh, até 90 min, carga USB-C" },
+      { label: "Proteção", value: "À prova d'água IPX7" },
+      { label: "Indicação", value: "Azulejo, box, vidro, piso, fogão e carro" },
     ],
-    closing: "Eleve o conforto do seu quarto com a maciez que só um cobertor BelaCasa pode oferecer.",
-  },
-  2: {
-    headline: "DURMA COMO EM UM HOTEL CINCO ESTRELAS",
-    intro: "Par de travesseiros com enchimento em fibra siliconada hipoalergênica e capa 100% algodão. Suporte cervical perfeito, costura quilt resistente e antiácaro de verdade.",
-    details: [
-      { title: "100% algodão", desc: "Capa fresca e respirável" },
-      { title: "Antiácaro", desc: "Tratamento que reduz alergias respiratórias" },
-      { title: "Suporte cervical", desc: "Altura média ideal para coluna alinhada" },
-      { title: "Costura quilt", desc: "Mantém o enchimento uniforme após muitas lavagens" },
-      { title: "Padrão 50x70", desc: "Fronha tradicional brasileira encaixa perfeitamente" },
-    ],
-    closing: "Sono reparador começa com travesseiros à altura da sua noite.",
-  },
-  3: {
-    headline: "MACIEZ E ABSORÇÃO DE LINHA HOTELEIRA",
-    intro: "Jogo com 5 toalhas de banho em algodão egípcio fio penteado de 500g/m². Toque aveludado, secagem rápida e cores que não desbotam mesmo após inúmeras lavagens.",
-    details: [
-      { title: "Algodão egípcio", desc: "Fibra longa, mais resistente e macia" },
-      { title: "Fio penteado 500g/m²", desc: "Densidade premium, alta absorção" },
-      { title: "Não desbota", desc: "Tingimento reativo de longa durabilidade" },
-      { title: "Secagem rápida", desc: "Permanece felpuda mesmo com uso diário" },
-      { title: "Tamanho banho/banhão", desc: "Cobre o corpo com sobra" },
-    ],
-    closing: "Transforme o ritual de sair do banho em uma experiência verdadeiramente premium.",
-  },
-  4: {
-    headline: "REFEIÇÕES PRÁTICAS, SAUDÁVEIS E DELICIOSAS",
-    intro: "Air Fryer 5L com painel digital touch e 8 funções pré-definidas. Tecnologia Rapid Air para resultados crocantes por fora e suculentos por dentro, sem o uso de óleo.",
-    details: [
-      { title: "Capacidade 5 litros", desc: "Refeições para a família toda" },
-      { title: "Painel touch digital", desc: "Controle preciso da temperatura e tempo" },
-      { title: "8 programas", desc: "Frango, batata, peixe, carne, legumes, sobremesa e mais" },
-      { title: "Tecnologia Rapid Air", desc: "Frita com ar quente, sem necessidade de óleo" },
-      { title: "Cesto antiaderente", desc: "Fácil de limpar, livre de resíduos" },
-    ],
-    closing: "Cozinhar mais saudável nunca foi tão simples e prático.",
-  },
-  5: {
-    headline: "POTÊNCIA QUE TRANSFORMA SEU DIA A DIA",
-    intro: "Liquidificador profissional 1200W com jarra de vidro reforçado de 2L, 12 velocidades e lâminas de aço inox 6 pontas. Tritura gelo, frutas congeladas e prepara receitas com facilidade.",
-    details: [
-      { title: "Motor 1200W", desc: "Potência profissional para qualquer receita" },
-      { title: "Jarra de vidro 2L", desc: "Resistente, não absorve odor nem cor" },
-      { title: "12 velocidades + pulsar", desc: "Controle total da textura" },
-      { title: "Lâminas inox 6 pontas", desc: "Tritura até gelo sem esforço" },
-      { title: "Base antiderrapante", desc: "Estabilidade total na bancada" },
-    ],
-    closing: "Vitaminas, sopas, drinks e molhos com a textura perfeita em segundos.",
-  },
-  6: {
-    headline: "O CAFÉ DA MANHÃ QUE VOCÊ MERECE",
-    intro: "Cafeteira elétrica premium para 15 xícaras com painel digital, timer programável e função manter aquecido por até 2 horas. Filtro permanente que economiza e preserva o aroma.",
-    details: [
-      { title: "15 xícaras", desc: "Capacidade ideal para família e escritório" },
-      { title: "Timer programável", desc: "Café pronto na hora que você acorda" },
-      { title: "Filtro permanente", desc: "Economia e sabor preservado" },
-      { title: "Manter aquecido", desc: "Café quente por até 2 horas" },
-      { title: "Jarra de vidro", desc: "Com marcador de nível e alça ergonômica" },
-    ],
-    closing: "O ritual matinal perfeito começa com o aroma de café fresco em casa.",
-  },
-  7: {
-    headline: "ORGANIZAÇÃO QUE VIROU TENDÊNCIA",
-    intro: "Kit modular com 6 organizadores em bambu natural e plástico transparente livre de BPA. Empilháveis, herméticos e laváveis — sua despensa, talheres e temperos sempre em ordem.",
-    details: [
-      { title: "Bambu natural", desc: "Material renovável e visual sofisticado" },
-      { title: "Livre de BPA", desc: "Seguro para alimentos" },
-      { title: "Empilháveis", desc: "Aproveitam espaço vertical do armário" },
-      { title: "Tampas herméticas", desc: "Mantêm os mantimentos frescos por mais tempo" },
-      { title: "Sistema modular", desc: "Combine peças conforme sua necessidade" },
-    ],
-    closing: "Funcionalidade e design que transformam qualquer cozinha em ambiente de revista.",
-  },
-  8: {
-    headline: "MESA POSTA COM ELEGÂNCIA EUROPEIA",
-    intro: "Aparelho de jantar em porcelana fina com fio dourado, 30 peças que servem 6 pessoas. Inclui pratos rasos, fundos, sobremesa, xícaras com pires e bowls com acabamento sofisticado.",
-    details: [
-      { title: "Porcelana fina", desc: "Toque suave e brilho duradouro" },
-      { title: "Fio dourado", desc: "Acabamento elegante feito à mão" },
-      { title: "30 peças completas", desc: "Tudo para servir 6 pessoas" },
-      { title: "Microondas e lava-louças", desc: "Praticidade no dia a dia" },
-      { title: "Embalagem segura", desc: "Cada peça vem protegida individualmente" },
-    ],
-    closing: "Eleve qualquer refeição a um momento especial digno de celebração.",
-  },
-  9: {
-    headline: "PERCAL 400 FIOS — O CONFORTO QUE VOCÊ MERECE",
-    intro: "Jogo de lençol king com 4 peças em percal 400 fios, 100% algodão egípcio. Toque suave, caimento perfeito e durabilidade incomparável. Inclui lençol com elástico, superior e 2 fronhas.",
-    details: [
-      { title: "400 fios", desc: "Densidade premium para máximo conforto" },
-      { title: "Algodão egípcio", desc: "Fibras longas, mais maciez e resistência" },
-      { title: "Elástico reforçado", desc: "Não solta do colchão durante a noite" },
-      { title: "Acabamento acetinado", desc: "Visual luxuoso e toque suave" },
-      { title: "4 peças completas", desc: "Lençol elástico + superior + 2 fronhas" },
-    ],
-    closing: "Vista sua cama com o conforto de um hotel cinco estrelas todas as noites.",
-  },
-  10: {
-    headline: "POTÊNCIA PROFISSIONAL NA SUA COZINHA",
-    intro: "Batedeira planetária 1000W com tigela de aço inox 5L, 10 velocidades e 3 batedores (globo, gancho e pá). Ideal para massas leves, pesadas, claras em neve e suspiros.",
-    details: [
-      { title: "Motor 1000W", desc: "Potência para encarar qualquer massa" },
-      { title: "Tigela inox 5L", desc: "Capacidade para receitas grandes" },
-      { title: "Movimento planetário", desc: "Mistura uniforme em todos os pontos" },
-      { title: "3 batedores inclusos", desc: "Globo, gancho e pá para cada receita" },
-      { title: "Base antiderrapante", desc: "Não anda na bancada com vibração" },
-    ],
-    closing: "Da confeitaria caseira ao pão artesanal, sua cozinha em outro nível.",
-  },
-  11: {
-    headline: "EDREDOM PREMIUM PARA NOITES INESQUECÍVEIS",
-    intro: "Edredom king com enchimento em pluma de ganso naturale 600g/m², capa 100% algodão acetinado e costura matelassê. Conforto térmico premium para todas as estações.",
-    details: [
-      { title: "Pluma de ganso naturale", desc: "Leve e quentíssimo, conforto premium" },
-      { title: "Capa de algodão acetinado", desc: "Visual luxuoso e toque sedoso" },
-      { title: "Costura matelassê", desc: "Mantém o enchimento distribuído" },
-      { title: "King size", desc: "Cobre cama king com folga" },
-      { title: "Térmico em qualquer estação", desc: "Aquece sem sufocar" },
-    ],
-    closing: "O quarto principal merece o edredom que combina luxo e conforto verdadeiro.",
-  },
-  12: {
-    headline: "CHÁS, CAFÉS E INFUSÕES NO PONTO CERTO",
-    intro: "Chaleira elétrica em inox premium 1,7L com ajuste de temperatura variável (40°C a 100°C), desligamento automático e proteção contra superaquecimento. Ideal para cafés especiais e chás.",
-    details: [
-      { title: "Inox premium", desc: "Resistente, não enferruja, visual sofisticado" },
-      { title: "Temperatura variável", desc: "Ponto exato para cada tipo de bebida" },
-      { title: "Desligamento automático", desc: "Segurança total quando atinge a temperatura" },
-      { title: "1,7 litros", desc: "Capacidade ideal para uso doméstico" },
-      { title: "Aquecimento rápido", desc: "Água fervente em menos de 3 minutos" },
-    ],
-    closing: "A diferença entre uma bebida boa e extraordinária está no controle preciso da temperatura.",
-  },
-  13: {
-    headline: "AROMATERAPIA QUE TRANSFORMA O AMBIENTE",
-    intro: "Difusor ultrassônico com reservatório de 300ml, vaporização silenciosa, luz de ambiente em 7 cores e desligamento automático. Acabamento em cerâmica branca com detalhes em madeira natural.",
-    details: [
-      { title: "Ultrassônico silencioso", desc: "Ideal para uso noturno no quarto" },
-      { title: "300ml de capacidade", desc: "Funciona a noite toda sem precisar reabastecer" },
-      { title: "7 cores de luz ambiente", desc: "Crie atmosferas relaxantes" },
-      { title: "Desligamento automático", desc: "Segurança quando a água acaba" },
-      { title: "Acabamento premium", desc: "Cerâmica e madeira para decoração sofisticada" },
-    ],
-    closing: "Combine bem-estar e decoração em um único acessório indispensável.",
-  },
-  14: {
-    headline: "DUPLA FACE SHERPA: PELE DE CARNEIRO QUE ABRAÇA",
-    intro: "Edredom Coberdrom Queen Size com um lado em sherpa (pele de carneiro sintética) ultramacia e o outro em microfibra premium aveludada. Quentíssimo, encorpado e perfeito para os dias mais frios — disponível em 7 cores elegantes.",
-    details: [
-      { title: "Sherpa pele de carneiro", desc: "Toque idêntico à lã natural, super fofinho" },
-      { title: "Dupla face", desc: "Microfibra aveludada do outro lado para variar o uso" },
-      { title: "Tamanho Casal/Queen", desc: "2,20m x 2,40m, cobre cama queen com sobra" },
-      { title: "Costura matelassê reforçada", desc: "Enchimento uniforme que não junta no canto" },
-      { title: "Antialérgico", desc: "Fibras hipoalergênicas seguras para toda família" },
-      { title: "7 cores disponíveis", desc: "Marrom, cinza, preto, vermelho, rosé, bege e azul marinho" },
-    ],
-    closing: "O calor de um abraço de pele de carneiro nas noites mais frias do ano — agora com a qualidade BelaCasa.",
-  },
-  15: {
-    headline: "CONFORTO CERVICAL AVANÇADO PARA UM SONO PROFUNDO",
-    intro: "Travesseiro Cervical Tomimi com espuma viscoelástica de memória de alta densidade e design biônico em forma de borboleta. Suporte ergonômico que alinha a coluna cervical, alivia dores no pescoço e ombros, totalmente livre de formaldeído e sem odor.",
-    details: [
-      { title: "Espuma de memória premium", desc: "Alta densidade que abraça a cabeça e volta ao formato" },
-      { title: "Design biônico borboleta", desc: "Asas levantadas que sustentam o pescoço em qualquer posição" },
-      { title: "Micro depressão central", desc: "Encaixe perfeito da cabeça, evita rolar durante o sono" },
-      { title: "Sem formaldeído, sem odor", desc: "Pronto pra usar ao tirar da embalagem, 100% seguro" },
-      { title: "Suporte cervical ergonômico", desc: "Alinha a coluna e reduz dores em até 15 dias de uso" },
-      { title: "Capa respirável removível", desc: "Tecido fresquinho que pode ser lavado separadamente" },
-    ],
-    closing: "Um terço da sua vida você passa no travesseiro — invista no descanso que sua coluna merece.",
-  },
-  26: {
-    headline: "ESCOVA MODELADORA DE ÍONS NEGATIVOS 38 MM",
-    intro:
-      "Modele, alise e dê volume aos fios em uma única passada. Barril de 38 mm com aquecimento PTC duplo (pronto em 30 segundos), controle NTC de temperatura em tempo real e 3 milhões de íons negativos que selam a cutícula, reduzem o frizz e deixam o cabelo visivelmente mais liso e brilhante.",
-    details: [
-      { title: "Aquecimento PTC duplo", desc: "Pronta para uso em apenas 30 segundos, com calor uniforme" },
-      { title: "Controle NTC inteligente", desc: "Monitora a temperatura em tempo real e evita superaquecimento" },
-      { title: "9 níveis de temperatura", desc: "De 130°C a 210°C: cabelos finos, médios e grossos" },
-      { title: "3 milhões de íons negativos", desc: "Fecha a cutícula, reduz frizz e pontas duplas" },
-      { title: "Cerdas que não embaraçam", desc: "Barril cerâmico de 38 mm com cerdas mistas antiembaraço" },
-      { title: "Corpo leve de 350 g", desc: "Cabo giratório 360° e visor digital claro, sem cansar o braço" },
-      { title: "Desligamento automático 1h", desc: "Segurança total caso você esqueça a escova ligada" },
-    ],
-    closing: "Cachos duradouros pela manhã, ondas volumosas à noite — salão em casa todos os dias.",
   },
   32: {
-    headline: "ERGONOMIA DE ELITE PARA O SEU DIA A DIA",
-    intro: "Cadeira Presidente Premium com foco total em saúde postural. Projetada com suporte lombar 3D e malha mesh respirável de alta densidade, garante conforto térmico e alinhamento da coluna por mais de 8 horas de uso contínuo.",
-    details: [
-      { title: "Suporte Lombar 3D", desc: "Ajuste automático que acompanha o movimento das costas" },
-      { title: "Malha Mesh High-Density", desc: "Circulação de ar total, evita calor e suor" },
-      { title: "Braços Articulados", desc: "Facilita a aproximação da mesa e otimiza o espaço" },
-      { title: "Pistão Classe 4", desc: "Segurança e suavidade no ajuste de altura" },
-      { title: "Apoio de Cabeça 2D", desc: "Ajuste de altura e ângulo para relaxamento cervical" },
-      { title: "Rodízios Anti-ruído", desc: "Deslizamento suave que não risca o piso" },
+    about:
+      "A Cadeira Presidente Premium foi projetada para quem passa horas sentado e não abre mão de saúde postural. O suporte lombar 3D acompanha o movimento das costas, a malha mesh de alta densidade mantém o encosto ventilado e o apoio de cabeça ajustável alivia a tensão cervical. Estrutura reforçada, pistão a gás classe 4 e sistema relax com trava garantem segurança e conforto ao longo do dia.",
+    specs: [
+      { label: "Categoria", value: "Escritório / Home office" },
+      { label: "Encosto", value: "Malha mesh respirável de alta densidade" },
+      { label: "Apoio lombar", value: "Suporte 3D dinâmico" },
+      { label: "Apoio de cabeça", value: "Ajuste de altura e ângulo (2D)" },
+      { label: "Braços", value: "Articulados, recolhíveis sob a mesa" },
+      { label: "Regulagem", value: "Pistão a gás classe 4 + relax com trava" },
+      { label: "Cor", value: "Cinza e branco" },
     ],
-    closing: "Invista na sua produtividade e saúde com a cadeira que redefine o conceito de sentar bem.",
   },
-  33: {
-    headline: "A REVOLUÇÃO DA LIMPEZA DOMÉSTICA",
-    intro: "Escova Elétrica Multifuncional 9 em 1 com cabo retrátil. Esqueça o esforço de esfregar: a alta rotação e os 9 acessórios limpam desde azulejos e janelas até o teto sem que você precise se abaixar ou subir em escadas.",
-    details: [
-      { title: "9 Acessórios Inclusos", desc: "Cerdas e esponjas para cada tipo de superfície" },
-      { title: "Cabo Retrátil de Aço", desc: "Alcance até 1,5m: teto, janelas altas e cantos sem esforço" },
-      { title: "Bateria 3000mAh", desc: "Até 90 minutos de limpeza contínua com carregamento USB-C" },
-      { title: "Alta Rotação Power", desc: "Remove manchas difíceis e limo sem precisar esfregar" },
-      { title: "À Prova d'Água IPX7", desc: "Segurança total para limpar banheiros e áreas úmidas" },
-      { title: "Design Ergonômico", desc: "Leve e fácil de manusear por qualquer pessoa" },
+  30: {
+    about:
+      "O Travesseiro Ortopédico Cervical em formato borboleta é feito em espuma viscoelástica de recuperação lenta e acompanha a curva natural da coluna cervical. As zonas de apoio independentes e os recortes laterais em asa acomodam os ombros, aliviam a pressão no pescoço, favorecem a respiração e reduzem o ronco. Com alturas diferentes em cada lado, adapta-se a quem dorme de lado, de costas ou de bruços — suporte firme, sem odor e sem deformar com o uso.",
+    specs: [
+      { label: "Categoria", value: "Travesseiros" },
+      { label: "Material", value: "Espuma viscoelástica (memory foam) de recuperação lenta" },
+      { label: "Medidas", value: "60 cm x 35 cm" },
+      { label: "Alturas", value: "Lado baixo 8 cm / lado alto 11 cm" },
+      { label: "Capa", value: "Tecido matelassê respirável, removível e lavável" },
+      { label: "Tratamento", value: "Antiácaro, antifungo e hipoalergênico" },
+      { label: "Indicação", value: "Cervicalgia, dores de cabeça tensionais e má postura ao dormir" },
     ],
-    closing: "Limpeza pesada feita em minutos, com a tecnologia que seu lar merece.",
+  },
+  29: {
+    about:
+      "O Kit 2 Cobre Leito Colcha Dupla Face traz duas peças reversíveis em tecido 150 fios com matelassê Boutis: de um lado a estampa, do outro um tom liso trabalhado — dois visuais para o mesmo quarto. O enchimento em manta siliconada dá caimento bonito sem pesar e o pesponto mantém o volume distribuído mesmo após várias lavagens.",
+    specs: [
+      { label: "Categoria", value: "Jogo de cama / Colchas" },
+      { label: "Composição", value: "Microfibra 150 fios com manta siliconada" },
+      { label: "Acabamento", value: "Matelassê Boutis dupla face" },
+      { label: "Peças", value: "2 cobre leitos (estampa e tamanho à escolha)" },
+      { label: "Tamanhos", value: "Solteiro, Casal, Queen ou King" },
+      { label: "Tratamento", value: "Antialérgico e antifungo, não solta fiapos" },
+      { label: "Lavagem", value: "Máquina em ciclo delicado, secagem rápida" },
+    ],
+  },
+  27: {
+    about:
+      "O Cobertor Manta Flannel Canelado tem 300 g/m² de gramatura e relevo 3D que retém o calor do corpo, aquecendo de verdade sem pesar. A microfibra escovada dupla deixa os dois lados supermacios e a barra em veludo costurada dá caimento elegante e durabilidade nas pontas.",
+    specs: [
+      { label: "Categoria", value: "Casa & Banho / Cobertores" },
+      { label: "Material", value: "Flannel de microfibra canelado, escovação dupla" },
+      { label: "Gramatura", value: "300 g/m²" },
+      { label: "Medidas", value: "2,20 m x 2,40 m (Casal Queen/King)" },
+      { label: "Acabamento", value: "Barra em veludo costurada" },
+      { label: "Tratamento", value: "Antialérgico e antifungo, não solta fiapos" },
+      { label: "Cores", value: "Bege e Cinza" },
+    ],
+  },
+  26: {
+    about:
+      "A Escova Modeladora de Íons Negativos alisa, modela e dá volume em uma única passada. O barril cerâmico de 38 mm com aquecimento PTC duplo fica pronto em 30 segundos e o controle NTC monitora a temperatura em tempo real para proteger os fios. Os 3 milhões de íons negativos selam a cutícula, reduzem o frizz e deixam o cabelo visivelmente mais liso e brilhante.",
+    specs: [
+      { label: "Categoria", value: "Eletro / Beleza" },
+      { label: "Barril", value: "Cerâmico de 38 mm com cerdas mistas antiembaraço" },
+      { label: "Temperatura", value: "9 níveis, de 130°C a 210°C" },
+      { label: "Aquecimento", value: "PTC duplo, pronta em 30 segundos" },
+      { label: "Tecnologia", value: "3 milhões de íons negativos + controle NTC" },
+      { label: "Peso", value: "350 g, cabo giratório 360°" },
+      { label: "Segurança", value: "Desligamento automático em 1 hora" },
+      { label: "Voltagem", value: "110V ou 220V (à escolha)" },
+    ],
+  },
+  25: {
+    about:
+      "O Kit 6 Toalhas de Banho Folha é 100% algodão felpudo com jacquard de folhas na barra. O fio penteado garante alta absorção e secagem rápida, com toque macio que não agride a pele e mantém a felpa firme após muitas lavagens.",
+    specs: [
+      { label: "Categoria", value: "Casa & Banho / Toalhas" },
+      { label: "Composição", value: "100% algodão, fio penteado" },
+      { label: "Peças", value: "6 toalhas de banho" },
+      { label: "Medidas", value: "70 cm x 140 cm" },
+      { label: "Acabamento", value: "Barra jacquard com ponto duplo antidesfiar" },
+      { label: "Cores", value: "Sortidas conforme disponibilidade" },
+    ],
+  },
+  17: {
+    about:
+      "O Jogo de Panelas Bianco Vanilla equipa a cozinha inteira com 10 peças de revestimento antiaderente de alta durabilidade. As tampas de vidro temperado com visor permitem acompanhar o cozimento sem perder calor, e os cabos ergonômicos não esquentam durante o preparo.",
+    specs: [
+      { label: "Categoria", value: "Cozinha / Panelas" },
+      { label: "Peças", value: "10 peças completas" },
+      { label: "Revestimento", value: "Antiaderente de alta durabilidade" },
+      { label: "Tampas", value: "Vidro temperado com visor" },
+      { label: "Cabos", value: "Ergonômicos, não esquentam" },
+      { label: "Compatibilidade", value: "Gás, elétrico e vitrocerâmico" },
+      { label: "Cores", value: "8 opções à escolha" },
+    ],
+  },
+  19: {
+    about:
+      "O Coberdrom Casal/Queen Dupla Face une microfibra aveludada de um lado e sherpa peluciado do outro, para variar o uso conforme a temperatura. Retém o calor nas noites frias, é encorpado sem sufocar, não solta pelos e pode ir à máquina de lavar.",
+    specs: [
+      { label: "Categoria", value: "Jogo de cama / Coberdrons" },
+      { label: "Material", value: "Sherpa peluciado + microfibra aveludada" },
+      { label: "Tamanho", value: "Casal/Queen — 2,20 m x 2,40 m" },
+      { label: "Acabamento", value: "Costura matelassê reforçada" },
+      { label: "Tratamento", value: "Antialérgico, não solta pelos" },
+      { label: "Cores", value: "6 opções à escolha" },
+    ],
+  },
+  20: {
+    about:
+      "O Liquidificador Mondial L-99 Turbo Power tem motor de 550W, 3 velocidades e função pulsar para triturar frutas, gelo e preparar massas com rapidez. As lâminas de aço inox de 4 pontas e o filtro removível na jarra garantem sucos mais lisos e limpeza fácil.",
+    specs: [
+      { label: "Categoria", value: "Eletro / Cozinha" },
+      { label: "Potência", value: "550W" },
+      { label: "Velocidades", value: "3 + função pulsar" },
+      { label: "Lâminas", value: "Aço inox de 4 pontas" },
+      { label: "Jarra", value: "Com filtro removível e tampa dosadora" },
+      { label: "Voltagem", value: "110V ou 220V (à escolha)" },
+      { label: "Cores", value: "Preto ou Vermelho" },
+    ],
+  },
+  102: {
+    about:
+      "Aparador buffet em MDP branco com prateleiras amplas, indicado para sala, hall de entrada ou escritório. Estrutura resistente, acabamento fosco e montagem simples com gabarito.",
+    specs: [
+      { label: "Categoria", value: "Móveis / Sala" },
+      { label: "Material", value: "MDP com acabamento fosco" },
+      { label: "Cor", value: "Branco" },
+      { label: "Estrutura", value: "Prateleiras amplas internas" },
+      { label: "Montagem", value: "Simples, manual incluso" },
+    ],
+  },
+  103: {
+    about:
+      "Suporte duplo de parede para cozinha em preto fosco. Acomoda micro-ondas, forno elétrico e utensílios, liberando espaço na bancada com visual moderno.",
+    specs: [
+      { label: "Categoria", value: "Cozinha / Organização" },
+      { label: "Material", value: "MDP e estrutura metálica" },
+      { label: "Cor", value: "Preto fosco" },
+      { label: "Fixação", value: "Parede, com buchas e parafusos" },
+      { label: "Uso", value: "Micro-ondas, forno elétrico e utensílios" },
+    ],
+  },
+  104: {
+    about:
+      "Jogo com 6 taças Diamond em vidro transparente com relevo lapidado. Elegantes para água, vinho e drinks, deixam a mesa posta sofisticada no dia a dia e em ocasiões especiais.",
+    specs: [
+      { label: "Categoria", value: "Utilidades / Mesa posta" },
+      { label: "Material", value: "Vidro transparente lapidado" },
+      { label: "Capacidade", value: "350 ml por taça" },
+      { label: "Peças", value: "6 unidades" },
+      { label: "Uso", value: "Água, vinho, sucos e drinks" },
+    ],
+  },
+  105: {
+    about:
+      "Sapateira estilo industrial com 3 planos, estrutura metálica reforçada e prateleiras em MDP marrom-claro. Organiza até 12 pares mantendo os calçados ventilados.",
+    specs: [
+      { label: "Categoria", value: "Organização / Quarto" },
+      { label: "Material", value: "Metal e MDP marrom-claro" },
+      { label: "Planos", value: "3 prateleiras" },
+      { label: "Capacidade", value: "Até 12 pares" },
+      { label: "Estilo", value: "Industrial" },
+    ],
+  },
+  106: {
+    about:
+      "Sapateira compacta branca para quarto, sala ou hall. Design clean, ocupa pouco espaço e mantém os calçados organizados e ventilados.",
+    specs: [
+      { label: "Categoria", value: "Organização / Quarto" },
+      { label: "Material", value: "MDP fosco" },
+      { label: "Cor", value: "Branco" },
+      { label: "Design", value: "Compacto, ideal para espaços pequenos" },
+      { label: "Montagem", value: "Rápida, manual incluso" },
+    ],
+  },
+  107: {
+    about:
+      "Mesa de cabeceira moderna em MDP fosco com nicho e prateleira. Apoia celular, livros e abajur ao lado da cama, com acabamento que combina com quartos claros ou escuros.",
+    specs: [
+      { label: "Categoria", value: "Móveis / Quarto" },
+      { label: "Material", value: "MDP fosco" },
+      { label: "Cores", value: "Branco ou Preto" },
+      { label: "Estrutura", value: "Nicho + prateleira" },
+      { label: "Montagem", value: "Simples, ferragens inclusas" },
+    ],
+  },
+  108: {
+    about:
+      "Suporte aéreo modular preto para micro-ondas e utensílios de cozinha. Fixação na parede com alta resistência e visual moderno, liberando toda a bancada.",
+    specs: [
+      { label: "Categoria", value: "Cozinha / Organização" },
+      { label: "Material", value: "MDP e metal" },
+      { label: "Cor", value: "Preto" },
+      { label: "Sistema", value: "Modular suspenso" },
+      { label: "Fixação", value: "Parede, kit de instalação incluso" },
+    ],
+  },
+  109: {
+    about:
+      "Mesa de centro branca com design leve e contemporâneo. Funciona como peça central da sala ou apoio lateral ao lado do sofá.",
+    specs: [
+      { label: "Categoria", value: "Móveis / Sala" },
+      { label: "Material", value: "MDP com acabamento fosco" },
+      { label: "Cor", value: "Branco" },
+      { label: "Uso", value: "Mesa de centro ou apoio lateral" },
+      { label: "Montagem", value: "Simples, manual incluso" },
+    ],
+  },
+  110: {
+    about:
+      "Armário suspenso branco com porta, nicho e 3 prateleiras internas. Ideal para banheiro, lavanderia ou cozinha, aproveitando o espaço vertical da parede.",
+    specs: [
+      { label: "Categoria", value: "Organização / Banheiro" },
+      { label: "Material", value: "MDP resistente à umidade" },
+      { label: "Cor", value: "Branco" },
+      { label: "Estrutura", value: "1 porta, 1 nicho e 3 prateleiras" },
+      { label: "Fixação", value: "Suspensa, buchas e parafusos inclusos" },
+    ],
+  },
+  111: {
+    about:
+      "Suporte ergonômico para monitor que eleva a tela à altura dos olhos, aliviando a tensão no pescoço e criando espaço extra na mesa para teclado e acessórios.",
+    specs: [
+      { label: "Categoria", value: "Escritório / Setup" },
+      { label: "Material", value: "MDP com acabamento preto e mel" },
+      { label: "Função", value: "Elevação ergonômica do monitor" },
+      { label: "Extra", value: "Vão inferior para teclado e acessórios" },
+    ],
+  },
+  112: {
+    about:
+      "Rack sapateira em MDP com 2 prateleiras, acabamento fosco e montagem rápida. Solução simples para manter a entrada de casa organizada.",
+    specs: [
+      { label: "Categoria", value: "Organização / Entrada" },
+      { label: "Material", value: "MDP fosco" },
+      { label: "Cores", value: "Preto ou Branco" },
+      { label: "Prateleiras", value: "2 planos" },
+      { label: "Montagem", value: "Rápida, ferragens inclusas" },
+    ],
+  },
+  113: {
+    about:
+      "Mesa de cabeceira Safira com rodinhas, prática de mover e perfeita para espaços pequenos no quarto ou na sala. Estrutura estreita que cabe em qualquer canto.",
+    specs: [
+      { label: "Categoria", value: "Móveis / Quarto" },
+      { label: "Material", value: "MDP fosco" },
+      { label: "Medidas", value: "20 x 20 x 60 cm" },
+      { label: "Cores", value: "Branco ou Preto" },
+      { label: "Mobilidade", value: "Rodízios inclusos" },
+    ],
+  },
+  114: {
+    about:
+      "Mop spray com reservatório de 380 ml e refil em microfibra: borrifa e limpa ao mesmo tempo, sem precisar de balde. Ideal para limpezas rápidas do dia a dia.",
+    specs: [
+      { label: "Categoria", value: "Utilidades / Limpeza" },
+      { label: "Reservatório", value: "380 ml acoplado" },
+      { label: "Refil", value: "Microfibra lavável" },
+      { label: "Cabo", value: "Alumínio leve com gatilho" },
+      { label: "Uso", value: "Piso frio, laminado e porcelanato" },
+    ],
+  },
+  115: {
+    about:
+      "Kit esfregão mop com balde de 10,5 litros, cesto centrifugador em inox, cabo de 140 cm e 2 refis de microfibra. Centrifuga sem encostar as mãos na água suja.",
+    specs: [
+      { label: "Categoria", value: "Utilidades / Limpeza" },
+      { label: "Balde", value: "10,5 litros com cesto centrifugador em inox" },
+      { label: "Cabo", value: "140 cm, giratório" },
+      { label: "Refis", value: "2 unidades em microfibra" },
+      { label: "Uso", value: "Todos os tipos de piso" },
+    ],
   },
 };
 
 const ProductDescription = ({ productId }: ProductDescriptionProps) => {
   const product = products.find((p) => p.id === productId);
-  const data = productHighlights[productId];
+  const sheet = productSheets[productId];
 
-  if (!data) {
-    if (!product) return null;
-    return (
-      <div className="mt-16 space-y-10">
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            QUALIDADE PREMIUM PARA O SEU LAR
-          </h2>
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-            {product.description}
-          </p>
-        </div>
-        <div className="text-center max-w-3xl mx-auto space-y-6 bg-secondary/30 border border-border rounded-xl p-8">
-          <h2 className="text-xl md:text-2xl font-bold text-foreground">
-            Garantia BelaCasa de 30 dias
-          </h2>
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-            Se o produto não corresponder ao esperado, você tem até <strong className="text-foreground">30 dias para trocar ou devolver sem burocracia</strong>. Confiamos na qualidade do que entregamos.
-          </p>
-        </div>
-      </div>
-    );
-  }
+  if (!product && !sheet) return null;
+
+  const about = sheet?.about ?? product?.description ?? "";
+  const specs: Spec[] =
+    sheet?.specs ??
+    [
+      { label: "Garantia", value: "30 dias para troca ou devolução" },
+      { label: "Envio", value: "Processado em até 24h úteis, com rastreio" },
+      { label: "Nota fiscal", value: "Emitida eletronicamente em todo pedido" },
+    ];
 
   return (
-    <div className="mt-16 space-y-12">
-      <div className="text-center max-w-3xl mx-auto space-y-6">
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground">{data.headline}</h2>
-        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{data.intro}</p>
-      </div>
+    <div className="mt-16 max-w-3xl mx-auto space-y-12">
+      <section>
+        <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4">Sobre o produto</h2>
+        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{about}</p>
+      </section>
 
-      <div className="text-center max-w-3xl mx-auto space-y-8">
-        <h2 className="text-xl md:text-2xl font-bold text-foreground">
-          5 DETALHES QUE FAZEM A DIFERENÇA
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {data.details.map((item, idx) => (
-            <div key={idx} className="bg-secondary/50 border border-border rounded-lg p-5 text-left">
-              <p className="font-bold text-foreground text-sm">{item.title}</p>
-              <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
+      <section>
+        <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4">Especificações</h2>
+        <dl className="divide-y divide-border border-t border-b border-border">
+          {specs.map((spec) => (
+            <div
+              key={spec.label}
+              className="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-1 sm:gap-4 py-3"
+            >
+              <dt className="text-sm font-semibold text-foreground">{spec.label}</dt>
+              <dd className="text-sm text-muted-foreground leading-relaxed">{spec.value}</dd>
             </div>
           ))}
-        </div>
-      </div>
+        </dl>
+      </section>
 
-      <div className="text-center max-w-3xl mx-auto space-y-6">
-        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-          {data.closing}
+      <section className="bg-secondary/30 border border-border rounded-xl p-6 space-y-3">
+        <h2 className="text-lg md:text-xl font-bold text-foreground">Garantia e envio</h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Você tem até <strong className="text-foreground">30 dias para trocar ou devolver</strong> sem
+          burocracia. Pedidos processados em até <strong className="text-foreground">24h úteis</strong>,
+          com rastreio completo e nota fiscal eletrônica.
         </p>
-      </div>
-
-      <div className="text-center max-w-3xl mx-auto space-y-6 bg-secondary/30 border border-border rounded-xl p-8">
-        <h2 className="text-xl md:text-2xl font-bold text-foreground">
-          Garantia BelaCasa de 30 dias
-        </h2>
-        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-          Se o produto não corresponder ao esperado, você tem até <strong className="text-foreground">30 dias para trocar ou devolver sem burocracia</strong>. Confiamos na qualidade do que entregamos.
-        </p>
-      </div>
-
-      <div className="text-center max-w-3xl mx-auto space-y-4">
-        <h2 className="text-xl md:text-2xl font-bold text-foreground">Envio rápido com rastreio</h2>
-        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-          Seu pedido é processado em até <strong className="text-foreground">24h úteis</strong> com rastreamento completo e nota fiscal eletrônica. Transparência e confiança do início ao fim.
-        </p>
-      </div>
+      </section>
     </div>
   );
 };
