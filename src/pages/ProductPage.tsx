@@ -164,8 +164,8 @@ const ProductPage = () => {
     ? Math.round(((product.originalPrice - currentPrice) / product.originalPrice) * 100)
     : 0;
 
-  const pixDiscountRate = product.id === 46 ? 0.05 : 0.10;
-  const pixDiscountLabel = product.id === 46 ? "5%" : "10%";
+  const pixDiscountRate = 0.05;
+  const pixDiscountLabel = "5%";
   const pixPrice = currentPrice * (1 - pixDiscountRate);
 
   /** Estoque exibido de forma determinística por produto (escassez) */

@@ -19,7 +19,7 @@ const ProductCard = ({ slug, name, price, originalPrice, image, hoverImage }: Pr
   const discount = originalPrice
     ? Math.round(((originalPrice - price) / originalPrice) * 100)
     : 0;
-  const pixPrice = price * 0.9;
+  const pixPrice = price * 0.95;
   const installments = price >= 100 ? (price >= 300 ? 5 : 2) : 0;
 
   return (

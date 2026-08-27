@@ -192,11 +192,9 @@ export const LunaCheckout = () => {
   const shippingCost = SHIPPING_OPTIONS.find((o) => o.id === selectedShipping)?.price ?? 0;
   const subtotalWithShipping = totalPrice + shippingCost - couponDiscount;
   const itemsSubtotal = items.reduce((sum, it) => sum + it.price * it.quantity, 0) || 1;
-  const itemsAt5 = items.filter((i) => i.id === 46).reduce((sum, it) => sum + it.price * it.quantity, 0);
-  const itemsAt10 = itemsSubtotal - itemsAt5;
   const remainder = shippingCost - couponDiscount;
   const blendedRate =
-    (itemsAt5 * 0.05 + itemsAt10 * 0.1 + Math.max(remainder, 0) * 0.1) / Math.max(subtotalWithShipping, 1);
+    (itemsSubtotal * 0.05 + Math.max(remainder, 0) * 0.05) / Math.max(subtotalWithShipping, 1);
   const pixDiscount = paymentMethod === "pix" ? Math.round(subtotalWithShipping * blendedRate * 100) / 100 : 0;
   const grandTotal = subtotalWithShipping - pixDiscount;
   const cardBaseAmount = subtotalWithShipping;
@@ -205,9 +203,7 @@ export const LunaCheckout = () => {
     installmentOptions.find((o) => o.n === parseInt(installments)) || installmentOptions[0];
   const cardTotal = paymentMethod === "credit" ? selectedInstallmentOption.total : grandTotal;
   const cardInterestFee = paymentMethod === "credit" ? Math.max(0, cardTotal - cardBaseAmount) : 0;
-  const hasOnly46 = items.length > 0 && items.every((i) => i.id === 46);
-  const hasMixed46 = items.some((i) => i.id === 46) && items.some((i) => i.id !== 46);
-  const pixDiscountLabel = hasOnly46 ? "5%" : hasMixed46 ? "até 10%" : "10%";
+  const pixDiscountLabel = "5%";
 
   // ============ Efeitos ============
   useEffect(() => { window.scrollTo(0, 0); }, [currentStep]);

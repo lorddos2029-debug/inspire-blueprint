@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: "Quais formas de pagamento vocês aceitam?",
-    a: "Aceitamos PIX (com 10% de desconto e aprovação imediata) e cartão de crédito em até 12x sem juros. Nossas transações são processadas via Pagou.ai e PinPay, garantindo segurança total.",
+    a: "Aceitamos PIX (com 5% de desconto e aprovação imediata) e cartão de crédito em até 12x sem juros. Nossas transações são processadas via Pagou.ai e PinPay, garantindo segurança total.",
   },
   {
     q: "Como funciona a troca ou devolução?",
