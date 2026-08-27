@@ -96,12 +96,6 @@ export const products: Product[] = [
       `${TRV}img-183.png`,
     ],
     tag: "65% OFF",
-    sizes: ["1 travesseiro", "2 travesseiros"],
-    sizeLabel: "Quantidade",
-    sizePrices: {
-      "1 travesseiro": 69.9,
-      "2 travesseiros": 127.9,
-    },
     description:
       "Travesseiro Ortopédico Cervical em formato borboleta, desenvolvido com viscoelástico de memória de alta densidade para aliviar dores na coluna cervical, tensão nos ombros e dores de cabeça causadas por má postura ao dormir. O desenho anatômico com recortes laterais em asa acomoda os ombros e os braços, mantendo a cabeça, o pescoço e a coluna alinhados em uma única linha reta — o que reduz a compressão dos nervos cervicais e a rigidez matinal. A concavidade central com furo de descompressão distribui o peso da cabeça, elimina pontos de pressão na nuca e favorece a circulação, enquanto as curvas ergonômicas dão apoio firme ao pescoço para quem dorme de barriga para cima, de lado ou alternando de posição. A espuma viscoelástica reage ao calor do corpo e se molda em segundos, voltando lentamente ao formato original sem afundar nem perder o suporte com o tempo. A capa externa é em tecido matelassê respirável, removível e lavável na máquina através de zíper, com estrutura de células abertas que dissipa o calor e mantém o travesseiro fresco a noite inteira. Material antiácaro, antifungo e hipoalergênico, indicado para quem tem rinite ou pele sensível. Também é muito utilizado por quem sofre com bruxismo, torcicolo frequente, ronco e apneia leve, já que a elevação correta do pescoço mantém as vias aéreas abertas. Medidas aproximadas de 60 x 35 x 11/8 cm (altura dupla nas laterais), atendendo tanto quem prefere travesseiro mais alto quanto mais baixo — basta virar. Recomendado por fisioterapeutas como apoio no tratamento de cervicalgia, hérnia de disco cervical e dores de cabeça tensionais.",
   },
