@@ -214,7 +214,7 @@ export const products: Product[] = [
     id: 17,
     slug: "jogo-panelas-10-pecas-antiaderente-bianco-vanilla",
     name: "Jogo de Panelas 10 Peças Antiaderente com Tampa de Vidro Temperado Bianco Vanilla",
-    price: 79.9,
+    price: 127.9,
     originalPrice: 299.9,
     image: `${BC}bianco-v1/img-1.png`,
     hoverImage: `${BC}bianco-v1/img-2.png`,
@@ -225,7 +225,7 @@ export const products: Product[] = [
       `${BC}bianco-v1/img-4.png`,
       `${BC}bianco-v1/img-5.png`,
     ],
-    tag: "73% OFF",
+    tag: "57% OFF",
     description:
       "Jogo de Panelas Bianco Vanilla com 10 peças completas para equipar toda a sua cozinha. Revestimento antiaderente de alta durabilidade, tampas de vidro temperado com visor, cabos ergonômicos que não esquentam e compatibilidade com fogão a gás, elétrico e vitrocerâmico.",
     sizes: [],
