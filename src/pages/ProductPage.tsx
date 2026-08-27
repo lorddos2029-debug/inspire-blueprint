@@ -388,15 +388,6 @@ const ProductPage = () => {
                 )}
               </div>
               
-              {/* Urgência e Escassez */}
-              <div className="flex flex-col gap-2 pt-2">
-                <div className="flex items-center gap-2 py-2 px-3 bg-red-50 border border-red-100 rounded-lg animate-pulse">
-                  <div className="w-2 h-2 rounded-full bg-red-600"></div>
-                  <span className="text-xs font-bold text-red-700 uppercase tracking-wider">
-                    Restam apenas {stockLeft} unidades em estoque!
-                  </span>
-                </div>
-              </div>
 
               <div className="flex items-center gap-2 pt-2">
                 <span className="text-sm font-semibold text-primary">
