@@ -305,10 +305,6 @@ const UpsellTenis = () => {
             <div className="absolute top-3 right-3 bg-background/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-foreground border border-border">
               {viewers} pessoas vendo agora
             </div>
-            <div className="absolute bottom-3 left-3 right-3 bg-amber-500/95 text-white px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-2">
-              <AlertTriangle className="w-4 h-4 shrink-0" />
-              Restam apenas {stockLeft} unidades em estoque!
-            </div>
           </div>
 
           <div className="p-5 space-y-4">
