@@ -880,7 +880,7 @@ export const LunaCheckout = () => {
             <h2 className="text-lg font-bold text-gray-900">PIX gerado com sucesso!</h2>
             <div className="flex items-center justify-center gap-2">
               <span className="text-sm text-gray-400 line-through">{formatPrice(subtotalWithShipping)}</span>
-              <span className="text-xl font-bold text-[#C2A063]">{formatPrice(grandTotal)}</span>
+              <span className="text-xl font-bold text-[#15202D]">{formatPrice(grandTotal)}</span>
             </div>
             <p className="text-xs text-gray-500">Escaneie o QR Code ou copie o código abaixo</p>
           </div>

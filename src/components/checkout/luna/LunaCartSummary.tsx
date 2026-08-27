@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { LunaReservationTimer } from "./LunaReservationTimer";
 import type { CartItem } from "@/contexts/CartContext";
 
 const formatPrice = (value: number) =>
@@ -60,7 +61,7 @@ export const LunaCartSummary = ({
                 />
               )}
 
-              <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-[#C2A063] text-white text-[10px] font-bold flex items-center justify-center">
+              <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-[#15202D] text-white text-[10px] font-bold flex items-center justify-center">
                 {item.quantity}
               </span>
             </div>
@@ -108,7 +109,7 @@ export const LunaCartSummary = ({
 
       <div className="flex items-center justify-between">
         <span className="text-sm font-semibold text-gray-800">Total</span>
-        <span className="text-xl font-bold text-[#C2A063]">{formatPrice(total)}</span>
+        <span className="text-xl font-bold text-[#15202D]">{formatPrice(total)}</span>
       </div>
     </div>
   );
@@ -124,19 +125,27 @@ export const LunaCartSummary = ({
           aria-expanded={open}
         >
           <span className="flex items-center gap-2 text-xs font-semibold text-gray-700">
-            <ShoppingBag className="w-4 h-4 text-[#C2A063]" />
+            <ShoppingBag className="w-4 h-4 text-[#15202D]" />
             {open ? "Ocultar resumo do pedido" : "Exibir resumo do pedido"}
             <ChevronDown className={cn("w-4 h-4 transition-transform", open && "rotate-180")} />
           </span>
-          <span className="text-sm font-bold text-[#C2A063]">{formatPrice(total)}</span>
+          <span className="text-sm font-bold text-[#15202D]">{formatPrice(total)}</span>
         </button>
         {open && <div className="px-4 pb-4">{body}</div>}
       </div>
+      <div className="md:hidden mt-3">
+        <LunaReservationTimer />
+      </div>
 
       {/* Desktop: card sticky */}
-      <div className="hidden md:block sticky top-24 bg-white rounded-xl border border-gray-200 shadow-sm p-5">
-        <p className="text-sm font-bold text-gray-900 mb-4">Resumo do pedido</p>
-        {body}
+      <div className="hidden md:block sticky top-24">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
+          <p className="text-sm font-bold text-gray-900 mb-4">Resumo do pedido</p>
+          {body}
+        </div>
+        <div className="mt-3">
+          <LunaReservationTimer />
+        </div>
       </div>
     </div>
   );
