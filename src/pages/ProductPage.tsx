@@ -751,21 +751,11 @@ const ProductPage = () => {
         <ProductDetails images={baseImages} productName={product.name} />
 
         {/* Product Description */}
-        {mainProduct ? (
-          <>
-            <ProductDescription productId={product.id} />
+        <ProductDescription productId={product.id} />
 
-            {/* Reviews */}
-            <ProductReviews productId={product.id} />
-          </>
-        ) : (
-          <section className="mt-16 border-t border-border pt-10">
-            <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4">Descrição do produto</h2>
-            <p className="text-base text-muted-foreground leading-relaxed max-w-3xl">
-              {product.description}
-            </p>
-          </section>
-        )}
+        {/* Reviews */}
+        {mainProduct && <ProductReviews productId={product.id} />}
+
 
         {/* FAQ */}
         <ProductFAQ />
