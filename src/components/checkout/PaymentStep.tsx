@@ -81,7 +81,7 @@ export const PaymentStep = ({
           <span className="absolute -top-2 left-3 rounded-full bg-[#C2A063] px-2 py-0.5 text-[9px] font-bold uppercase text-white">
             Aprovação imediata
           </span>
-          <QrCode className={cn("w-5 h-5 mb-2", isPix ? "text-[#C2A063]" : "text-gray-400")} />
+          <QrCode className={cn("w-5 h-5 mb-2", isPix ? "text-[#15202D]" : "text-gray-400")} />
           <span className="block text-xs font-bold text-gray-900">PIX</span>
           <span className="block text-[10px] font-semibold text-green-600">{pixDiscountLabel} de desconto</span>
         </button>
@@ -94,7 +94,7 @@ export const PaymentStep = ({
             !isPix ? "border-[#C2A063] bg-[#C2A063]/5" : "border-gray-200 bg-white hover:border-gray-300",
           )}
         >
-          <CreditCard className={cn("w-5 h-5 mb-2", !isPix ? "text-[#C2A063]" : "text-gray-400")} />
+          <CreditCard className={cn("w-5 h-5 mb-2", !isPix ? "text-[#15202D]" : "text-gray-400")} />
           <span className="block text-xs font-bold text-gray-900">Cartão de crédito</span>
           <span className="block text-[10px] text-gray-500">Em até 12x</span>
         </button>
@@ -179,7 +179,7 @@ export const PaymentStep = ({
         <div className="h-px bg-gray-200" />
         <div className="flex items-center justify-between">
           <span className="text-sm font-semibold text-gray-800">Total</span>
-          <span className="text-lg font-bold text-[#C2A063]">{formatPrice(displayTotal)}</span>
+          <span className="text-lg font-bold text-[#15202D]">{formatPrice(displayTotal)}</span>
         </div>
       </div>
 
