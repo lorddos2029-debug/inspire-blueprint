@@ -11,16 +11,10 @@ const CartDrawer = () => {
   const formatPrice = (value: number) =>
     value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
-  const hasOnly46 = items.length > 0 && items.every(i => i.id === 46);
-  const hasMixed46 = items.some(i => i.id === 46) && items.some(i => i.id !== 46);
-  const pixDiscountLabel = hasOnly46 ? "5%" : hasMixed46 ? "até 10%" : "10%";
+  const pixDiscountLabel = "5%";
   
-  // Calculate blended rate for total preview
-  const itemsSubtotal = items.reduce((sum, it) => sum + it.price * it.quantity, 0) || 1;
-  const itemsAt5 = items.filter(i => i.id === 46).reduce((sum, it) => sum + it.price * it.quantity, 0);
-  const itemsAt10 = itemsSubtotal - itemsAt5;
-  const blendedRate = (itemsAt5 * 0.05 + itemsAt10 * 0.10) / itemsSubtotal;
-  const pixTotalPrice = totalPrice * (1 - blendedRate);
+  // Calculate total preview with 5% PIX discount
+  const pixTotalPrice = totalPrice * 0.95;
 
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>

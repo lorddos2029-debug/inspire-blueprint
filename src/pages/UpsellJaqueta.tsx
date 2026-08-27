@@ -42,7 +42,7 @@ interface UpsellState {
 
 const UPSELL_BASE_PRICE = 97.9;
 const UPSELL_ORIGINAL = 300;
-const PIX_DISCOUNT_PCT = 0.10; // 10% off no PIX
+const PIX_DISCOUNT_PCT = 0.05; // 5% off no PIX
 const EXTRA_DISCOUNT_PCT = 0.05; // +5% extra do cupom de retenção
 const COUNTDOWN_SECONDS = 5 * 60;
 
@@ -473,7 +473,7 @@ const UpsellJaqueta = () => {
               </p>
               {paymentMethod === "pix" && (
                 <p className="text-[11px] font-bold text-emerald-700 mt-0.5 uppercase tracking-wide">
-                  10% OFF no PIX
+                  5% OFF no PIX
                 </p>
               )}
               <p className="text-xs text-emerald-700 font-semibold mt-1">
