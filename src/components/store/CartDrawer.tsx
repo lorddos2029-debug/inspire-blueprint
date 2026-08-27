@@ -66,7 +66,7 @@ const CartDrawer = () => {
                     {item.color && (
                       <p className="text-xs text-muted-foreground mt-0.5">Cor: {item.color}</p>
                     )}
-                    <p className="text-sm font-bold text-[hsl(var(--gold))] mt-1">
+                    <p className="text-sm font-bold text-primary mt-1">
                       {formatPrice(item.price)}
                     </p>
                     <div className="flex items-center justify-between mt-2">
@@ -108,11 +108,11 @@ const CartDrawer = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-bold text-foreground">TOTAL</span>
-                  <span className="text-lg font-bold text-[hsl(var(--gold))]">{formatPrice(totalPrice)}</span>
+                  <span className="text-lg font-bold text-primary">{formatPrice(totalPrice)}</span>
                 </div>
-                <div className="flex justify-between items-center bg-[hsl(var(--gold))]/10 border border-[hsl(var(--gold))]/25 px-3 py-2 rounded-md">
-                  <span className="text-sm font-medium text-[hsl(var(--gold))]">{pixDiscountLabel} OFF no PIX</span>
-                  <span className="text-sm font-bold text-[hsl(var(--gold))]">{formatPrice(pixTotalPrice)}</span>
+                <div className="flex justify-between items-center bg-primary/5 border border-primary/20 px-3 py-2 rounded-md">
+                  <span className="text-sm font-medium text-primary">{pixDiscountLabel} OFF no PIX</span>
+                  <span className="text-sm font-bold text-primary">{formatPrice(pixTotalPrice)}</span>
                 </div>
               </div>
               <div className="px-5 pb-5 pt-3 space-y-2">
