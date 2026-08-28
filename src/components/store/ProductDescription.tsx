@@ -15,6 +15,24 @@ interface ProductSheet {
 }
 
 const productSheets: Record<number, ProductSheet> = {
+  34: {
+    about:
+      "A Bicicleta Ergométrica Spinning Profissional traz a experiência da academia para dentro de casa. A estrutura em aço carbono com base larga e pés antiderrapantes suporta até 120 kg sem oscilar, mesmo no pedal em pé. A transmissão por correia com roda de inércia entrega giro contínuo e silencioso, e o ajuste de resistência por atrito permite simular desde a pedalada leve até a subida pesada. Guidão e banco regulam em altura e profundidade, adaptando-se a diferentes alturas, e o painel digital acompanha tempo, velocidade, distância, calorias e pulsação.",
+    specs: [
+      { label: "Categoria", value: "Fitness / Bicicleta ergométrica" },
+      { label: "Estrutura", value: "Aço carbono reforçado com pintura eletrostática" },
+      { label: "Capacidade", value: "Suporta até 120 kg" },
+      { label: "Transmissão", value: "Correia silenciosa com roda de inércia" },
+      { label: "Resistência", value: "Ajuste progressivo por atrito + freio de emergência" },
+      { label: "Guidão", value: "Altura regulável de 96 cm a 110 cm" },
+      { label: "Banco", value: "Altura de 78 cm a 92 cm e ajuste dianteiro/traseiro de 40 cm" },
+      { label: "Pedais", value: "Antiderrapantes com cinta de fixação ajustável" },
+      { label: "Painel", value: "Digital: tempo, velocidade, distância, calorias e pulsação" },
+      { label: "Medidas", value: "80 cm (comprimento) x 46 cm (largura)" },
+      { label: "Extras", value: "Rodinhas de transporte, suporte para garrafa e celular" },
+      { label: "Montagem", value: "Simples, ferramentas e manual inclusos" },
+    ],
+  },
   33: {
     about:
       "A Escova de Limpeza Elétrica Multifuncional 9 em 1 é retrátil e foi feita para eliminar o esforço da limpeza pesada. O cabo extensível em aço inoxidável alcança teto, azulejos, janelas altas e cantos sem escada, enquanto a alta rotação remove limo e manchas difíceis sem esfregar. Com 9 acessórios entre cerdas e esponjas, atende banheiro, cozinha, área externa e até o carro.",
