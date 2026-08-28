@@ -39,6 +39,29 @@ const BIKE = "/assets/products-bc/bicicleta-spinning/";
 
 export const products: Product[] = [
   {
+    id: 35,
+    slug: "gaabor-processador-multislice-300w-4-laminas-vidro-2l",
+    name: "Gaabor Processador Multislice 300w, 4 lâminas, Recipiente de vidro (6mm) e capacidade 2L",
+    price: 69.9,
+    originalPrice: 229.9,
+    image: "/assets/products-bc/gaabor-processador/proc-1.png",
+    hoverImage: "/assets/products-bc/gaabor-processador/proc-2.png",
+    images: [
+      "/assets/products-bc/gaabor-processador/proc-1.png",
+      "/assets/products-bc/gaabor-processador/proc-2.png",
+      "/assets/products-bc/gaabor-processador/proc-3.png",
+      "/assets/products-bc/gaabor-processador/proc-4.png",
+      "/assets/products-bc/gaabor-processador/proc-5.png",
+      "/assets/products-bc/gaabor-processador/proc-6.png",
+      "/assets/products-bc/gaabor-processador/proc-7.png",
+    ],
+    sizes: ["127V", "220V"],
+    sizeLabel: "Voltagem",
+    tag: "70% OFF",
+    description:
+      "Processador de alimentos Gaabor Multislice com motor de 300W, lâminas duplas em formato \"S\" (4 cortes) em aço inoxidável e recipiente de vidro reforçado de 6mm com 2 litros de capacidade. Processa até 550g de carne por vez e conta com 2 velocidades para controlar a textura dos alimentos.",
+  },
+  {
     id: 33,
     slug: "escova-de-limpeza-eletrica-multifuncional-9-em-1-retratil",
     name: "Escova de limpeza elétrica multifuncional 9 em 1",
