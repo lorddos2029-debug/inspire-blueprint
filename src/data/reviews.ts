@@ -510,6 +510,23 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
       { name: "Juliana Castilho", date: "Abr 2026", rating: 5, text: "Entrega rápida e a GOKOCO é igualzinho às fotos. Rosé com preto é lindo, fica bonito até na bancada do banheiro. Recomendo de olhos fechados." },
     ],
   },
+  // 35 — Gaabor Processador Multislice 300W 2L
+  35: {
+    total: 1187,
+    avg: 4.9,
+    reviews: [
+      { name: "Renata Bittencourt", date: "Ago 2026", rating: 5, text: "Processa 500g de patinho em segundos, virou carne moída na hora. O vidro é grosso mesmo, dá segurança. Comprei a 127V e veio certinho.", image: "/assets/products-bc/gaabor-processador/proc-3.png" },
+      { name: "Douglas Prata", date: "Ago 2026", rating: 5, text: "As duas velocidades fazem diferença: na I pico cebola e salsinha sem virar purê, na II tritura castanha e cenoura. Motor de 300W aguenta bem.", image: "/assets/products-bc/gaabor-processador/proc-4.png" },
+      { name: "Aline Marcondes", date: "Jul 2026", rating: 5, text: "As lâminas em S de 4 cortes pegam até o que fica na lateral do copo. Nunca precisei parar pra mexer com a espátula.", image: "/assets/products-bc/gaabor-processador/proc-5.png" },
+      { name: "Vinícius Toledo", date: "Jul 2026", rating: 5, text: "Limpeza é o ponto alto. O copo de vidro sai inteiro e lavo só com água corrente, não fica cheiro de alho preso como no de plástico.", image: "/assets/products-bc/gaabor-processador/proc-6.png" },
+      { name: "Patrícia Nogueira", date: "Jul 2026", rating: 5, text: "Compacto, cabe no armário e ainda assim tem 2 litros. Faço tempero pra semana inteira de uma vez só." },
+      { name: "Eduardo Sampaio", date: "Jun 2026", rating: 5, text: "Comprei a 220V pra minha casa em Recife, funcionou perfeito. Base antiderrapante não anda na bancada nem quando tá cheio." },
+      { name: "Camila Restani", date: "Jun 2026", rating: 4, text: "Ótimo processador, só achei que faz um pouco de barulho na velocidade II. Fora isso, cumpre tudo que promete." },
+      { name: "Marcos Vilela", date: "Jun 2026", rating: 5, text: "Faço hambúrguer artesanal em casa e ele mói a carne no ponto certo. Muito melhor do que o processador de plástico que eu tinha." },
+      { name: "Tatiane Póvoa", date: "Mai 2026", rating: 5, text: "Acompanha espátula e o cesto interno. Chegou bem embalado, nenhum arranhão no vidro. Custo-benefício absurdo por esse preço." },
+      { name: "Sérgio Delgado", date: "Mai 2026", rating: 5, text: "Acionamento por botão de pulso é ótimo pra controlar a textura. Uso pra alho, cebola, carne e até pra triturar gelo picado." },
+    ],
+  },
   // 33 — Escova de Limpeza Elétrica 9 em 1
   33: {
     total: 942,

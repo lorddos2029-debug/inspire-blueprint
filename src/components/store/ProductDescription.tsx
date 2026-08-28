@@ -15,6 +15,24 @@ interface ProductSheet {
 }
 
 const productSheets: Record<number, ProductSheet> = {
+  35: {
+    about:
+      "O Gaabor Processador Multislice reúne potência e praticidade em um aparelho compacto. O motor de 300W aciona lâminas duplas em formato \"S\" com 4 cortes em aço inoxidável japonês, que trituram os alimentos por completo — inclusive o que fica nas laterais do copo. O recipiente é de vidro reforçado de 6 mm com qualidade alimentar e 2 litros de capacidade, processando até 550 g de carne por vez. Com 2 velocidades, você controla a textura: a velocidade I (média) é ideal para folhas, ervas, cebola, alho e gengibre; a velocidade II (alta) dá conta de carnes, castanhas, legumes e raízes. A base antiderrapante mantém o aparelho firme na bancada e todas as peças removíveis são fáceis de lavar apenas com água corrente.",
+    specs: [
+      { label: "Categoria", value: "Eletroportátil / Cozinha" },
+      { label: "Potência", value: "300 W" },
+      { label: "Capacidade", value: "2 litros (até 550 g de carne por ciclo)" },
+      { label: "Recipiente", value: "Vidro reforçado de 6 mm, qualidade alimentar" },
+      { label: "Lâminas", value: "Duplas em formato \"S\", 4 cortes, aço inoxidável" },
+      { label: "Velocidades", value: "2 (I média e II alta) com acionamento por pulso" },
+      { label: "Voltagem", value: "127V ou 220V (selecione na compra)" },
+      { label: "Acessórios", value: "Copo de vidro, tampa, lâmina, cesto e espátula" },
+      { label: "Base", value: "Antiderrapante, mantém o aparelho firme" },
+      { label: "Limpeza", value: "Peças removíveis, laváveis em água corrente" },
+      { label: "Cor", value: "Preto" },
+      { label: "Garantia", value: "30 dias para troca ou devolução" },
+    ],
+  },
   34: {
     about:
       "A Bicicleta Ergométrica Spinning Profissional traz a experiência da academia para dentro de casa. A estrutura em aço carbono com base larga e pés antiderrapantes suporta até 120 kg sem oscilar, mesmo no pedal em pé. A transmissão por correia com roda de inércia entrega giro contínuo e silencioso, e o ajuste de resistência por atrito permite simular desde a pedalada leve até a subida pesada. Guidão e banco regulam em altura e profundidade, adaptando-se a diferentes alturas, e o painel digital acompanha tempo, velocidade, distância, calorias e pulsação.",
