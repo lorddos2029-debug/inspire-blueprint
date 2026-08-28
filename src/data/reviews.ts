@@ -90,7 +90,6 @@ const TRVF = "/assets/products-bc/travesseiro/";
 const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 
-const BIKEF = "/assets/products-bc/bicicleta-spinning/";
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
   // 34 — Bicicleta Ergométrica Spinning Profissional
