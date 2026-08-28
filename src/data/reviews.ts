@@ -90,7 +90,6 @@ const TRVF = "/assets/products-bc/travesseiro/";
 const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 
-const BIKEF = "/assets/products-bc/bicicleta-spinning/";
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
   // 34 — Bicicleta Ergométrica Spinning Profissional
@@ -98,12 +97,12 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
     total: 1132,
     avg: 4.9,
     reviews: [
-      { name: "Rafael Monteiro", date: "Ago 2026", rating: 5, text: "Estrutura muito firme, tenho 98 kg e a bike nem balança durante o treino em pé. A correia é silenciosa, consigo pedalar de madrugada sem incomodar ninguém.", image: `${BIKEF}bike-254.png` },
-      { name: "Juliana Prado", date: "Ago 2026", rating: 5, text: "Montei sozinha em uns 30 minutos, vem com as ferramentas. Ajustei o banco e o guidão na minha altura (1,60 m) e ficou perfeito. Já perdi 3 kg em um mês.", image: `${BIKEF}bike-255.png` },
-      { name: "Anderson Lima", date: "Jul 2026", rating: 5, text: "O painel mostra tempo, velocidade, distância e calorias. Simples, mas cumpre o que promete. A regulagem de resistência é bem progressiva, dá pra simular subida.", image: `${BIKEF}bike-251.png` },
-      { name: "Camila Rezende", date: "Jul 2026", rating: 5, text: "O banco é mais confortável do que eu esperava e ainda tem ajuste pra frente e pra trás. Os pedais com cinta prendem bem o pé.", image: `${BIKEF}bike-253.png` },
-      { name: "Marcos Vinícius", date: "Jul 2026", rating: 5, text: "Custo-benefício absurdo. Comparei com bike de academia e o giro da roda de inércia é bem parecido. Chegou embalada em isopor, sem nenhum arranhão." },
-      { name: "Patrícia Nogueira", date: "Jun 2026", rating: 5, text: "As rodinhas na frente salvam: guardo no canto da sala e puxo na hora do treino. Ocupa pouco espaço pro tamanho que tem." },
+      { name: "Rafael Monteiro", date: "Ago 2026", rating: 5, text: "Estrutura muito firme, tenho 98 kg e a bike nem balança durante o treino em pé. A correia é silenciosa, consigo pedalar de madrugada sem incomodar ninguém.", image: "/assets/products-bc/bicicleta-spinning/reviews/r-1.png" },
+      { name: "Juliana Prado", date: "Ago 2026", rating: 5, text: "Montei sozinha em uns 30 minutos, vem com as ferramentas. Ajustei o banco e o guidão na minha altura (1,60 m) e ficou perfeito. Já perdi 3 kg em um mês.", image: "/assets/products-bc/bicicleta-spinning/reviews/r-2.png" },
+      { name: "Anderson Lima", date: "Jul 2026", rating: 5, text: "O painel mostra tempo, velocidade, distância e calorias. Simples, mas cumpre o que promete. A regulagem de resistência é bem progressiva, dá pra simular subida.", image: "/assets/products-bc/bicicleta-spinning/reviews/r-3.png" },
+      { name: "Camila Rezende", date: "Jul 2026", rating: 5, text: "O banco é mais confortável do que eu esperava e ainda tem ajuste pra frente e pra trás. Os pedais com cinta prendem bem o pé.", image: "/assets/products-bc/bicicleta-spinning/reviews/r-4.png" },
+      { name: "Marcos Vinícius", date: "Jul 2026", rating: 5, text: "Custo-benefício absurdo. Comparei com bike de academia e o giro da roda de inércia é bem parecido. Chegou embalada em isopor, sem nenhum arranhão.", image: "/assets/products-bc/bicicleta-spinning/reviews/r-5.png" },
+      { name: "Patrícia Nogueira", date: "Jun 2026", rating: 5, text: "As rodinhas na frente salvam: guardo no canto da sala e puxo na hora do treino. Ocupa pouco espaço pro tamanho que tem.", image: "/assets/products-bc/bicicleta-spinning/reviews/r-6.png" },
       { name: "Eduardo Barreto", date: "Jun 2026", rating: 5, text: "Uso todo dia há dois meses, 40 min. Nenhum barulho, nenhuma folga no pedal. Só recomendo apertar os parafusos de novo depois da primeira semana." },
       { name: "Simone Alves", date: "Jun 2026", rating: 4, text: "Excelente bicicleta, tirei uma estrela só porque o manual é bem resumido. Achei vídeo de montagem na internet e resolveu." },
       { name: "Thiago Ramos", date: "Mai 2026", rating: 5, text: "Comprei pra minha esposa e acabei usando mais que ela. O freio de emergência dá muita segurança quando você está no ritmo forte." },
