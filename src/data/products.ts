@@ -479,7 +479,7 @@ export const products: Product[] = [
     tag: "35% OFF",
     description:
       "Kit esfregão mop com balde de 10,5 litros, cesto centrifugador em inox, cabo de 140cm e 2 refis de microfibra.",
-  },,
+  },
   {
     id: 34,
     slug: "bicicleta-bike-ergometrica-spinning-academia-fitness-profissional-120kg",
