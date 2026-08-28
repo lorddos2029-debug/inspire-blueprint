@@ -19,6 +19,8 @@ export interface Product {
   /** Quantidade de peças que o cliente escolhe (cor + tamanho por peça) */
   kitPicks?: number;
   colorVariants?: { label: string; colors: string[]; image?: string }[];
+  /** Quando true, o produto não aparece na vitrine da home nem na busca */
+  hidden?: boolean;
 }
 
 
@@ -29,6 +31,7 @@ const YPE = "/assets/products-bc/ype/";
 const CL = "/assets/products-bc/cobre-leito/";
 const TRV = "/assets/products-bc/travesseiro/";
 const CAD = "/assets/products-bc/cadeira-ergonomica/";
+const BIKE = "/assets/products-bc/bicicleta-spinning/";
 
 
 
@@ -476,5 +479,27 @@ export const products: Product[] = [
     tag: "35% OFF",
     description:
       "Kit esfregão mop com balde de 10,5 litros, cesto centrifugador em inox, cabo de 140cm e 2 refis de microfibra.",
+  },
+  {
+    id: 34,
+    slug: "bicicleta-bike-ergometrica-spinning-academia-fitness-profissional-120kg",
+    name: "Bicicleta Bike Ergometrica Spinning Academia Fitness Profissional 120kg",
+    price: 127.9,
+    originalPrice: 899.9,
+    hidden: true,
+    image: `${BIKE}bike-250.png`,
+    hoverImage: `${BIKE}bike-254.png`,
+    images: [
+      `${BIKE}bike-250.png`,
+      `${BIKE}bike-254.png`,
+      `${BIKE}bike-255.png`,
+      `${BIKE}bike-249.png`,
+      `${BIKE}bike-251.png`,
+      `${BIKE}bike-253.png`,
+      `${BIKE}bike-252.png`,
+    ],
+    tag: "85% OFF",
+    description:
+      "Bicicleta ergométrica de spinning profissional com estrutura reforçada em aço carbono e suporte para até 120 kg. Roda de inércia com transmissão por correia silenciosa, resistência ajustável por atrito e freio de emergência.",
   },
 ];

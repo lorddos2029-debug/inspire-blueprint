@@ -65,8 +65,14 @@ const fallbackStandaloneProducts: Product[] = standaloneProducts.map((product, i
 
 const fallbackProducts: Product[] = [...fallbackCategoryProducts, ...fallbackStandaloneProducts];
 
-const ProductPage = () => {
-  const { slug } = useParams();
+interface ProductPageProps {
+  /** Permite renderizar a página em uma rota dedicada (ex.: /bicicleta) */
+  slugOverride?: string;
+}
+
+const ProductPage = ({ slugOverride }: ProductPageProps) => {
+  const params = useParams();
+  const slug = slugOverride ?? params.slug;
   const mainProduct = [...products].reverse().find((p) => p.slug === slug);
   const product: Product | undefined = mainProduct || fallbackProducts.find((p) => p.slug === slug);
   const { addItem } = useCart();

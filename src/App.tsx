@@ -72,6 +72,10 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/produto/:slug" element={<ProductPage />} />
+          <Route
+            path="/bicicleta"
+            element={<ProductPage slugOverride="bicicleta-bike-ergometrica-spinning-academia-fitness-profissional-120kg" />}
+          />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/painel" element={<Painel />} />
           <Route path="/sobre-nos" element={<SobreNos />} />
