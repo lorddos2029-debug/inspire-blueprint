@@ -68,6 +68,7 @@ export const products: Product[] = [
     description:
       "Coberdrom Queen dupla face com sherpa lã de carneiro de um lado e microfibra aveludada do outro. Enchimento em manta siliconada matelassê que retém o calor sem pesar, ideal para as noites mais frias do inverno.",
   },
+  {
 
     id: 36,
     slug: "liquidificador-electrolux-1000w-2-7l-efficient-triforce-5-velocidades-cinza-ebl1000",
