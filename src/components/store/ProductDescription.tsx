@@ -15,7 +15,27 @@ interface ProductSheet {
 }
 
 const productSheets: Record<number, ProductSheet> = {
+  36: {
+    about:
+      "O Liquidificador Electrolux Efficient EBL1000 entrega 1000W de potência para triturar de tudo: gelo, frutas congeladas, folhas e massas. As lâminas TriForce em aço inoxidável trabalham em três direções dentro do copo, evitando que sobrem pedaços no fundo. O copo de 2,7 litros com marcação em ml atende a família inteira em um único ciclo e a tampa com dosador removível permite adicionar ingredientes sem parar o preparo. São 5 velocidades mais as funções Pulsar, Gelo e Limpa Fácil — nesta última, basta colocar água com detergente e ligar que o próprio aparelho se lava. Base larga com pés antiderrapantes, acabamento cinza e peças removíveis que facilitam a limpeza no dia a dia.",
+    specs: [
+      { label: "Categoria", value: "Eletroportátil / Cozinha" },
+      { label: "Modelo", value: "Electrolux Efficient EBL1000" },
+      { label: "Potência", value: "1000 W" },
+      { label: "Capacidade", value: "Copo de 2,7 litros com marcação em ml" },
+      { label: "Lâminas", value: "TriForce em aço inoxidável" },
+      { label: "Velocidades", value: "5 velocidades + Pulsar, Gelo e Limpa Fácil" },
+      { label: "Tampa", value: "Com dosador removível" },
+      { label: "Voltagem", value: "127V ou 220V (selecione na compra)" },
+      { label: "Medidas", value: "40,3 cm (altura) x 19,5 cm (largura) x 19,8 cm (profundidade)" },
+      { label: "Peso", value: "1,6 kg" },
+      { label: "Base", value: "Antiderrapante, mantém o aparelho firme" },
+      { label: "Cor", value: "Cinza" },
+      { label: "Garantia", value: "30 dias para troca ou devolução" },
+    ],
+  },
   35: {
+
     about:
       "O Gaabor Processador Multislice reúne potência e praticidade em um aparelho compacto. O motor de 300W aciona lâminas duplas em formato \"S\" com 4 cortes em aço inoxidável japonês, que trituram os alimentos por completo — inclusive o que fica nas laterais do copo. O recipiente é de vidro reforçado de 6 mm com qualidade alimentar e 2 litros de capacidade, processando até 550 g de carne por vez. Com 2 velocidades, você controla a textura: a velocidade I (média) é ideal para folhas, ervas, cebola, alho e gengibre; a velocidade II (alta) dá conta de carnes, castanhas, legumes e raízes. A base antiderrapante mantém o aparelho firme na bancada e todas as peças removíveis são fáceis de lavar apenas com água corrente.",
     specs: [

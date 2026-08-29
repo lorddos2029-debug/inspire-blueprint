@@ -510,7 +510,25 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
     ],
   },
   // 35 — Gaabor Processador Multislice 300W 2L
+  // 36 — Liquidificador Electrolux EBL1000
+  36: {
+    total: 1543,
+    avg: 4.9,
+    reviews: [
+      { name: "Juliana Fontenele", date: "Ago 2026", rating: 5, text: "Os 1000W fazem diferença de verdade: tritura gelo sem travar e faz vitamina de banana congelada lisinha. Melhor que o meu antigo de 550W.", image: "/assets/products-bc/liquidificador-electrolux/liq-4.png" },
+      { name: "Rafael Quintela", date: "Ago 2026", rating: 5, text: "O copo de 2,7L dá pra família inteira num ciclo só. Marquei a voltagem 220V e chegou certinho, funcionando perfeito.", image: "/assets/products-bc/liquidificador-electrolux/liq-3.png" },
+      { name: "Beatriz Amarante", date: "Jul 2026", rating: 5, text: "A função Limpa Fácil é o que mais uso: coloco água com detergente, ligo e ele se lava sozinho. Economiza um tempão.", image: "/assets/products-bc/liquidificador-electrolux/liq-5.png" },
+      { name: "Otávio Bezerra", date: "Jul 2026", rating: 5, text: "As lâminas TriForce em inox são bem robustas, dá pra ver a qualidade. Faço massa de bolo direto no copo e sai homogênea.", image: "/assets/products-bc/liquidificador-electrolux/liq-6.png" },
+      { name: "Larissa Peçanha", date: "Jul 2026", rating: 5, text: "5 velocidades mais o pulsar dão controle total. Uso a 1 pra sucos e a 5 pra gelo. Nada de sobrar pedaço no fundo." },
+      { name: "Gustavo Marinho", date: "Jun 2026", rating: 5, text: "Comprei a versão 127V, motor forte e não esquenta mesmo depois de vários usos seguidos. Base firme, não anda na bancada." },
+      { name: "Simone Vasques", date: "Jun 2026", rating: 4, text: "Excelente liquidificador, só é um pouco alto na velocidade máxima — normal pra 1000W. O resto é nota 10." },
+      { name: "Henrique D'Ávila", date: "Jun 2026", rating: 5, text: "Copo desmonta fácil pra lavar e a tampa com dosador não vaza. Acabamento cinza é bonito, combinou com a cozinha." },
+      { name: "Priscila Alencastro", date: "Mai 2026", rating: 5, text: "Chegou super bem embalado e sem nenhum arranhão. Pela Electrolux com essa potência, o preço foi um achado." },
+      { name: "Fernando Iglesias", date: "Mai 2026", rating: 5, text: "Faço suco detox com folhas todo dia e ele não deixa fiapo. A jarra grande evita ficar fazendo em duas levas." },
+    ],
+  },
   35: {
+
     total: 1187,
     avg: 4.9,
     reviews: [
