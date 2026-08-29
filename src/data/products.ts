@@ -39,6 +39,30 @@ const BIKE = "/assets/products-bc/bicicleta-spinning/";
 
 export const products: Product[] = [
   {
+    id: 36,
+    slug: "liquidificador-electrolux-1000w-2-7l-efficient-triforce-5-velocidades-cinza-ebl1000",
+    name: "Liquidificador Electrolux 1000W 2.7L Efficient TriForce 5 Velocidades Cinza (EBL1000)",
+    price: 69.9,
+    originalPrice: 279.9,
+    image: "/assets/products-bc/liquidificador-electrolux/liq-1.png",
+    hoverImage: "/assets/products-bc/liquidificador-electrolux/liq-4.png",
+    images: [
+      "/assets/products-bc/liquidificador-electrolux/liq-1.png",
+      "/assets/products-bc/liquidificador-electrolux/liq-4.png",
+      "/assets/products-bc/liquidificador-electrolux/liq-3.png",
+      "/assets/products-bc/liquidificador-electrolux/liq-5.png",
+      "/assets/products-bc/liquidificador-electrolux/liq-6.png",
+      "/assets/products-bc/liquidificador-electrolux/liq-7.png",
+      "/assets/products-bc/liquidificador-electrolux/liq-8.png",
+      "/assets/products-bc/liquidificador-electrolux/liq-2.png",
+    ],
+    sizes: ["127V", "220V"],
+    sizeLabel: "Voltagem",
+    tag: "75% OFF",
+    description:
+      "Liquidificador Electrolux Efficient EBL1000 com motor de 1000W, 5 velocidades mais função Pulsar, Gelo e Limpa Fácil. Copo de 2,7 litros com lâminas TriForce em aço inox para triturar gelo, preparar sucos, vitaminas e massas com rapidez.",
+  },
+
     id: 35,
     slug: "gaabor-processador-multislice-300w-4-laminas-vidro-2l",
     name: "Gaabor Processador Multislice 300w, 4 lâminas, Recipiente de vidro (6mm) e capacidade 2L",
