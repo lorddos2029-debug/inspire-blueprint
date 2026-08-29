@@ -62,6 +62,7 @@ export const products: Product[] = [
     description:
       "Liquidificador Electrolux Efficient EBL1000 com motor de 1000W, 5 velocidades mais função Pulsar, Gelo e Limpa Fácil. Copo de 2,7 litros com lâminas TriForce em aço inox para triturar gelo, preparar sucos, vitaminas e massas com rapidez.",
   },
+  {
 
     id: 35,
     slug: "gaabor-processador-multislice-300w-4-laminas-vidro-2l",
