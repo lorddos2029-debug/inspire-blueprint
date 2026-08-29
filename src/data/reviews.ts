@@ -511,7 +511,25 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
   },
   // 35 — Gaabor Processador Multislice 300W 2L
   // 36 — Liquidificador Electrolux EBL1000
+  // 37 — Coberdrom Queen Sherpa Lã de Carneiro
+  37: {
+    total: 2104,
+    avg: 4.9,
+    reviews: [
+      { name: "Marli Sanchez", date: "Ago 2026", rating: 5, text: "O lado sherpa é absurdo de quentinho, parece lã de carneiro de verdade. Aqui em Curitiba dormimos sem aquecedor com ele.", image: "/assets/products-bc/coberdrom-sherpa/cs-1.png" },
+      { name: "Everton Bragança", date: "Ago 2026", rating: 5, text: "Pedi o azul marinho e a cor é exatamente a da foto. Cobre a queen inteira com sobra dos dois lados da cama.", image: "/assets/products-bc/coberdrom-sherpa/cs-3.png" },
+      { name: "Sabrina Toffoli", date: "Jul 2026", rating: 5, text: "Comprei o bege pra combinar com o quarto e ficou lindo. É pesado no caimento, mas não sufoca na hora de dormir.", image: "/assets/products-bc/coberdrom-sherpa/cs-2.png" },
+      { name: "Cláudio Meirelles", date: "Jul 2026", rating: 5, text: "O matelassê em quadrados segura o enchimento no lugar. Já lavei duas vezes na máquina e continua igual, sem embolar.", image: "/assets/products-bc/coberdrom-sherpa/cs-7.png" },
+      { name: "Ariane Lustosa", date: "Jul 2026", rating: 5, text: "Escolhi o rosé e é ainda mais bonito ao vivo. O microfibra do lado de cima é macio demais, dá vontade de ficar na cama." },
+      { name: "Nelson Vaz", date: "Jun 2026", rating: 5, text: "Dupla face resolve: no outono uso o lado veludo, no inverno viro o sherpa pra dentro. Vale cada centavo por 69,90." },
+      { name: "Kelly Andrade", date: "Jun 2026", rating: 4, text: "Muito quente e macio. Só demora um pouco pra secar depois de lavar, mas é normal por causa do sherpa." },
+      { name: "Rodrigo Sarmento", date: "Jun 2026", rating: 5, text: "Comprei o preto pro quarto do casal. Não solta pelo nenhum e não deu aquela alergia que eu tinha com cobertor antigo." },
+      { name: "Denise Portugal", date: "Mai 2026", rating: 5, text: "Chegou embalado a vácuo, depois de umas horas voltou ao volume total. Ficou fofo e cheiroso, sem cheiro de fábrica." },
+      { name: "Ivan Kruger", date: "Mai 2026", rating: 5, text: "O vermelho deu uma cara nova pro quarto. Quentíssimo, dormi sem meia pela primeira vez no inverno." },
+    ],
+  },
   36: {
+
     total: 1543,
     avg: 4.9,
     reviews: [
