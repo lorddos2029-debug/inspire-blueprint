@@ -39,6 +39,37 @@ const BIKE = "/assets/products-bc/bicicleta-spinning/";
 
 export const products: Product[] = [
   {
+    id: 37,
+    slug: "coberdrom-queen-sherpa-la-de-carneiro-macio-quente-inverno",
+    name: "Coberdrom Queen Com Sherpa Lã de Carneiro Promoção Atacado Leve Macio e Muito Quente para Inverno",
+    price: 69.9,
+    originalPrice: 259.9,
+    image: "/assets/products-bc/coberdrom-sherpa/cs-1.png",
+    hoverImage: "/assets/products-bc/coberdrom-sherpa/cs-2.png",
+    images: [
+      "/assets/products-bc/coberdrom-sherpa/cs-1.png",
+      "/assets/products-bc/coberdrom-sherpa/cs-2.png",
+      "/assets/products-bc/coberdrom-sherpa/cs-3.png",
+      "/assets/products-bc/coberdrom-sherpa/cs-9.png",
+      "/assets/products-bc/coberdrom-sherpa/cs-8.png",
+    ],
+    tag: "73% OFF",
+    colorVariants: [
+      { label: "Cinza", colors: ["#9a9c9e"], image: "/assets/products-bc/coberdrom-sherpa/cs-1.png" },
+      { label: "Bege", colors: ["#b99a7c"], image: "/assets/products-bc/coberdrom-sherpa/cs-2.png" },
+      { label: "Azul Marinho", colors: ["#1e3164"], image: "/assets/products-bc/coberdrom-sherpa/cs-3.png" },
+      { label: "Pink", colors: ["#d62a7e"], image: "/assets/products-bc/coberdrom-sherpa/cs-4.png" },
+      { label: "Preto", colors: ["#1b1b1b"], image: "/assets/products-bc/coberdrom-sherpa/cs-5.png" },
+      { label: "Rosé", colors: ["#c9808a"], image: "/assets/products-bc/coberdrom-sherpa/cs-6.png" },
+      { label: "Marrom", colors: ["#7a5236"], image: "/assets/products-bc/coberdrom-sherpa/cs-7.png" },
+      { label: "Tiffany", colors: ["#8fd3d2"], image: "/assets/products-bc/coberdrom-sherpa/cs-8.png" },
+      { label: "Vermelho", colors: ["#9e1f22"], image: "/assets/products-bc/coberdrom-sherpa/cs-9.png" },
+    ],
+    description:
+      "Coberdrom Queen dupla face com sherpa lã de carneiro de um lado e microfibra aveludada do outro. Enchimento em manta siliconada matelassê que retém o calor sem pesar, ideal para as noites mais frias do inverno.",
+  },
+  {
+
     id: 36,
     slug: "liquidificador-electrolux-1000w-2-7l-efficient-triforce-5-velocidades-cinza-ebl1000",
     name: "Liquidificador Electrolux 1000W 2.7L Efficient TriForce 5 Velocidades Cinza (EBL1000)",

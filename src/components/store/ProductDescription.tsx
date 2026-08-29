@@ -15,7 +15,25 @@ interface ProductSheet {
 }
 
 const productSheets: Record<number, ProductSheet> = {
+  37: {
+    about:
+      "O Coberdrom Queen com Sherpa Lã de Carneiro é dupla face: de um lado o sherpa peluciado que imita lã de carneiro e segura o calor do corpo, do outro a microfibra aveludada de toque macio. Entre as duas camadas há enchimento em manta siliconada com costura matelassê em quadrados, que distribui o volume de forma uniforme e impede que o enchimento migre com o uso e as lavagens. Resultado: uma peça encorpada e muito quente para o inverno, mas leve o suficiente para não sufocar durante o sono. Dispensa o uso de edredom e cobertor separados — o coberdrom faz os dois papéis em uma peça só. Tamanho Queen com sobra generosa nas laterais, tratamento antialérgico, não solta pelos e pode ser lavado em máquina. Disponível em 9 cores para combinar com qualquer quarto.",
+    specs: [
+      { label: "Categoria", value: "Jogo de cama / Coberdrons" },
+      { label: "Tamanho", value: "Queen — cobre a cama com sobra nas laterais" },
+      { label: "Face 1", value: "Sherpa peluciado estilo lã de carneiro" },
+      { label: "Face 2", value: "Microfibra aveludada de toque macio" },
+      { label: "Enchimento", value: "Manta siliconada de alta gramatura" },
+      { label: "Acabamento", value: "Costura matelassê em quadrados, bordas reforçadas" },
+      { label: "Tratamento", value: "Antialérgico e antifungo, não solta pelos" },
+      { label: "Cores", value: "Cinza, Bege, Azul Marinho, Pink, Preto, Rosé, Marrom, Tiffany e Vermelho" },
+      { label: "Lavagem", value: "Máquina em ciclo delicado, sem alvejante" },
+      { label: "Indicação", value: "Inverno, quartos frios e regiões de serra" },
+      { label: "Garantia", value: "30 dias para troca ou devolução" },
+    ],
+  },
   36: {
+
     about:
       "O Liquidificador Electrolux Efficient EBL1000 entrega 1000W de potência para triturar de tudo: gelo, frutas congeladas, folhas e massas. As lâminas TriForce em aço inoxidável trabalham em três direções dentro do copo, evitando que sobrem pedaços no fundo. O copo de 2,7 litros com marcação em ml atende a família inteira em um único ciclo e a tampa com dosador removível permite adicionar ingredientes sem parar o preparo. São 5 velocidades mais as funções Pulsar, Gelo e Limpa Fácil — nesta última, basta colocar água com detergente e ligar que o próprio aparelho se lava. Base larga com pés antiderrapantes, acabamento cinza e peças removíveis que facilitam a limpeza no dia a dia.",
     specs: [
