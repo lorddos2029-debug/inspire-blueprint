@@ -92,22 +92,6 @@ const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
-  38: {
-    total: 2174,
-    avg: 4.9,
-    reviews: [
-      { name: "Antônio Vilela", date: "Ago 2026", rating: 5, text: "Plugueei no som da caminhonete e tocou de primeira. As músicas estão separadas por pasta, achei Milionário e José Rico rapidinho.", image: "/assets/products-bc/pendrive-modao/pd-2.jpg" },
-      { name: "Marli Bonfim", date: "Ago 2026", rating: 5, text: "Comprei pro meu pai e ele não desgruda. Modão de verdade, do jeito antigo, e o melhor: sem precisar de internet lá no sítio.", image: "/assets/products-bc/pendrive-modao/pd-3.jpg" },
-      { name: "Jair Palhares", date: "Jul 2026", rating: 5, text: "4.500 músicas mesmo, contei as pastas. Viagem de 6 horas e não repetiu nenhuma. Valeu cada centavo dos R$ 39,90." },
-      { name: "Cleusa Marim", date: "Jul 2026", rating: 5, text: "Qualidade do áudio é boa, sem chiado. Uso na caixa de som da churrasqueira todo fim de semana." },
-      { name: "Odair Benicio", date: "Jul 2026", rating: 5, text: "Chegou em 6 dias no interior de Goiás. Pendrive pequeno, fica no painel sem atrapalhar o câmbio." },
-      { name: "Rosangela Tavares", date: "Jun 2026", rating: 4, text: "Adorei a seleção, só senti falta de mais coisa da Chitãozinho e Xororó. De resto, muita moda de viola boa." },
-      { name: "Valdir Camargo", date: "Jun 2026", rating: 5, text: "Testei no rádio do carro, na TV e no notebook: funcionou nos três. Ainda apaguei umas e coloquei as minhas." },
-      { name: "Sebastiana Rocha", date: "Jun 2026", rating: 5, text: "Presenteei meu marido caminhoneiro. Ele diz que não usa mais rádio na estrada, só o pendrive." },
-      { name: "Genésio Prado", date: "Mai 2026", rating: 5, text: "Modão raiz de verdade, nada de sertanejo universitário. Era exatamente o que eu procurava." },
-      { name: "Neide Bacelar", date: "Mai 2026", rating: 5, text: "Veio bem embalado e já formatado certinho. Liguei na caixa de som e a festa não parou." },
-    ],
-  },
   // 34 — Bicicleta Ergométrica Spinning Profissional
   34: {
     total: 1132,
