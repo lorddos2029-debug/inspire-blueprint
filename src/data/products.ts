@@ -39,6 +39,23 @@ const BIKE = "/assets/products-bc/bicicleta-spinning/";
 
 export const products: Product[] = [
   {
+    id: 38,
+    slug: "pendrive-modao-raiz-4500-musicas-so-modao-16gb",
+    name: "PENDRIVE MODÃO RAIZ 4500 MUSICAS SO MODÃO 16 GB",
+    price: 39.9,
+    originalPrice: 99.9,
+    image: "/assets/products-bc/pendrive-modao/pd-1.jpg",
+    hoverImage: "/assets/products-bc/pendrive-modao/pd-3.jpg",
+    images: [
+      "/assets/products-bc/pendrive-modao/pd-1.jpg",
+      "/assets/products-bc/pendrive-modao/pd-3.jpg",
+      "/assets/products-bc/pendrive-modao/pd-2.jpg",
+    ],
+    tag: "60% OFF",
+    description:
+      "Pendrive de 16 GB com 4.500 músicas de modão raiz e sertanejo de raiz já gravadas e organizadas em pastas. Plugue no som do carro, na caixa de som ou no computador e ouça sem internet.",
+  },
+  {
     id: 37,
     slug: "coberdrom-queen-sherpa-la-de-carneiro-macio-quente-inverno",
     name: "Coberdrom Queen Com Sherpa Lã de Carneiro Promoção Atacado Leve Macio e Muito Quente para Inverno",
