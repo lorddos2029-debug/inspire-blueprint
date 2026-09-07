@@ -15,6 +15,22 @@ interface ProductSheet {
 }
 
 const productSheets: Record<number, ProductSheet> = {
+  38: {
+    about:
+      "O Pendrive Modão Raiz chega pronto para tocar: são 4.500 músicas de modão e sertanejo raiz já gravadas em MP3 e separadas por pastas de artistas, o que facilita achar quem você quer ouvir sem ficar rolando lista infinita. São clássicos das duplas que marcaram época, sofrências, modas de viola e sucessos de rodeio, tudo em arquivos de boa qualidade de áudio. Como é offline, não gasta internet nem depende de sinal: basta plugar no rádio do carro, na caixa de som Bluetooth com entrada USB, na TV, no notebook ou no som da chácara. O corpo é compacto em plástico resistente com conector USB revestido, cabe no chaveiro e não atrapalha no painel do carro. Também dá para apagar ou acrescentar músicas quando quiser — o pendrive é totalmente reutilizável.",
+    specs: [
+      { label: "Categoria", value: "Áudio / Pendrive de músicas" },
+      { label: "Capacidade", value: "16 GB" },
+      { label: "Conteúdo", value: "4.500 músicas de modão e sertanejo raiz" },
+      { label: "Formato dos arquivos", value: "MP3, organizado em pastas por artista" },
+      { label: "Conexão", value: "USB 2.0 (compatível com portas USB 3.0)" },
+      { label: "Compatibilidade", value: "Som automotivo, caixa de som, TV, notebook e PC" },
+      { label: "Uso de internet", value: "Nenhum — toca 100% offline" },
+      { label: "Regravável", value: "Sim, você pode apagar e adicionar músicas" },
+      { label: "Material", value: "Plástico resistente com conector metálico" },
+      { label: "Garantia", value: "30 dias para troca ou devolução" },
+    ],
+  },
   37: {
     about:
       "O Coberdrom Queen com Sherpa Lã de Carneiro é dupla face: de um lado o sherpa peluciado que imita lã de carneiro e segura o calor do corpo, do outro a microfibra aveludada de toque macio. Entre as duas camadas há enchimento em manta siliconada com costura matelassê em quadrados, que distribui o volume de forma uniforme e impede que o enchimento migre com o uso e as lavagens. Resultado: uma peça encorpada e muito quente para o inverno, mas leve o suficiente para não sufocar durante o sono. Dispensa o uso de edredom e cobertor separados — o coberdrom faz os dois papéis em uma peça só. Tamanho Queen com sobra generosa nas laterais, tratamento antialérgico, não solta pelos e pode ser lavado em máquina. Disponível em 9 cores para combinar com qualquer quarto.",
