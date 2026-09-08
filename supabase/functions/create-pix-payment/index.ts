@@ -118,6 +118,7 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
   const primecashHost = Deno.env.get('PRIMECASH_API_HOST')?.trim() || 'api.useprimecash.com';
   const apiUrl = params.apiUrl || `https://${primecashHost}/v1/transactions`;
   const key = Deno.env.get(envKey)?.trim() || Deno.env.get('PRIMECASH_SECRET_KEY')?.trim();
+  console.log('primecash auth env used:', Deno.env.get(envKey) ? envKey : 'PRIMECASH_SECRET_KEY', 'host:', primecashHost, 'keyLen:', key?.length ?? 0);
   if (!key) throw new Error(`${envKey} is not configured`);
   const { customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl } = params;
   const amountInCents = toCents(amount);
