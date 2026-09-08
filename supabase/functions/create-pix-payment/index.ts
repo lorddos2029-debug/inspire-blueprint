@@ -112,10 +112,12 @@ async function callVumePay(params: { customer: any; items: any[]; amount: number
 }
 
 async function callPrimeCash(params: { customer: any; items: any[]; amount: number; shipping?: any; externalRef?: string; trackingParameters?: any; clientIp: string; webhookUrl: string; providerLabel?: string; secretEnvKey?: string; apiUrl?: string }) {
-  const envKey = params.secretEnvKey || 'PRIMECASH_SECRET_KEY';
+  const envKey = params.secretEnvKey || 'PRIMECASH_SECRET_KEY_V2';
   const providerLabel = params.providerLabel || 'primecash';
-  const apiUrl = params.apiUrl || 'https://api.primecashbrasil.com/v1/transactions';
-  const key = Deno.env.get(envKey)?.trim();
+  // PrimeCash atualizada (app.useprimecash.com): host novo + Basic auth com a chave secreta.
+  const primecashHost = Deno.env.get('PRIMECASH_API_HOST')?.trim() || 'api.useprimecash.com';
+  const apiUrl = params.apiUrl || `https://${primecashHost}/v1/transactions`;
+  const key = Deno.env.get(envKey)?.trim() || Deno.env.get('PRIMECASH_SECRET_KEY')?.trim();
   if (!key) throw new Error(`${envKey} is not configured`);
   const { customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl } = params;
   const amountInCents = toCents(amount);
