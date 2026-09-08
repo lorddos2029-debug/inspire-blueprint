@@ -7,7 +7,7 @@ import { products } from "@/data/products";
 type Provider = "primecash" | "payout" | "vumepay" | "pinpay";
 
 const PROVIDERS: { id: Provider; name: string; host: string; description: string }[] = [
-  { id: "primecash", name: "PrimeCash", host: "api.primecashbrasil.com", description: "Adquirente principal" },
+  { id: "primecash", name: "PrimeCash", host: "api.useprimecash.com", description: "Adquirente principal (API atualizada)" },
   { id: "payout", name: "Payout", host: "api.payoutbr.com.br", description: "Adquirente Payout" },
   { id: "vumepay", name: "VumePay", host: "api.vumepay.com.br", description: "Adquirente VumePay" },
   { id: "pinpay", name: "PinPay", host: "api.usepinpay.com", description: "Adquirente PinPay" },

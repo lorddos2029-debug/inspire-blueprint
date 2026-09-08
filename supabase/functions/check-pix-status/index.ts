@@ -26,32 +26,53 @@ Deno.serve(async (req) => {
 
     if (!transactionId) return json({ error: "transactionId is required" }, 400);
 
-    const secretKey = Deno.env.get("PINPAY_SECRET_KEY")?.trim();
-    if (!secretKey) return json({ error: "PINPAY_SECRET_KEY not configured" }, 500);
-
-    // A API do PinPay não expõe GET /transactions/{id}; a consulta é feita
-    // listando as transações recentes e localizando pelo id ou external_reference.
-    const base = "https://api.usepinpay.com/functions/v1/api-v1";
     let status = "";
     let lastError = "";
-    try {
-      const res = await fetch(`${base}/transactions?limit=100`, {
-        headers: { Accept: "application/json", Authorization: `Bearer ${secretKey}` },
-      });
-      const payload = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        lastError = `${res.status} ${JSON.stringify(payload).slice(0, 200)}`;
-      } else {
-        const list: any[] = Array.isArray(payload?.data) ? payload.data : [];
-        const tx = list.find(
-          (t) => String(t?.id || "") === transactionId
-            || (orderId && String(t?.external_reference || "") === orderId),
-        );
-        status = String(tx?.status || "").toLowerCase();
+
+    // PrimeCash atualizada: GET /v1/transactions/{id} com Basic auth.
+    const primecashKey = Deno.env.get("PRIMECASH_SECRET_KEY_V2")?.trim() || Deno.env.get("PRIMECASH_SECRET_KEY")?.trim();
+    const primecashHost = Deno.env.get("PRIMECASH_API_HOST")?.trim() || "api.useprimecash.com";
+    if (primecashKey) {
+      try {
+        const res = await fetch(`https://${primecashHost}/v1/transactions/${encodeURIComponent(transactionId)}`, {
+          headers: { Accept: "application/json", Authorization: `Basic ${btoa(`${primecashKey}:x`)}` },
+        });
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          lastError = `primecash ${res.status} ${JSON.stringify(payload).slice(0, 200)}`;
+        } else {
+          const tx = payload?.data || payload;
+          status = String(tx?.status || "").toLowerCase();
+        }
+      } catch (err) {
+        lastError = (err as Error).message;
       }
-    } catch (err) {
-      lastError = (err as Error).message;
     }
+
+    // Fallback: PinPay (contas antigas) — lista as transações recentes.
+    const secretKey = Deno.env.get("PINPAY_SECRET_KEY")?.trim();
+    if (!status && secretKey) {
+      const base = "https://api.usepinpay.com/functions/v1/api-v1";
+      try {
+        const res = await fetch(`${base}/transactions?limit=100`, {
+          headers: { Accept: "application/json", Authorization: `Bearer ${secretKey}` },
+        });
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          lastError = `${res.status} ${JSON.stringify(payload).slice(0, 200)}`;
+        } else {
+          const list: any[] = Array.isArray(payload?.data) ? payload.data : [];
+          const tx = list.find(
+            (t) => String(t?.id || "") === transactionId
+              || (orderId && String(t?.external_reference || "") === orderId),
+          );
+          status = String(tx?.status || "").toLowerCase();
+        }
+      } catch (err) {
+        lastError = (err as Error).message;
+      }
+    }
+
 
 
     if (!status) return json({ status: "unknown", error: lastError || null });
