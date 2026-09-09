@@ -51,7 +51,7 @@ export const products: Product[] = [
   {
     id: 38,
     slug: "irisoy-limpador-a-vapor-2500w-220v-profissional-vapor-seco-kit-6-em-1",
-    name: "IRISOY Limpador a Vapor 2500W 220V Profissional - Vapor Seco Elimina 99,9% das Bactérias",
+    name: "IRISOY Limpador a Vapor 2500W Profissional - Vapor Seco Elimina 99,9% das Bactérias",
     price: 79.9,
     originalPrice: 299.9,
     image: VAPOR_1.url,
