@@ -327,6 +327,85 @@ async function callPinPay(params: { customer: any; items: any[]; amount: number;
   };
 }
 
+async function callUrusPay(params: { customer: any; items: any[]; amount: number; externalRef?: string; trackingParameters?: any; clientIp: string; webhookUrl: string }) {
+  const apiKey = Deno.env.get('URUSPAY_API_KEY')?.trim();
+  if (!apiKey) throw new Error('URUSPAY_API_KEY is not configured');
+
+  const { customer, items, amount, externalRef, trackingParameters, clientIp, webhookUrl } = params;
+  const utm = (trackingParameters && typeof trackingParameters === 'object' ? trackingParameters : {}) as Record<string, string>;
+  const descricao = items.map((it: any) => `${it?.quantity || 1}x ${String(it?.name || 'Produto').trim()}`).join(', ').slice(0, 255) || 'Pagamento via PIX';
+  const valor = Math.max(1, Math.round(Number(amount) * 100) / 100);
+
+  const payload: Record<string, unknown> = {
+    valor,
+    nome: String(customer?.name || 'Cliente').trim(),
+    email: String(customer?.email || 'cliente@email.com').trim(),
+    cpf: String(customer?.cpf || '').replace(/\D/g, ''),
+    descricao,
+    webhook_url: webhookUrl,
+    utm_source: utm.utm_source || '',
+    utm_medium: utm.utm_medium || '',
+    utm_campaign: utm.utm_campaign || '',
+    utm_content: utm.utm_content || '',
+    utm_term: utm.utm_term || '',
+    fbp: utm.fbp || '',
+    fbc: utm.fbc || '',
+    evento_id: typeof externalRef === 'string' ? externalRef : '',
+    ip: clientIp,
+    user_agent: utm.user_agent || '',
+  };
+
+  const response = await fetch('https://urusbot.online/api/v1/charge', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json', Authorization: `Bearer ${apiKey}` },
+    body: JSON.stringify(payload),
+  });
+  const data = await response.json().catch(() => ({}));
+  console.log('UrusPay PIX status:', response.status, 'response:', JSON.stringify(data).slice(0, 500));
+
+  if (!response.ok || data?.ok === false) {
+    const msg = data?.error || data?.message || 'Não foi possível gerar o PIX. Tente novamente em instantes.';
+    return { ok: false, error: String(msg), attempt: { provider: 'uruspay', status: response.status, message: String(msg) } };
+  }
+
+  const qrCodeText = String(data?.pix_code || '');
+  if (!qrCodeText) {
+    return { ok: false, error: 'QR não retornado.', attempt: { provider: 'uruspay', status: response.status, message: 'QR não retornado' } };
+  }
+
+  // A UrusPay devolve o QR como URL de imagem; convertemos para base64 para a UI atual.
+  let qrBase64 = '';
+  const qrUrl = String(data?.qr_code_url || '');
+  if (qrUrl) {
+    try {
+      const img = await fetch(qrUrl);
+      if (img.ok) {
+        const bytes = new Uint8Array(await img.arrayBuffer());
+        let bin = '';
+        for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+        qrBase64 = btoa(bin);
+      }
+    } catch (err) {
+      console.warn('UrusPay QR image fetch failed:', (err as Error).message);
+    }
+  }
+
+  return {
+    ok: true,
+    result: {
+      provider: 'uruspay',
+      externalRef: typeof externalRef === 'string' ? externalRef : '',
+      transactionId: String(data?.venda_id ?? ''),
+      qrCode: qrCodeText,
+      qrCodeBase64: qrBase64,
+      qrCodeUrl: qrUrl,
+      copyPaste: qrCodeText,
+      status: data?.status || 'pending',
+      attempts: [],
+    },
+  };
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
   try {
@@ -363,6 +442,8 @@ serve(async (req) => {
       outcome = await callPrimeCash({ customer, items, amount, shipping, externalRef, trackingParameters, clientIp, webhookUrl, providerLabel: 'payout', secretEnvKey: 'PAYOUT_SECRET_KEY', apiUrl: 'https://api.payoutbr.com.br/v1/transactions' });
     } else if (provider === 'vumepay') {
       outcome = await callVumePay({ customer, items, amount, externalRef, trackingParameters });
+    } else if (provider === 'uruspay') {
+      outcome = await callUrusPay({ customer, items, amount, externalRef, trackingParameters, clientIp, webhookUrl });
     } else if (provider === 'pinpay') {
       outcome = await callPinPay({ customer, items, amount, externalRef, trackingParameters, webhookUrl });
     } else {

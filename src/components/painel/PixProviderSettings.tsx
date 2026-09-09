@@ -4,10 +4,11 @@ import { QrCode, Loader2, Check, FlaskConical, Copy } from "lucide-react";
 import { toast } from "sonner";
 import { products } from "@/data/products";
 
-type Provider = "primecash" | "payout" | "vumepay" | "pinpay";
+type Provider = "primecash" | "payout" | "vumepay" | "pinpay" | "uruspay";
 
 const PROVIDERS: { id: Provider; name: string; host: string; description: string }[] = [
   { id: "primecash", name: "PrimeCash", host: "api.useprimecash.com", description: "Adquirente principal (API atualizada)" },
+  { id: "uruspay", name: "UrusPay", host: "urusbot.online", description: "Adquirente UrusPay (Woovi/Mercado Pago)" },
   { id: "payout", name: "Payout", host: "api.payoutbr.com.br", description: "Adquirente Payout" },
   { id: "vumepay", name: "VumePay", host: "api.vumepay.com.br", description: "Adquirente VumePay" },
   { id: "pinpay", name: "PinPay", host: "api.usepinpay.com", description: "Adquirente PinPay" },
@@ -17,8 +18,10 @@ const normalizeProvider = (p?: string | null): Provider => {
   if (p === "payout") return "payout";
   if (p === "vumepay") return "vumepay";
   if (p === "pinpay") return "pinpay";
+  if (p === "uruspay") return "uruspay";
   return "primecash";
 };
+
 
 const PixProviderSettings = () => {
   const [loading, setLoading] = useState(true);
@@ -150,7 +153,7 @@ const PixProviderSettings = () => {
           <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
           {PROVIDERS.map((p) => {
             const active = current === p.id;
             return (
