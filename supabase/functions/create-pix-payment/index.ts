@@ -171,13 +171,9 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
     ip: clientIp,
     postbackUrl: webhookUrl,
     externalRef: extRef,
-    // A PrimeCash atualizada exige metadata como string.
-    metadata: JSON.stringify({
-      externalRef: extRef,
-      ...utmObj,
-      customer_address: addressLine,
-      ...(addressObj ? { address: addressObj } : {}),
-    }),
+    // A PrimeCash atualizada exige metadata como string; usamos o id do pedido
+    // puro para que o postback consiga localizar o pedido diretamente.
+    metadata: extRef,
     customer: {
       name: String(customer?.name || 'Cliente').trim(),
       email: String(customer?.email || 'cliente@email.com').trim(),
