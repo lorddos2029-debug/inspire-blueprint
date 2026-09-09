@@ -51,7 +51,7 @@ Deno.serve(async (req) => {
     const primecashKey = Deno.env.get("PRIMECASH_SECRET_KEY_V2")?.trim() || Deno.env.get("PRIMECASH_SECRET_KEY")?.trim();
 
     const primecashHost = Deno.env.get("PRIMECASH_API_HOST")?.trim() || "api.useprimecash.com";
-    if (primecashKey) {
+    if (!status && primecashKey) {
       try {
         const res = await fetch(`https://${primecashHost}/v1/transactions/${encodeURIComponent(transactionId)}`, {
           headers: { Accept: "application/json", Authorization: `Basic ${btoa(`${primecashKey}:x`)}` },
