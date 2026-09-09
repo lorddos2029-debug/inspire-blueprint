@@ -92,6 +92,23 @@ const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
+  // 39 — Micro-ondas Mondial MO-01-21-B 21 Litros
+  39: {
+    total: 1863,
+    avg: 4.9,
+    reviews: [
+      { name: "Rafaela Monteiro", date: "Ago 2026", rating: 5, text: "Os 21 litros cabem o prato grande e a travessa de lasanha sem apertar. Os 1200W esquentam muito rápido, em 1 minuto a comida já está no ponto." },
+      { name: "Wesley Andrade", date: "Ago 2026", rating: 5, text: "O menu Dia a Dia é o que mais uso: aperto arroz ou bebidas e ele já calcula o tempo sozinho. Facilitou demais a rotina aqui em casa." },
+      { name: "Priscila Gomes", date: "Ago 2026", rating: 5, text: "Comprei pelos meus filhos e o menu Kids é campeão: pipoca, brigadeiro e bolo de caneca com um clique só. Eles fazem sozinhos." },
+      { name: "Diego Fontoura", date: "Jul 2026", rating: 5, text: "A trava de segurança para crianças me deu tranquilidade. Meu filho de 4 anos não consegue ligar sem eu destravar." },
+      { name: "Camila Restier", date: "Jul 2026", rating: 5, text: "Preto brilhante lindo, combinou com a cozinha. Ocupa pouco espaço na bancada, 45 x 33 x 26 cm mesmo como diz o anúncio." },
+      { name: "Anderson Vidal", date: "Jul 2026", rating: 5, text: "A função descongelar por peso é excelente, descongela carne e frango sem cozinhar as bordas. Melhor que meu antigo." },
+      { name: "Tatiane Borges", date: "Jun 2026", rating: 5, text: "A função tira odor resolve o cheiro de peixe na hora. Nunca tinha visto isso em micro-ondas dessa faixa de preço." },
+      { name: "Marcos Aurélio", date: "Jun 2026", rating: 5, text: "Selo A de eficiência energética, não pesou na conta de luz. Painel digital fácil de ler mesmo de longe." },
+      { name: "Luana Peixoto", date: "Mai 2026", rating: 5, text: "A função manter aquecido salva quando o almoço fica pronto antes de todo mundo chegar. Prato quentinho na hora de servir." },
+      { name: "Sérgio Kawamoto", date: "Mai 2026", rating: 5, text: "Chegou bem embalado, sem amassados, e funcionou de primeira. Pelo preço é imbatível, já indiquei para o escritório." },
+    ],
+  },
   // 34 — Bicicleta Ergométrica Spinning Profissional
   34: {
     total: 1132,
