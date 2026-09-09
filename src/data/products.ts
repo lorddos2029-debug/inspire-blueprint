@@ -51,8 +51,7 @@ export const products: Product[] = [
   {
     id: 38,
     slug: "irisoy-limpador-a-vapor-2500w-220v-profissional-vapor-seco-kit-6-em-1",
-    name:
-      "IRISOY Limpador a Vapor 2500W 220V Profissional - Vapor Seco Elimina 99,9% das Bactérias, Ácaros e Gordura sem Produtos Químicos, Acaba com Mofo, Ideal para Cozinha, Banheiro, Carro, Sofá, Colchão e Azulejos, Kit Completo 6 em 1",
+    name: "IRISOY Limpador a Vapor 2500W 220V Profissional - Vapor Seco Elimina 99,9% das Bactérias",
     price: 79.9,
     originalPrice: 299.9,
     image: VAPOR_1.url,
@@ -72,7 +71,7 @@ export const products: Product[] = [
     sizeLabel: "Voltagem",
     tag: "73% OFF",
     description:
-      "Limpador a vapor pressurizado IRISOY de 2500W que higieniza com vapor seco a até 105 °C, eliminando 99,9% das bactérias, ácaros, mofo e gordura encrostada sem usar nenhum produto químico. Aquecimento rápido em cerca de 5 a 15 segundos, pressão de saída de 3 bar e 6 velocidades ajustáveis para cada tipo de sujeira: fogão, coifa, rejunte de azulejo, vaso sanitário, vidros, sofá, colchão, tapete e detalhamento automotivo (bancos, rodas, motor e parabrisa).\n\nESPECIFICAÇÕES\n• Potência: 2500W\n• Voltagem: 110V ou 220V (escolha na compra)\n• Temperatura do vapor: até 105 °C / 229 °F\n• Pressão de saída: 3 bar\n• Reservatório: 1,2 L (1200 ml) — até 1 hora de uso, com reabastecimento a qualquer momento\n• Aquecimento: 5 a 15 segundos\n• 6 velocidades de vapor ajustáveis\n• Dimensões compactas: 19 x 15 x 13 cm\n• Mangueira de 1,5 m e cabo de energia de 2 m\n• Corpo portátil com alça de transporte e tanque transparente\n\nKIT COMPLETO 6 EM 1\n• Bico curvo para cantos e vaso sanitário\n• Raspador de janelas/vidros\n• Raspador de couro e tecido\n• Escova de metal para gordura pesada\n• Raspadores pequenos\n• Escovas de nylon\nAcompanha ainda pano de microfibra, anéis de vedação, agulha de limpeza e cabo de alimentação.",
+      "Ácaros e Gordura sem Produtos Químicos, Acaba com Mofo, Ideal para Cozinha, Banheiro, Carro, Sofá, Colchão e Azulejos, Kit Completo 6 em 1.\n\nLimpador a vapor pressurizado IRISOY de 2500W que higieniza com vapor seco a até 105 °C, eliminando 99,9% das bactérias, ácaros, mofo e gordura encostrada sem usar nenhum produto químico. Aquecimento rápido em cerca de 5 a 15 segundos, pressão de saída de 3 bar e 6 velocidades ajustáveis para cada tipo de sujeira: fogão, coifa, rejunte de azulejo, vaso sanitário, vidros, sofá, colchão, tapete e detalhamento automotivo (bancos, rodas, motor e parabrisa).\n\nESPECIFICAÇÕES\n• Potência: 2500W\n• Voltagem: 110V ou 220V (escolha na compra)\n• Temperatura do vapor: até 105 °C / 229 °F\n• Pressão de saída: 3 bar\n• Reservatório: 1,2 L (1200 ml) — até 1 hora de uso, com reabastecimento a qualquer momento\n• Aquecimento: 5 a 15 segundos\n• 6 velocidades de vapor ajustáveis\n• Dimensões compactas: 19 x 15 x 13 cm\n• Mangueira de 1,5 m e cabo de energia de 2 m\n• Corpo portátil com alça de transporte e tanque transparente\n\nKIT COMPLETO 6 EM 1\n• Bico curvo para cantos e vaso sanitário\n• Raspador de janelas/vidros\n• Raspador de couro e tecido\n• Escova de metal para gordura pesada\n• Raspadores pequenos\n• Escovas de nylon\nAcompanha ainda pano de microfibra, anéis de vedação, agulha de limpeza e cabo de alimentação.",
   },
   {
     id: 37,
