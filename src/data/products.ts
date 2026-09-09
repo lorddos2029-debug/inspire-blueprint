@@ -1,3 +1,13 @@
+import VAPOR_1 from "@/assets/products-bc/vapor/vapor-1.png.asset.json";
+import VAPOR_2 from "@/assets/products-bc/vapor/vapor-2.png.asset.json";
+import VAPOR_3 from "@/assets/products-bc/vapor/vapor-3.png.asset.json";
+import VAPOR_4 from "@/assets/products-bc/vapor/vapor-4.png.asset.json";
+import VAPOR_5 from "@/assets/products-bc/vapor/vapor-5.png.asset.json";
+import VAPOR_6 from "@/assets/products-bc/vapor/vapor-6.png.asset.json";
+import VAPOR_7 from "@/assets/products-bc/vapor/vapor-7.png.asset.json";
+import VAPOR_8 from "@/assets/products-bc/vapor/vapor-8.png.asset.json";
+import VAPOR_9 from "@/assets/products-bc/vapor/vapor-9.png.asset.json";
+
 const CP = "/assets/cp/";
 
 export interface Product {
