@@ -171,12 +171,9 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
     ip: clientIp,
     postbackUrl: webhookUrl,
     externalRef: extRef,
-    metadata: {
-      externalRef: extRef,
-      ...utmObj,
-      customer_address: addressLine,
-      ...(addressObj ? { address: addressObj } : {}),
-    },
+    // A PrimeCash atualizada exige metadata como string; usamos o id do pedido
+    // puro para que o postback consiga localizar o pedido diretamente.
+    metadata: extRef,
     customer: {
       name: String(customer?.name || 'Cliente').trim(),
       email: String(customer?.email || 'cliente@email.com').trim(),
@@ -187,7 +184,9 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
     items: normalizedItems,
     pix: { expiresInDays: 1 },
   };
-  if (shipping) {
+  // Gateways legados (payout) aceitam `shipping` no topo; a PrimeCash atualizada
+  // rejeita esse bloco — o endereço já vai dentro de `customer.address`.
+  if (shipping && providerLabel !== 'primecash') {
     payload.shipping = {
       name: customer?.name || 'Cliente',
       street: shipping.street || '',
