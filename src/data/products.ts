@@ -1,20 +1,20 @@
-import VAPOR_1 from "@/assets/products-bc/vapor/vapor-1.png.asset.json";
-import VAPOR_2 from "@/assets/products-bc/vapor/vapor-2.png.asset.json";
-import VAPOR_3 from "@/assets/products-bc/vapor/vapor-3.png.asset.json";
-import VAPOR_4 from "@/assets/products-bc/vapor/vapor-4.png.asset.json";
-import VAPOR_5 from "@/assets/products-bc/vapor/vapor-5.png.asset.json";
-import VAPOR_6 from "@/assets/products-bc/vapor/vapor-6.png.asset.json";
-import VAPOR_7 from "@/assets/products-bc/vapor/vapor-7.png.asset.json";
-import VAPOR_8 from "@/assets/products-bc/vapor/vapor-8.png.asset.json";
-import VAPOR_9 from "@/assets/products-bc/vapor/vapor-9.png.asset.json";
-import MICRO_1 from "@/assets/products-bc/microondas/micro-1.png.asset.json";
-import MICRO_2 from "@/assets/products-bc/microondas/micro-2.png.asset.json";
-import MICRO_3 from "@/assets/products-bc/microondas/micro-3.png.asset.json";
-import MICRO_4 from "@/assets/products-bc/microondas/micro-4.png.asset.json";
-import MICRO_5 from "@/assets/products-bc/microondas/micro-5.png.asset.json";
-import MICRO_6 from "@/assets/products-bc/microondas/micro-6.png.asset.json";
-import MICRO_7 from "@/assets/products-bc/microondas/micro-7.png.asset.json";
-import MICRO_8 from "@/assets/products-bc/microondas/micro-8.png.asset.json";
+const VAPOR_1 = "/assets/products-bc/vapor/vapor-1.png";
+const VAPOR_2 = "/assets/products-bc/vapor/vapor-2.png";
+const VAPOR_3 = "/assets/products-bc/vapor/vapor-3.png";
+const VAPOR_4 = "/assets/products-bc/vapor/vapor-4.png";
+const VAPOR_5 = "/assets/products-bc/vapor/vapor-5.png";
+const VAPOR_6 = "/assets/products-bc/vapor/vapor-6.png";
+const VAPOR_7 = "/assets/products-bc/vapor/vapor-7.png";
+const VAPOR_8 = "/assets/products-bc/vapor/vapor-8.png";
+const VAPOR_9 = "/assets/products-bc/vapor/vapor-9.png";
+const MICRO_1 = "/assets/products-bc/microondas/micro-1.png";
+const MICRO_2 = "/assets/products-bc/microondas/micro-2.png";
+const MICRO_3 = "/assets/products-bc/microondas/micro-3.png";
+const MICRO_4 = "/assets/products-bc/microondas/micro-4.png";
+const MICRO_5 = "/assets/products-bc/microondas/micro-5.png";
+const MICRO_6 = "/assets/products-bc/microondas/micro-6.png";
+const MICRO_7 = "/assets/products-bc/microondas/micro-7.png";
+const MICRO_8 = "/assets/products-bc/microondas/micro-8.png";
 
 const CP = "/assets/cp/";
 
@@ -62,17 +62,17 @@ export const products: Product[] = [
     name: "Micro-ondas Mondial Mo-01-21-b 21 Litros",
     price: 89.9,
     originalPrice: 499.9,
-    image: MICRO_1.url,
-    hoverImage: MICRO_2.url,
+    image: MICRO_1,
+    hoverImage: MICRO_2,
     images: [
-      MICRO_1.url,
-      MICRO_2.url,
-      MICRO_3.url,
-      MICRO_4.url,
-      MICRO_5.url,
-      MICRO_6.url,
-      MICRO_7.url,
-      MICRO_8.url,
+      MICRO_1,
+      MICRO_2,
+      MICRO_3,
+      MICRO_4,
+      MICRO_5,
+      MICRO_6,
+      MICRO_7,
+      MICRO_8,
     ],
     sizes: ["110V", "220V"],
     sizeLabel: "Voltagem",
@@ -86,18 +86,18 @@ export const products: Product[] = [
     name: "IRISOY Limpador a Vapor 2500W Profissional - Vapor Seco Elimina 99,9% das Bactérias",
     price: 79.9,
     originalPrice: 299.9,
-    image: VAPOR_1.url,
-    hoverImage: VAPOR_3.url,
+    image: VAPOR_1,
+    hoverImage: VAPOR_3,
     images: [
-      VAPOR_1.url,
-      VAPOR_3.url,
-      VAPOR_4.url,
-      VAPOR_5.url,
-      VAPOR_6.url,
-      VAPOR_7.url,
-      VAPOR_8.url,
-      VAPOR_9.url,
-      VAPOR_2.url,
+      VAPOR_1,
+      VAPOR_3,
+      VAPOR_4,
+      VAPOR_5,
+      VAPOR_6,
+      VAPOR_7,
+      VAPOR_8,
+      VAPOR_9,
+      VAPOR_2,
     ],
     sizes: ["110V", "220V"],
     sizeLabel: "Voltagem",
