@@ -29,8 +29,27 @@ Deno.serve(async (req) => {
     let status = "";
     let lastError = "";
 
+    // UrusPay: GET /api/v1/status/{venda_id} (venda_id é numérico).
+    const urusKey = Deno.env.get("URUSPAY_API_KEY")?.trim();
+    if (urusKey && /^\d+$/.test(transactionId)) {
+      try {
+        const res = await fetch(`https://urusbot.online/api/v1/status/${transactionId}`, {
+          headers: { Accept: "application/json", Authorization: `Bearer ${urusKey}` },
+        });
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          lastError = `uruspay ${res.status} ${JSON.stringify(payload).slice(0, 200)}`;
+        } else {
+          status = payload?.pago === true ? "paid" : String(payload?.status || "").toLowerCase();
+        }
+      } catch (err) {
+        lastError = (err as Error).message;
+      }
+    }
+
     // PrimeCash atualizada: GET /v1/transactions/{id} com Basic auth.
     const primecashKey = Deno.env.get("PRIMECASH_SECRET_KEY_V2")?.trim() || Deno.env.get("PRIMECASH_SECRET_KEY")?.trim();
+
     const primecashHost = Deno.env.get("PRIMECASH_API_HOST")?.trim() || "api.useprimecash.com";
     if (primecashKey) {
       try {
