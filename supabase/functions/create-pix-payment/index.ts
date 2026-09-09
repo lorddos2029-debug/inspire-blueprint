@@ -188,7 +188,9 @@ async function callPrimeCash(params: { customer: any; items: any[]; amount: numb
     items: normalizedItems,
     pix: { expiresInDays: 1 },
   };
-  if (shipping) {
+  // Gateways legados (payout) aceitam `shipping` no topo; a PrimeCash atualizada
+  // rejeita esse bloco — o endereço já vai dentro de `customer.address`.
+  if (shipping && providerLabel !== 'primecash') {
     payload.shipping = {
       name: customer?.name || 'Cliente',
       street: shipping.street || '',
