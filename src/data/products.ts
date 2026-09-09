@@ -7,6 +7,14 @@ import VAPOR_6 from "@/assets/products-bc/vapor/vapor-6.png.asset.json";
 import VAPOR_7 from "@/assets/products-bc/vapor/vapor-7.png.asset.json";
 import VAPOR_8 from "@/assets/products-bc/vapor/vapor-8.png.asset.json";
 import VAPOR_9 from "@/assets/products-bc/vapor/vapor-9.png.asset.json";
+import MICRO_1 from "@/assets/products-bc/microondas/micro-1.png.asset.json";
+import MICRO_2 from "@/assets/products-bc/microondas/micro-2.png.asset.json";
+import MICRO_3 from "@/assets/products-bc/microondas/micro-3.png.asset.json";
+import MICRO_4 from "@/assets/products-bc/microondas/micro-4.png.asset.json";
+import MICRO_5 from "@/assets/products-bc/microondas/micro-5.png.asset.json";
+import MICRO_6 from "@/assets/products-bc/microondas/micro-6.png.asset.json";
+import MICRO_7 from "@/assets/products-bc/microondas/micro-7.png.asset.json";
+import MICRO_8 from "@/assets/products-bc/microondas/micro-8.png.asset.json";
 
 const CP = "/assets/cp/";
 
@@ -48,6 +56,30 @@ const BIKE = "/assets/products-bc/bicicleta-spinning/";
 
 
 export const products: Product[] = [
+  {
+    id: 39,
+    slug: "micro-ondas-mondial-mo-01-21-b-21-litros",
+    name: "Micro-ondas Mondial Mo-01-21-b 21 Litros",
+    price: 89.9,
+    originalPrice: 499.9,
+    image: MICRO_1.url,
+    hoverImage: MICRO_2.url,
+    images: [
+      MICRO_1.url,
+      MICRO_2.url,
+      MICRO_3.url,
+      MICRO_4.url,
+      MICRO_5.url,
+      MICRO_6.url,
+      MICRO_7.url,
+      MICRO_8.url,
+    ],
+    sizes: ["110V", "220V"],
+    sizeLabel: "Voltagem",
+    tag: "82% OFF",
+    description:
+      "Micro-ondas Mondial MO-01-21-B com 21 litros de capacidade e 1.200W de potência: espaço suficiente para as receitas do dia a dia e aquecimento rápido e uniforme. Design preto espelhado com painel digital, puxador cromado e acabamento que combina com qualquer cozinha.\n\nFUNÇÕES E DETALHES\n• Menu Dia a Dia: arroz, bebidas e manter aquecido com um só toque\n• Menu Kids: pipoca, brigadeiro e bolo de caneca de forma prática\n• Descongelar: feijão, carnes e aves\n• Função Manter Aquecido: mantém o prato quente até a hora de servir\n• Função Tira Odor: evita odores internos após o preparo\n• Trava de segurança para crianças\n• Botão Iniciar +30 seg. e relógio/temporizador digital\n• Display digital verde de fácil leitura\n• QR Code de receitas Mondial\n\nESPECIFICAÇÕES\n• Capacidade: 21 litros\n• Potência: 1.200W\n• Voltagem: 110V ou 220V (escolha na compra)\n• Eficiência energética: selo classificação A\n• Dimensões: 45 cm (largura) x 33 cm (profundidade) x 26 cm (altura)\n• Peso: 10,5 kg\n• Cor: preto\n• Prato giratório removível e níveis de potência ajustáveis",
+  },
   {
     id: 38,
     slug: "irisoy-limpador-a-vapor-2500w-220v-profissional-vapor-seco-kit-6-em-1",
