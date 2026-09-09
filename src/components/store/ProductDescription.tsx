@@ -15,6 +15,50 @@ interface ProductSheet {
 }
 
 const productSheets: Record<number, ProductSheet> = {
+  39: {
+    about:
+      "Micro-ondas Mondial MO-01-21-B com 21 litros de capacidade e 1.200W de potência: espaço suficiente para as receitas do dia a dia e aquecimento rápido e uniforme. Design preto espelhado com painel digital, puxador cromado e acabamento que combina com qualquer cozinha.",
+    specs: [
+      { label: "Categoria", value: "Eletrodoméstico / Micro-ondas" },
+      { label: "Modelo", value: "Mondial MO-01-21-B" },
+      { label: "Capacidade", value: "21 litros" },
+      { label: "Potência", value: "1.200 W" },
+      { label: "Voltagem", value: "110V ou 220V (escolha na compra)" },
+      { label: "Eficiência energética", value: "Selo classificação A" },
+      { label: "Cor", value: "Preto espelhado" },
+      { label: "Dimensões", value: "45 cm (largura) x 33 cm (profundidade) x 26 cm (altura)" },
+      { label: "Peso", value: "10,5 kg" },
+      { label: "Display", value: "Digital verde de fácil leitura" },
+      { label: "Prato giratório", value: "Removível para limpeza" },
+      { label: "Menus", value: "Dia a Dia (arroz, bebidas, manter aquecido) e Kids (pipoca, brigadeiro, bolo de caneca)" },
+      { label: "Funções", value: "Descongelar, Manter Aquecido, Tira Odor, Iniciar +30 seg" },
+      { label: "Segurança", value: "Trava de segurança para crianças" },
+      { label: "Extras", value: "QR Code de receitas Mondial" },
+      { label: "Garantia", value: "30 dias para troca ou devolução" },
+    ],
+  },
+  38: {
+    about:
+      "Limpador a vapor pressurizado IRISOY de 2500W que higieniza com vapor seco a até 105 °C, eliminando 99,9% das bactérias, ácaros, mofo e gordura encostrada sem usar nenhum produto químico. Aquecimento rápido em cerca de 5 a 15 segundos, pressão de saída de 3 bar e 6 velocidades ajustáveis para cada tipo de sujeira.",
+    specs: [
+      { label: "Categoria", value: "Utilidades / Limpeza a vapor" },
+      { label: "Modelo", value: "IRISOY Limpador a Vapor 2500W" },
+      { label: "Potência", value: "2.500 W" },
+      { label: "Voltagem", value: "110V ou 220V (escolha na compra)" },
+      { label: "Temperatura do vapor", value: "Até 105 °C / 229 °F" },
+      { label: "Pressão de saída", value: "3 bar" },
+      { label: "Reservatório", value: "1,2 L (1.200 ml) — uso contínuo com reabastecimento a qualquer momento" },
+      { label: "Aquecimento", value: "5 a 15 segundos" },
+      { label: "Velocidades", value: "6 níveis de vapor ajustáveis" },
+      { label: "Dimensões", value: "19 x 15 x 13 cm" },
+      { label: "Mangueira", value: "1,5 m" },
+      { label: "Cabo de energia", value: "2 m" },
+      { label: "Cor", value: "Vermelho e preto" },
+      { label: "Kit incluso", value: "Bico curvo, raspador de vidros, raspador de tecido/couro, escova de metal, raspadores pequenos, escovas de nylon, pano de microfibra, anéis de vedação, agulha de limpeza e cabo de alimentação" },
+      { label: "Indicação", value: "Fogão, coifa, rejunte, vaso sanitário, vidros, sofá, colchão, tapete e detalhamento automotivo" },
+      { label: "Garantia", value: "30 dias para troca ou devolução" },
+    ],
+  },
   37: {
     about:
       "O Coberdrom Queen com Sherpa Lã de Carneiro é dupla face: de um lado o sherpa peluciado que imita lã de carneiro e segura o calor do corpo, do outro a microfibra aveludada de toque macio. Entre as duas camadas há enchimento em manta siliconada com costura matelassê em quadrados, que distribui o volume de forma uniforme e impede que o enchimento migre com o uso e as lavagens. Resultado: uma peça encorpada e muito quente para o inverno, mas leve o suficiente para não sufocar durante o sono. Dispensa o uso de edredom e cobertor separados — o coberdrom faz os dois papéis em uma peça só. Tamanho Queen com sobra generosa nas laterais, tratamento antialérgico, não solta pelos e pode ser lavado em máquina. Disponível em 9 cores para combinar com qualquer quarto.",
