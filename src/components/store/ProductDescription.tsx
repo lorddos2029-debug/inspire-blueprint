@@ -439,7 +439,7 @@ const ProductDescription = ({ productId }: ProductDescriptionProps) => {
       </section>
 
       <section>
-        <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4">Especificações</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4">Especificações técnicas</h2>
         <dl className="divide-y divide-border border-t border-b border-border">
           {specs.map((spec) => (
             <div
