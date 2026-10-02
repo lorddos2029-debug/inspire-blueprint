@@ -448,8 +448,8 @@ const ProductDescription = ({ productId }: ProductDescriptionProps) => {
     ];
 
   return (
-    <div className="mt-6">
-      <p className="text-[15px] text-muted-foreground whitespace-pre-line leading-relaxed">
+    <div className="mt-6 w-full min-w-0 max-w-full overflow-hidden">
+      <p className="max-w-full break-words [overflow-wrap:anywhere] text-[15px] text-muted-foreground whitespace-pre-line leading-relaxed">
         {about}
       </p>
 
@@ -457,14 +457,14 @@ const ProductDescription = ({ productId }: ProductDescriptionProps) => {
         <h3 className="text-base font-extrabold tracking-tight uppercase text-foreground">
           Especificações técnicas
         </h3>
-        <dl className="mt-3 divide-y divide-border border-y border-border">
+        <dl className="mt-3 w-full min-w-0 max-w-full divide-y divide-border border-y border-border">
           {specs.map((spec) => (
             <div
               key={spec.label}
-              className="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-1 sm:gap-4 py-3"
+              className="grid min-w-0 grid-cols-1 sm:grid-cols-[10rem_minmax(0,1fr)] gap-1 sm:gap-4 py-3"
             >
               <dt className="text-sm font-bold text-foreground">{spec.label}</dt>
-              <dd className="text-sm text-muted-foreground leading-relaxed">
+              <dd className="min-w-0 break-words [overflow-wrap:anywhere] text-sm text-muted-foreground leading-relaxed">
                 {spec.value}
               </dd>
             </div>
@@ -472,7 +472,7 @@ const ProductDescription = ({ productId }: ProductDescriptionProps) => {
         </dl>
       </div>
 
-      <div className="mt-6 rounded-lg border border-border bg-secondary/30 p-4">
+      <div className="mt-6 w-full min-w-0 max-w-full rounded-lg border border-border bg-secondary/30 p-3 sm:p-4">
         <p className="text-sm text-muted-foreground leading-relaxed">
           Você tem até <strong className="text-foreground">30 dias para trocar ou devolver</strong> sem
           burocracia. Pedidos processados em até <strong className="text-foreground">24h úteis</strong>,
