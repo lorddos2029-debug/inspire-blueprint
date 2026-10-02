@@ -26,10 +26,10 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
   const maxCount = Math.max(...ratingBreakdown.map((row) => row.count), 1);
 
   return (
-    <section className="mt-14 border-t border-border pt-10">
-      <div className="flex items-center justify-between gap-4 flex-wrap">
-        <div>
-          <h2 className="text-xl font-extrabold tracking-tight text-foreground">
+    <section className="mt-12 sm:mt-14 w-full min-w-0 max-w-full overflow-hidden border-t border-border pt-8 sm:pt-10">
+      <div className="flex min-w-0 flex-wrap items-center justify-between gap-3 sm:gap-4">
+        <div className="min-w-0 flex-1">
+          <h2 className="break-words [overflow-wrap:anywhere] text-xl font-extrabold tracking-tight text-foreground">
             Avaliações de clientes
           </h2>
           {isDemoProduct && (
@@ -42,7 +42,7 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
         <button
           type="button"
           onClick={() => setShowForm(!showForm)}
-          className="inline-flex items-center gap-2 border border-border rounded-md px-4 py-2 text-sm font-semibold text-foreground hover:bg-secondary transition"
+          className="max-w-full inline-flex items-center gap-2 border border-border rounded-md px-3 sm:px-4 py-2 text-sm font-semibold text-foreground hover:bg-secondary transition"
         >
           <MessageSquarePlus className="size-4" />
           {showForm ? "Cancelar" : "Deixar avaliação"}
@@ -50,7 +50,7 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
       </div>
 
       {showForm && (
-        <div className="mt-6 max-w-2xl border border-border rounded-lg p-5 space-y-5 bg-secondary/20">
+        <div className="mt-6 w-full min-w-0 max-w-2xl border border-border rounded-lg p-4 sm:p-5 space-y-5 bg-secondary/20">
           <h3 className="font-bold text-foreground">Sua avaliação</h3>
 
           <div>
@@ -158,8 +158,8 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
         </div>
       )}
 
-      <div className="mt-6 grid md:grid-cols-[280px_1fr] gap-8">
-        <div>
+      <div className="mt-6 grid w-full min-w-0 grid-cols-1 md:grid-cols-[280px_minmax(0,1fr)] gap-6 md:gap-8">
+        <div className="w-full min-w-0">
           <div className="flex items-baseline gap-2">
             <span className="text-5xl font-black text-foreground">
               {avgRating}
@@ -197,8 +197,8 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
           </div>
         </div>
 
-        <div>
-          <div className="flex items-center justify-between">
+        <div className="w-full min-w-0">
+          <div className="flex min-w-0 flex-wrap items-center justify-between gap-2">
             <span className="text-sm font-semibold text-muted-foreground">
               Mais recentes
             </span>
@@ -211,9 +211,9 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
             {reviews.map((review, idx) => (
               <article
                 key={idx}
-                className="border-b border-border/70 py-5 first:pt-0"
+                className="w-full min-w-0 border-b border-border/70 py-5 first:pt-0"
               >
-                <div className="flex items-start gap-3">
+                <div className="flex min-w-0 items-start gap-3">
                   <div className="size-10 rounded-full bg-secondary flex items-center justify-center text-foreground font-bold text-xs shrink-0">
                     {review.name
                       .split(" ")
@@ -224,9 +224,9 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-sm font-bold text-foreground">
+                    <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 sm:gap-3">
+                      <div className="min-w-0">
+                        <p className="break-words [overflow-wrap:anywhere] text-sm font-bold text-foreground">
                           {review.name}
                         </p>
                         <p className="text-xs text-muted-foreground">
@@ -248,7 +248,7 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
                       </div>
                     </div>
 
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    <p className="mt-2 max-w-full break-words [overflow-wrap:anywhere] text-sm text-muted-foreground leading-relaxed">
                       {review.text}
                     </p>
 
