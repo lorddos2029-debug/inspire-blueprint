@@ -356,19 +356,31 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
           <div className="space-y-5">
             {/* Vendidos + avaliação */}
             <div className="flex items-center justify-between gap-3 flex-wrap">
-              <span className="inline-flex items-center rounded-full bg-topbar text-topbar-foreground text-xs font-semibold px-3 py-1">
-                +{soldCount} vendidos
-              </span>
-              <div className="flex items-center gap-1.5">
-                <div className="flex">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="w-4 h-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <span className="text-sm font-semibold text-foreground">{ratingValue}</span>
-                <span className="text-sm text-muted-foreground">({reviewCount.toLocaleString("pt-BR")} avaliações)</span>
-              </div>
-
+              {product.id === 40 ? (
+                <>
+                  <span className="inline-flex items-center rounded-full bg-topbar text-topbar-foreground text-xs font-semibold px-3 py-1">
+                    Novo produto
+                  </span>
+                  <span className="text-sm text-muted-foreground">
+                    Confira tamanhos, estampas e avaliações abaixo
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="inline-flex items-center rounded-full bg-topbar text-topbar-foreground text-xs font-semibold px-3 py-1">
+                    +{soldCount} vendidos
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <div className="flex">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="w-4 h-4 fill-primary text-primary" />
+                      ))}
+                    </div>
+                    <span className="text-sm font-semibold text-foreground">{ratingValue}</span>
+                    <span className="text-sm text-muted-foreground">({reviewCount.toLocaleString("pt-BR")} avaliações)</span>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Title */}
