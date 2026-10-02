@@ -1,0 +1,50 @@
+name: Assemble kit cobre leito images
+
+on:
+  push:
+    paths:
+      - ".tmp-kit-upload/READY"
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure ffmpeg
+        shell: bash
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+
+      - name: Rebuild product images
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/kit-cobre-leito
+          cat .tmp-kit-upload/chunk-* | base64 -d > /tmp/kit-cobre-leito/images.tar.gz
+          echo "c2ae5a6779ba2b7906710832708a51894697af02721a6624ad1e0d9d66dd82cd  /tmp/kit-cobre-leito/images.tar.gz" | sha256sum -c -
+          mkdir -p /tmp/kit-cobre-leito/src
+          tar -xzf /tmp/kit-cobre-leito/images.tar.gz -C /tmp/kit-cobre-leito/src
+          mkdir -p public/assets/products-bc/kit-cobre-leito-piquet
+          for i in 1 2 3 4 5 6 7 8 9; do
+            ffmpeg -loglevel error -y -i "/tmp/kit-cobre-leito/src/$i.avif" -frames:v 1 -pix_fmt rgb24 "public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-$i.png"
+          done
+
+      - name: Commit rebuilt images
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .tmp-kit-upload
+          rm -f .github/workflows/assemble-kit-cobre-leito-images.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Adiciona imagens enviadas do kit cobre leito"
+          git push
