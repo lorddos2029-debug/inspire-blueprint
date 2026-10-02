@@ -40,23 +40,27 @@ const faqs = [
 
 const ProductFAQ = () => {
   return (
-    <div className="mt-16 max-w-3xl mx-auto">
-      <h2 className="text-xl md:text-2xl font-bold text-foreground text-center mb-8">
-        Perguntas Frequentes
+    <section className="mt-14 max-w-3xl mx-auto">
+      <h2 className="text-lg font-extrabold tracking-tight text-foreground">
+        PERGUNTAS FREQUENTES
       </h2>
-      <Accordion type="single" collapsible className="w-full">
+      <Accordion
+        type="single"
+        collapsible
+        className="mt-4 w-full border-y border-border divide-y divide-border"
+      >
         {faqs.map((faq, idx) => (
-          <AccordionItem key={idx} value={`faq-${idx}`}>
-            <AccordionTrigger className="text-left text-sm md:text-base font-semibold">
+          <AccordionItem key={idx} value={`faq-${idx}`} className="border-0">
+            <AccordionTrigger className="py-4 text-left text-[15px] font-bold hover:no-underline">
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground leading-relaxed">
+            <AccordionContent className="pb-4 text-sm text-muted-foreground leading-relaxed">
               {faq.answer}
             </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
-    </div>
+    </section>
   );
 };
 
