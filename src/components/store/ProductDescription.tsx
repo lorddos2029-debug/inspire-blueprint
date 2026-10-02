@@ -15,6 +15,22 @@ interface ProductSheet {
 }
 
 const productSheets: Record<number, ProductSheet> = {
+  40: {
+    about:
+      "Kit completo de 6 peças para vestir a cama com um conjunto coordenado e prático para o dia a dia. O cobre leito em piquet cria um visual texturizado e decorativo, as fronhas recebem acabamento ponto palito e o lençol com elástico facilita o ajuste no colchão. O produto está disponível nos tamanhos Casal, Queen e King e em nove combinações de estampas e cores para escolher diretamente na página.",
+    specs: [
+      { label: "Categoria", value: "Jogo de cama / Kit cobre leito" },
+      { label: "Conteúdo", value: "Kit com 6 peças" },
+      { label: "Conjunto", value: "Cobre leito piquet, jogo de fronhas com acabamento ponto palito e lençol com elástico" },
+      { label: "Tamanhos", value: "Casal, Queen ou King (escolha na compra)" },
+      { label: "Acabamento", value: "Piquet estampado e detalhe ponto palito nas fronhas" },
+      { label: "Lençol", value: "Com elástico para melhor ajuste ao colchão" },
+      { label: "Estampas", value: "9 combinações de cores e estampas disponíveis" },
+      { label: "Uso", value: "Roupa de cama para uso diário e composição de enxoval" },
+      { label: "Cuidados", value: "Seguir as instruções de lavagem e conservação da etiqueta do produto" },
+      { label: "Garantia", value: "30 dias para troca ou devolução" },
+    ],
+  },
   39: {
     about:
       "Micro-ondas Mondial MO-01-21-B com 21 litros de capacidade e 1.200W de potência: espaço suficiente para as receitas do dia a dia e aquecimento rápido e uniforme. Design preto espelhado com painel digital, puxador cromado e acabamento que combina com qualquer cozinha.",
