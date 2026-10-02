@@ -9,16 +9,16 @@ const ProductDetails = ({ images, productName }: ProductDetailsProps) => {
   const detailImages = images.slice(1);
 
   return (
-    <div className="mt-3 space-y-3">
+    <div className="mt-3 w-full min-w-0 max-w-full space-y-3 overflow-hidden">
       {detailImages.map((img, idx) => (
         <div
           key={idx}
-          className="w-full overflow-hidden rounded-lg border border-border bg-secondary/20"
+          className="w-full min-w-0 max-w-full overflow-hidden rounded-lg border border-border bg-secondary/20"
         >
           <img
             src={img}
             alt={`${productName} - detalhe ${idx + 1}`}
-            className="w-full h-auto object-contain"
+            className="block w-full max-w-full h-auto object-contain"
             loading="lazy"
             decoding="async"
           />
