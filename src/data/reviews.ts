@@ -92,6 +92,19 @@ const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
+  // 40 — Kit 6 Peças Cobre Leito Piquet (textos demonstrativos; substituir por avaliações reais)
+  40: {
+    total: 6,
+    avg: 5.0,
+    reviews: [
+      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "Gostei do conjunto coordenado e do acabamento delicado das fronhas. A opção de escolher a estampa deixa a compra bem mais prática." },
+      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "O lençol com elástico ajuda a manter a cama arrumada e o cobre leito piquet deixa o visual do quarto mais organizado." },
+      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "A combinação de cobre leito, fronhas e lençol no mesmo kit facilita bastante na hora de montar o enxoval." },
+      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "As opções de cor e estampa ficaram fáceis de visualizar no seletor antes de escolher a combinação." },
+      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "Boa proposta para quem quer renovar a roupa de cama de uma vez, com peças que combinam entre si." },
+      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "Gostei de ter Casal, Queen e King no mesmo anúncio; facilita encontrar o tamanho certo para a cama." },
+    ],
+  },
   // 39 — Micro-ondas Mondial MO-01-21-B 21 Litros
   39: {
     total: 1863,
