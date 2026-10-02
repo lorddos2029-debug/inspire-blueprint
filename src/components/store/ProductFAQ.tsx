@@ -40,7 +40,7 @@ const faqs = [
 
 const ProductFAQ = () => {
   return (
-    <section className="mt-14 max-w-3xl mx-auto">
+    <section className="mt-12 sm:mt-14 mx-auto w-full min-w-0 max-w-3xl overflow-hidden">
       <h2 className="text-lg font-extrabold tracking-tight text-foreground">
         PERGUNTAS FREQUENTES
       </h2>
@@ -51,10 +51,10 @@ const ProductFAQ = () => {
       >
         {faqs.map((faq, idx) => (
           <AccordionItem key={idx} value={`faq-${idx}`} className="border-0">
-            <AccordionTrigger className="py-4 text-left text-[15px] font-bold hover:no-underline">
+            <AccordionTrigger className="min-w-0 py-4 pr-2 text-left text-[15px] font-bold break-words [overflow-wrap:anywhere] hover:no-underline">
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="pb-4 text-sm text-muted-foreground leading-relaxed">
+            <AccordionContent className="min-w-0 max-w-full break-words [overflow-wrap:anywhere] pb-4 pr-2 text-sm text-muted-foreground leading-relaxed">
               {faq.answer}
             </AccordionContent>
           </AccordionItem>
