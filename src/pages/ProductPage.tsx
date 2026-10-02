@@ -303,15 +303,15 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
   const nextImage = () => setSelectedImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-background text-foreground">
       <Header />
 
-      <main className="mx-auto max-w-[1240px] px-4 sm:px-6 py-6">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+      <main className="mx-auto w-full max-w-[1240px] min-w-0 overflow-x-hidden px-3 sm:px-6 py-4 sm:py-6">
+        <div className="grid w-full min-w-0 grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
           {/* Galeria no mesmo formato visual do HTML de referência */}
-          <div>
-            <div className="relative rounded-xl border border-border bg-secondary/30 overflow-hidden">
-              <div className="aspect-square">
+          <div className="w-full min-w-0 max-w-full">
+            <div className="relative w-full max-w-full rounded-xl border border-border bg-secondary/30 overflow-hidden">
+              <div className="aspect-square w-full max-w-full">
                 <img
                   src={images[selectedImage]}
                   alt={product.name}
@@ -345,7 +345,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
             </div>
 
             {images.length > 1 && (
-              <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              <div className="mt-3 flex w-full max-w-full gap-2 overflow-x-auto overscroll-x-contain pb-1 pr-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {images.map((img, idx) => (
                   <button
                     type="button"
@@ -371,13 +371,13 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
           </div>
 
           {/* Informações no fluxo do layout de referência */}
-          <div>
+          <div className="w-full min-w-0 max-w-full">
             <div className="text-[13px] text-muted-foreground">
               {product.id === 40 ? "Novo produto" : `Novo | +${soldCount} vendidos`}
             </div>
 
             <div className="mt-1">
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight text-foreground">
+              <h1 className="max-w-full break-words [overflow-wrap:anywhere] text-[22px] sm:text-3xl font-extrabold tracking-tight leading-tight text-foreground">
                 {product.name}
               </h1>
             </div>
@@ -387,23 +387,23 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                 Confira tamanhos, estampas e avaliações abaixo
               </div>
             ) : (
-              <div className="mt-3 flex items-center gap-2">
+              <div className="mt-3 flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
                 <div className="flex text-primary">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star key={star} className="size-4 fill-current" />
                   ))}
                 </div>
                 <span className="font-bold text-sm text-foreground">{ratingValue}</span>
-                <span className="text-sm text-muted-foreground">
+                <span className="min-w-0 break-words text-sm text-muted-foreground">
                   ({reviewCount.toLocaleString("pt-BR")} avaliações)
                 </span>
               </div>
             )}
 
             {/* Seletores */}
-            <div className="mt-6">
+            <div className="mt-6 w-full min-w-0 max-w-full">
               {picksCount > 0 && product.colorVariants && product.sizes ? (
-                <div id="variant-selector" className="space-y-4">
+                <div id="variant-selector" className="w-full min-w-0 max-w-full space-y-4">
                   <div className="flex items-center justify-between">
                     <p className="text-[13px] font-semibold text-foreground">
                       Personalize seu kit
@@ -432,10 +432,10 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                     return (
                       <div
                         key={slot}
-                        className="rounded-lg border border-border bg-background p-3 sm:p-4 space-y-3"
+                        className="w-full min-w-0 max-w-full rounded-lg border border-border bg-background p-3 sm:p-4 space-y-3"
                       >
                         <div className="flex items-center justify-between gap-2">
-                          <p className="text-[13px] font-bold text-foreground">
+                          <p className="min-w-0 break-words [overflow-wrap:anywhere] text-[13px] font-bold text-foreground">
                             Peça {slot + 1}
                             {current && (
                               <span className="font-normal text-muted-foreground">
@@ -503,7 +503,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                                     className="size-10 rounded object-cover flex-shrink-0"
                                   />
                                 )}
-                                <span className="flex-1 text-[11px] font-medium leading-tight">
+                                <span className="min-w-0 flex-1 break-words [overflow-wrap:anywhere] text-[11px] font-medium leading-tight">
                                   {variant.label}
                                 </span>
                                 {pick.color === idx && <Check className="size-4" />}
@@ -519,7 +519,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                               {" "}{pick.size || "Selecione"}
                             </span>
                           </p>
-                          <div className="mt-2 flex flex-wrap gap-2">
+                          <div className="mt-2 flex w-full max-w-full flex-wrap gap-2">
                             {product.sizes!.map((size) => (
                               <button
                                 type="button"
@@ -541,7 +541,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                   })}
                 </div>
               ) : isKitMultiSize && product.colorVariants && product.sizes ? (
-                <div id="variant-selector" className="space-y-4">
+                <div id="variant-selector" className="w-full min-w-0 max-w-full space-y-4">
                   <p className="text-[13px] font-semibold text-foreground">
                     Escolha o tamanho de cada peça
                   </p>
@@ -612,7 +612,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                         </p>
                       )}
 
-                      <div className="mt-2 flex flex-wrap gap-2">
+                      <div className="mt-2 flex w-full max-w-full flex-wrap gap-2">
                         {product.sizes.map((size) => (
                           <button
                             type="button"
@@ -645,7 +645,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                         </p>
 
                         {product.colorVariants.some((v) => v.image) ? (
-                          <div className="mt-2 flex gap-2 flex-wrap">
+                          <div className="mt-2 flex w-full max-w-full flex-wrap gap-2">
                             {product.colorVariants.map((variant, idx) => (
                               <button
                                 type="button"
@@ -679,7 +679,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                             ))}
                           </div>
                         ) : (
-                          <div className="mt-2 flex flex-wrap gap-2">
+                          <div className="mt-2 flex w-full max-w-full flex-wrap gap-2">
                             {product.colorVariants.map((variant, idx) => (
                               <button
                                 type="button"
@@ -710,7 +710,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                   DE {formatPrice(product.originalPrice)}
                 </p>
               )}
-              <div className="mt-1 flex items-center gap-3 flex-wrap">
+              <div className="mt-1 flex max-w-full flex-wrap items-center gap-x-3 gap-y-1">
                 <span className="text-3xl sm:text-[34px] font-black text-foreground">
                   {formatPrice(currentPrice)}
                 </span>
@@ -732,7 +732,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
             </div>
 
             {/* Quantidade */}
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-6 flex max-w-full flex-wrap items-center gap-3 sm:gap-4">
               <span className="text-[13px] text-foreground">Quantidade:</span>
               <div className="flex items-center border border-border rounded-md overflow-hidden">
                 <button
@@ -756,7 +756,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
             </div>
 
             {/* Benefícios em caixa, mantendo as cores da loja */}
-            <div className="mt-6 rounded-lg border border-border bg-secondary/30 p-4 space-y-3 text-sm">
+            <div className="mt-6 w-full max-w-full rounded-lg border border-border bg-secondary/30 p-3 sm:p-4 space-y-3 text-sm">
               <div className="flex items-start gap-3">
                 <Truck className="size-5 text-primary shrink-0 mt-0.5" />
                 <p>
@@ -783,7 +783,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
             <button
               type="button"
               onClick={() => handleAddToCart(true)}
-              className="mt-6 w-full h-14 rounded-full bg-primary hover:opacity-90 text-primary-foreground text-lg font-extrabold inline-flex items-center justify-center shadow-lg shadow-primary/20 transition"
+              className="mt-6 w-full max-w-full h-14 rounded-full bg-primary hover:opacity-90 text-primary-foreground text-lg font-extrabold inline-flex items-center justify-center shadow-lg shadow-primary/20 transition"
             >
               COMPRAR AGORA
             </button>
@@ -791,7 +791,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
         </div>
 
         {/* Descrição no formato empilhado do HTML de referência */}
-        <section className="mt-14 max-w-3xl mx-auto text-left">
+        <section className="mt-12 sm:mt-14 mx-auto w-full min-w-0 max-w-3xl text-left">
           <h2 className="text-lg font-extrabold tracking-tight">
             DESCRIÇÃO DO PRODUTO
           </h2>
