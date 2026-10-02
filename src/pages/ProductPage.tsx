@@ -404,7 +404,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
             <div className="mt-6 w-full min-w-0 max-w-full">
               {picksCount > 0 && product.colorVariants && product.sizes ? (
                 <div id="variant-selector" className="w-full min-w-0 max-w-full space-y-4">
-                  <div className="flex items-center justify-between">
+                  <div className="flex min-w-0 flex-wrap items-center justify-between gap-2">
                     <p className="text-[13px] font-semibold text-foreground">
                       Personalize seu kit
                     </p>
@@ -448,7 +448,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                         <button
                           type="button"
                           onClick={() => setOpenColorSlot(isOpen ? null : slot)}
-                          className={`w-full flex items-center gap-3 rounded-md border p-2 text-left transition ${
+                          className={`w-full min-w-0 max-w-full flex items-center gap-3 rounded-md border p-2 text-left transition ${
                             isOpen
                               ? "border-foreground"
                               : "border-border hover:border-muted-foreground"
@@ -465,7 +465,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                             <span className="block text-[12px] text-muted-foreground">
                               Cor:
                             </span>
-                            <span className="block text-sm font-bold text-foreground truncate">
+                            <span className="block min-w-0 truncate text-sm font-bold text-foreground">
                               {current ? current.label : "Selecione"}
                             </span>
                           </span>
@@ -477,7 +477,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                         </button>
 
                         {isOpen && (
-                          <div className="grid grid-cols-2 gap-2">
+                          <div className="grid w-full min-w-0 grid-cols-1 min-[380px]:grid-cols-2 gap-2">
                             {product.colorVariants!.map((variant, idx) => (
                               <button
                                 type="button"
@@ -490,7 +490,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                                   );
                                   if (imgIdx >= 0) setSelectedImage(imgIdx);
                                 }}
-                                className={`flex items-center gap-2 rounded-md border p-1.5 text-left transition ${
+                                className={`min-w-0 flex items-center gap-2 rounded-md border p-1.5 text-left transition ${
                                   pick.color === idx
                                     ? "border-foreground"
                                     : "border-border hover:border-muted-foreground"
@@ -513,7 +513,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                         )}
 
                         <div>
-                          <p className="text-[13px] text-foreground">
+                          <p className="max-w-full break-words [overflow-wrap:anywhere] text-[13px] text-foreground">
                             Tamanho:
                             <span className="font-bold">
                               {" "}{pick.size || "Selecione"}
@@ -562,7 +562,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                           className="size-16 rounded-md object-cover border border-border"
                         />
                       )}
-                      <div className="flex-1 min-w-0">
+                      <div className="min-w-0 flex-1">
                         <p className="text-[13px] font-bold mb-2">
                           {variant.label}
                         </p>
@@ -594,7 +594,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                   {product.sizes && product.sizes.length > 0 && (
                     <div>
                       <div className="flex items-center justify-between gap-3">
-                        <p className="text-[13px] text-foreground">
+                        <p className="max-w-full break-words [overflow-wrap:anywhere] text-[13px] text-foreground">
                           {product.sizeLabel || "Tamanho"}:
                           <span className="font-bold">
                             {" "}{selectedSize || "Selecione"}
@@ -637,7 +637,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                   {product.colorVariants &&
                     product.colorVariants.length > 0 && (
                       <div>
-                        <p className="text-[13px] text-foreground">
+                        <p className="max-w-full break-words [overflow-wrap:anywhere] text-[13px] text-foreground">
                           Cor:
                           <span className="font-bold">
                             {" "}{product.colorVariants[selectedColor]?.label}
@@ -703,15 +703,15 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
             </div>
 
             {/* Preço no mesmo bloco/ordem da referência */}
-            <div className="mt-6">
-              <p className="text-[13px] text-foreground">Preço:</p>
+            <div className="mt-6 w-full min-w-0 max-w-full">
+              <p className="max-w-full break-words [overflow-wrap:anywhere] text-[13px] text-foreground">Preço:</p>
               {product.originalPrice && (
                 <p className="text-[13px] text-muted-foreground line-through mt-1">
                   DE {formatPrice(product.originalPrice)}
                 </p>
               )}
               <div className="mt-1 flex max-w-full flex-wrap items-center gap-x-3 gap-y-1">
-                <span className="text-3xl sm:text-[34px] font-black text-foreground">
+                <span className="max-w-full break-words text-[30px] sm:text-[34px] font-black leading-none text-foreground">
                   {formatPrice(currentPrice)}
                 </span>
                 {discount > 0 && (
