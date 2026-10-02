@@ -16,6 +16,7 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
   const [formImage, setFormImage] = useState<string | null>(null);
 
   const { reviews, total: totalReviews, avg: avgRating, breakdown: ratingBreakdown } = getReviewsForProduct(productId);
+  const isDemoProduct = productId === 40;
   const maxCount = Math.max(...ratingBreakdown.map((r) => r.count), 1);
 
   return (
@@ -34,13 +35,13 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
       <div className="flex justify-center mb-8">
         <span className="inline-flex items-center gap-1.5 border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 text-sm font-medium px-4 py-2 rounded-full">
           <CheckCircle className="w-4 h-4" />
-          Avaliações Verificadas
+          {isDemoProduct ? "Exemplos de avaliações" : "Avaliações Verificadas"}
         </span>
       </div>
 
       <div className="text-center mb-10">
         <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">
-          O que nossos clientes dizem
+          {isDemoProduct ? "Prévia das avaliações do produto" : "O que nossos clientes dizem"}
         </h2>
       </div>
 
@@ -53,7 +54,11 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
             ))}
           </div>
           <p className="text-sm text-muted-foreground mt-1">
-            Baseado em <strong className="text-foreground">{totalReviews}</strong> avaliações
+            {isDemoProduct ? (
+              <>Mostrando <strong className="text-foreground">{totalReviews}</strong> textos de exemplo</>
+            ) : (
+              <>Baseado em <strong className="text-foreground">{totalReviews}</strong> avaliações</>
+            )}
           </p>
         </div>
         <div className="space-y-1.5 w-full max-w-xs">
@@ -75,7 +80,9 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
       <div className="flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl px-5 py-3.5 max-w-2xl mx-auto mb-10">
         <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" />
         <p className="text-sm font-semibold text-emerald-700">
-          100% dos clientes recomendam este produto
+          {isDemoProduct
+            ? "Textos demonstrativos para prévia do layout de avaliações"
+            : "100% dos clientes recomendam este produto"}
         </p>
       </div>
 
