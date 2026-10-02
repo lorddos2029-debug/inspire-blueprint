@@ -10,26 +10,22 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/store/Header";
 import Footer from "@/components/store/Footer";
 import ExitIntentPopup from "@/components/store/ExitIntentPopup";
-import Newsletter from "@/components/store/Newsletter";
 import ProductDescription from "@/components/store/ProductDescription";
 import ProductDetails from "@/components/store/ProductDetails";
 import ProductReviews from "@/components/store/ProductReviews";
 import ProductFAQ from "@/components/store/ProductFAQ";
-import ProductCard from "@/components/store/ProductCard";
-import SocialProofCarousel from "@/components/store/SocialProofCarousel";
-import QualityFeatures from "@/components/store/QualityFeatures";
-import StickyBuyBar from "@/components/store/StickyBuyBar";
 
 import {
   Truck,
   RefreshCw,
-  CreditCard,
   Star,
   ChevronLeft,
   ChevronRight,
   ChevronDown,
   Check,
   ShieldCheck,
+  Minus,
+  Plus,
 } from "lucide-react";
 
 
@@ -84,6 +80,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
       : null
   );
   const [selectedColor, setSelectedColor] = useState<number>(0);
+  const [quantity, setQuantity] = useState(1);
   const [showSizeError, setShowSizeError] = useState(false);
   const [kitSizes, setKitSizes] = useState<Record<number, string>>({});
   const [showKitError, setShowKitError] = useState(false);
@@ -99,6 +96,16 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
   const updatePick = (idx: number, patch: Partial<{ color: number | null; size: string | null }>) => {
     setPicks((prev) => prev.map((p, i) => (i === idx ? { ...p, ...patch } : p)));
     setShowPicksError(false);
+  };
+
+  const addItemWithQuantity = (
+    item: Parameters<typeof addItem>[0],
+    options?: { silent?: boolean },
+  ) => {
+    const amount = Math.max(1, quantity);
+    for (let i = 0; i < amount; i += 1) {
+      addItem(item, { silent: options?.silent || i < amount - 1 });
+    }
   };
 
   const isKitMultiSize = false;
@@ -174,9 +181,6 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
   const pixDiscountLabel = "5%";
   const pixPrice = currentPrice * (1 - pixDiscountRate);
 
-  /** Estoque exibido de forma determinística por produto (escassez) */
-  const stockLeft = 8 + (product.id % 12);
-
   /** Prova social determinística e distinta por produto */
   const hashId = (product.id * 2654435761) % 100000;
   const soldCount = 60 + (hashId % 260); // 60 a 319 vendidos
@@ -214,7 +218,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
       const description = picks
         .map((p, i) => `Peça ${i + 1}: ${product.colorVariants?.[p.color!]?.label} · ${p.size}`)
         .join(" | ");
-      addItem({
+      addItemWithQuantity({
         id: product.id,
         name: product.name,
         price: product.price,
@@ -263,7 +267,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
       const sizesDescription = product.colorVariants
         .map((v, idx) => `${v.label}: ${kitSizes[idx]}`)
         .join(" | ");
-      addItem({
+      addItemWithQuantity({
         id: product.id,
         name: product.name,
         price: product.price,
@@ -281,7 +285,7 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
       ? product.colorVariants[selectedColor].image
       : product.image;
 
-    addItem({
+    addItemWithQuantity({
       id: product.id,
       name: product.name,
       price: currentPrice,
@@ -299,319 +303,282 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
   const nextImage = () => setSelectedImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
 
   return (
-    <div className="min-h-screen bg-background pb-24 lg:pb-0">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
-      <div className="container py-6 md:py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
-          {/* Image Gallery */}
-          <div className="flex flex-col gap-3">
-            <div className="relative h-[44vh] md:h-auto md:aspect-square overflow-hidden bg-secondary rounded-none">
-              <img
-                src={images[selectedImage]}
-                alt={product.name}
-                className="w-full h-full object-contain"
-                style={{ imageRendering: 'auto' }}
-                fetchPriority="high"
-                decoding="async"
-              />
+      <main className="mx-auto max-w-[1240px] px-4 sm:px-6 py-6">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Galeria no mesmo formato visual do HTML de referência */}
+          <div>
+            <div className="relative rounded-xl border border-border bg-secondary/30 overflow-hidden">
+              <div className="aspect-square">
+                <img
+                  src={images[selectedImage]}
+                  alt={product.name}
+                  className="w-full h-full object-contain"
+                  style={{ imageRendering: "auto" }}
+                  fetchPriority="high"
+                  decoding="async"
+                />
+              </div>
+
               {images.length > 1 && (
                 <>
                   <button
+                    type="button"
                     onClick={prevImage}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-foreground/50 hover:bg-foreground/70 text-background rounded-full flex items-center justify-center transition-colors"
+                    aria-label="Imagem anterior"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 size-10 rounded-full border border-border bg-background/90 text-foreground shadow-sm grid place-items-center hover:bg-background transition"
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="size-5" />
                   </button>
                   <button
+                    type="button"
                     onClick={nextImage}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-foreground/50 hover:bg-foreground/70 text-background rounded-full flex items-center justify-center transition-colors"
+                    aria-label="Próxima imagem"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 size-10 rounded-full border border-border bg-background/90 text-foreground shadow-sm grid place-items-center hover:bg-background transition"
                   >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="size-5" />
                   </button>
                 </>
               )}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-foreground/50 text-background text-xs font-medium px-3 py-1 rounded-full">
-                {selectedImage + 1} / {images.length}
-              </div>
             </div>
+
             {images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {images.map((img, idx) => (
                   <button
+                    type="button"
                     key={idx}
                     onClick={() => setSelectedImage(idx)}
-                    className={`flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-md overflow-hidden border-2 transition-colors ${
-                      selectedImage === idx ? "border-foreground" : "border-border"
+                    className={`flex-shrink-0 size-14 sm:size-16 rounded-md overflow-hidden border transition ${
+                      selectedImage === idx
+                        ? "border-foreground"
+                        : "border-border hover:border-muted-foreground"
                     }`}
+                    aria-label={`Ver imagem ${idx + 1}`}
                   >
-                    <img src={img} alt={`${product.name} ${idx + 1}`} className="w-full h-full object-cover" />
+                    <img
+                      src={img}
+                      alt=""
+                      aria-hidden="true"
+                      className="w-full h-full object-cover"
+                    />
                   </button>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Product Info */}
-          <div className="space-y-5">
-            {/* Vendidos + avaliação */}
-            <div className="flex items-center justify-between gap-3 flex-wrap">
-              {product.id === 40 ? (
-                <>
-                  <span className="inline-flex items-center rounded-full bg-topbar text-topbar-foreground text-xs font-semibold px-3 py-1">
-                    Novo produto
-                  </span>
-                  <span className="text-sm text-muted-foreground">
-                    Confira tamanhos, estampas e avaliações abaixo
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span className="inline-flex items-center rounded-full bg-topbar text-topbar-foreground text-xs font-semibold px-3 py-1">
-                    +{soldCount} vendidos
-                  </span>
-                  <div className="flex items-center gap-1.5">
-                    <div className="flex">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className="w-4 h-4 fill-primary text-primary" />
-                      ))}
-                    </div>
-                    <span className="text-sm font-semibold text-foreground">{ratingValue}</span>
-                    <span className="text-sm text-muted-foreground">({reviewCount.toLocaleString("pt-BR")} avaliações)</span>
+          {/* Informações no fluxo do layout de referência */}
+          <div>
+            <div className="text-[13px] text-muted-foreground">
+              {product.id === 40 ? "Novo produto" : `Novo | +${soldCount} vendidos`}
+            </div>
+
+            <div className="mt-1">
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight text-foreground">
+                {product.name}
+              </h1>
+            </div>
+
+            {product.id === 40 ? (
+              <div className="mt-3 text-sm text-muted-foreground">
+                Confira tamanhos, estampas e avaliações abaixo
+              </div>
+            ) : (
+              <div className="mt-3 flex items-center gap-2">
+                <div className="flex text-primary">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="size-4 fill-current" />
+                  ))}
+                </div>
+                <span className="font-bold text-sm text-foreground">{ratingValue}</span>
+                <span className="text-sm text-muted-foreground">
+                  ({reviewCount.toLocaleString("pt-BR")} avaliações)
+                </span>
+              </div>
+            )}
+
+            {/* Seletores */}
+            <div className="mt-6">
+              {picksCount > 0 && product.colorVariants && product.sizes ? (
+                <div id="variant-selector" className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <p className="text-[13px] font-semibold text-foreground">
+                      Personalize seu kit
+                    </p>
+                    <span className="text-[11px] font-bold text-muted-foreground">
+                      {picksCount} peças
+                    </span>
                   </div>
-                </>
-              )}
-            </div>
 
-            {/* Title */}
-            <h1 className="text-xl md:text-2xl lg:text-[28px] font-bold text-foreground leading-tight">
-              {product.name}
-            </h1>
+                  {showPicksError && (
+                    <p className="text-xs font-semibold text-destructive">
+                      ⚠ Escolha a estampa e o tamanho das {picksCount} peças
+                    </p>
+                  )}
 
-            {/* Price Block */}
-            <div className="space-y-1">
-              {product.originalPrice && (
-                <p className="text-sm text-muted-foreground line-through">
-                  {formatPrice(product.originalPrice)}
-                </p>
-              )}
-              <div className="flex items-center gap-3">
-                <span className="text-3xl md:text-[32px] font-bold text-foreground">
-                  {formatPrice(currentPrice)}
-                </span>
-                {discount > 0 && (
-                  <span className="bg-primary text-primary-foreground text-xs font-bold px-2.5 py-1 rounded">
-                    {discount}% OFF
-                  </span>
-                )}
-              </div>
-              
+                  {picks.map((pick, slot) => {
+                    const unlocked =
+                      slot === 0 ||
+                      (picks[slot - 1].color !== null && !!picks[slot - 1].size);
+                    if (!unlocked) return null;
 
-              <div className="flex items-center gap-2 pt-2">
-                <span className="text-sm font-semibold text-primary">
-                  {formatPrice(pixPrice)} com Pix
-                </span>
-                <span className="bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded">
-                  {pixDiscountLabel} OFF
-                </span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                ou 5x de {formatPrice(currentPrice / 5)} sem juros
-              </p>
-              
-              <div className="flex items-center gap-2 py-3 px-4 bg-secondary/50 rounded-xl border border-border mt-2">
-                <ShieldCheck className="w-5 h-5 text-primary" />
-                <div className="flex flex-col">
-                  <span className="text-xs font-bold text-foreground uppercase tracking-tight">Garantia BelaCasa</span>
-                  <span className="text-[10px] text-muted-foreground">7 dias de satisfação ou seu dinheiro de volta</span>
-                </div>
-              </div>
-            </div>
+                    const current =
+                      pick.color !== null ? product.colorVariants![pick.color] : null;
+                    const isOpen = openColorSlot === slot;
 
-
-            {/* Kit: personalize cada peça (cor recolhível + tamanho) */}
-            {picksCount > 0 && product.colorVariants && product.sizes ? (
-              <div id="variant-selector" className="rounded-2xl border border-border bg-card p-4 sm:p-5 space-y-4">
-                <div className="flex items-center justify-between">
-                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
-                    Personalize seu kit
-                  </p>
-                  <span className="text-[10px] font-bold uppercase bg-foreground text-background px-2.5 py-1 rounded">
-                    {picksCount} peças
-                  </span>
-                </div>
-
-                {showPicksError && (
-                  <p className="text-xs font-semibold text-destructive">
-                    ⚠ Escolha a estampa e o tamanho das {picksCount} peças
-                  </p>
-                )}
-
-                {picks.map((pick, slot) => {
-                  const unlocked = slot === 0 || (picks[slot - 1].color !== null && !!picks[slot - 1].size);
-                  if (!unlocked) return null;
-                  const current = pick.color !== null ? product.colorVariants![pick.color] : null;
-                  const isOpen = openColorSlot === slot;
-                  return (
-                    <div key={slot} className="rounded-xl border border-border p-3 sm:p-4 space-y-3">
-                      <div className="flex items-center justify-between gap-2 flex-wrap">
-                        <p className="text-sm font-bold text-foreground">
-                          PEÇA {slot + 1}
-                          {current && (
-                            <span className="font-normal text-muted-foreground"> — {current.label}</span>
-                          )}
-                        </p>
-                        {!pick.size && (
-                          <span className="text-[10px] font-semibold text-destructive bg-destructive/10 px-2 py-1 rounded">
-                            Selecione a cor e o tamanho
-
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Cor: linha recolhida clicável */}
-                      <button
-                        onClick={() => setOpenColorSlot(isOpen ? null : slot)}
-                        className={`w-full flex items-center gap-3 rounded-lg border-2 p-2 text-left transition-all ${
-                          isOpen ? "border-foreground" : "border-border hover:border-muted-foreground/60"
-                        }`}
+                    return (
+                      <div
+                        key={slot}
+                        className="rounded-lg border border-border bg-background p-3 sm:p-4 space-y-3"
                       >
-                        {current && (
-                          <img
-                            src={current.image}
-                            alt={current.label}
-                            className="w-11 h-11 rounded object-cover flex-shrink-0"
-                          />
-                        )}
-                        <span className="flex-1 min-w-0">
-                          <span className="block text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                            Cor
-                          </span>
-                          <span className="block text-sm font-semibold text-foreground truncate">
-                            {current ? current.label : "Selecione"}
-                          </span>
-                        </span>
-                        <span
-                          className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-transform ${
-                            isOpen ? "rotate-180 bg-muted text-foreground" : "bg-foreground text-background"
+                        <div className="flex items-center justify-between gap-2">
+                          <p className="text-[13px] font-bold text-foreground">
+                            Peça {slot + 1}
+                            {current && (
+                              <span className="font-normal text-muted-foreground">
+                                {" "}· {current.label}
+                              </span>
+                            )}
+                          </p>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => setOpenColorSlot(isOpen ? null : slot)}
+                          className={`w-full flex items-center gap-3 rounded-md border p-2 text-left transition ${
+                            isOpen
+                              ? "border-foreground"
+                              : "border-border hover:border-muted-foreground"
                           }`}
                         >
-                          {isOpen ? <ChevronDown className="w-4 h-4" /> : <Check className="w-4 h-4" />}
-                        </span>
-                      </button>
+                          {current?.image && (
+                            <img
+                              src={current.image}
+                              alt={current.label}
+                              className="size-11 rounded object-cover flex-shrink-0"
+                            />
+                          )}
+                          <span className="flex-1 min-w-0">
+                            <span className="block text-[12px] text-muted-foreground">
+                              Cor:
+                            </span>
+                            <span className="block text-sm font-bold text-foreground truncate">
+                              {current ? current.label : "Selecione"}
+                            </span>
+                          </span>
+                          <ChevronDown
+                            className={`size-4 transition-transform ${
+                              isOpen ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
 
-                      {isOpen && (
-                        <div className="rounded-lg border border-border p-2">
-                          <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground px-1 pb-2">
-                            Cores disponíveis
-                          </p>
+                        {isOpen && (
                           <div className="grid grid-cols-2 gap-2">
                             {product.colorVariants!.map((variant, idx) => (
                               <button
+                                type="button"
                                 key={idx}
                                 onClick={() => {
                                   updatePick(slot, { color: idx });
                                   setOpenColorSlot(null);
-                                  const imgIdx = images.findIndex((img) => img === variant.image);
+                                  const imgIdx = images.findIndex(
+                                    (img) => img === variant.image,
+                                  );
                                   if (imgIdx >= 0) setSelectedImage(imgIdx);
                                 }}
-                                className={`flex items-center gap-2 rounded-lg border-2 p-1.5 text-left transition-all ${
-                                  pick.color === idx ? "border-foreground" : "border-transparent hover:border-border"
+                                className={`flex items-center gap-2 rounded-md border p-1.5 text-left transition ${
+                                  pick.color === idx
+                                    ? "border-foreground"
+                                    : "border-border hover:border-muted-foreground"
                                 }`}
                               >
-                                <img
-                                  src={variant.image}
-                                  alt={variant.label}
-                                  className="w-10 h-10 rounded object-cover flex-shrink-0"
-                                />
-                                <span className="flex-1 text-[11px] font-medium leading-tight text-foreground">
+                                {variant.image && (
+                                  <img
+                                    src={variant.image}
+                                    alt={variant.label}
+                                    className="size-10 rounded object-cover flex-shrink-0"
+                                  />
+                                )}
+                                <span className="flex-1 text-[11px] font-medium leading-tight">
                                   {variant.label}
                                 </span>
-                                {pick.color === idx && <Check className="w-4 h-4 flex-shrink-0 text-foreground" />}
+                                {pick.color === idx && <Check className="size-4" />}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+
+                        <div>
+                          <p className="text-[13px] text-foreground">
+                            Tamanho:
+                            <span className="font-bold">
+                              {" "}{pick.size || "Selecione"}
+                            </span>
+                          </p>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {product.sizes!.map((size) => (
+                              <button
+                                type="button"
+                                key={size}
+                                onClick={() => updatePick(slot, { size })}
+                                className={`min-w-[52px] h-11 px-4 rounded-md border text-sm font-bold transition ${
+                                  pick.size === size
+                                    ? "bg-foreground text-background border-foreground"
+                                    : "bg-background text-foreground border-border hover:border-foreground"
+                                }`}
+                              >
+                                {size}
                               </button>
                             ))}
                           </div>
                         </div>
-                      )}
-
-                      <div>
-                        <p className="text-[10px] font-semibold text-muted-foreground mb-2 uppercase tracking-widest">
-                          Tamanho{pick.size ? `: ${pick.size}` : ": selecione"}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {product.sizes!.map((size) => (
-                            <button
-                              key={size}
-                              onClick={() => updatePick(slot, { size })}
-                              className={`min-w-[60px] h-10 px-4 rounded-lg border text-sm font-semibold transition-all ${
-                                pick.size === size
-                                  ? "border-foreground bg-foreground text-background"
-                                  : "border-border text-foreground hover:border-foreground"
-                              }`}
-                            >
-                              {size}
-                            </button>
-                          ))}
-                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-
-                {picks[0].color === null || !picks[0].size ? (
-                  <p className="text-xs text-muted-foreground">
-                    Escolha a estampa e o tamanho da 1ª peça para liberar a 2ª.
-                  </p>
-                ) : null}
-              </div>
-
-            ) : isKitMultiSize && product.colorVariants && product.sizes ? (
-
-              <div id="variant-selector" className="rounded-xl border border-border bg-card p-4 sm:p-5 shadow-sm space-y-4">
-                <div className="flex items-center justify-between">
-                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
-                    Escolha o tamanho de cada jaqueta
-                  </p>
-                  <span className="text-[10px] font-bold uppercase bg-emerald-600 text-white px-2 py-1 rounded">
-                    3 peças
-                  </span>
+                    );
+                  })}
                 </div>
-                {showKitError && (
-                  <p className="text-xs font-semibold text-red-500">
-                    ⚠ Selecione o tamanho de todas as jaquetas
+              ) : isKitMultiSize && product.colorVariants && product.sizes ? (
+                <div id="variant-selector" className="space-y-4">
+                  <p className="text-[13px] font-semibold text-foreground">
+                    Escolha o tamanho de cada peça
                   </p>
-                )}
-                <div className="space-y-3">
+                  {showKitError && (
+                    <p className="text-xs font-semibold text-destructive">
+                      ⚠ Selecione o tamanho de todas as peças
+                    </p>
+                  )}
                   {product.colorVariants.map((variant, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center gap-3 p-3 rounded-lg border border-border bg-background"
+                      className="flex items-center gap-3 p-3 rounded-lg border border-border"
                     >
-                      <div
-                        className="shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 border-border"
-                        title={variant.label}
-                      >
-                        <img src={variant.image} alt={variant.label} className="w-full h-full object-cover" />
-                      </div>
+                      {variant.image && (
+                        <img
+                          src={variant.image}
+                          alt={variant.label}
+                          className="size-16 rounded-md object-cover border border-border"
+                        />
+                      )}
                       <div className="flex-1 min-w-0">
-                        <p className="text-xs font-semibold text-foreground mb-1.5 truncate">
+                        <p className="text-[13px] font-bold mb-2">
                           {variant.label}
-                          {kitSizes[idx] && (
-                            <span className="text-muted-foreground font-normal"> · {kitSizes[idx]}</span>
-                          )}
                         </p>
-                        <div className="flex flex-wrap gap-1.5">
+                        <div className="flex flex-wrap gap-2">
                           {product.sizes.map((size) => (
                             <button
+                              type="button"
                               key={size}
                               onClick={() => {
                                 setKitSizes((prev) => ({ ...prev, [idx]: size }));
                                 setShowKitError(false);
                               }}
-                              className={`min-w-[36px] h-8 px-2.5 rounded border text-xs font-semibold transition-all ${
+                              className={`min-w-[52px] h-10 px-3 rounded-md border text-sm font-bold transition ${
                                 kitSizes[idx] === size
-                                  ? "border-foreground bg-foreground text-background"
-                                  : "border-border text-foreground hover:border-foreground"
+                                  ? "bg-foreground text-background border-foreground"
+                                  : "bg-background text-foreground border-border hover:border-foreground"
                               }`}
                             >
                               {size}
@@ -622,179 +589,223 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
                     </div>
                   ))}
                 </div>
-              </div>
-            ) : (
-              <>
-                {/* Tamanho (layout padrão quando não há variantes com imagem) */}
-                {product.sizes && product.sizes.length > 0 && (
-                  <div id="variant-selector">
+              ) : (
+                <div id="variant-selector" className="space-y-6">
+                  {product.sizes && product.sizes.length > 0 && (
+                    <div>
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="text-[13px] text-foreground">
+                          {product.sizeLabel || "Tamanho"}:
+                          <span className="font-bold">
+                            {" "}{selectedSize || "Selecione"}
+                          </span>
+                        </p>
+                      </div>
 
-                    {showSizeError && !selectedSize && (
-                      <p className="text-xs font-semibold text-red-500 mb-2">⚠ Selecione {(product.sizeLabel || "um tamanho").toLowerCase() === "voltagem" ? "uma voltagem" : "um tamanho"}</p>
-                    )}
-                    <p className="text-xs font-semibold text-muted-foreground mb-3 uppercase tracking-widest">
-                      {product.sizeLabel || "Tamanho"}{selectedSize && <span className="text-foreground">: {selectedSize}</span>}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {product.sizes.map((size) => (
-                        <button
-                          key={size}
-                          onClick={() => { setSelectedSize(size); setShowSizeError(false); }}
-                          className={`min-w-[44px] h-10 px-4 rounded border text-sm font-medium transition-all ${
-                            selectedSize === size
-                              ? "border-foreground bg-foreground text-background"
-                              : "border-border text-foreground hover:border-foreground"
-                          }`}
-                        >
-                          {size}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                      {showSizeError && !selectedSize && (
+                        <p className="mt-2 text-xs font-semibold text-destructive">
+                          ⚠ Selecione{" "}
+                          {(product.sizeLabel || "tamanho").toLowerCase() ===
+                          "voltagem"
+                            ? "uma voltagem"
+                            : "um tamanho"}
+                        </p>
+                      )}
 
-                {/* Color Variants */}
-                {product.colorVariants && product.colorVariants.length > 0 && (
-                  <div>
-                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-widest">
-                      Cor: <span className="text-foreground">{product.colorVariants[selectedColor]?.label}</span>
-                    </p>
-                    {product.colorVariants.some(v => v.image) ? (
-                      <div className="flex gap-2 flex-wrap">
-                        {product.colorVariants.map((variant, idx) => (
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {product.sizes.map((size) => (
                           <button
-                            key={idx}
+                            type="button"
+                            key={size}
                             onClick={() => {
-                              setSelectedColor(idx);
-                              if (variant.image) {
-                                const imgIdx = images.findIndex((img) => img === variant.image);
-                                if (imgIdx >= 0) setSelectedImage(imgIdx);
-                              }
+                              setSelectedSize(size);
+                              setShowSizeError(false);
                             }}
-                            className={`w-16 h-16 rounded-md overflow-hidden transition-all ${
-                              selectedColor === idx ? "border-2 border-foreground" : "border border-transparent hover:opacity-90"
+                            className={`min-w-[52px] h-11 px-4 rounded-md border text-sm font-bold transition ${
+                              selectedSize === size
+                                ? "bg-foreground text-background border-foreground"
+                                : "bg-background text-foreground border-border hover:border-foreground"
                             }`}
-                            title={variant.label}
                           >
-                            <img src={variant.image} alt={variant.label} className="w-full h-full object-cover" />
+                            {size}
                           </button>
                         ))}
                       </div>
-                    ) : (
-                      <div className="flex flex-col gap-2">
-                        {product.colorVariants.map((variant, idx) => (
-                          <button
-                            key={idx}
-                            onClick={() => setSelectedColor(idx)}
-                            className={`border rounded-lg px-4 py-3.5 transition-all text-left ${
-                              selectedColor === idx
-                                ? "border-foreground bg-secondary"
-                                : "border-border hover:border-muted-foreground/50"
-                            }`}
-                          >
-                            <span className="text-sm font-semibold text-foreground">
-                              {variant.label}
-                            </span>
-                          </button>
-                        ))}
+                    </div>
+                  )}
+
+                  {product.colorVariants &&
+                    product.colorVariants.length > 0 && (
+                      <div>
+                        <p className="text-[13px] text-foreground">
+                          Cor:
+                          <span className="font-bold">
+                            {" "}{product.colorVariants[selectedColor]?.label}
+                          </span>
+                        </p>
+
+                        {product.colorVariants.some((v) => v.image) ? (
+                          <div className="mt-2 flex gap-2 flex-wrap">
+                            {product.colorVariants.map((variant, idx) => (
+                              <button
+                                type="button"
+                                key={idx}
+                                onClick={() => {
+                                  setSelectedColor(idx);
+                                  if (variant.image) {
+                                    const imgIdx = images.findIndex(
+                                      (img) => img === variant.image,
+                                    );
+                                    if (imgIdx >= 0) setSelectedImage(imgIdx);
+                                  }
+                                }}
+                                className={`size-16 rounded-md overflow-hidden border transition ${
+                                  selectedColor === idx
+                                    ? "border-foreground ring-1 ring-foreground"
+                                    : "border-border hover:border-muted-foreground"
+                                }`}
+                                title={variant.label}
+                              >
+                                {variant.image ? (
+                                  <img
+                                    src={variant.image}
+                                    alt={variant.label}
+                                    className="w-full h-full object-cover"
+                                  />
+                                ) : (
+                                  <span className="text-xs">{variant.label}</span>
+                                )}
+                              </button>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {product.colorVariants.map((variant, idx) => (
+                              <button
+                                type="button"
+                                key={idx}
+                                onClick={() => setSelectedColor(idx)}
+                                className={`h-11 px-4 rounded-md border text-sm font-bold transition ${
+                                  selectedColor === idx
+                                    ? "bg-foreground text-background border-foreground"
+                                    : "bg-background text-foreground border-border hover:border-foreground"
+                                }`}
+                              >
+                                {variant.label}
+                              </button>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )}
-                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Preço no mesmo bloco/ordem da referência */}
+            <div className="mt-6">
+              <p className="text-[13px] text-foreground">Preço:</p>
+              {product.originalPrice && (
+                <p className="text-[13px] text-muted-foreground line-through mt-1">
+                  DE {formatPrice(product.originalPrice)}
+                </p>
+              )}
+              <div className="mt-1 flex items-center gap-3 flex-wrap">
+                <span className="text-3xl sm:text-[34px] font-black text-foreground">
+                  {formatPrice(currentPrice)}
+                </span>
+                {discount > 0 && (
+                  <span className="text-sm font-bold text-primary">
+                    ↓ {discount}%
+                  </span>
                 )}
-              </>
-            )}
-
-            {/* Frete grátis - selo de destaque */}
-            <div className="flex items-center gap-3 rounded-xl border border-topbar bg-topbar/40 px-4 py-3">
-              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center shrink-0">
-                <Truck className="w-5 h-5 text-primary-foreground" />
               </div>
-              <div className="flex-1">
-                <p className="text-sm font-bold text-foreground leading-tight">FRETE GRÁTIS para todo o Brasil</p>
-                <p className="text-xs text-muted-foreground mt-0.5">Entrega em 2 a 6 dias úteis · não acumulável com outras promoções</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                em até 12x de{" "}
+                <strong className="text-foreground">
+                  {formatPrice(currentPrice / 12)}
+                </strong>
+              </p>
+              <p className="text-sm font-semibold text-primary mt-1">
+                {formatPrice(pixPrice)} com Pix · {pixDiscountLabel} OFF
+              </p>
+            </div>
+
+            {/* Quantidade */}
+            <div className="mt-6 flex items-center gap-4">
+              <span className="text-[13px] text-foreground">Quantidade:</span>
+              <div className="flex items-center border border-border rounded-md overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  className="size-10 grid place-items-center hover:bg-secondary transition"
+                  aria-label="Diminuir quantidade"
+                >
+                  <Minus className="size-4" />
+                </button>
+                <span className="w-10 text-center font-bold">{quantity}</span>
+                <button
+                  type="button"
+                  onClick={() => setQuantity((q) => Math.min(10, q + 1))}
+                  className="size-10 grid place-items-center hover:bg-secondary transition"
+                  aria-label="Aumentar quantidade"
+                >
+                  <Plus className="size-4" />
+                </button>
               </div>
             </div>
 
+            {/* Benefícios em caixa, mantendo as cores da loja */}
+            <div className="mt-6 rounded-lg border border-border bg-secondary/30 p-4 space-y-3 text-sm">
+              <div className="flex items-start gap-3">
+                <Truck className="size-5 text-primary shrink-0 mt-0.5" />
+                <p>
+                  <strong>Frete Grátis</strong> · Disponível
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <RefreshCw className="size-5 text-primary shrink-0 mt-0.5" />
+                <p>
+                  <strong>Devolução grátis.</strong> Até 7 dias a partir do
+                  recebimento
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <ShieldCheck className="size-5 text-primary shrink-0 mt-0.5" />
+                <p>
+                  <strong>Compra Garantida.</strong> Compra protegida durante o
+                  processo de pagamento
+                </p>
+              </div>
+            </div>
 
-            {/* CTA principal: compra em 1 clique */}
-            <Button
-              size="lg"
-              className="w-full h-14 text-base font-bold tracking-wider rounded-lg uppercase"
+            {/* CTA continua usando o fluxo real do checkout da loja */}
+            <button
+              type="button"
               onClick={() => handleAddToCart(true)}
+              className="mt-6 w-full h-14 rounded-full bg-primary hover:opacity-90 text-primary-foreground text-lg font-extrabold inline-flex items-center justify-center shadow-lg shadow-primary/20 transition"
             >
-              Comprar
-            </Button>
-
-
-            {/* CTA secundário: continuar navegando */}
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-full h-12 text-sm font-semibold tracking-wider rounded-lg uppercase border-foreground text-foreground hover:bg-secondary"
-              onClick={() => handleAddToCart(false)}
-            >
-              Adicionar à sacola
-            </Button>
-
-            {/* Trust Features */}
-            <div className="space-y-3 pt-2">
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <RefreshCw className="w-4 h-4 text-foreground shrink-0" />
-                <span>Troca e devolução em até 7 dias</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <CreditCard className="w-4 h-4 text-foreground shrink-0" />
-                <span>Parcele em até 12x sem juros</span>
-              </div>
-            </div>
+              COMPRAR AGORA
+            </button>
           </div>
         </div>
 
-        {/* Social Proof Carousel */}
-        <SocialProofCarousel />
+        {/* Descrição no formato empilhado do HTML de referência */}
+        <section className="mt-14 max-w-3xl mx-auto text-left">
+          <h2 className="text-lg font-extrabold tracking-tight">
+            DESCRIÇÃO DO PRODUTO
+          </h2>
+          <ProductDetails images={baseImages} productName={product.name} />
+          <ProductDescription productId={product.id} />
+        </section>
 
-        {/* Quality Features */}
-        <QualityFeatures />
-
-        {/* Product Details Grid */}
-        <ProductDetails images={baseImages} productName={product.name} />
-
-        {/* Product Description */}
-        <ProductDescription productId={product.id} />
-
-        {/* Reviews */}
-        {mainProduct && <ProductReviews productId={product.id} />}
-
-
-        {/* FAQ */}
         <ProductFAQ />
 
-        {/* Related Products */}
-        <section className="py-12 md:py-16">
-          <h2 className="text-xl md:text-2xl font-bold text-foreground mb-8">
-            Compre Também
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {products
-              .filter((p) => p.id !== product.id)
-              .slice(0, 4)
-              .map((p) => (
-                <ProductCard key={p.id} {...p} />
-              ))}
-          </div>
+        {mainProduct && <ProductReviews productId={product.id} />}
+      </main>
 
-        </section>
-      </div>
-
-      <Newsletter />
       <Footer />
       <ExitIntentPopup />
-      <StickyBuyBar
-        productName={product.name}
-        price={currentPrice}
-        pixPrice={pixPrice}
-        onBuy={() => handleAddToCart(true)}
-      />
     </div>
   );
 };
