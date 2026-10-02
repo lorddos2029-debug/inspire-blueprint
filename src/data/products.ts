@@ -59,6 +59,41 @@ const BIKE = "/assets/products-bc/bicicleta-spinning/";
 
 export const products: Product[] = [
   {
+    id: 40,
+    slug: "kit-6-pecas-cobre-leito-piquet-jogo-fronhas-ponto-palito-lencol-elastico",
+    name: "Kit 6 Peças Cobre Leito Piquet com Jogo de Fronhas Ponto Palito e Lençol de Elástico para Cama Confortável",
+    price: 59.9,
+    image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-1.jpg",
+    hoverImage: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-2.jpg",
+    images: [
+      "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-1.jpg",
+      "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-2.jpg",
+      "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-3.jpg",
+      "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-4.jpg",
+      "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-5.jpg",
+      "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-6.jpg",
+      "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-7.jpg",
+      "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-8.jpg",
+      "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-9.jpg",
+    ],
+    sizes: ["Casal", "Queen", "King"],
+    sizeLabel: "Tamanho",
+    tag: "KIT 6 PEÇAS",
+    colorVariants: [
+      { label: "Laços Pink", colors: ["#d10062", "#ffffff"], image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-1.jpg" },
+      { label: "Cerejas + Vermelho", colors: ["#d40000", "#ffffff"], image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-2.jpg" },
+      { label: "Cerejas + Branco", colors: ["#ffffff", "#d40000"], image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-3.jpg" },
+      { label: "Folhagem Verde", colors: ["#556b2f", "#ffffff"], image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-4.jpg" },
+      { label: "Borboletas + Pink", colors: ["#d10062", "#f5c6df"], image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-5.jpg" },
+      { label: "Corações Bege", colors: ["#c8a27a", "#ffffff"], image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-6.jpg" },
+      { label: "Corações Bege + Branco", colors: ["#ffffff", "#c8a27a"], image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-7.jpg" },
+      { label: "Corações Vermelho", colors: ["#e00000", "#ffffff"], image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-8.jpg" },
+      { label: "Corações Vermelho + Branco", colors: ["#ffffff", "#e00000"], image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-9.jpg" },
+    ],
+    description:
+      "Kit completo com 6 peças para renovar a cama com praticidade e um visual coordenado. O conjunto reúne cobre leito em piquet, jogo de fronhas com acabamento ponto palito e lençol com elástico, facilitando a montagem da cama no dia a dia. Escolha entre os tamanhos Casal, Queen e King e selecione a combinação de cor e estampa que mais combina com o quarto. O lençol com elástico ajuda a manter o colchão bem ajustado, enquanto o acabamento ponto palito das fronhas traz um detalhe delicado ao conjunto.",
+  },
+  {
     id: 39,
     slug: "micro-ondas-mondial-mo-01-21-b-21-litros",
     name: "Micro-ondas Mondial Mo-01-21-b 21 Litros",
