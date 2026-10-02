@@ -448,35 +448,37 @@ const ProductDescription = ({ productId }: ProductDescriptionProps) => {
     ];
 
   return (
-    <div className="mt-16 max-w-3xl mx-auto space-y-12">
-      <section>
-        <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4">Sobre o produto</h2>
-        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{about}</p>
-      </section>
+    <div className="mt-6">
+      <p className="text-[15px] text-muted-foreground whitespace-pre-line leading-relaxed">
+        {about}
+      </p>
 
-      <section>
-        <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4">Especificações técnicas</h2>
-        <dl className="divide-y divide-border border-t border-b border-border">
+      <div className="mt-8">
+        <h3 className="text-base font-extrabold tracking-tight uppercase text-foreground">
+          Especificações técnicas
+        </h3>
+        <dl className="mt-3 divide-y divide-border border-y border-border">
           {specs.map((spec) => (
             <div
               key={spec.label}
               className="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-1 sm:gap-4 py-3"
             >
-              <dt className="text-sm font-semibold text-foreground">{spec.label}</dt>
-              <dd className="text-sm text-muted-foreground leading-relaxed">{spec.value}</dd>
+              <dt className="text-sm font-bold text-foreground">{spec.label}</dt>
+              <dd className="text-sm text-muted-foreground leading-relaxed">
+                {spec.value}
+              </dd>
             </div>
           ))}
         </dl>
-      </section>
+      </div>
 
-      <section className="bg-secondary/30 border border-border rounded-xl p-6 space-y-3">
-        <h2 className="text-lg md:text-xl font-bold text-foreground">Garantia e envio</h2>
+      <div className="mt-6 rounded-lg border border-border bg-secondary/30 p-4">
         <p className="text-sm text-muted-foreground leading-relaxed">
           Você tem até <strong className="text-foreground">30 dias para trocar ou devolver</strong> sem
           burocracia. Pedidos processados em até <strong className="text-foreground">24h úteis</strong>,
           com rastreio completo e nota fiscal eletrônica.
         </p>
-      </section>
+      </div>
     </div>
   );
 };
