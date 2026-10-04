@@ -20,10 +20,15 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p public/assets/products-bc/kit-cobre-leito-piquet
-          for i in 1 2 3 4 5 6 7 8 9; do
+
+          for i in 1 2 3 4 5 6; do
             cat .tmp-kit-upload/image-${i}-part-* | base64 -d > "public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-${i}.webp"
-            test -s "public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-${i}.webp"
           done
+
+          for i in 7 8 9; do
+            rev ".tmp-kit-upload/image-${i}-reversed" | base64 -d > "public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-${i}.webp"
+          done
+
           echo "d92b4563cf1095873a6fc88ba70146112b43b49c2533173ad7df6fff1dab258f  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-1.webp" | sha256sum -c -
           echo "445690e470c276aa6828f9d9e2003e0c77106294984910e5a0bc67a3c890e82c  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-2.webp" | sha256sum -c -
           echo "2d5c856d7b275157ce67e5af98e8c33f01418d686d5cd2369f361a33ac8ecc07  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-3.webp" | sha256sum -c -
