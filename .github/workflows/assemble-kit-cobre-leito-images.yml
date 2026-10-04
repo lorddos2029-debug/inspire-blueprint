@@ -15,29 +15,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Ensure ffmpeg
-        shell: bash
-        run: |
-          if ! command -v ffmpeg >/dev/null 2>&1; then
-            sudo apt-get update
-            sudo apt-get install -y ffmpeg
-          fi
-
-      - name: Rebuild product images
+      - name: Rebuild exact product image set
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p /tmp/kit-cobre-leito
           cat .tmp-kit-upload/chunk-* | base64 -d > /tmp/kit-cobre-leito/images.tar.gz
-          echo "c2ae5a6779ba2b7906710832708a51894697af02721a6624ad1e0d9d66dd82cd  /tmp/kit-cobre-leito/images.tar.gz" | sha256sum -c -
+          echo "3841792f5dedbfde8761cfee9eb1ae7b9d0a7777db44ad7cc25cc757a2d0bae8  /tmp/kit-cobre-leito/images.tar.gz" | sha256sum -c -
           mkdir -p /tmp/kit-cobre-leito/src
           tar -xzf /tmp/kit-cobre-leito/images.tar.gz -C /tmp/kit-cobre-leito/src
           mkdir -p public/assets/products-bc/kit-cobre-leito-piquet
-          for i in 1 2 3 4 5 6 7 8 9; do
-            ffmpeg -loglevel error -y -i "/tmp/kit-cobre-leito/src/$i.avif" -frames:v 1 -pix_fmt rgb24 "public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-$i.png"
-          done
+          cp /tmp/kit-cobre-leito/src/*.webp public/assets/products-bc/kit-cobre-leito-piquet/
 
-      - name: Commit rebuilt images
+      - name: Commit product images
         shell: bash
         run: |
           set -euo pipefail
