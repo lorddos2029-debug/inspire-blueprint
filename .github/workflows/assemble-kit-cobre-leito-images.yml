@@ -15,19 +15,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Rebuild exact product image set
+      - name: Assemble uploaded product images
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p /tmp/kit-cobre-leito
-          cat .tmp-kit-upload/chunk-* | base64 -d > /tmp/kit-cobre-leito/images.tar.gz
-          echo "3841792f5dedbfde8761cfee9eb1ae7b9d0a7777db44ad7cc25cc757a2d0bae8  /tmp/kit-cobre-leito/images.tar.gz" | sha256sum -c -
-          mkdir -p /tmp/kit-cobre-leito/src
-          tar -xzf /tmp/kit-cobre-leito/images.tar.gz -C /tmp/kit-cobre-leito/src
           mkdir -p public/assets/products-bc/kit-cobre-leito-piquet
-          cp /tmp/kit-cobre-leito/src/*.webp public/assets/products-bc/kit-cobre-leito-piquet/
+          for i in 1 2 3 4 5 6 7 8 9; do
+            cat .tmp-kit-upload/image-${i}-part-* | base64 -d > "public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-${i}.webp"
+            test -s "public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-${i}.webp"
+          done
+          echo "d92b4563cf1095873a6fc88ba70146112b43b49c2533173ad7df6fff1dab258f  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-1.webp" | sha256sum -c -
+          echo "445690e470c276aa6828f9d9e2003e0c77106294984910e5a0bc67a3c890e82c  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-2.webp" | sha256sum -c -
+          echo "2d5c856d7b275157ce67e5af98e8c33f01418d686d5cd2369f361a33ac8ecc07  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-3.webp" | sha256sum -c -
+          echo "8f53268e075e726e9e13c5eaa810c0bcbc2726e802f31d2057493c52ea6c2e15  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-4.webp" | sha256sum -c -
+          echo "ae026d35644f85040cc07bffae2842027e231a8de203d02f786dc0c68e0e9a9c  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-5.webp" | sha256sum -c -
+          echo "f9ddcd68e1da151df8fbb4f1fd63f2c5b16335f41c5460b62028c3b788ec5efd  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-6.webp" | sha256sum -c -
+          echo "89a6bba81398a2b980a966f1e47b45337b48de5367f8347da28c6c6f3f2337f2  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-7.webp" | sha256sum -c -
+          echo "74ef4f45d8d65272ce2754c6d0494490fbab43980ec4c0d17c2be89e47b58674  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-8.webp" | sha256sum -c -
+          echo "bc2519ad1a55623c2ad5a52f21a65762ce5c6e249ebcccdb9ffbc96544ecf5fb  public/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-9.webp" | sha256sum -c -
 
-      - name: Commit product images
+      - name: Commit exact product images
         shell: bash
         run: |
           set -euo pipefail
