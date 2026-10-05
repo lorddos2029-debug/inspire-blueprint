@@ -244,20 +244,27 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
                       {review.text}
                     </p>
 
-                    {review.image && (
-                      <a
-                        href={review.image}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block mt-3"
-                      >
-                        <img
-                          src={review.image}
-                          alt={`Foto enviada por ${review.name}`}
-                          loading="lazy"
-                          className="size-28 rounded-md object-cover border border-border"
-                        />
-                      </a>
+                    {(review.images?.length || review.image) && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {(review.images ?? (review.image ? [review.image] : [])).map(
+                          (image, imageIndex) => (
+                            <a
+                              key={`${image}-${imageIndex}`}
+                              href={image}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-block"
+                            >
+                              <img
+                                src={image}
+                                alt={`Foto enviada por ${review.name}`}
+                                loading="lazy"
+                                className="size-20 rounded-md object-cover border border-border hover:opacity-90 transition"
+                              />
+                            </a>
+                          ),
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
