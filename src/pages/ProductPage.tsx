@@ -372,9 +372,11 @@ const ProductPage = ({ slugOverride }: ProductPageProps) => {
 
           {/* Informações no fluxo do layout de referência */}
           <div className="w-full min-w-0 max-w-full">
-            <div className="text-[13px] text-muted-foreground">
-              {product.id === 40 ? "Novo produto" : `Novo | +${soldCount} vendidos`}
-            </div>
+            {product.id !== 40 && (
+              <div className="text-[13px] text-muted-foreground">
+                {[`Novo`, `+${soldCount} vendidos`].join(" | ")}
+              </div>
+            )}
 
             <div className="mt-1">
               <h1 className="max-w-full break-words [overflow-wrap:anywhere] text-[22px] sm:text-3xl font-extrabold tracking-tight leading-tight text-foreground">
