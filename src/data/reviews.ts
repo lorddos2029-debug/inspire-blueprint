@@ -92,17 +92,41 @@ const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
-  // 40 — Kit 6 Peças Cobre Leito Piquet (textos demonstrativos; substituir por avaliações reais)
+  // 40 — Kit 6 Peças Cobre Leito Piquet
   40: {
-    total: 6,
+    total: 5,
     avg: 5.0,
     reviews: [
-      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "Gostei do conjunto coordenado e do acabamento delicado das fronhas. A opção de escolher a estampa deixa a compra bem mais prática." },
-      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "O lençol com elástico ajuda a manter a cama arrumada e o cobre leito piquet deixa o visual do quarto mais organizado." },
-      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "A combinação de cobre leito, fronhas e lençol no mesmo kit facilita bastante na hora de montar o enxoval." },
-      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "As opções de cor e estampa ficaram fáceis de visualizar no seletor antes de escolher a combinação." },
-      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "Boa proposta para quem quer renovar a roupa de cama de uma vez, com peças que combinam entre si." },
-      { name: "Exemplo de avaliação", date: "Demonstração", rating: 5, text: "Gostei de ter Casal, Queen e King no mesmo anúncio; facilita encontrar o tamanho certo para a cama." },
+      {
+        name: "Cliente anônimo",
+        date: "05/10/2026 · Coração Vermelho/Vermelho",
+        rating: 5,
+        text: "Chegou o material é de primeira, amei! Igual ao mostrado, lindo! Já coloquei pra lavar, mas veio cheiroso!",
+      },
+      {
+        name: "J*** P***",
+        date: "02/10/2026 · Cereja/Branco · Queen",
+        rating: 5,
+        text: "Conforto: Maravilhoso. Forma e tamanho: Excelente. Cor: Linda, igual ao anúncio.",
+      },
+      {
+        name: "M***",
+        date: "28/09/2026 · Cereja/Vermelho · King",
+        rating: 5,
+        text: "Conforto: Não usei ainda, porém parece ser confortável. Forma e tamanho: Tem um formato impecável. Cor: Perfeito. Conforto: 10/10. Forma e tamanho: 10/10. Cor: 10/10.",
+      },
+      {
+        name: "I*** R***",
+        date: "27/09/2026 · Cereja/Vermelho · Casal",
+        rating: 5,
+        text: "É perfeito, qualidade boa, eu amei.",
+      },
+      {
+        name: "D*** M***",
+        date: "",
+        rating: 5,
+        text: "Conforto: Fresquinho. Forma e tamanho: Muito grande. Cor: Idêntico ao anúncio. Amei tudo. Super recomendo.",
+      },
     ],
   },
   // 39 — Micro-ondas Mondial MO-01-21-B 21 Litros
