@@ -59,6 +59,7 @@ export interface Review {
   rating: number;
   text: string;
   image?: string;
+  images?: string[];
 }
 
 interface ProductReviewSet {
@@ -102,30 +103,38 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
         date: "05/10/2026 · Coração Vermelho/Vermelho",
         rating: 5,
         text: "Chegou o material é de primeira, amei! Igual ao mostrado, lindo! Já coloquei pra lavar, mas veio cheiroso!",
+        image: "/assets/products-bc/kit-cobre-leito-piquet/reviews/kit-review-1.jpg",
       },
       {
         name: "J*** P***",
         date: "02/10/2026 · Cereja/Branco · Queen",
         rating: 5,
         text: "Conforto: Maravilhoso. Forma e tamanho: Excelente. Cor: Linda, igual ao anúncio.",
+        image: "/assets/products-bc/kit-cobre-leito-piquet/reviews/kit-review-2.jpg",
       },
       {
         name: "M***",
         date: "28/09/2026 · Cereja/Vermelho · King",
         rating: 5,
         text: "Conforto: Não usei ainda, porém parece ser confortável. Forma e tamanho: Tem um formato impecável. Cor: Perfeito. Conforto: 10/10. Forma e tamanho: 10/10. Cor: 10/10.",
+        image: "/assets/products-bc/kit-cobre-leito-piquet/reviews/kit-review-3.jpg",
       },
       {
         name: "I*** R***",
         date: "27/09/2026 · Cereja/Vermelho · Casal",
         rating: 5,
         text: "É perfeito, qualidade boa, eu amei.",
+        image: "/assets/products-bc/kit-cobre-leito-piquet/reviews/kit-review-4.jpg",
       },
       {
         name: "D*** M***",
         date: "",
         rating: 5,
         text: "Conforto: Fresquinho. Forma e tamanho: Muito grande. Cor: Idêntico ao anúncio. Amei tudo. Super recomendo.",
+        images: [
+          "/assets/products-bc/kit-cobre-leito-piquet/reviews/kit-review-5.jpg",
+          "/assets/products-bc/kit-cobre-leito-piquet/reviews/kit-review-6.jpg",
+        ],
       },
     ],
   },
