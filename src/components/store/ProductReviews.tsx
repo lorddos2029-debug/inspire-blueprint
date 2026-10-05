@@ -22,7 +22,6 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
     breakdown: ratingBreakdown,
   } = getReviewsForProduct(productId);
 
-  const isDemoProduct = productId === 40;
   const maxCount = Math.max(...ratingBreakdown.map((row) => row.count), 1);
 
   return (
@@ -32,11 +31,6 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
           <h2 className="break-words [overflow-wrap:anywhere] text-xl font-extrabold tracking-tight text-foreground">
             Avaliações de clientes
           </h2>
-          {isDemoProduct && (
-            <p className="mt-1 text-xs text-muted-foreground">
-              Os textos abaixo são exemplos de apresentação do layout.
-            </p>
-          )}
         </div>
 
         <button
@@ -174,9 +168,7 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
           </div>
 
           <p className="mt-2 text-sm text-muted-foreground">
-            {isDemoProduct
-              ? `${totalReviews} textos de exemplo`
-              : `A partir de ${totalReviews} avaliações`}
+            {totalReviews} avaliações
           </p>
 
           <div className="mt-4 space-y-1.5">
