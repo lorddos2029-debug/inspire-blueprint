@@ -59,6 +59,17 @@ const BIKE = "/assets/products-bc/bicicleta-spinning/";
 
 export const products: Product[] = [
   {
+    id: 116,
+    slug: "smart-tv-aoc-43-43s5155-78g-full-hd-led-wifi-roku-usb-hdmi",
+    name: 'Smart TV AOC 43" 43S5155/78G Full HD LED Wifi Roku USB HDMI',
+    price: 197.9,
+    image: "/assets/products-bc/aoc-roku-43/tv-1.png",
+    hoverImage: "/assets/products-bc/aoc-roku-43/tv-3.png",
+    images: ["/assets/products-bc/aoc-roku-43/tv-1.png", "/assets/products-bc/aoc-roku-43/tv-2.png", "/assets/products-bc/aoc-roku-43/tv-3.png", "/assets/products-bc/aoc-roku-43/tv-4.png", "/assets/products-bc/aoc-roku-43/tv-5.png", "/assets/products-bc/aoc-roku-43/tv-6.png", "/assets/products-bc/aoc-roku-43/tv-7.png"],
+    description: "Smart TV AOC de 43 polegadas com tela LED Full HD e sistema Roku TV. Navegue pelos aplicativos de streaming em uma interface prática, com conexão Wi-Fi e entradas HDMI e USB para seus dispositivos.\n\nDESTAQUES\n• Tela LED de 43 polegadas\n• Resolução Full HD para imagens nítidas\n• Plataforma inteligente Roku TV\n• Conectividade Wi-Fi\n• Entradas HDMI e USB\n• Compatibilidade com assistentes de voz, conforme disponibilidade e configuração do sistema\n• Tecnologia de áudio Dolby Audio, conforme material ilustrativo do produto\n\nINFORMAÇÕES TÉCNICAS\n• Marca: AOC\n• Modelo informado: 43S5155/78G\n• Tipo: Smart TV LED\n• Tamanho da tela: 43 polegadas\n• Resolução: Full HD (1920 × 1080 pixels)\n• Sistema operacional: Roku TV\n• Conexão sem fio: Wi-Fi\n• Conexões: HDMI e USB\n• Cor: preta\n• Base: dois pés de apoio\n\nObservação: confira a quantidade exata de entradas, a voltagem, as dimensões e os itens inclusos na etiqueta ou ficha técnica do fabricante para esta versão do modelo.",
+  },
+
+  {
     id: 40,
     slug: "kit-6-pecas-cobre-leito-piquet-jogo-fronhas-ponto-palito-lencol-elastico",
     name: "Kit 6 Peças Cobre Leito Piquet com Jogo de Fronhas Ponto Palito e Lençol de Elástico para Cama Confortável",
