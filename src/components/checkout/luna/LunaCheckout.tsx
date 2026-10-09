@@ -402,6 +402,28 @@ export const LunaCheckout = () => {
         const paid = result?.pago === true || result?.status === "paid";
         const order = { customer_email: email, customer_name: name, order_number: pixData.orderId?.slice(0,8), total: grandTotal, tracking_code: "" };
         if (paid) {
+          // Atualiza o pedido existente somente após confirmação da UrusPay.
+          // Se o banco rejeitar a atualização, não registra Purchase nem confirma a compra na interface.
+          const { data: updatedOrder, error: updateError } = await supabase
+            .from("orders")
+            .update({ payment_status: "paid" })
+            .eq("id", pixData.orderId)
+            .eq("transaction_id", pixData.transactionId)
+            .eq("payment_status", "pending")
+            .select("id")
+            .maybeSingle();
+          if (updateError) throw new Error("Pagamento aprovado, mas falhou a atualização do pedido: " + updateError.message);
+          if (!updatedOrder) {
+            const { data: existing, error: existingError } = await supabase
+              .from("orders")
+              .select("payment_status")
+              .eq("id", pixData.orderId)
+              .eq("transaction_id", pixData.transactionId)
+              .maybeSingle();
+            if (existingError || existing?.payment_status !== "paid") {
+              throw new Error("Pagamento aprovado, mas o pedido não pôde ser confirmado no banco.");
+            }
+          }
           if (pixConfirmHandledRef.current) return;
           pixConfirmHandledRef.current = true;
           setPixConfirmed(true);
@@ -431,14 +453,14 @@ export const LunaCheckout = () => {
 
           toast.success("Pagamento PIX confirmado!");
           const selectedOption = SHIPPING_OPTIONS.find((o) => o.id === selectedShipping);
-          navigate("/erro", {
+          navigate("/obrigado", {
             replace: true,
             state: {
               customerName: name, customerEmail: email, customerPhone: phone, customerCpf: cpf,
               address: { street, number, complement, neighborhood, city, state, cep },
               items: purchasedItems, shippingMethod: selectedShipping,
               shippingDescription: selectedOption?.description || "", shippingCost,
-              paymentMethod: "pix", total: grandTotal, nextDestination: "/erro",
+              paymentMethod: "pix", total: grandTotal, nextDestination: "/obrigado",
             },
           });
           clearCart();
