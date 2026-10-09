@@ -183,7 +183,7 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
 
           <div className="mt-2 flex text-primary">
             {[1, 2, 3, 4, 5].map((s) => (
-              <Star key={s} className="size-5 fill-current" />
+              <Star key={s} className={`size-5 ${totalReviews > 0 ? "fill-current" : "text-border"}`} />
             ))}
           </div>
 
@@ -219,6 +219,7 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
             </span>
           </div>
 
+          {reviews.length === 0 && <p className="mt-4 text-sm text-muted-foreground">Nenhuma avaliação deste produto foi enviada ainda.</p>}
           <div className="mt-4 space-y-0">
             {reviews.map((review, idx) => (
               <article
