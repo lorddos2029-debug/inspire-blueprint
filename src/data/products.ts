@@ -84,7 +84,7 @@ export const products: Product[] = [
     id: 40,
     slug: "kit-6-pecas-cobre-leito-piquet-jogo-fronhas-ponto-palito-lencol-elastico",
     name: "Kit 6 Peças Cobre Leito Piquet com Jogo de Fronhas Ponto Palito e Lençol de Elástico para Cama Confortável",
-    price: 59.9,
+    price: 69.9,
     image: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-1.webp",
     hoverImage: "/assets/products-bc/kit-cobre-leito-piquet/cobre-leito-2.webp",
     images: [
