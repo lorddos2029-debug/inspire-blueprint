@@ -59,6 +59,17 @@ const BIKE = "/assets/products-bc/bicicleta-spinning/";
 
 export const products: Product[] = [
   {
+    id: 117,
+    slug: "kit-2-travesseiros-cervicais-abranuv-sono-confortavel",
+    name: "Kit 2 Travesseiros Cervicais ABRANUV, sono confortável",
+    price: 89.9,
+    image: "/assets/products-bc/abranuv-kit2/kit-1.png",
+    hoverImage: "/assets/products-bc/abranuv-kit2/kit-6.png",
+    images: ["/assets/products-bc/abranuv-kit2/kit-1.png", "/assets/products-bc/abranuv-kit2/kit-2.png", "/assets/products-bc/abranuv-kit2/kit-3.png", "/assets/products-bc/abranuv-kit2/kit-4.png", "/assets/products-bc/abranuv-kit2/kit-5.png", "/assets/products-bc/abranuv-kit2/kit-6.png", "/assets/products-bc/abranuv-kit2/kit-7.png", "/assets/products-bc/abranuv-kit2/kit-8.png", "/assets/products-bc/abranuv-kit2/kit-9.png", "/assets/products-bc/abranuv-kit2/kit-10.png"],
+    description: "Kit com 2 travesseiros cervicais ABRANUV PRO2.0, com formato anatômico em borboleta, pensado para oferecer apoio à cabeça e ao pescoço durante o descanso. A superfície apresenta contornos para diferentes posições de dormir, com regiões de apoio mais altas e mais baixas. Revestimento em tons de cinza e branco e núcleo descrito no material ilustrativo como espuma viscoelástica de recuperação lenta.\n\nCARACTERÍSTICAS\n• Kit com 2 unidades\n• Formato ergonômico tipo borboleta\n• Áreas de apoio para quem dorme de costas ou de lado\n• Lados de diferentes alturas, conforme orientação ilustrada\n• Superfície macia e contornada\n\nMEDIDAS INFORMADAS NAS IMAGENS\n• Comprimento: aproximadamente 62 cm\n• Largura: aproximadamente 41 cm\n• Alturas ilustradas: 8 cm e 10 cm em diferentes áreas (há indicação adicional de 11–13 cm em outro esquema)\n\nObservação: o conforto varia conforme o usuário; o travesseiro não substitui avaliação ou tratamento médico. Dimensões e materiais devem ser conferidos com a embalagem do lote entregue.",
+  },
+
+  {
     id: 116,
     slug: "smart-tv-aoc-43-43s5155-78g-full-hd-led-wifi-roku-usb-hdmi",
     name: 'Smart TV AOC 43" 43S5155/78G Full HD LED Wifi Roku USB HDMI',
