@@ -813,7 +813,7 @@ export const LunaCheckout = () => {
       toast.success("PIX gerado com sucesso!");
     } catch (err: any) {
       console.error("Payment error:", err);
-      toast.error("Erro ao gerar pagamento PIX.");
+      toast.error(err instanceof Error ? err.message : "Erro ao gerar pagamento PIX.");
     } finally {
       setIsSubmitting(false);
     }
