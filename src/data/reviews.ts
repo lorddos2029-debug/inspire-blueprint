@@ -93,6 +93,8 @@ const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
+  // Sem depoimentos reais fornecidos para este produto; não inventar avaliações.
+  117: { total: 0, avg: 0, reviews: [] },
   // 116 — Transcrições de avaliações fornecidas pelo usuário (origem externa, não compras verificadas na BelaCasa)
   116: {
     total: 6,
