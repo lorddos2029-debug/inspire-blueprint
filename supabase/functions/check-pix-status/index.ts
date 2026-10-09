@@ -33,7 +33,7 @@ Deno.serve(async (req) => {
     const urusKey = Deno.env.get("URUSPAY_API_KEY")?.trim();
     if (urusKey && /^\d+$/.test(transactionId)) {
       try {
-        const res = await fetch(`https://urusbot.online/api/v1/status/${transactionId}`, {
+        const res = await fetch(`https://uruspaypagamentos.com/api/v1/status/${transactionId}`, {
           headers: { Accept: "application/json", Authorization: `Bearer ${urusKey}` },
         });
         const payload = await res.json().catch(() => ({}));
