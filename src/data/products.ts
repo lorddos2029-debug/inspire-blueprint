@@ -265,7 +265,7 @@ export const products: Product[] = [
     id: 32,
     slug: "cadeira-escritorio-suporte-lombar-ergonomico-mesh-presidente-premium",
     name: "Cadeira de Escritório Suporte Lombar Ergonômico Malha Respirável Mesh Apoio Cabeça Confortável Art Cadeiras Presidente Premium (Cinza e Branco)",
-    price: 127.9,
+    price: 89.9,
     originalPrice: 899.9,
     image: `${CAD}cadeira-main.png`,
     hoverImage: `${CAD}cadeira-angle-front.png`,
