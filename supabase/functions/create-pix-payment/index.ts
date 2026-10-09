@@ -334,15 +334,26 @@ async function callUrusPay(params: { customer: any; items: any[]; amount: number
   const { customer, items, amount, externalRef, trackingParameters, clientIp, webhookUrl } = params;
   const utm = (trackingParameters && typeof trackingParameters === 'object' ? trackingParameters : {}) as Record<string, string>;
   const descricao = items.map((it: any) => `${it?.quantity || 1}x ${String(it?.name || 'Produto').trim()}`).join(', ').slice(0, 255) || 'Pagamento via PIX';
-  const valor = Math.max(1, Math.round(Number(amount) * 100) / 100);
+  const valor = Math.round(Number(amount) * 100) / 100;
+  if (!Number.isFinite(valor) || valor < 1) throw new Error('Valor PIX inválido');
 
   const payload: Record<string, unknown> = {
     valor,
     nome: String(customer?.name || 'Cliente').trim(),
     email: String(customer?.email || 'cliente@email.com').trim(),
     cpf: String(customer?.cpf || '').replace(/\D/g, ''),
+    telefone: String(customer?.phone || '').replace(/\D/g, ''),
+    itens: items.map((item: any, i: number) => ({
+      id: String(item?.id ?? i + 1),
+      nome: String(item?.name || 'Produto').trim(),
+      quantidade: Math.max(1, Number(item?.quantity) || 1),
+      preco_unitario: Math.max(0, Number(item?.price) || 0),
+    })),
+    src: utm.src || '',
+    sck: utm.sck || '',
     descricao,
-    webhook_url: webhookUrl,
+    // O endpoint do provedor deve ser configurado somente com webhook suportado.
+    // Não enviar URL longa/incompatível caso a conta tenha limite no campo webhook_url.
     utm_source: utm.utm_source || '',
     utm_medium: utm.utm_medium || '',
     utm_campaign: utm.utm_campaign || '',
@@ -355,13 +366,13 @@ async function callUrusPay(params: { customer: any; items: any[]; amount: number
     user_agent: utm.user_agent || '',
   };
 
-  const response = await fetch('https://urusbot.online/api/v1/charge', {
+  const response = await fetch('https://uruspaypagamentos.com/api/v1/charge', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json', Authorization: `Bearer ${apiKey}` },
     body: JSON.stringify(payload),
   });
   const data = await response.json().catch(() => ({}));
-  console.log('UrusPay PIX status:', response.status, 'response:', JSON.stringify(data).slice(0, 500));
+  console.log('UrusPay PIX HTTP status:', response.status);
 
   if (!response.ok || data?.ok === false) {
     const msg = data?.error || data?.message || 'Não foi possível gerar o PIX. Tente novamente em instantes.';
