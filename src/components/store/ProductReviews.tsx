@@ -152,22 +152,6 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
         </div>
       )}
 
-      {productId === 117 && (
-        <div className="mt-4 space-y-3">
-          <p className="text-sm font-semibold text-foreground">Fotos dos clientes</p>
-          <div className="flex flex-wrap gap-2">
-            {[1, 2, 3, 4, 5, 6].map((n) => {
-              const src = `/assets/products-bc/abranuv-kit2/reviews/review-${n}.png`;
-              return (
-                <a key={n} href={src} target="_blank" rel="noopener noreferrer" aria-label={`Abrir foto ${n}`}>
-                  <img src={src} alt={`Foto do travesseiro ABRANUV ${n}`} loading="lazy" className="size-20 rounded-md object-cover border border-border hover:opacity-90 transition" />
-                </a>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
       {productId === 116 && (
         <div className="mt-4 space-y-3">
           <p className="text-xs text-muted-foreground">
