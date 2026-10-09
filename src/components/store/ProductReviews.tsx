@@ -152,6 +152,26 @@ const ProductReviews = ({ productId = 1 }: ProductReviewsProps) => {
         </div>
       )}
 
+      {productId === 116 && (
+        <div className="mt-4 space-y-3">
+          <p className="text-xs text-muted-foreground">
+            Avaliações reproduzidas de imagens de outra plataforma fornecidas para referência.
+            Não são compras verificadas nesta loja.
+          </p>
+          <p className="text-sm font-semibold text-foreground">Fotos compartilhadas nas avaliações de referência</p>
+          <div className="flex flex-wrap gap-2">
+            {[1, 2, 3, 4, 5].map((n) => {
+              const src = `/assets/products-bc/aoc-roku-43/reviews/review-${n}.png`;
+              return (
+                <a key={n} href={src} target="_blank" rel="noopener noreferrer" aria-label={`Abrir foto ${n} das avaliações de referência`}>
+                  <img src={src} alt={`Foto ${n} de avaliações de referência da TV AOC`} loading="lazy" className="size-20 rounded-md object-cover border border-border hover:opacity-90 transition" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       <div className="mt-6 grid w-full min-w-0 grid-cols-1 md:grid-cols-[280px_minmax(0,1fr)] gap-6 md:gap-8">
         <div className="w-full min-w-0">
           <div className="flex items-baseline gap-2">
