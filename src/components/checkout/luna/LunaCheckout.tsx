@@ -396,20 +396,12 @@ export const LunaCheckout = () => {
       if (pixPollBusyRef.current || pixConfirmHandledRef.current) return;
       pixPollBusyRef.current = true;
       try {
-        // Rede de segurança: confirma direto no gateway caso o postback falhe,
-        // preservando a atribuição de campanha na UTMify.
-        try {
-          await supabase.functions.invoke("check-pix-status", {
-            body: { transactionId: pixData.transactionId, orderId: pixData.orderId },
-          });
-        } catch (statusErr) { console.warn("check-pix-status failed:", statusErr); }
-
-        const { data: order } = await supabase
-          .from("orders")
-          .select("payment_status, order_number, tracking_code, customer_name, customer_email, total")
-          .eq("transaction_id", pixData.transactionId!)
-          .single();
-        if (order && order.payment_status === "paid") {
+        const response = await fetch(`/api/uruspay/status/${encodeURIComponent(pixData.transactionId)}`, {cache:"no-store"});
+        const result = await response.json();
+        if (!response.ok) throw new Error(result?.error || "Consulta PIX indisponível");
+        const paid = result?.pago === true || result?.status === "paid";
+        const order = { customer_email: email, customer_name: name, order_number: pixData.orderId?.slice(0,8), total: grandTotal, tracking_code: "" };
+        if (paid) {
           if (pixConfirmHandledRef.current) return;
           pixConfirmHandledRef.current = true;
           setPixConfirmed(true);
@@ -418,7 +410,7 @@ export const LunaCheckout = () => {
             value: grandTotal, currency: "BRL", content_ids: purchasedItems.map((i) => String(i.id)),
             content_type: "product", num_items: purchasedItems.length,
           };
-          if (typeof window !== "undefined" && (window as any).fbq) (window as any).fbq("track", "Purchase", purchaseData);
+          if (typeof window !== "undefined" && (window as any).fbq) (window as any).fbq("track", "Purchase", purchaseData, { eventID: pixData.orderId });
           fireServerEvent("Purchase", purchaseData, { orderId: pixData.orderId, transactionId: pixData.transactionId });
 
           try {
@@ -749,31 +741,25 @@ export const LunaCheckout = () => {
         clientIp = ipJson?.ip || "";
       } catch {}
 
-      const { data: settings } = await supabase
-        .from("payment_settings")
-        .select("pix_provider")
-        .eq("id", 1)
-        .maybeSingle();
-      const selectedProvider = (settings?.pix_provider as string) || "pinpay";
-
-      const { data, error } = await supabase.functions.invoke("create-pix-payment", {
-        body: {
-          customer: { name, email, cpf: onlyDigits(cpf), phone: onlyDigits(phone) },
-          shipping: { cep, street, number, complement, neighborhood, city, state },
-          items: items.map((item) => ({ name: item.name, price: item.price, quantity: item.quantity })),
-          amount: grandTotal,
-          provider: selectedProvider,
-          externalRef: orderReference,
-          trackingParameters,
-          client_ip: clientIp,
-        },
+      if (couponDiscount > 0) {
+        toast.error("Cupom não disponível para o Pix neste momento. Remova o cupom e tente novamente.");
+        return;
+      }
+      const response = await fetch("/api/uruspay/charge", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: name, email, cpf: onlyDigits(cpf), telefone: onlyDigits(phone),
+          shipping: selectedShipping, cupom: "",
+          items: items.map((item) => ({ id: item.id, quantidade: item.quantity })),
+          ...trackingParameters, evento_id: orderReference
+        })
       });
-      if (error) throw error;
-
-      const qrCode = data?.pix?.qrCode || data?.qrCode || "";
-      const copyPaste = data?.pix?.copyPaste || data?.pix?.copy_paste || data?.copyPaste || qrCode;
-      const transactionId = data?.id || data?.transactionId || "";
-
+      const data = await response.json();
+      if (!response.ok || data?.ok === false) throw new Error(data?.error || "Não foi possível gerar o PIX.");
+      const qrCode = data?.pix_code || "";
+      const copyPaste = qrCode;
+      const transactionId = String(data?.venda_id ?? "");
       if (data?.error || !transactionId) {
         console.error("PIX provider error:", data);
         toast.error(data?.error || "Erro ao gerar pagamento PIX.");
