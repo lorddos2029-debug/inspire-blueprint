@@ -15,6 +15,22 @@ interface ProductSheet {
 }
 
 const productSheets: Record<number, ProductSheet> = {
+  117: {
+    about: "Kit de dois travesseiros cervicais ABRANUV PRO2.0 com desenho anatômico em formato de borboleta. As áreas contornadas permitem experimentar diferentes posições de apoio ao dormir, de costas ou de lado. O material ilustrativo apresenta enchimento viscoelástico e capa de acabamento cinza e branco. Conforto e adaptação são individuais, e não há comprovação apresentada de que o produto trate problemas cervicais ou ronco.",
+    specs: [
+      { label: "Marca", value: "ABRANUV (conforme imagens)" },
+      { label: "Linha", value: "PRO2.0 (conforme imagens)" },
+      { label: "Quantidade", value: "2 travesseiros" },
+      { label: "Tipo", value: "Travesseiro cervical anatômico" },
+      { label: "Formato", value: "Borboleta, com diferentes zonas de apoio" },
+      { label: "Material divulgado", value: "Espuma viscoelástica de recuperação lenta" },
+      { label: "Dimensões ilustradas", value: "Aproximadamente 62 × 41 cm" },
+      { label: "Alturas ilustradas", value: "Áreas com cerca de 8 e 10 cm; outra imagem indica 11–13 cm" },
+      { label: "Cores", value: "Cinza e branco" },
+      { label: "Uso", value: "Apoio da cabeça e do pescoço durante o descanso" },
+      { label: "Verificação", value: "Confirmar medidas e materiais na etiqueta do lote" },
+    ],
+  },
   40: {
     about:
       "Kit completo de 6 peças para vestir a cama com um conjunto coordenado e prático para o dia a dia. O cobre leito em piquet cria um visual texturizado e decorativo, as fronhas recebem acabamento ponto palito e o lençol com elástico facilita o ajuste no colchão. O produto está disponível nos tamanhos Casal, Queen e King e em nove combinações de estampas e cores para escolher diretamente na página.",
@@ -453,6 +469,16 @@ const ProductDescription = ({ productId }: ProductDescriptionProps) => {
         {about}
       </p>
 
+      {productId === 117 && (
+        <div className="mt-6 space-y-4">
+          <h3 className="text-base font-extrabold text-foreground">Imagens e detalhes do produto</h3>
+          {Array.from({ length: 10 }, (_, i) => (
+            <img key={i} src={`/assets/products-bc/abranuv-kit2/kit-${i + 1}.png`}
+              alt={`Kit 2 Travesseiros Cervicais ABRANUV — detalhe ${i + 1}`}
+              loading="lazy" className="block w-full max-w-[800px] h-auto object-contain rounded-md" />
+          ))}
+        </div>
+      )}
       <div className="mt-8">
         <h3 className="text-base font-extrabold tracking-tight uppercase text-foreground">
           Especificações técnicas
