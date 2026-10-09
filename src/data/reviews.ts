@@ -93,8 +93,19 @@ const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
-  // Sem depoimentos reais fornecidos para este produto; não inventar avaliações.
-  117: { total: 0, avg: 0, reviews: [] },
+  // 117 — Avaliações transcritas de capturas de outra plataforma (não são compras verificadas na BelaCasa)
+  117: {
+    total: 6,
+    avg: 5,
+    reviews: [
+      { name: "M**o S**a", date: "2026-10-09 · Avaliação de outra plataforma", rating: 5, text: "Gostei do produto muito confortável e entrega muita rápido gostei de mais" },
+      { name: "C**a", date: "2026-10-09 · Avaliação de outra plataforma", rating: 5, text: "Conforto: Muito conforto. Chegou hj o material é maravilhoso.. só achei o cheiro forte mas a fronha já coloquei pra lavar. Por 24h pra ficar no tamanho correto ele veio bem embalado. Forma e tamanho: Ótimo Cor: Igual o anuncio" },
+      { name: "a**5", date: "2026-10-08 · Avaliação de outra plataforma", rating: 5, text: "Conforto: Muito confortável bem fofinho e macio Forma e tamanho: Ideal Cor: Igual anuncio" },
+      { name: "W**a", date: "2026-10-08 · Avaliação de outra plataforma", rating: 5, text: "Parexe muito bom. Vou testar. Otima embalagem e de qualidade." },
+      { name: "V**", date: "2026-10-05 · Avaliação de outra plataforma", rating: 5, text: "Ainda não usei pq chegou hj . Mas o pouco que experimentei ele é tudo oque falam sim 😍 Tem um cheirinho gostoso" },
+      { name: "c**e", date: "2026-10-04 · Avaliação de outra plataforma", rating: 5, text: "Confortável Aparentemente confortável Forma e tamanho: Anatômico muito bom Cor: Linda como esperando" },
+    ],
+  },
   // 116 — Transcrições de avaliações fornecidas pelo usuário (origem externa, não compras verificadas na BelaCasa)
   116: {
     total: 6,
