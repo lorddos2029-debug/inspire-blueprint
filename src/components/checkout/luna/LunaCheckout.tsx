@@ -297,6 +297,9 @@ export const LunaCheckout = () => {
     return {
       src: get("src"), sck: get("sck"), utm_source: get("utm_source"), utm_campaign: get("utm_campaign"),
       utm_medium: get("utm_medium"), utm_content: get("utm_content"), utm_term: get("utm_term"),
+      fbp: getCookie("_fbp"),
+      fbc: getCookie("_fbc") || (params.get("fbclid") ? `fb.1.${Date.now()}.${params.get("fbclid")}` : null),
+      user_agent: navigator.userAgent,
     };
   };
 
