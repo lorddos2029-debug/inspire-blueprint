@@ -93,6 +93,19 @@ const CADF = "/assets/products-bc/cadeira-ergonomica/";
 
 
 const reviewsByProductId: Record<number, { total: number; avg: number; reviews: Review[] }> = {
+  // 116 — Transcrições de avaliações fornecidas pelo usuário (origem externa, não compras verificadas na BelaCasa)
+  116: {
+    total: 6,
+    avg: 5,
+    reviews: [
+      { name: "M**o S**e", date: "2026-10-01 · Avaliação de outra plataforma", rating: 5, text: "Qualidade do trabalho: Ótima. Capacidade: Excelente. Design: Lindo." },
+      { name: "S** **", date: "2026-09-26 · Avaliação de outra plataforma", rating: 5, text: "Amei minha televisão ela é perfeita" },
+      { name: "M**s", date: "2026-10-05 · Avaliação de outra plataforma", rating: 5, text: "Amei o produto muito boa imagens,os programas os aplicativos tudo certinho" },
+      { name: "j**e", date: "2026-10-02 · Avaliação de outra plataforma", rating: 5, text: "Amando minha nova TV, veio dentro do prazo . Entregador super paciente e educado. Imagem e som de primeira." },
+      { name: "L**z **", date: "2026-10-02 · Avaliação de outra plataforma", rating: 5, text: "Qualidade do trabalho: Muito boa. Capacidade: Tamanho bom. Design: Muito bonita" },
+      { name: "R**", date: "2026-09-26 · Avaliação de outra plataforma", rating: 5, text: "Muito bom, achei que seria meio merda mas me impressionou" },
+    ],
+  },
   // 40 — Kit 6 Peças Cobre Leito Piquet
   40: {
     total: 5,
