@@ -98,12 +98,12 @@ const reviewsByProductId: Record<number, { total: number; avg: number; reviews: 
     total: 6,
     avg: 5,
     reviews: [
-      { name: "M**o S**a", date: "2026-10-09", rating: 5, text: "Gostei do produto muito confortável e entrega muita rápido gostei de mais" },
-      { name: "C**a", date: "2026-10-09", rating: 5, text: "Conforto: Muito conforto. Chegou hj o material é maravilhoso.. só achei o cheiro forte mas a fronha já coloquei pra lavar. Por 24h pra ficar no tamanho correto ele veio bem embalado. Forma e tamanho: Ótimo Cor: Igual o anuncio" },
-      { name: "a**5", date: "2026-10-08", rating: 5, text: "Conforto: Muito confortável bem fofinho e macio Forma e tamanho: Ideal Cor: Igual anuncio" },
-      { name: "W**a", date: "2026-10-08", rating: 5, text: "Parexe muito bom. Vou testar. Otima embalagem e de qualidade." },
-      { name: "V**", date: "2026-10-05", rating: 5, text: "Ainda não usei pq chegou hj . Mas o pouco que experimentei ele é tudo oque falam sim 😍 Tem um cheirinho gostoso" },
-      { name: "c**e", date: "2026-10-04", rating: 5, text: "Confortável Aparentemente confortável Forma e tamanho: Anatômico muito bom Cor: Linda como esperando" },
+      { name: "M**o S**a", date: "2026-10-09", rating: 5, text: "Gostei do produto muito confortável e entrega muita rápido gostei de mais", image: "/assets/products-bc/abranuv-kit2/reviews/review-1.png" },
+      { name: "C**a", date: "2026-10-09", rating: 5, text: "Conforto: Muito conforto. Chegou hj o material é maravilhoso.. só achei o cheiro forte mas a fronha já coloquei pra lavar. Por 24h pra ficar no tamanho correto ele veio bem embalado. Forma e tamanho: Ótimo Cor: Igual o anuncio", image: "/assets/products-bc/abranuv-kit2/reviews/review-2.png" },
+      { name: "a**5", date: "2026-10-08", rating: 5, text: "Conforto: Muito confortável bem fofinho e macio Forma e tamanho: Ideal Cor: Igual anuncio", image: "/assets/products-bc/abranuv-kit2/reviews/review-3.png" },
+      { name: "W**a", date: "2026-10-08", rating: 5, text: "Parexe muito bom. Vou testar. Otima embalagem e de qualidade.", image: "/assets/products-bc/abranuv-kit2/reviews/review-4.png" },
+      { name: "V**", date: "2026-10-05", rating: 5, text: "Ainda não usei pq chegou hj . Mas o pouco que experimentei ele é tudo oque falam sim 😍 Tem um cheirinho gostoso", image: "/assets/products-bc/abranuv-kit2/reviews/review-5.png" },
+      { name: "c**e", date: "2026-10-04", rating: 5, text: "Confortável Aparentemente confortável Forma e tamanho: Anatômico muito bom Cor: Linda como esperando", image: "/assets/products-bc/abranuv-kit2/reviews/review-6.png" },
     ],
   },
   // 116 — Transcrições de avaliações fornecidas pelo usuário (origem externa, não compras verificadas na BelaCasa)
