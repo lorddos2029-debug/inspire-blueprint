@@ -73,7 +73,7 @@ export const products: Product[] = [
     id: 116,
     slug: "smart-tv-aoc-43-43s5155-78g-full-hd-led-wifi-roku-usb-hdmi",
     name: 'Smart TV AOC 43" 43S5155/78G Full HD LED Wifi Roku USB HDMI',
-    price: 197.9,
+    price: 127.9,
     image: "/assets/products-bc/aoc-roku-43/tv-1.png",
     hoverImage: "/assets/products-bc/aoc-roku-43/tv-3.png",
     images: ["/assets/products-bc/aoc-roku-43/tv-1.png", "/assets/products-bc/aoc-roku-43/tv-2.png", "/assets/products-bc/aoc-roku-43/tv-3.png", "/assets/products-bc/aoc-roku-43/tv-4.png", "/assets/products-bc/aoc-roku-43/tv-5.png", "/assets/products-bc/aoc-roku-43/tv-6.png", "/assets/products-bc/aoc-roku-43/tv-7.png"],
