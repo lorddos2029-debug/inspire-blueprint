@@ -368,7 +368,8 @@ export const LunaCheckout = () => {
 
     // 1. Pixel do Facebook (Browser)
     if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "InitiateCheckout", icData);
+      (window as any).fbq("trackSingle", "2169110563856510", "InitiateCheckout", icData);
+      (window as any).fbq("trackSingle", "1849843465686098", "InitiateCheckout", icData);
     }
 
     // 2. UTMify (Browser)
@@ -432,7 +433,10 @@ export const LunaCheckout = () => {
             value: grandTotal, currency: "BRL", content_ids: purchasedItems.map((i) => String(i.id)),
             content_type: "product", num_items: purchasedItems.length,
           };
-          if (typeof window !== "undefined" && (window as any).fbq) (window as any).fbq("track", "Purchase", purchaseData, { eventID: pixData.orderId });
+          if (typeof window !== "undefined" && (window as any).fbq) {
+            (window as any).fbq("trackSingle", "2169110563856510", "Purchase", purchaseData, { eventID: pixData.orderId });
+            (window as any).fbq("trackSingle", "1849843465686098", "Purchase", purchaseData, { eventID: pixData.orderId });
+          }
           fireServerEvent("Purchase", purchaseData, { orderId: pixData.orderId, transactionId: pixData.transactionId });
 
           try {
